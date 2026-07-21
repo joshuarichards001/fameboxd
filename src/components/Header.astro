@@ -1,3 +1,7 @@
+---
+import { SUGGEST_FORM_URL } from "../data/site";
+---
+
 <header
 	class="header-glow border-b border-border py-[clamp(1.5rem,4vw,2.4rem)]"
 >
@@ -13,5 +17,13 @@
 			A directory of notable actors, directors, musicians, and
 			creators with real, public Letterboxd accounts.
 		</p>
+		<a
+			class="mt-4 inline-block rounded-full border border-border bg-bg-raised px-4 py-1.5 text-[0.85rem] font-semibold text-orange transition-colors duration-[120ms] hover:bg-bg-raised-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"
+			href={SUGGEST_FORM_URL}
+			target="_blank"
+			rel="noopener"
+		>
+			Suggest a person &rarr;
+		</a>
 	</div>
 </header>
