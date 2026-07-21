@@ -1,0 +1,80 @@
+---
+import { hueFor, initials } from "../functions/avatars";
+import { profileUrl, type Person } from "../functions/people";
+
+interface Props {
+	person: Person;
+	hasAvatar: boolean;
+}
+
+const { person: p, hasAvatar } = Astro.props;
+---
+
+<li
+	class="card flex [&[hidden]]:hidden"
+	data-name={p.name.toLowerCase()}
+	data-tags={p.tags.join(" ")}
+	data-haystack={`${p.name} ${p.description} ${p.tags.join(" ")}`.toLowerCase()}
+>
+	<article
+		class="flex w-full flex-col rounded-card border border-border bg-bg-raised px-5 pt-[1.2rem] pb-[1.1rem] transition-[border-color,transform,background] duration-[140ms] hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--color-orange)_45%,var(--color-border))] hover:bg-bg-raised-hover motion-reduce:transition-none"
+	>
+		<div class="flex items-center gap-[0.8rem]">
+			{
+				hasAvatar ? (
+					<img
+						class="h-[52px] w-[52px] shrink-0 rounded-full border border-border bg-bg object-cover"
+						src={`/avatars/${p.username}.webp`}
+						width="52"
+						height="52"
+						loading="lazy"
+						decoding="async"
+						alt=""
+					/>
+				) : (
+					<span
+						class="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full border text-[1.05rem] font-bold tracking-[0.02em] text-[hsl(var(--hue)_55%_80%)] bg-[hsl(var(--hue)_32%_24%)] border-[hsl(var(--hue)_28%_34%)]"
+						aria-hidden="true"
+						style={`--hue:${hueFor(p.name)}`}
+					>
+						{initials(p.name)}
+					</span>
+				)
+			}
+			<h2 class="m-0 text-[1.18rem] font-bold tracking-[-0.01em]">
+				{p.name}
+			</h2>
+		</div>
+		<ul class="mt-[0.6rem] flex flex-wrap gap-[0.4rem]" aria-label="Tags">
+			{
+				p.tags.map((t) => (
+					<li class="rounded-full border border-blue/30 bg-blue/[0.14] px-[0.55rem] py-[0.15rem] text-[0.72rem] font-bold uppercase tracking-[0.04em] text-blue">
+						{t}
+					</li>
+				))
+			}
+		</ul>
+		<p class="mt-[0.85rem] mb-[1.1rem] flex-1 text-[0.95rem] text-text-dim">
+			{p.description}
+		</p>
+		<a
+			class="group mt-auto inline-flex flex-wrap items-baseline gap-2 font-semibold text-text no-underline focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-blue"
+			href={profileUrl(p.username)}
+			target="_blank"
+			rel="noopener"
+		>
+			<span class="text-orange tabular-nums group-hover:underline">
+				@{p.username}
+			</span>
+			<span
+				class="text-[0.82rem] font-medium text-text-faint"
+				aria-hidden="true"
+			>
+				on Letterboxd ↗
+			</span>
+			<span class="sr-only">
+				— view {p.name}'s profile on Letterboxd (opens in a new tab)
+			</span>
+		</a>
+	</article>
+</li>

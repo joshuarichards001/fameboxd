@@ -1,10 +1,6 @@
-# Astro Starter Kit: Minimal
+# Famous Letterboxd
 
-```sh
-npm create astro@latest -- --template minimal
-```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
 ## 🚀 Project Structure
 

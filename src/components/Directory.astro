@@ -1,0 +1,90 @@
+---
+import type { Person } from "../functions/people";
+import PersonCard from "./PersonCard.astro";
+
+interface Props {
+	people: Person[];
+	avatarSet: Set<string>;
+}
+
+const { people, avatarSet } = Astro.props;
+---
+
+<ul
+	class="mt-[1.6rem] grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 max-[520px]:grid-cols-1"
+	id="directory"
+>
+	{
+		people.map((p) => (
+			<PersonCard person={p} hasAvatar={avatarSet.has(p.username)} />
+		))
+	}
+</ul>
+
+<p class="my-12 text-center text-[1.15rem] text-text-dim" id="empty" hidden>
+	No one found. Try a different name or tag.
+</p>
+
+<script is:inline>
+	(function () {
+		var search = document.getElementById("search");
+		var countEl = document.getElementById("count");
+		var emptyEl = document.getElementById("empty");
+		var cards = Array.prototype.slice.call(
+			document.querySelectorAll(".card"),
+		);
+		var pills = Array.prototype.slice.call(
+			document.querySelectorAll(".pill"),
+		);
+		var total = cards.length;
+		var activeTag = null;
+
+		function apply() {
+			var q = search.value.trim().toLowerCase();
+			var shown = 0;
+			for (var i = 0; i < cards.length; i++) {
+				var card = cards[i];
+				var matchesTag =
+					!activeTag ||
+					(" " + card.getAttribute("data-tags") + " ").indexOf(
+						" " + activeTag + " ",
+					) !== -1;
+				var matchesText =
+					!q ||
+					card.getAttribute("data-haystack").indexOf(q) !== -1;
+				var show = matchesTag && matchesText;
+				card.hidden = !show;
+				if (show) shown++;
+			}
+			countEl.innerHTML =
+				"Showing <strong>" +
+				shown +
+				"</strong> of <strong>" +
+				total +
+				"</strong> people";
+			emptyEl.hidden = shown !== 0;
+		}
+
+		search.addEventListener("input", apply);
+
+		pills.forEach(function (pill) {
+			pill.addEventListener("click", function () {
+				var tag = pill.getAttribute("data-tag");
+				if (activeTag === tag) {
+					activeTag = null;
+				} else {
+					activeTag = tag;
+				}
+				pills.forEach(function (p) {
+					p.setAttribute(
+						"aria-pressed",
+						p.getAttribute("data-tag") === activeTag
+							? "true"
+							: "false",
+					);
+				});
+				apply();
+			});
+		});
+	})();
+</script>

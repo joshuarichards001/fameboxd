@@ -1,17 +1,54 @@
 ---
+import Directory from "../components/Directory.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import SearchControls from "../components/SearchControls.astro";
+import people from "../data/people.json";
+import { loadAvatarSet } from "../functions/avatars";
+import { sortPeople, tagsByFrequency } from "../functions/people";
+import { validatePeople } from "../functions/validate";
+import "../styles/global.css";
 
+validatePeople(people);
+
+const sorted = sortPeople(people);
+const allTags = tagsByFrequency(sorted);
+const total = sorted.length;
+const avatarSet = loadAvatarSet();
+
+const title = "Famous on Letterboxd";
+const description = `A searchable directory of ${total} famous actors, directors, musicians, and creators with verified public Letterboxd accounts.`;
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<!doctype html>
+<html lang="en" class="bg-bg">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" href="/favicon.ico" />
+        <title>{title} — {total} celebrities who review films</title>
+        <meta name="description" content={description} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
+        <meta name="generator" content={Astro.generator} />
+    </head>
+    <body
+        class="font-sans text-text bg-bg antialiased leading-[1.55] [text-rendering:optimizeLegibility]"
+    >
+        <a
+            class="absolute left-[-999px] top-0 z-10 rounded-br-[10px] bg-orange px-4 py-[0.6rem] font-semibold text-bg focus:left-0"
+            href="#directory">Skip to the directory</a
+        >
+
+        <Header />
+
+        <main class="wrap">
+            <SearchControls allTags={allTags} total={total} />
+            <Directory people={sorted} avatarSet={avatarSet} />
+        </main>
+
+        <Footer />
+    </body>
 </html>

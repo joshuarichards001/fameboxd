@@ -1,0 +1,62 @@
+---
+interface Props {
+	allTags: string[];
+	total: number;
+}
+
+const { allTags, total } = Astro.props;
+---
+
+<section
+	class="sticky top-0 z-[5] mb-2 border-b border-border bg-bg/90 pt-[1.4rem] pb-[1.1rem] backdrop-blur-[8px] max-[520px]:static"
+	aria-label="Search and filter"
+>
+	<div>
+		<label
+			class="mb-[0.45rem] block text-[0.82rem] font-semibold uppercase tracking-[0.06em] text-text-faint"
+			for="search">Search by name, description, or tag</label
+		>
+		<input
+			class="w-full rounded-card border border-border bg-bg-raised px-4 py-[0.8rem] text-[1.05rem] text-text placeholder:text-text-faint focus-visible:border-transparent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
+			type="search"
+			id="search"
+			name="search"
+			placeholder="Search people, e.g. “director”, “Scorsese”, “youtuber”…"
+			autocomplete="off"
+			spellcheck="false"
+		/>
+	</div>
+
+	<div class="mt-4">
+		<span
+			class="mb-2 block text-[0.82rem] font-semibold uppercase tracking-[0.06em] text-text-faint"
+			id="tag-filter-label">Filter by tag</span
+		>
+		<div
+			class="flex flex-wrap gap-2"
+			role="group"
+			aria-labelledby="tag-filter-label"
+		>
+			{
+				allTags.map((tag) => (
+					<button
+						type="button"
+						class="pill cursor-pointer rounded-full border border-border bg-bg-raised px-[0.85rem] py-[0.35rem] text-[0.85rem] font-semibold capitalize text-text-dim transition-colors duration-[120ms] hover:bg-bg-raised-hover hover:text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue aria-pressed:border-green aria-pressed:bg-green aria-pressed:text-[#0c1418] motion-reduce:transition-none"
+						data-tag={tag}
+						aria-pressed="false"
+					>
+						{tag}
+					</button>
+				))
+			}
+		</div>
+	</div>
+
+	<p
+		class="mt-[1.1rem] mb-0 text-[0.95rem] text-text-dim [&_strong]:text-text"
+		id="count"
+		aria-live="polite"
+	>
+		Showing <strong>{total}</strong> of <strong>{total}</strong> people
+	</p>
+</section>

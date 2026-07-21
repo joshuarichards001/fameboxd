@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+/* --- Design tokens (Letterboxd-inspired dark theme) ---
+   Each --color-* entry generates matching utilities: bg-bg, text-text-dim,
+   border-border, text-orange, etc. */
+@theme {
+	--color-bg: #14181c;
+	--color-bg-raised: #1c2228;
+	--color-bg-raised-hover: #222a31;
+	--color-border: #2c353d;
+	--color-text: #e4eaf0;
+	--color-text-dim: #99aabb;
+	--color-text-faint: #6b7d8d;
+	--color-orange: #ff8000;
+	--color-green: #00e054;
+	--color-blue: #40bcf4;
+
+	--font-sans:
+		system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
+		sans-serif;
+
+	--radius-card: 10px;
+}
+
+/* Centered content column shared by the header, main, and footer. */
+@utility wrap {
+	width: 100%;
+	max-width: 1180px;
+	margin-inline: auto;
+	padding-inline: clamp(1rem, 4vw, 2.5rem);
+}
+
+/* Decorative twin radial glow behind the page header. */
+@utility header-glow {
+	background:
+		radial-gradient(
+			120% 100% at 0% 0%,
+			rgba(0, 224, 84, 0.06),
+			transparent 55%
+		),
+		radial-gradient(
+			120% 100% at 100% 0%,
+			rgba(64, 188, 244, 0.07),
+			transparent 55%
+		);
+}
