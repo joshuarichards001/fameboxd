@@ -27,7 +27,9 @@ const shown = activeTag
 const avatarSet = loadAvatarSet();
 
 const label = activeTag ? tagLabel(activeTag) : null;
-const title = label ? `Famous ${label} on Letterboxd — Fameboxd` : "Fameboxd";
+const title = label
+	? `Famous ${label} on Letterboxd — Fameboxd`
+	: "Famous People on Letterboxd — Actors, Directors & Creators | Fameboxd";
 const description = label
 	? `${shown} famous ${label.toLowerCase()} with verified public Letterboxd accounts — see what they're watching, how they rate films, and their all-time favorites.`
 	: `A directory of ${total} famous actors, directors, musicians, youtubers, and creators with verified Letterboxd accounts.`;
