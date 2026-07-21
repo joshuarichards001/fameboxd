@@ -16,8 +16,12 @@ const { person: p, hasAvatar } = Astro.props;
 	data-tags={p.tags.join(" ")}
 	data-haystack={`${p.name} ${p.description} ${p.tags.join(" ")}`.toLowerCase()}
 >
-	<article
-		class="flex w-full flex-col rounded-card border border-border bg-bg-raised px-4 pt-[0.9rem] pb-[0.85rem] transition-[border-color,transform,background] duration-[140ms] hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--color-orange)_45%,var(--color-border))] hover:bg-bg-raised-hover motion-reduce:transition-none"
+	<a
+		class="group flex w-full flex-col rounded-card border border-border bg-bg-raised px-4 pt-[0.9rem] pb-[0.85rem] no-underline transition-[border-color,transform,background] duration-[140ms] hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--color-orange)_45%,var(--color-border))] hover:bg-bg-raised-hover focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-blue motion-reduce:transition-none"
+		href={profileUrl(p.username)}
+		target="_blank"
+		rel="noopener"
+		aria-label={`View ${p.name}'s profile on Letterboxd (opens in a new tab)`}
 	>
 		<div class="flex items-center gap-[0.7rem]">
 			{
@@ -57,12 +61,7 @@ const { person: p, hasAvatar } = Astro.props;
 		<p class="mt-2 mb-3 flex-1 text-[0.875rem] leading-[1.5] text-text-dim">
 			{p.description}
 		</p>
-		<a
-			class="group mt-auto inline-flex flex-wrap items-baseline gap-2 text-[0.9rem] font-semibold text-text no-underline focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-blue"
-			href={profileUrl(p.username)}
-			target="_blank"
-			rel="noopener"
-		>
+		<span class="mt-auto inline-flex flex-wrap items-baseline gap-2 text-[0.9rem] font-semibold text-text">
 			<span class="text-orange tabular-nums group-hover:underline">
 				@{p.username}
 			</span>
@@ -72,9 +71,6 @@ const { person: p, hasAvatar } = Astro.props;
 			>
 				on Letterboxd ↗
 			</span>
-			<span class="sr-only">
-				— view {p.name}'s profile on Letterboxd (opens in a new tab)
-			</span>
-		</a>
-	</article>
+		</span>
+	</a>
 </li>
