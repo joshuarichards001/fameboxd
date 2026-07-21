@@ -10,6 +10,7 @@ const VOCAB = new Set([
 	"comedian",
 	"podcaster",
 	"athlete",
+	"developer",
 ]);
 
 // Build-time data validation (fails the build on bad data).
