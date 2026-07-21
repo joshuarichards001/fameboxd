@@ -1,0 +1,57 @@
+---
+import activity from "../data/activity.json";
+import people from "../data/people.json";
+import { sortByRecentActivity, type ActivityData } from "../functions/activity";
+import { loadAvatarSet } from "../functions/avatars";
+import { sortPeople, tagsByFrequency } from "../functions/people";
+import { tagLabel } from "../functions/tags";
+import { validatePeople } from "../functions/validate";
+import Base from "../layouts/Base.astro";
+import Directory from "./Directory.astro";
+import Footer from "./Footer.astro";
+import Header from "./Header.astro";
+import SearchControls from "./SearchControls.astro";
+
+interface Props {
+	activeTag?: string | null;
+}
+
+const { activeTag = null } = Astro.props;
+
+validatePeople(people);
+
+const sorted = sortPeople(people);
+const allTags = tagsByFrequency(sorted);
+const total = sorted.length;
+const shown = activeTag
+	? sorted.filter((p) => p.tags.includes(activeTag)).length
+	: total;
+const avatarSet = loadAvatarSet();
+
+const label = activeTag ? tagLabel(activeTag) : null;
+const title = label ? `Famous ${label} on Letterboxd — Fameboxd` : "Fameboxd";
+const description = label
+	? `${shown} famous ${label.toLowerCase()} with verified public Letterboxd accounts — see what they're watching, how they rate films, and their all-time favorites.`
+	: `A searchable directory of ${total} famous actors, directors, musicians, youtubers, and creators with verified Letterboxd accounts.`;
+---
+
+<Base title={title} description={description}>
+	<Header headline={label ?? "Famous"} />
+
+	<main class="wrap">
+		<SearchControls
+			allTags={allTags}
+			total={total}
+			shown={shown}
+			activeTag={activeTag}
+		/>
+		<Directory
+			people={sortByRecentActivity(sorted, (activity as ActivityData).people)}
+			avatarSet={avatarSet}
+			activity={(activity as ActivityData).people}
+			activeTag={activeTag}
+		/>
+	</main>
+
+	<Footer />
+</Base>

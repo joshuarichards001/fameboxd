@@ -1,5 +1,11 @@
 ---
 import { SUGGEST_FORM_URL } from "../data/site";
+
+interface Props {
+	headline?: string;
+}
+
+const { headline = "Famous" } = Astro.props;
 ---
 
 <header
@@ -9,7 +15,9 @@ import { SUGGEST_FORM_URL } from "../data/site";
 		<h1
 			class="m-0 text-[clamp(1.7rem,4.5vw,2.5rem)] font-extrabold leading-[1.05] tracking-[-0.02em]"
 		>
-			Famous <span class="text-orange">on Letterboxd</span>
+			<span id="headline">{headline}</span>{" "}<span class="text-orange"
+				>on Letterboxd</span
+			>
 		</h1>
 		<p
 			class="mt-2 mb-0 max-w-[56ch] text-[clamp(0.95rem,2vw,1.05rem)] text-text-dim"

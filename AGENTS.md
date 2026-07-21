@@ -27,12 +27,21 @@ astro dev status | logs | stop  # manage the background server
 
 ## Architecture
 
-The index page is composed in `src/pages/index.astro` (via `layouts/Base.astro`
-for the head boilerplate): it pulls in the data, runs validation, and renders
-`Header`, `SearchControls`, `Directory` (the card grid), and `Footer`. Each
-card links to `src/pages/[username].astro`, a statically generated per-person
-page showing the 4 most recent watches and 4 favorite films (`FilmPoster`
-tiles).
+The directory page lives in `src/components/DirectoryPage.astro` (via
+`layouts/Base.astro` for the head boilerplate): it pulls in the data, runs
+validation, and renders `Header`, `SearchControls`, `Directory` (the card
+grid), and `Footer`. Two routes render it:
+
+- `src/pages/index.astro` — the full directory at `/`.
+- `src/pages/[tag].astro` — one SEO page per tag in use (`/directors/`,
+  `/actors/`, …; slugs/labels from `src/functions/tags.ts`), pre-filtered
+  server-side with a targeted `<title>`, meta description, and h1
+  ("Directors on Letterboxd"). Its `getStaticPaths` throws if a tag slug ever
+  collides with a username (both route from the site root).
+
+Each card links to `src/pages/[username].astro`, a statically generated
+per-person page showing the 4 most recent watches and 4 favorite films
+(`FilmPoster` tiles); its tag chips link back to the tag pages.
 
 **Data is the source of truth.** `src/data/people.json` is an array of
 `{ name, username, description, tags }` (see the `Person` interface in
@@ -60,10 +69,17 @@ it and commits the diff. The script degrades gracefully: per-person failures
 keep the previous (stale) data, and it refuses to write only if every fetch
 fails. Poster images are hotlinked from Letterboxd's CDN (`a.ltrbxd.com`).
 
-**Client-side search** is an inline `<script is:inline>` in `Directory.astro`.
-Each `PersonCard` exposes `data-tags` and a lowercased `data-haystack`
-(name + description + tags); the script filters cards by text query and one
-active tag pill. No framework, no build step for this logic.
+**Client-side search/filter/sort** is an inline `<script is:inline>` in
+`Directory.astro`. Each `PersonCard` exposes `data-tags`, a lowercased
+`data-haystack` (name + description + tags), and `data-watched` (last watched
+date, for sorting); the script filters cards by text query and one active tag
+pill, and reorders them via the sort chips (recently active — the default,
+matching the server-rendered order via `sortByRecentActivity` — and A–Z).
+Tag pills are real `<a>` links to the tag pages (crawlable); JS intercepts
+clicks and mirrors state into the URL instead — the active tag as the path
+(`pushState`), the search query as `?q=` (`replaceState`) — and restores state
+from the URL on load and `popstate`. Sort is deliberately not in the URL. No
+framework, no build step for this logic.
 
 **Styling** is Tailwind v4 configured via the Vite plugin (`astro.config.mjs`) —
 there is no `tailwind.config`. Design tokens live in `@theme` in

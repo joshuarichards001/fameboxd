@@ -7,9 +7,10 @@ interface Props {
 	people: Person[];
 	avatarSet: Set<string>;
 	activity: ActivityData["people"];
+	activeTag: string | null;
 }
 
-const { people, avatarSet, activity } = Astro.props;
+const { people, avatarSet, activity, activeTag } = Astro.props;
 ---
 
 <ul
@@ -22,6 +23,7 @@ const { people, avatarSet, activity } = Astro.props;
 				person={p}
 				hasAvatar={avatarSet.has(p.username)}
 				lastWatched={activity[p.username]?.recent[0] ?? null}
+				hidden={activeTag != null && !p.tags.includes(activeTag)}
 			/>
 		))
 	}
@@ -33,17 +35,31 @@ const { people, avatarSet, activity } = Astro.props;
 
 <script is:inline>
 	(function () {
+		var HOME_TITLE = "Fameboxd";
 		var search = document.getElementById("search");
 		var countEl = document.getElementById("count");
 		var emptyEl = document.getElementById("empty");
+		var headlineEl = document.getElementById("headline");
+		var directory = document.getElementById("directory");
 		var cards = Array.prototype.slice.call(
 			document.querySelectorAll(".card"),
 		);
 		var pills = Array.prototype.slice.call(
 			document.querySelectorAll(".pill"),
 		);
+		var sortPills = Array.prototype.slice.call(
+			document.querySelectorAll(".sort-pill"),
+		);
 		var total = cards.length;
 		var activeTag = null;
+		var sort = "recent";
+
+		function pillFor(tag) {
+			for (var i = 0; i < pills.length; i++) {
+				if (pills[i].getAttribute("data-tag") === tag) return pills[i];
+			}
+			return null;
+		}
 
 		function apply() {
 			var q = search.value.trim().toLowerCase();
@@ -71,26 +87,107 @@ const { people, avatarSet, activity } = Astro.props;
 			emptyEl.hidden = shown !== 0;
 		}
 
-		search.addEventListener("input", apply);
+		// Reorder the card <li>s in place. `cards` keeps the server's order,
+		// which is already most-recently-active first.
+		function applySort() {
+			var order = cards.slice();
+			if (sort === "az") {
+				order.sort(function (a, b) {
+					var an = a.getAttribute("data-name");
+					var bn = b.getAttribute("data-name");
+					return an < bn ? -1 : an > bn ? 1 : 0;
+				});
+			}
+			for (var k = 0; k < order.length; k++) {
+				directory.appendChild(order[k]);
+			}
+		}
+
+		function syncPills() {
+			pills.forEach(function (p) {
+				var on = p.getAttribute("data-tag") === activeTag;
+				p.setAttribute("aria-pressed", on ? "true" : "false");
+				p.setAttribute(
+					"href",
+					on ? "/" : p.getAttribute("data-path"),
+				);
+			});
+		}
+
+		function syncSortPills() {
+			sortPills.forEach(function (b) {
+				b.setAttribute(
+					"aria-pressed",
+					b.getAttribute("data-sort") === sort ? "true" : "false",
+				);
+			});
+		}
+
+		// Keep the h1 and document title matching what the tag page would say.
+		function syncHeadline() {
+			var pill = activeTag ? pillFor(activeTag) : null;
+			var label = pill ? pill.getAttribute("data-label") : null;
+			if (headlineEl) headlineEl.textContent = label || "Famous";
+			document.title = label
+				? "Famous " + label + " on Letterboxd — Fameboxd"
+				: HOME_TITLE;
+		}
+
+		// Mirror state into the URL so any view is shareable. The tag lives in
+		// the path (a real prerendered page); q rides along as a param.
+		function updateUrl(push) {
+			var pill = activeTag ? pillFor(activeTag) : null;
+			var path = pill ? pill.getAttribute("data-path") : "/";
+			var params = new URLSearchParams();
+			var q = search.value.trim();
+			if (q) params.set("q", q);
+			var url = path + (params.toString() ? "?" + params : "");
+			history[push ? "pushState" : "replaceState"](null, "", url);
+		}
+
+		// Derive all state from the current URL (initial load and popstate).
+		function initFromUrl() {
+			var path = location.pathname.replace(/\/*$/, "/");
+			activeTag = null;
+			pills.forEach(function (p) {
+				if (p.getAttribute("data-path") === path) {
+					activeTag = p.getAttribute("data-tag");
+				}
+			});
+			var params = new URLSearchParams(location.search);
+			search.value = params.get("q") || "";
+			syncPills();
+			syncHeadline();
+			apply();
+		}
+
+		search.addEventListener("input", function () {
+			apply();
+			updateUrl(false);
+		});
 
 		pills.forEach(function (pill) {
-			pill.addEventListener("click", function () {
+			pill.addEventListener("click", function (e) {
+				if (e.metaKey || e.ctrlKey || e.shiftKey) return;
+				e.preventDefault();
 				var tag = pill.getAttribute("data-tag");
-				if (activeTag === tag) {
-					activeTag = null;
-				} else {
-					activeTag = tag;
-				}
-				pills.forEach(function (p) {
-					p.setAttribute(
-						"aria-pressed",
-						p.getAttribute("data-tag") === activeTag
-							? "true"
-							: "false",
-					);
-				});
+				activeTag = activeTag === tag ? null : tag;
+				syncPills();
+				syncHeadline();
 				apply();
+				updateUrl(true);
 			});
 		});
+
+		sortPills.forEach(function (btn) {
+			btn.addEventListener("click", function () {
+				sort = btn.getAttribute("data-sort");
+				syncSortPills();
+				applySort();
+			});
+		});
+
+		window.addEventListener("popstate", initFromUrl);
+		initFromUrl();
 	})();
 </script>

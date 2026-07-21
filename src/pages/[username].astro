@@ -8,6 +8,7 @@ import type { ActivityData } from "../functions/activity";
 import { formatWatchedDate, stars } from "../functions/activity";
 import { hueFor, initials, loadAvatarSet } from "../functions/avatars";
 import { profileUrl, type Person } from "../functions/people";
+import { tagSlug } from "../functions/tags";
 import { validatePeople } from "../functions/validate";
 
 export function getStaticPaths() {
@@ -80,8 +81,13 @@ const description = [
 				>
 					{
 						p.tags.map((t) => (
-							<li class="list-none rounded-full border border-blue/30 bg-blue/[0.14] px-2 py-[0.1rem] text-[0.68rem] font-bold uppercase tracking-[0.04em] text-blue">
-								{t}
+							<li class="list-none">
+								<a
+									class="block rounded-full border border-blue/30 bg-blue/[0.14] px-2 py-[0.1rem] text-[0.68rem] font-bold uppercase tracking-[0.04em] text-blue no-underline transition-colors duration-[120ms] hover:bg-blue/25 motion-reduce:transition-none"
+									href={`/${tagSlug(t)}/`}
+								>
+									{t}
+								</a>
 							</li>
 						))
 					}

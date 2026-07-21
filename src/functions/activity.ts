@@ -1,3 +1,5 @@
+import type { Person } from "./people";
+
 export interface FavoriteFilm {
 	title: string;
 	slug: string;
@@ -22,6 +24,20 @@ export interface PersonActivity {
 export interface ActivityData {
 	generatedAt: string;
 	people: Record<string, PersonActivity>;
+}
+
+// Most recently active first (by last logged watch date), A–Z tie-break;
+// people with no dated activity sink to the end.
+export function sortByRecentActivity(
+	people: Person[],
+	activity: ActivityData["people"],
+): Person[] {
+	const last = (u: string) => activity[u]?.recent[0]?.watchedDate ?? "";
+	return [...people].sort(
+		(a, b) =>
+			last(b.username).localeCompare(last(a.username)) ||
+			a.name.localeCompare(b.name, "en", { sensitivity: "base" }),
+	);
 }
 
 // 4.5 -> "★★★★½", matching Letterboxd's rating display.

@@ -7,14 +7,17 @@ interface Props {
 	person: Person;
 	hasAvatar: boolean;
 	lastWatched: RecentFilm | null;
+	hidden?: boolean;
 }
 
-const { person: p, hasAvatar, lastWatched } = Astro.props;
+const { person: p, hasAvatar, lastWatched, hidden = false } = Astro.props;
 ---
 
 <li
 	class="card flex [&[hidden]]:hidden"
+	hidden={hidden}
 	data-name={p.name.toLowerCase()}
+	data-watched={lastWatched?.watchedDate ?? ""}
 	data-tags={p.tags.join(" ")}
 	data-haystack={`${p.name} ${p.description} ${p.tags.join(" ")}`.toLowerCase()}
 >
