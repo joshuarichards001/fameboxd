@@ -1,13 +1,15 @@
 ---
+import { stars, timeAgo, type RecentFilm } from "../functions/activity";
 import { hueFor, initials } from "../functions/avatars";
-import { profileUrl, type Person } from "../functions/people";
+import type { Person } from "../functions/people";
 
 interface Props {
 	person: Person;
 	hasAvatar: boolean;
+	lastWatched: RecentFilm | null;
 }
 
-const { person: p, hasAvatar } = Astro.props;
+const { person: p, hasAvatar, lastWatched } = Astro.props;
 ---
 
 <li
@@ -18,10 +20,8 @@ const { person: p, hasAvatar } = Astro.props;
 >
 	<a
 		class="group flex w-full flex-col rounded-card border border-border bg-bg-raised px-4 pt-[0.9rem] pb-[0.85rem] no-underline transition-[border-color,transform,background] duration-[140ms] hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--color-orange)_45%,var(--color-border))] hover:bg-bg-raised-hover focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-blue motion-reduce:transition-none"
-		href={profileUrl(p.username)}
-		target="_blank"
-		rel="noopener"
-		aria-label={`View ${p.name}'s profile on Letterboxd (opens in a new tab)`}
+		href={`/${p.username}/`}
+		aria-label={`View ${p.name}'s recent watches and favorite films`}
 	>
 		<div class="flex items-center gap-[0.7rem]">
 			{
@@ -61,15 +61,40 @@ const { person: p, hasAvatar } = Astro.props;
 		<p class="mt-2 mb-3 flex-1 text-[0.875rem] leading-[1.5] text-text-dim">
 			{p.description}
 		</p>
-		<span class="mt-auto inline-flex flex-wrap items-baseline gap-2 text-[0.9rem] font-semibold text-text">
-			<span class="text-orange tabular-nums group-hover:underline">
-				@{p.username}
-			</span>
-			<span
-				class="text-[0.78rem] font-medium text-text-faint"
-				aria-hidden="true"
-			>
-				on Letterboxd ↗
+		<span class="mt-auto flex flex-col gap-1 border-t border-border pt-2.5">
+			{
+				lastWatched && (
+					<span class="flex items-baseline gap-x-1.5 text-[0.8rem] leading-snug">
+							<span class="shrink-0 text-text-faint">Watched</span>
+							<span class="min-w-0 truncate font-semibold text-text-dim">
+								{lastWatched.title}
+							</span>
+							{lastWatched.rating != null && (
+								<span
+									class="shrink-0 text-green"
+									aria-label={`rated ${lastWatched.rating} out of 5`}
+								>
+									{stars(lastWatched.rating)}
+								</span>
+							)}
+							{lastWatched.watchedDate && (
+								<span class="shrink-0 text-[0.75rem] text-text-faint">
+									{timeAgo(lastWatched.watchedDate)}
+								</span>
+							)}
+					</span>
+				)
+			}
+			<span class="mt-1 flex items-baseline justify-between gap-2 text-[0.9rem] font-semibold">
+				<span class="text-orange tabular-nums group-hover:underline">
+					@{p.username}
+				</span>
+				<span
+					class="text-[0.75rem] font-medium text-text-faint"
+					aria-hidden="true"
+				>
+					more →
+				</span>
 			</span>
 		</span>
 	</a>

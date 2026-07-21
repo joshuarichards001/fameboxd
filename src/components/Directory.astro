@@ -1,22 +1,28 @@
 ---
+import type { ActivityData } from "../functions/activity";
 import type { Person } from "../functions/people";
 import PersonCard from "./PersonCard.astro";
 
 interface Props {
 	people: Person[];
 	avatarSet: Set<string>;
+	activity: ActivityData["people"];
 }
 
-const { people, avatarSet } = Astro.props;
+const { people, avatarSet, activity } = Astro.props;
 ---
 
 <ul
-	class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+	class="mt-4 grid grid-cols-[repeat(auto-fill,minmax(min(100%,21rem),1fr))] gap-3"
 	id="directory"
 >
 	{
 		people.map((p) => (
-			<PersonCard person={p} hasAvatar={avatarSet.has(p.username)} />
+			<PersonCard
+				person={p}
+				hasAvatar={avatarSet.has(p.username)}
+				lastWatched={activity[p.username]?.recent[0] ?? null}
+			/>
 		))
 	}
 </ul>

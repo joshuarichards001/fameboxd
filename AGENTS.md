@@ -4,8 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-A single-page static site: a searchable directory of famous people (actors,
-directors, musicians, creators) with verified public Letterboxd accounts. Built
+A static site: a searchable directory of famous people (actors, directors,
+musicians, creators) with verified public Letterboxd accounts, plus a page per
+person (`/<username>/`) showing their recent watches and favorite films. Built
 with Astro 7 (no UI framework runtime) and Tailwind CSS v4. Everything renders
 at build time; the only client-side code is a small vanilla-JS search filter.
 
@@ -21,12 +22,17 @@ astro dev status | logs | stop  # manage the background server
 - `npm run build` — production build to `dist/`. Runs `validatePeople` at build
   time, so **bad data fails the build** (see Data below).
 - `npm run preview` — serve the built `dist/` locally.
+- `npm run fetch-activity` — refresh `src/data/activity.json` from Letterboxd
+  (see Activity data below). Never run by the build.
 
 ## Architecture
 
-The entire page is composed in `src/pages/index.astro`, which pulls in the data,
-runs validation, and renders four components: `Header`, `SearchControls`,
-`Directory` (the card grid), and `Footer`.
+The index page is composed in `src/pages/index.astro` (via `layouts/Base.astro`
+for the head boilerplate): it pulls in the data, runs validation, and renders
+`Header`, `SearchControls`, `Directory` (the card grid), and `Footer`. Each
+card links to `src/pages/[username].astro`, a statically generated per-person
+page showing the 4 most recent watches and 4 favorite films (`FilmPoster`
+tiles).
 
 **Data is the source of truth.** `src/data/people.json` is an array of
 `{ name, username, description, tags }` (see the `Person` interface in
@@ -42,6 +48,17 @@ runs validation, and renders four components: `Header`, `SearchControls`,
   **the filenames are the manifest** (no separate list). People with a matching
   `public/avatars/<username>.webp` get a photo; everyone else gets a
   deterministic initials monogram (`initials` + `hueFor`). No external requests.
+
+**Activity data** (`src/data/activity.json`) holds each person's 4 most recent
+watches and 4 favorite films, keyed by username (types in
+`src/functions/activity.ts`). It is **committed, not fetched at build time** —
+`scripts/fetch-activity.mjs` regenerates it (recent watches from the public RSS
+feed `letterboxd.com/<username>/rss/`; favorites scraped from the profile page,
+with posters resolved from each film page's JSON-LD and cached by slug across
+runs). A daily GitHub Action (`.github/workflows/refresh-activity.yml`) reruns
+it and commits the diff. The script degrades gracefully: per-person failures
+keep the previous (stale) data, and it refuses to write only if every fetch
+fails. Poster images are hotlinked from Letterboxd's CDN (`a.ltrbxd.com`).
 
 **Client-side search** is an inline `<script is:inline>` in `Directory.astro`.
 Each `PersonCard` exposes `data-tags` and a lowercased `data-haystack`
