@@ -5,10 +5,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Overview
 
 A static site: a searchable directory of famous people (actors, directors,
-musicians, creators) with verified public Letterboxd accounts, plus a page per
-person (`/<username>/`) showing their recent watches and favorite films. Built
-with Astro 7 (no UI framework runtime) and Tailwind CSS v4. Everything renders
-at build time; the only client-side code is a small vanilla-JS search filter.
+musicians, creators) with verified public Letterboxd accounts. Each card shows
+the person's most recent watch and links straight to their Letterboxd profile.
+Built with Astro 7 (no UI framework runtime) and Tailwind CSS v4. Everything
+renders at build time; the only client-side code is a small vanilla-JS search
+filter.
 
 ## Commands
 
@@ -22,8 +23,9 @@ astro dev status | logs | stop  # manage the background server
 - `npm run build` — production build to `dist/`. Runs `validatePeople` at build
   time, so **bad data fails the build** (see Data below).
 - `npm run preview` — serve the built `dist/` locally.
-- `npm run fetch-activity` — refresh `src/data/activity.json` from Letterboxd
-  (see Activity data below). Never run by the build.
+- `npm run fetch-activity` — refresh each person's `lastWatched` in
+  `src/data/people.json` from Letterboxd (see Activity data below). Never run
+  by the build.
 
 ## Architecture
 
@@ -36,38 +38,39 @@ grid), and `Footer`. Two routes render it:
 - `src/pages/[tag].astro` — one SEO page per tag in use (`/directors/`,
   `/actors/`, …; slugs/labels from `src/functions/tags.ts`), pre-filtered
   server-side with a targeted `<title>`, meta description, and h1
-  ("Directors on Letterboxd"). Its `getStaticPaths` throws if a tag slug ever
-  collides with a username (both route from the site root).
+  ("Directors on Letterboxd").
 
-Each card links to `src/pages/[username].astro`, a statically generated
-per-person page showing the 4 most recent watches and 4 favorite films
-(`FilmPoster` tiles); its tag chips link back to the tag pages.
+Each card links directly to the person's Letterboxd profile (external, new
+tab). There are no per-person pages.
 
 **Data is the source of truth.** `src/data/people.json` is an array of
-`{ name, username, description, tags }` (see the `Person` interface in
-`src/functions/people.ts`). Pure helpers live in `src/functions/`:
+`{ name, username, description, tags, lastWatched }` (see the `Person`
+interface in `src/functions/people.ts`); `lastWatched` is
+`{ title, date, rating } | null`, maintained by the fetch script. Pure helpers
+live in `src/functions/`:
 
-- `people.ts` — `sortPeople` (alphabetical), `tagsByFrequency` (for the filter
-  pills), and `profileUrl`.
+- `people.ts` — `sortPeople` (alphabetical), `sortByRecentActivity` (default
+  card order), `tagsByFrequency` (for the filter pills), `profileUrl`, and the
+  display helpers `stars` and `timeAgo`.
 - `validate.ts` — `validatePeople` enforces: non-empty name/description, unique
-  usernames matching `^[a-z0-9_]+$`, and 1–3 tags drawn from a **fixed `VOCAB`**
+  usernames matching `^[a-z0-9_]+$`, 1–3 tags drawn from a **fixed `VOCAB`**
   (actor, director, writer, youtuber, critic, musician, comedian, podcaster,
-  athlete). Adding a new tag means editing `VOCAB`.
+  athlete, developer), and a well-formed `lastWatched` when present. Adding a
+  new tag means editing `VOCAB`.
 - `avatars.ts` — `loadAvatarSet()` reads `public/avatars/` at build time;
   **the filenames are the manifest** (no separate list). People with a matching
   `public/avatars/<username>.webp` get a photo; everyone else gets a
   deterministic initials monogram (`initials` + `hueFor`). No external requests.
 
-**Activity data** (`src/data/activity.json`) holds each person's 4 most recent
-watches and 4 favorite films, keyed by username (types in
-`src/functions/activity.ts`). It is **committed, not fetched at build time** —
-`scripts/fetch-activity.mjs` regenerates it (recent watches from the public RSS
-feed `letterboxd.com/<username>/rss/`; favorites scraped from the profile page,
-with posters resolved from each film page's JSON-LD and cached by slug across
-runs). A daily GitHub Action (`.github/workflows/refresh-activity.yml`) reruns
-it and commits the diff. The script degrades gracefully: per-person failures
-keep the previous (stale) data, and it refuses to write only if every fetch
-fails. Poster images are hotlinked from Letterboxd's CDN (`a.ltrbxd.com`).
+**Activity data** is the `lastWatched` field on each entry in
+`src/data/people.json` — the person's most recent diary entry (film title,
+watched date, rating). It is **committed, not fetched at build time** —
+`scripts/fetch-activity.mjs` refreshes it from the public RSS feed
+`letterboxd.com/<username>/rss/` (one request per person; the script also
+reformats `people.json` with `JSON.stringify`). A daily GitHub Action
+(`.github/workflows/refresh-activity.yml`) reruns it and commits the diff. The
+script degrades gracefully: per-person failures keep the previous (stale)
+`lastWatched`, and it refuses to write only if every fetch fails.
 
 **Client-side search/filter/sort** is an inline `<script is:inline>` in
 `Directory.astro`. Each `PersonCard` exposes `data-tags`, a lowercased
@@ -91,7 +94,8 @@ there too. It's a Letterboxd-inspired dark theme.
 ## Adding or editing a person
 
 1. Add an entry to `src/data/people.json` (keep it alphabetical by `name`;
-   `sortPeople` also enforces order at render).
+   `sortPeople` also enforces order at render). Omit `lastWatched` — the fetch
+   script fills it in on the next run.
 2. **Verify the Letterboxd handle is live before adding it** — load
    `https://letterboxd.com/<username>/`, confirm HTTP 200 and that the display
    name matches. Usernames get recycled, so a handle from a listicle may now

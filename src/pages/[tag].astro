@@ -7,17 +7,10 @@ import { tagSlug } from "../functions/tags";
 // One static page per tag in use (/directors/, /actors/, …), for SEO:
 // each gets a targeted title, description, and h1, pre-filtered server-side.
 export function getStaticPaths() {
-	const typed = people as Person[];
-	const usernames = new Set(typed.map((p) => p.username));
-	return tagsByFrequency(typed).map((tag) => {
-		const slug = tagSlug(tag);
-		if (usernames.has(slug)) {
-			throw new Error(
-				`Tag page /${slug}/ collides with @${slug}'s profile page.`,
-			);
-		}
-		return { params: { tag: slug }, props: { tag } };
-	});
+	return tagsByFrequency(people as Person[]).map((tag) => ({
+		params: { tag: tagSlug(tag) },
+		props: { tag },
+	}));
 }
 
 interface Props {

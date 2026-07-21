@@ -1,9 +1,7 @@
 ---
-import activity from "../data/activity.json";
 import people from "../data/people.json";
-import { sortByRecentActivity, type ActivityData } from "../functions/activity";
 import { loadAvatarSet } from "../functions/avatars";
-import { sortPeople, tagsByFrequency } from "../functions/people";
+import { sortByRecentActivity, sortPeople, tagsByFrequency } from "../functions/people";
 import { tagLabel } from "../functions/tags";
 import { validatePeople } from "../functions/validate";
 import Base from "../layouts/Base.astro";
@@ -46,9 +44,8 @@ const description = label
 			activeTag={activeTag}
 		/>
 		<Directory
-			people={sortByRecentActivity(sorted, (activity as ActivityData).people)}
+			people={sortByRecentActivity(sorted)}
 			avatarSet={avatarSet}
-			activity={(activity as ActivityData).people}
 			activeTag={activeTag}
 		/>
 	</main>

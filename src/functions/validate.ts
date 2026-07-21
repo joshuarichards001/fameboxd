@@ -38,5 +38,17 @@ export function validatePeople(people: Person[]): void {
 				throw new Error(`Entry "${p.name}" has an out-of-vocabulary tag: ${tag}`);
 			}
 		}
+		if (p.lastWatched != null) {
+			const w = p.lastWatched;
+			if (typeof w.title !== "string" || w.title.trim() === "") {
+				throw new Error(`Entry "${p.name}" has a lastWatched without a title.`);
+			}
+			if (w.date != null && !/^\d{4}-\d{2}-\d{2}$/.test(w.date)) {
+				throw new Error(`Entry "${p.name}" has an invalid lastWatched date: ${w.date}`);
+			}
+			if (w.rating != null && (typeof w.rating !== "number" || w.rating < 0.5 || w.rating > 5)) {
+				throw new Error(`Entry "${p.name}" has an invalid lastWatched rating: ${w.rating}`);
+			}
+		}
 	}
 }

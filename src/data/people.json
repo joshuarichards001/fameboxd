@@ -3,324 +3,717 @@
     "name": "Allan Arkush",
     "username": "aarkush",
     "description": "Director of the 1979 cult classic Rock 'n' Roll High School and a prolific television director who logs new releases regularly on Letterboxd.",
-    "tags": ["director"]
+    "tags": [
+      "director"
+    ],
+    "lastWatched": {
+      "title": "The Christophers",
+      "date": "2026-07-19",
+      "rating": 4.5
+    }
   },
   {
     "name": "Aneesh Chaganty",
     "username": "aneeshchaganty",
     "description": "Filmmaker behind the screen-based thrillers Searching and Run, and an active member of Letterboxd's director community.",
-    "tags": ["director"]
+    "tags": [
+      "director"
+    ],
+    "lastWatched": {
+      "title": "Rosemary's Baby",
+      "date": "2026-07-10",
+      "rating": null
+    }
   },
   {
     "name": "Anthony Fantano",
     "username": "theneedledrop",
     "description": "The internet's most-watched music critic, known as theneedledrop on YouTube, who also tracks his prolific film-watching on Letterboxd.",
-    "tags": ["youtuber", "critic"]
+    "tags": [
+      "youtuber",
+      "critic"
+    ],
+    "lastWatched": {
+      "title": "Blue Valentine",
+      "date": "2022-07-10",
+      "rating": 3.5
+    }
   },
   {
     "name": "Brian Duffield",
     "username": "brianduffield",
     "description": "Screenwriter and director of Spontaneous and No One Will Save You, and a candid, frequent poster on Letterboxd.",
-    "tags": ["director", "writer"]
+    "tags": [
+      "director",
+      "writer"
+    ],
+    "lastWatched": {
+      "title": "The Odyssey",
+      "date": "2026-07-19",
+      "rating": null
+    }
   },
   {
     "name": "Caddicarus",
     "username": "caddicarus",
     "description": "British YouTuber and video-game commentator Jim Caddick who also keeps an active film diary on Letterboxd.",
-    "tags": ["youtuber"]
+    "tags": [
+      "youtuber"
+    ],
+    "lastWatched": {
+      "title": "The Beatles Anthology",
+      "date": "2026-07-18",
+      "rating": 4.5
+    }
   },
   {
     "name": "Carrie Coon & Tracy Letts",
     "username": "carrieandtracy",
     "description": "The acclaimed actress of The Gilded Age and her Pulitzer-winning playwright husband share a single joint Letterboxd account.",
-    "tags": ["actor", "writer"]
+    "tags": [
+      "actor",
+      "writer"
+    ],
+    "lastWatched": {
+      "title": "The Poseidon Adventure",
+      "date": "2026-07-20",
+      "rating": null
+    }
   },
   {
     "name": "Chad Hartigan",
     "username": "chad_hartigan",
     "description": "Indie writer-director of Morris from America and This Is Martin Bonner, and a consistent Letterboxd diarist.",
-    "tags": ["director", "writer"]
+    "tags": [
+      "director",
+      "writer"
+    ],
+    "lastWatched": {
+      "title": "Independence Day",
+      "date": "2026-07-20",
+      "rating": 3.5
+    }
   },
   {
     "name": "Chandler Levack",
     "username": "clevack",
     "description": "Canadian filmmaker and film critic who directed the coming-of-age comedy I Like Movies and writes widely about cinema.",
-    "tags": ["director", "critic"]
+    "tags": [
+      "director",
+      "critic"
+    ],
+    "lastWatched": {
+      "title": "Remake",
+      "date": "2026-07-18",
+      "rating": 5
+    }
   },
   {
     "name": "Charli XCX",
     "username": "itscharlibb",
     "description": "Genre-bending pop musician behind Brat whose eclectic, art-house-leaning Letterboxd favorites are a fan fascination.",
-    "tags": ["musician"]
+    "tags": [
+      "musician"
+    ],
+    "lastWatched": {
+      "title": "200 Cigarettes",
+      "date": "2026-07-20",
+      "rating": null
+    }
   },
   {
     "name": "Chris Stuckmann",
     "username": "chrisstuckmann",
     "description": "One of YouTube's biggest film reviewers who made his feature directorial debut with the horror film Shelby Oaks.",
-    "tags": ["youtuber", "critic"]
+    "tags": [
+      "youtuber",
+      "critic"
+    ],
+    "lastWatched": {
+      "title": "Ghosts of Mississippi",
+      "date": "2026-07-21",
+      "rating": null
+    }
   },
   {
     "name": "Christopher McQuarrie",
     "username": "chrismcquarrie",
     "description": "Oscar-winning screenwriter of The Usual Suspects and director of the recent Mission: Impossible films.",
-    "tags": ["director", "writer"]
+    "tags": [
+      "director",
+      "writer"
+    ],
+    "lastWatched": {
+      "title": "The Parallax View",
+      "date": "2025-10-10",
+      "rating": null
+    }
   },
   {
     "name": "CinemaStix",
     "username": "cinemastix",
     "description": "Reed Belk, whose CinemaStix channel makes sharp, concise video essays about film craft and technique.",
-    "tags": ["youtuber", "critic"]
+    "tags": [
+      "youtuber",
+      "critic"
+    ],
+    "lastWatched": {
+      "title": "Obsession",
+      "date": "2026-06-20",
+      "rating": 3
+    }
   },
   {
     "name": "Dacre Montgomery",
     "username": "dacremontgomery",
     "description": "Australian actor known for Stranger Things and Elvis who logs his watches on Letterboxd.",
-    "tags": ["actor"]
+    "tags": [
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "The Voice of Hind Rajab",
+      "date": "2026-07-21",
+      "rating": null
+    }
   },
   {
     "name": "Dafne Keen",
     "username": "dafnekeen",
     "description": "Actress known for Logan and His Dark Materials who reviews films on Letterboxd.",
-    "tags": ["actor"]
+    "tags": [
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "The Odyssey",
+      "date": "2026-07-18",
+      "rating": null
+    }
   },
   {
     "name": "David Ehrlich",
     "username": "davidehrlich",
     "description": "IndieWire's senior film critic, known for his elaborate annual video countdowns of the year's best films.",
-    "tags": ["critic"]
+    "tags": [
+      "critic"
+    ],
+    "lastWatched": {
+      "title": "The Dink",
+      "date": "2026-07-21",
+      "rating": 3
+    }
   },
   {
     "name": "David F. Sandberg",
     "username": "ponysmasher",
     "description": "Horror-turned-blockbuster director of Lights Out and the Shazam! films who posts on Letterboxd as 'ponysmasher.'",
-    "tags": ["director"]
+    "tags": [
+      "director"
+    ],
+    "lastWatched": {
+      "title": "Until Dawn",
+      "date": "2025-05-24",
+      "rating": 0.5
+    }
   },
   {
     "name": "Demi Adejuyigbe",
     "username": "demiadejuyigbe",
     "description": "Comedian, writer, and podcaster celebrated for his elaborate September 21st videos, active on Letterboxd.",
-    "tags": ["comedian", "podcaster"]
+    "tags": [
+      "comedian",
+      "podcaster"
+    ],
+    "lastWatched": {
+      "title": "The Odyssey",
+      "date": "2026-07-18",
+      "rating": null
+    }
   },
   {
     "name": "Eddy Burback",
     "username": "eddyburback",
     "description": "Comedy YouTuber known for his deadpan cultural deep-dives who tracks his films on Letterboxd.",
-    "tags": ["youtuber", "comedian"]
+    "tags": [
+      "youtuber",
+      "comedian"
+    ],
+    "lastWatched": {
+      "title": "The Odyssey",
+      "date": "2026-07-17",
+      "rating": null
+    }
   },
   {
     "name": "Evan Puschak",
     "username": "nerdwriter",
     "description": "Better known as the Nerdwriter, a video essayist whose analyses of film, art, and culture helped define the format.",
-    "tags": ["youtuber", "critic"]
+    "tags": [
+      "youtuber",
+      "critic"
+    ],
+    "lastWatched": {
+      "title": "The Lord of the Rings: The Fellowship of the Ring",
+      "date": "2019-03-21",
+      "rating": null
+    }
   },
   {
     "name": "Filmento",
     "username": "filmento",
     "description": "Film YouTuber known for dissecting what makes movie screenplays and blockbusters succeed or fail.",
-    "tags": ["youtuber", "critic"]
+    "tags": [
+      "youtuber",
+      "critic"
+    ],
+    "lastWatched": {
+      "title": "Toy Story 5",
+      "date": "2026-07-01",
+      "rating": 3
+    }
   },
   {
     "name": "Francis Ford Coppola",
     "username": "francisfcoppola",
     "description": "Five-time Oscar-winning director of The Godfather and Apocalypse Now, present on Letterboxd as a patron member.",
-    "tags": ["director"]
+    "tags": [
+      "director"
+    ],
+    "lastWatched": null
   },
   {
     "name": "Hari Nef",
     "username": "harinef",
     "description": "Actress and model known for Barbie and Transparent, and an active Letterboxd reviewer.",
-    "tags": ["actor"]
+    "tags": [
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "Drunken Noodles",
+      "date": "2026-07-08",
+      "rating": null
+    }
   },
   {
     "name": "Ian Hecox",
     "username": "ianhecox",
     "description": "Co-founder of the pioneering comedy channel Smosh who keeps a film diary on Letterboxd.",
-    "tags": ["youtuber", "comedian"]
+    "tags": [
+      "youtuber",
+      "comedian"
+    ],
+    "lastWatched": {
+      "title": "I Like Movies",
+      "date": "2026-07-20",
+      "rating": 4.5
+    }
   },
   {
     "name": "Jack Harlow",
     "username": "missionaryjack",
     "description": "Grammy-nominated rapper and Hitchcock devotee whose Letterboxd favorites skew toward classic thrillers.",
-    "tags": ["musician"]
+    "tags": [
+      "musician"
+    ],
+    "lastWatched": {
+      "title": "Irma Vep",
+      "date": "2026-07-18",
+      "rating": null
+    }
   },
   {
     "name": "Jim Cummings",
     "username": "jimmycthatsme",
     "description": "Actor-director of Thunder Road and The Wolf of Snow Hollow who champions independent film on Letterboxd.",
-    "tags": ["director", "actor"]
+    "tags": [
+      "director",
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "Hyena",
+      "date": "2026-06-27",
+      "rating": 5
+    }
   },
   {
     "name": "Joe Lynch",
     "username": "thejoelynch",
     "description": "Genre director of Mayhem and Everly, and an enthusiastic voice in the Letterboxd film community.",
-    "tags": ["director"]
+    "tags": [
+      "director"
+    ],
+    "lastWatched": {
+      "title": "Dead Media",
+      "date": "2026-07-18",
+      "rating": 5
+    }
   },
   {
     "name": "Joel Haver",
     "username": "joelhaver",
     "description": "Animator and independent filmmaker whose rotoscoped YouTube shorts and prolific output extend to a Letterboxd presence.",
-    "tags": ["youtuber", "director"]
+    "tags": [
+      "youtuber",
+      "director"
+    ],
+    "lastWatched": {
+      "title": "The Odyssey",
+      "date": "2026-07-19",
+      "rating": 2.5
+    }
   },
   {
     "name": "Josh Richards",
     "username": "joshrichards",
     "description": "The visionary auteur who single-handedly willed this entire website into existence.",
-    "tags": ["developer"]
+    "tags": [
+      "developer"
+    ],
+    "lastWatched": {
+      "title": "The Drama",
+      "date": "2026-07-20",
+      "rating": 4
+    }
   },
   {
     "name": "Joshua Rush",
     "username": "joshuarush",
     "description": "Actor known for Disney's Andi Mack who is an active Letterboxd cinephile.",
-    "tags": ["actor"]
+    "tags": [
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "Project Hail Mary",
+      "date": "2026-05-17",
+      "rating": 4
+    }
   },
   {
     "name": "Karsten Runquist",
     "username": "kurstboy",
     "description": "Video-essayist and film YouTuber whose reviews and personal filmmaking spill over onto Letterboxd.",
-    "tags": ["youtuber", "critic"]
+    "tags": [
+      "youtuber",
+      "critic"
+    ],
+    "lastWatched": {
+      "title": "The Approach of Autumn",
+      "date": "2026-07-18",
+      "rating": 4
+    }
   },
   {
     "name": "Kyle Kallgren",
     "username": "kylekallgren",
     "description": "Creator of Brows Held High, a video-essay series exploring arthouse, avant-garde, and experimental cinema.",
-    "tags": ["youtuber", "critic"]
+    "tags": [
+      "youtuber",
+      "critic"
+    ],
+    "lastWatched": {
+      "title": "The Odyssey",
+      "date": "2026-07-17",
+      "rating": null
+    }
   },
   {
     "name": "Kyle MacLachlan",
     "username": "kylemaclachlan_",
     "description": "Actor synonymous with David Lynch's Twin Peaks and Blue Velvet who makes playful character-themed lists on Letterboxd.",
-    "tags": ["actor"]
+    "tags": [
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "Twinless",
+      "date": "2025-09-03",
+      "rating": null
+    }
   },
   {
     "name": "Lukas Gage",
     "username": "justinguarini",
     "description": "Actor known for The White Lotus and Euphoria who reviews films on Letterboxd under a tongue-in-cheek handle.",
-    "tags": ["actor"]
+    "tags": [
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "Rosebush Pruning",
+      "date": "2026-07-17",
+      "rating": 5
+    }
   },
   {
     "name": "Maggie Mae Fish",
     "username": "maggiemaefish",
     "description": "Actress and video essayist whose YouTube channel unpacks films and the politics beneath them.",
-    "tags": ["youtuber", "critic"]
+    "tags": [
+      "youtuber",
+      "critic"
+    ],
+    "lastWatched": {
+      "title": "Pig",
+      "date": "2021-08-06",
+      "rating": 2
+    }
   },
   {
     "name": "Martin Scorsese",
     "username": "mscorsese",
     "description": "The legendary director of Taxi Driver and Goodfellas whose arrival made him one of Letterboxd's most-followed members.",
-    "tags": ["director"]
+    "tags": [
+      "director"
+    ],
+    "lastWatched": null
   },
   {
     "name": "Michael Mann",
     "username": "michaelmann",
     "description": "Director of Heat, Collateral, and Miami Vice whose Letterboxd favorites list drew wide attention.",
-    "tags": ["director"]
+    "tags": [
+      "director"
+    ],
+    "lastWatched": null
   },
   {
     "name": "Michael Mohan",
     "username": "michaelmohan",
     "description": "Director of the horror hit Immaculate and the thriller The Voyeurs, active on Letterboxd.",
-    "tags": ["director"]
+    "tags": [
+      "director"
+    ],
+    "lastWatched": {
+      "title": "The Long Walk",
+      "date": "2026-07-17",
+      "rating": 5
+    }
   },
   {
     "name": "Mike Flanagan",
     "username": "flanaganfilm",
     "description": "Horror auteur behind The Haunting of Hill House and Doctor Sleep, and a longtime Letterboxd member.",
-    "tags": ["director", "writer"]
+    "tags": [
+      "director",
+      "writer"
+    ],
+    "lastWatched": {
+      "title": "The Silence of the Lambs",
+      "date": "2026-07-02",
+      "rating": null
+    }
   },
   {
     "name": "Nando v Movies",
     "username": "nandovmovies",
     "description": "Matthew Kelly, whose Nando v Movies channel offers comedic deep dives into superhero and genre cinema.",
-    "tags": ["youtuber", "critic"]
+    "tags": [
+      "youtuber",
+      "critic"
+    ],
+    "lastWatched": {
+      "title": "Backrooms",
+      "date": "2026-07-16",
+      "rating": 4
+    }
   },
   {
     "name": "Patrick H. Willems",
     "username": "patrickhwillems",
     "description": "Video essayist whose long-form YouTube films about cinema pair with an active Letterboxd account.",
-    "tags": ["youtuber", "critic"]
+    "tags": [
+      "youtuber",
+      "critic"
+    ],
+    "lastWatched": {
+      "title": "Predator",
+      "date": "2026-07-19",
+      "rating": null
+    }
   },
   {
     "name": "Paul Scheer",
     "username": "paulscheer",
     "description": "Comedian and host of the How Did This Get Made? podcast devoted to gloriously bad movies.",
-    "tags": ["comedian", "podcaster"]
+    "tags": [
+      "comedian",
+      "podcaster"
+    ],
+    "lastWatched": {
+      "title": "An American Tail",
+      "date": "2026-07-16",
+      "rating": 2
+    }
   },
   {
     "name": "Rachel Sennott",
     "username": "girlactress",
     "description": "Comedian and actress known for Shiva Baby and Bottoms, active on Letterboxd.",
-    "tags": ["actor", "comedian"]
+    "tags": [
+      "actor",
+      "comedian"
+    ],
+    "lastWatched": {
+      "title": "Weapons",
+      "date": "2025-10-05",
+      "rating": null
+    }
   },
   {
     "name": "Rian Johnson",
     "username": "rcjohnso",
     "description": "Writer-director of Knives Out and Brick whose sporadic, cryptic Letterboxd account is a puzzle for fans.",
-    "tags": ["director", "writer"]
+    "tags": [
+      "director",
+      "writer"
+    ],
+    "lastWatched": {
+      "title": "So Evil My Love",
+      "date": "2023-11-21",
+      "rating": null
+    }
   },
   {
     "name": "Ryan Hollinger",
     "username": "ryanhollinger",
     "description": "Horror-leaning video essayist whose YouTube channel analyzes genre films and why they resonate.",
-    "tags": ["youtuber", "critic"]
+    "tags": [
+      "youtuber",
+      "critic"
+    ],
+    "lastWatched": {
+      "title": "Rambo: Last Blood",
+      "date": "2019-10-01",
+      "rating": 1
+    }
   },
   {
     "name": "Sam Lerner",
     "username": "samlerner",
     "description": "Actor known for Project Almanac and the animated Monster House, present on Letterboxd.",
-    "tags": ["actor"]
+    "tags": [
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "The Odyssey",
+      "date": "2026-07-18",
+      "rating": null
+    }
   },
   {
     "name": "Schaffrillas",
     "username": "schaffrillas",
     "description": "Creator of Schaffrillas Productions, whose comedic video essays rank and analyze animated films.",
-    "tags": ["youtuber", "critic"]
+    "tags": [
+      "youtuber",
+      "critic"
+    ],
+    "lastWatched": {
+      "title": "New York City Opera: A Little Night Music",
+      "date": "2026-07-20",
+      "rating": 3.5
+    }
   },
   {
     "name": "Scott Derrickson",
     "username": "derrickson",
     "description": "Director of Sinister and Doctor Strange, and a prolific horror-loving Letterboxd member.",
-    "tags": ["director"]
+    "tags": [
+      "director"
+    ],
+    "lastWatched": null
   },
   {
     "name": "Sean Baker",
     "username": "lilfilm",
     "description": "Oscar-winning director of Anora and The Florida Project whose account is a treasure trove for independent-cinema fans.",
-    "tags": ["director", "writer"]
+    "tags": [
+      "director",
+      "writer"
+    ],
+    "lastWatched": {
+      "title": "Transcendence",
+      "date": "2026-07-19",
+      "rating": null
+    }
   },
   {
     "name": "Sean Chandler",
     "username": "seanchandler",
     "description": "Film YouTuber behind Sean Chandler Talks About Stuff, posting prolific movie reviews and rankings.",
-    "tags": ["youtuber", "critic"]
+    "tags": [
+      "youtuber",
+      "critic"
+    ],
+    "lastWatched": {
+      "title": "Judge Dredd",
+      "date": "2026-06-26",
+      "rating": 2.5
+    }
   },
   {
     "name": "Spencer Agnew",
     "username": "spennser",
     "description": "Smosh host and comedy performer who logs his watches on Letterboxd.",
-    "tags": ["youtuber", "comedian"]
+    "tags": [
+      "youtuber",
+      "comedian"
+    ],
+    "lastWatched": {
+      "title": "The Furious",
+      "date": "2026-07-11",
+      "rating": 3
+    }
   },
   {
     "name": "Thomas Flight",
     "username": "thomasflight",
     "description": "Video essayist known for thoughtful, earnest analyses of film and visual storytelling on YouTube.",
-    "tags": ["youtuber", "critic"]
+    "tags": [
+      "youtuber",
+      "critic"
+    ],
+    "lastWatched": {
+      "title": "The Invite",
+      "date": "2026-07-10",
+      "rating": null
+    }
   },
   {
     "name": "Wim Wenders",
     "username": "wimwenders",
     "description": "The German master behind Paris, Texas and Wings of Desire who consistently reviews films on Letterboxd.",
-    "tags": ["director"]
+    "tags": [
+      "director"
+    ],
+    "lastWatched": {
+      "title": "Nashville",
+      "date": null,
+      "rating": null
+    }
   },
   {
     "name": "Zachary Ruane",
     "username": "zacharyruane",
     "description": "Comedian of the Australian sketch trio Aunty Donna, active on Letterboxd.",
-    "tags": ["comedian"]
+    "tags": [
+      "comedian"
+    ],
+    "lastWatched": {
+      "title": "The Invite",
+      "date": "2026-07-13",
+      "rating": null
+    }
   },
   {
     "name": "Ziwe",
     "username": "ziwe",
     "description": "Comedian, writer, and provocateur behind the Showtime series Ziwe, active on Letterboxd.",
-    "tags": ["comedian", "writer"]
+    "tags": [
+      "comedian",
+      "writer"
+    ],
+    "lastWatched": {
+      "title": "They Will Kill You",
+      "date": "2026-07-16",
+      "rating": 5
+    }
   }
 ]

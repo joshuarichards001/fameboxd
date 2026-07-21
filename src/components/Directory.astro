@@ -1,16 +1,14 @@
 ---
-import type { ActivityData } from "../functions/activity";
 import type { Person } from "../functions/people";
 import PersonCard from "./PersonCard.astro";
 
 interface Props {
 	people: Person[];
 	avatarSet: Set<string>;
-	activity: ActivityData["people"];
 	activeTag: string | null;
 }
 
-const { people, avatarSet, activity, activeTag } = Astro.props;
+const { people, avatarSet, activeTag } = Astro.props;
 ---
 
 <ul
@@ -22,7 +20,6 @@ const { people, avatarSet, activity, activeTag } = Astro.props;
 			<PersonCard
 				person={p}
 				hasAvatar={avatarSet.has(p.username)}
-				lastWatched={activity[p.username]?.recent[0] ?? null}
 				hidden={activeTag != null && !p.tags.includes(activeTag)}
 			/>
 		))

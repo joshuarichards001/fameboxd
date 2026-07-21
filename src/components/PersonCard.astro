@@ -1,30 +1,31 @@
 ---
-import { stars, timeAgo, type RecentFilm } from "../functions/activity";
 import { hueFor, initials } from "../functions/avatars";
-import type { Person } from "../functions/people";
+import { profileUrl, stars, timeAgo, type Person } from "../functions/people";
 
 interface Props {
 	person: Person;
 	hasAvatar: boolean;
-	lastWatched: RecentFilm | null;
 	hidden?: boolean;
 }
 
-const { person: p, hasAvatar, lastWatched, hidden = false } = Astro.props;
+const { person: p, hasAvatar, hidden = false } = Astro.props;
+const lastWatched = p.lastWatched ?? null;
 ---
 
 <li
 	class="card flex [&[hidden]]:hidden"
 	hidden={hidden}
 	data-name={p.name.toLowerCase()}
-	data-watched={lastWatched?.watchedDate ?? ""}
+	data-watched={lastWatched?.date ?? ""}
 	data-tags={p.tags.join(" ")}
 	data-haystack={`${p.name} ${p.description} ${p.tags.join(" ")}`.toLowerCase()}
 >
 	<a
 		class="group flex w-full flex-col rounded-card border border-border bg-bg-raised px-4 pt-[0.9rem] pb-[0.85rem] no-underline transition-[border-color,transform,background] duration-[140ms] hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--color-orange)_45%,var(--color-border))] hover:bg-bg-raised-hover focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-blue motion-reduce:transition-none"
-		href={`/${p.username}/`}
-		aria-label={`View ${p.name}'s recent watches and favorite films`}
+		href={profileUrl(p.username)}
+		target="_blank"
+		rel="noopener"
+		aria-label={`${p.name} on Letterboxd`}
 	>
 		<div class="flex items-center gap-[0.7rem]">
 			{
@@ -80,9 +81,9 @@ const { person: p, hasAvatar, lastWatched, hidden = false } = Astro.props;
 									{stars(lastWatched.rating)}
 								</span>
 							)}
-							{lastWatched.watchedDate && (
+							{lastWatched.date && (
 								<span class="shrink-0 text-[0.75rem] text-text-faint">
-									{timeAgo(lastWatched.watchedDate)}
+									{timeAgo(lastWatched.date)}
 								</span>
 							)}
 					</span>
@@ -96,7 +97,7 @@ const { person: p, hasAvatar, lastWatched, hidden = false } = Astro.props;
 					class="text-[0.75rem] font-medium text-text-faint"
 					aria-hidden="true"
 				>
-					more →
+					letterboxd &nearr;
 				</span>
 			</span>
 		</span>
