@@ -4,12 +4,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-A static site: a searchable directory of famous people (actors, directors,
+A static site: a directory of famous people (actors, directors,
 musicians, creators) with verified public Letterboxd accounts. Each card shows
 the person's most recent watch and links straight to their Letterboxd profile.
 Built with Astro 7 (no UI framework runtime) and Tailwind CSS v4. Everything
-renders at build time; the only client-side code is a small vanilla-JS search
-filter.
+renders at build time; the only client-side code is a small vanilla-JS tag
+filter and sort.
 
 ## Commands
 
@@ -72,17 +72,15 @@ reformats `people.json` with `JSON.stringify`). A daily GitHub Action
 script degrades gracefully: per-person failures keep the previous (stale)
 `lastWatched`, and it refuses to write only if every fetch fails.
 
-**Client-side search/filter/sort** is an inline `<script is:inline>` in
-`Directory.astro`. Each `PersonCard` exposes `data-tags`, a lowercased
-`data-haystack` (name + description + tags), and `data-watched` (last watched
-date, for sorting); the script filters cards by text query and one active tag
+**Client-side filter/sort** is an inline `<script is:inline>` in
+`Directory.astro`. Each `PersonCard` exposes `data-tags` and `data-watched`
+(last watched date, for sorting); the script filters cards by one active tag
 pill, and reorders them via the sort chips (recently active — the default,
 matching the server-rendered order via `sortByRecentActivity` — and A–Z).
 Tag pills are real `<a>` links to the tag pages (crawlable); JS intercepts
-clicks and mirrors state into the URL instead — the active tag as the path
-(`pushState`), the search query as `?q=` (`replaceState`) — and restores state
-from the URL on load and `popstate`. Sort is deliberately not in the URL. No
-framework, no build step for this logic.
+clicks and mirrors the active tag into the URL path instead (`pushState`), and
+restores state from the URL on load and `popstate`. Sort is deliberately not in
+the URL. No framework, no build step for this logic.
 
 **Styling** is Tailwind v4 configured via the Vite plugin (`astro.config.mjs`) —
 there is no `tailwind.config`. Design tokens live in `@theme` in

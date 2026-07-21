@@ -18,7 +18,6 @@ const lastWatched = p.lastWatched ?? null;
 	data-name={p.name.toLowerCase()}
 	data-watched={lastWatched?.date ?? ""}
 	data-tags={p.tags.join(" ")}
-	data-haystack={`${p.name} ${p.description} ${p.tags.join(" ")}`.toLowerCase()}
 >
 	<a
 		class="group flex w-full flex-col rounded-card border border-border bg-bg-raised px-4 pt-[0.9rem] pb-[0.85rem] no-underline transition-[border-color,transform,background] duration-[140ms] hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--color-orange)_45%,var(--color-border))] hover:bg-bg-raised-hover focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-blue motion-reduce:transition-none"

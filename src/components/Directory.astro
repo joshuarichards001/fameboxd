@@ -27,14 +27,13 @@ const { people, avatarSet, activeTag } = Astro.props;
 </ul>
 
 <p class="my-12 text-center text-[1.15rem] text-text-dim" id="empty" hidden>
-	No one found. Try a different name or tag.
+	No one found. Try a different tag.
 </p>
 
 <script is:inline>
 	(function () {
 		var HOME_TITLE = "Fameboxd";
-		var search = document.getElementById("search");
-		var countEl = document.getElementById("count");
+				var countEl = document.getElementById("count");
 		var emptyEl = document.getElementById("empty");
 		var headlineEl = document.getElementById("headline");
 		var directory = document.getElementById("directory");
@@ -59,19 +58,14 @@ const { people, avatarSet, activeTag } = Astro.props;
 		}
 
 		function apply() {
-			var q = search.value.trim().toLowerCase();
 			var shown = 0;
 			for (var i = 0; i < cards.length; i++) {
 				var card = cards[i];
-				var matchesTag =
+				var show =
 					!activeTag ||
 					(" " + card.getAttribute("data-tags") + " ").indexOf(
 						" " + activeTag + " ",
 					) !== -1;
-				var matchesText =
-					!q ||
-					card.getAttribute("data-haystack").indexOf(q) !== -1;
-				var show = matchesTag && matchesText;
 				card.hidden = !show;
 				if (show) shown++;
 			}
@@ -131,15 +125,11 @@ const { people, avatarSet, activeTag } = Astro.props;
 		}
 
 		// Mirror state into the URL so any view is shareable. The tag lives in
-		// the path (a real prerendered page); q rides along as a param.
-		function updateUrl(push) {
+		// the path (a real prerendered page).
+		function updateUrl() {
 			var pill = activeTag ? pillFor(activeTag) : null;
 			var path = pill ? pill.getAttribute("data-path") : "/";
-			var params = new URLSearchParams();
-			var q = search.value.trim();
-			if (q) params.set("q", q);
-			var url = path + (params.toString() ? "?" + params : "");
-			history[push ? "pushState" : "replaceState"](null, "", url);
+			history.pushState(null, "", path);
 		}
 
 		// Derive all state from the current URL (initial load and popstate).
@@ -151,17 +141,10 @@ const { people, avatarSet, activeTag } = Astro.props;
 					activeTag = p.getAttribute("data-tag");
 				}
 			});
-			var params = new URLSearchParams(location.search);
-			search.value = params.get("q") || "";
 			syncPills();
 			syncHeadline();
 			apply();
 		}
-
-		search.addEventListener("input", function () {
-			apply();
-			updateUrl(false);
-		});
 
 		pills.forEach(function (pill) {
 			pill.addEventListener("click", function (e) {
@@ -172,7 +155,7 @@ const { people, avatarSet, activeTag } = Astro.props;
 				syncPills();
 				syncHeadline();
 				apply();
-				updateUrl(true);
+				updateUrl();
 			});
 		});
 
