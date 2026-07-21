@@ -14,7 +14,6 @@ const lastWatched = p.lastWatched ?? null;
 <li
 	class="card flex [&[hidden]]:hidden"
 	data-name={p.name.toLowerCase()}
-	data-watched={lastWatched?.date ?? ""}
 	data-tags={p.tags.join(" ")}
 >
 	<a

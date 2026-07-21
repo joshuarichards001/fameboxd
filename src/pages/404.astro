@@ -1,0 +1,28 @@
+---
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import Base from "../layouts/Base.astro";
+---
+
+<Base
+	title="Page not found — Fameboxd"
+	description="That page doesn't exist. Browse the full directory of famous people on Letterboxd instead."
+>
+	<Header />
+
+	<main class="wrap py-12 text-center">
+		<p class="m-0 text-[3rem] font-extrabold tracking-[-0.02em]">404</p>
+		<p class="mx-auto mt-2 mb-6 max-w-[40ch] text-text-dim">
+			That page doesn't exist — maybe the tag was renamed, or the link
+			was mistyped.
+		</p>
+		<a
+			class="inline-block rounded-full border border-border bg-bg-raised px-4 py-1.5 text-[0.9rem] font-semibold text-orange transition-colors duration-[120ms] hover:bg-bg-raised-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"
+			href="/"
+		>
+			&larr; Back to the directory
+		</a>
+	</main>
+
+	<Footer />
+</Base>

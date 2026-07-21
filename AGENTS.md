@@ -73,10 +73,10 @@ script degrades gracefully: per-person failures keep the previous (stale)
 `lastWatched`, and it refuses to write only if every fetch fails.
 
 **Client-side filter/sort** is an inline `<script is:inline>` in
-`Directory.astro`. Each `PersonCard` exposes `data-tags` and `data-watched`
-(last watched date, for sorting); the script filters cards by one active tag
-pill, and reorders them via the sort chips (recently active — the default,
-matching the server-rendered order via `sortByRecentActivity` — and A–Z).
+`Directory.astro`. Each `PersonCard` exposes `data-tags` and `data-name`;
+the script filters cards by one active tag pill, and reorders them via the
+sort chips (recently active — the default, keeping the server-rendered
+`sortByRecentActivity` order — and A–Z, which sorts on `data-name`).
 Tag pills are real `<a>` links to the tag pages (crawlable); JS intercepts
 clicks and mirrors the active tag into the URL path instead (`pushState`), and
 restores state from the URL on load and `popstate`. Sort is deliberately not in

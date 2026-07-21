@@ -1,13 +1,13 @@
 # Famous on Letterboxd
 
-A searchable directory of famous people — actors, directors, musicians, and
+A directory of famous people — actors, directors, musicians, and
 online creators — who keep real, public [Letterboxd](https://letterboxd.com)
 accounts.
 
 Ever wondered whether your favorite director logs their rewatches, or which
 YouTubers are secretly film buffs? This is a hand-curated, verified list of the
-notable people worth following, with a link straight to each profile. Search by
-name or filter by what someone's known for.
+notable people worth following, with a link straight to each profile. Filter
+by what someone's known for.
 
 ## Running it locally
 
