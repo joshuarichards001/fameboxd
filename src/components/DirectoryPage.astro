@@ -21,9 +21,12 @@ validatePeople(people);
 const sorted = sortPeople(people);
 const allTags = tagsByFrequency(sorted);
 const total = sorted.length;
-const shown = activeTag
-	? sorted.filter((p) => p.tags.includes(activeTag)).length
-	: total;
+// Tag pages only render their own people; the client-side filter (homepage
+// only) needs the full set.
+const visible = activeTag
+	? sorted.filter((p) => p.tags.includes(activeTag))
+	: sorted;
+const shown = visible.length;
 const avatarSet = loadAvatarSet();
 
 const label = activeTag ? tagLabel(activeTag) : null;
@@ -46,7 +49,7 @@ const description = label
 			activeTag={activeTag}
 		/>
 		<Directory
-			people={sortByRecentActivity(sorted)}
+			people={sortByRecentActivity(visible)}
 			avatarSet={avatarSet}
 			activeTag={activeTag}
 		/>

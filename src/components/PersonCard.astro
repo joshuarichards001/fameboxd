@@ -5,16 +5,14 @@ import { profileUrl, stars, timeAgo, type Person } from "../functions/people";
 interface Props {
 	person: Person;
 	hasAvatar: boolean;
-	hidden?: boolean;
 }
 
-const { person: p, hasAvatar, hidden = false } = Astro.props;
+const { person: p, hasAvatar } = Astro.props;
 const lastWatched = p.lastWatched ?? null;
 ---
 
 <li
 	class="card flex [&[hidden]]:hidden"
-	hidden={hidden}
 	data-name={p.name.toLowerCase()}
 	data-watched={lastWatched?.date ?? ""}
 	data-tags={p.tags.join(" ")}

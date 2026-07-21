@@ -14,14 +14,11 @@ const { people, avatarSet, activeTag } = Astro.props;
 <ul
 	class="mt-4 grid grid-cols-[repeat(auto-fill,minmax(min(100%,21rem),1fr))] gap-3"
 	id="directory"
+	data-prefiltered={activeTag != null ? "" : undefined}
 >
 	{
 		people.map((p) => (
-			<PersonCard
-				person={p}
-				hasAvatar={avatarSet.has(p.username)}
-				hidden={activeTag != null && !p.tags.includes(activeTag)}
-			/>
+			<PersonCard person={p} hasAvatar={avatarSet.has(p.username)} />
 		))
 	}
 </ul>
@@ -32,23 +29,63 @@ const { people, avatarSet, activeTag } = Astro.props;
 
 <script is:inline>
 	(function () {
-		var HOME_TITLE = "Fameboxd";
-				var countEl = document.getElementById("count");
-		var emptyEl = document.getElementById("empty");
-		var headlineEl = document.getElementById("headline");
 		var directory = document.getElementById("directory");
 		var cards = Array.prototype.slice.call(
 			document.querySelectorAll(".card"),
 		);
-		var pills = Array.prototype.slice.call(
-			document.querySelectorAll(".pill"),
-		);
 		var sortPills = Array.prototype.slice.call(
 			document.querySelectorAll(".sort-pill"),
 		);
+		var sort = "recent";
+
+		// Reorder the card <li>s in place. `cards` keeps the server's order,
+		// which is already most-recently-active first.
+		function applySort() {
+			var order = cards.slice();
+			if (sort === "az") {
+				order.sort(function (a, b) {
+					var an = a.getAttribute("data-name");
+					var bn = b.getAttribute("data-name");
+					return an < bn ? -1 : an > bn ? 1 : 0;
+				});
+			}
+			for (var k = 0; k < order.length; k++) {
+				directory.appendChild(order[k]);
+			}
+		}
+
+		function syncSortPills() {
+			sortPills.forEach(function (b) {
+				b.setAttribute(
+					"aria-pressed",
+					b.getAttribute("data-sort") === sort ? "true" : "false",
+				);
+			});
+		}
+
+		sortPills.forEach(function (btn) {
+			btn.addEventListener("click", function () {
+				sort = btn.getAttribute("data-sort");
+				syncSortPills();
+				applySort();
+			});
+		});
+
+		// Tag pages are pre-filtered on the server and only render their own
+		// cards, so their pills stay plain links (real navigations). The
+		// instant filter below needs every card in the DOM and only runs on
+		// the full directory at "/".
+		if (directory.hasAttribute("data-prefiltered")) return;
+
+		var HOME_TITLE = document.title;
+		var countEl = document.getElementById("count");
+		var emptyEl = document.getElementById("empty");
+		var headlineEl = document.getElementById("headline");
+		var pills = Array.prototype.slice.call(
+			document.querySelectorAll(".pill"),
+		);
 		var total = cards.length;
 		var activeTag = null;
-		var sort = "recent";
 
 		function pillFor(tag) {
 			for (var i = 0; i < pills.length; i++) {
@@ -78,22 +115,6 @@ const { people, avatarSet, activeTag } = Astro.props;
 			emptyEl.hidden = shown !== 0;
 		}
 
-		// Reorder the card <li>s in place. `cards` keeps the server's order,
-		// which is already most-recently-active first.
-		function applySort() {
-			var order = cards.slice();
-			if (sort === "az") {
-				order.sort(function (a, b) {
-					var an = a.getAttribute("data-name");
-					var bn = b.getAttribute("data-name");
-					return an < bn ? -1 : an > bn ? 1 : 0;
-				});
-			}
-			for (var k = 0; k < order.length; k++) {
-				directory.appendChild(order[k]);
-			}
-		}
-
 		function syncPills() {
 			pills.forEach(function (p) {
 				var on = p.getAttribute("data-tag") === activeTag;
@@ -101,15 +122,6 @@ const { people, avatarSet, activeTag } = Astro.props;
 				p.setAttribute(
 					"href",
 					on ? "/" : p.getAttribute("data-path"),
-				);
-			});
-		}
-
-		function syncSortPills() {
-			sortPills.forEach(function (b) {
-				b.setAttribute(
-					"aria-pressed",
-					b.getAttribute("data-sort") === sort ? "true" : "false",
 				);
 			});
 		}
@@ -156,14 +168,6 @@ const { people, avatarSet, activeTag } = Astro.props;
 				syncHeadline();
 				apply();
 				updateUrl();
-			});
-		});
-
-		sortPills.forEach(function (btn) {
-			btn.addEventListener("click", function () {
-				sort = btn.getAttribute("data-sort");
-				syncSortPills();
-				applySort();
 			});
 		});
 
