@@ -2,7 +2,7 @@
   {
     "name": "Allan Arkush",
     "username": "aarkush",
-    "description": "Director of the 1979 cult classic Rock 'n' Roll High School and a prolific television director.",
+    "description": "Director of Rock 'n' Roll High School (1979) and a television director.",
     "tags": [
       "director"
     ],
@@ -28,7 +28,7 @@
   {
     "name": "Anthony Fantano",
     "username": "theneedledrop",
-    "description": "The internet's most-watched music critic, known as theneedledrop on YouTube.",
+    "description": "Music critic on YouTube known as theneedledrop.",
     "tags": [
       "youtuber",
       "critic"
@@ -69,7 +69,7 @@
   {
     "name": "Carrie Coon & Tracy Letts",
     "username": "carrieandtracy",
-    "description": "The acclaimed actress of The Gilded Age and her Pulitzer-winning playwright husband, who share a single joint account.",
+    "description": "Actress known for The Gilded Age and her Pulitzer-winning playwright husband, who share a single joint account.",
     "tags": [
       "actor",
       "writer"
@@ -111,7 +111,7 @@
   {
     "name": "Charli XCX",
     "username": "itscharlibb",
-    "description": "Genre-bending pop musician behind Brat whose eclectic, art-house-leaning taste in film is a fan fascination.",
+    "description": "Pop musician behind Brat.",
     "tags": [
       "musician"
     ],
@@ -124,7 +124,7 @@
   {
     "name": "Chris Stuckmann",
     "username": "chrisstuckmann",
-    "description": "One of YouTube's biggest film reviewers who made his feature directorial debut with the horror film Shelby Oaks.",
+    "description": "Film reviewer on YouTube who made his feature directorial debut with the horror film Shelby Oaks.",
     "tags": [
       "youtuber",
       "critic"
@@ -152,7 +152,7 @@
   {
     "name": "CinemaStix",
     "username": "cinemastix",
-    "description": "Reed Belk, whose CinemaStix channel makes sharp, concise video essays about film craft and technique.",
+    "description": "Reed Belk, whose CinemaStix channel makes video essays about film craft and technique.",
     "tags": [
       "youtuber",
       "critic"
@@ -192,7 +192,7 @@
   {
     "name": "David Ehrlich",
     "username": "davidehrlich",
-    "description": "IndieWire's senior film critic, known for his elaborate annual video countdowns of the year's best films.",
+    "description": "IndieWire's senior film critic, known for his annual video countdowns of the year's best films.",
     "tags": [
       "critic"
     ],
@@ -218,7 +218,7 @@
   {
     "name": "Demi Adejuyigbe",
     "username": "demiadejuyigbe",
-    "description": "Comedian, writer, and podcaster celebrated for his elaborate September 21st videos.",
+    "description": "Comedian, writer, and podcaster known for his annual September 21st videos.",
     "tags": [
       "comedian",
       "podcaster"
@@ -246,7 +246,7 @@
   {
     "name": "Evan Puschak",
     "username": "nerdwriter",
-    "description": "Better known as the Nerdwriter, a video essayist whose analyses of film, art, and culture helped define the format.",
+    "description": "Better known as the Nerdwriter, a video essayist covering film, art, and culture on YouTube.",
     "tags": [
       "youtuber",
       "critic"
@@ -296,7 +296,7 @@
   {
     "name": "Ian Hecox",
     "username": "ianhecox",
-    "description": "Co-founder of the pioneering comedy channel Smosh.",
+    "description": "Co-founder of the comedy channel Smosh.",
     "tags": [
       "youtuber",
       "comedian"
@@ -310,7 +310,7 @@
   {
     "name": "Jack Harlow",
     "username": "missionaryjack",
-    "description": "Grammy-nominated rapper and Hitchcock devotee with a taste for classic thrillers.",
+    "description": "Grammy-nominated rapper.",
     "tags": [
       "musician"
     ],
@@ -323,7 +323,7 @@
   {
     "name": "Jim Cummings",
     "username": "jimmycthatsme",
-    "description": "Actor-director of Thunder Road and The Wolf of Snow Hollow who champions independent film.",
+    "description": "Actor-director of Thunder Road and The Wolf of Snow Hollow.",
     "tags": [
       "director",
       "actor"
@@ -350,7 +350,7 @@
   {
     "name": "Joel Haver",
     "username": "joelhaver",
-    "description": "Animator and independent filmmaker known for his rotoscoped YouTube shorts and prolific output.",
+    "description": "Animator and independent filmmaker known for his rotoscoped YouTube shorts.",
     "tags": [
       "youtuber",
       "director"
@@ -364,7 +364,7 @@
   {
     "name": "Josh Richards",
     "username": "joshrichards",
-    "description": "The visionary auteur who single-handedly willed this entire website into existence.",
+    "description": "Developer who built this website.",
     "tags": [
       "developer"
     ],
@@ -418,7 +418,7 @@
   {
     "name": "Kyle MacLachlan",
     "username": "kylemaclachlan_",
-    "description": "Actor synonymous with David Lynch's Twin Peaks and Blue Velvet.",
+    "description": "Actor known for David Lynch's Twin Peaks and Blue Velvet.",
     "tags": [
       "actor"
     ],
@@ -431,7 +431,7 @@
   {
     "name": "Lukas Gage",
     "username": "justinguarini",
-    "description": "Actor known for The White Lotus and Euphoria, who goes by the tongue-in-cheek handle 'justinguarini.'",
+    "description": "Actor known for The White Lotus and Euphoria, who uses the handle 'justinguarini.'",
     "tags": [
       "actor"
     ],
@@ -458,7 +458,7 @@
   {
     "name": "Martin Scorsese",
     "username": "mscorsese",
-    "description": "The legendary director of Taxi Driver and Goodfellas.",
+    "description": "Director of Taxi Driver and Goodfellas.",
     "tags": [
       "director"
     ],
@@ -489,7 +489,7 @@
   {
     "name": "Mike Flanagan",
     "username": "flanaganfilm",
-    "description": "Horror auteur behind The Haunting of Hill House and Doctor Sleep.",
+    "description": "Director of The Haunting of Hill House and Doctor Sleep.",
     "tags": [
       "director",
       "writer"
@@ -531,7 +531,7 @@
   {
     "name": "Paul Scheer",
     "username": "paulscheer",
-    "description": "Comedian and host of the How Did This Get Made? podcast devoted to gloriously bad movies.",
+    "description": "Comedian and host of the How Did This Get Made? podcast about bad movies.",
     "tags": [
       "comedian",
       "podcaster"
@@ -573,7 +573,7 @@
   {
     "name": "Ryan Hollinger",
     "username": "ryanhollinger",
-    "description": "Horror-leaning video essayist whose YouTube channel analyzes genre films and why they resonate.",
+    "description": "Video essayist whose YouTube channel analyzes horror and genre films.",
     "tags": [
       "youtuber",
       "critic"
@@ -637,7 +637,7 @@
   {
     "name": "Sean Chandler",
     "username": "seanchandler",
-    "description": "Film YouTuber behind Sean Chandler Talks About Stuff, posting prolific movie reviews and rankings.",
+    "description": "Film YouTuber behind Sean Chandler Talks About Stuff, posting movie reviews and rankings.",
     "tags": [
       "youtuber",
       "critic"
@@ -665,7 +665,7 @@
   {
     "name": "Thomas Flight",
     "username": "thomasflight",
-    "description": "Video essayist known for thoughtful, earnest analyses of film and visual storytelling on YouTube.",
+    "description": "Video essayist covering film and visual storytelling on YouTube.",
     "tags": [
       "youtuber",
       "critic"
@@ -679,7 +679,7 @@
   {
     "name": "Wim Wenders",
     "username": "wimwenders",
-    "description": "The German master behind Paris, Texas and Wings of Desire.",
+    "description": "German director of Paris, Texas and Wings of Desire.",
     "tags": [
       "director"
     ],
@@ -705,7 +705,7 @@
   {
     "name": "Ziwe",
     "username": "ziwe",
-    "description": "Comedian, writer, and provocateur behind the Showtime series Ziwe.",
+    "description": "Comedian and writer behind the Showtime series Ziwe.",
     "tags": [
       "comedian",
       "writer"
