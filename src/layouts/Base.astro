@@ -21,6 +21,24 @@ const { title, description } = Astro.props;
         <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
         <meta name="generator" content={Astro.generator} />
+        <!-- Privacy-friendly analytics by Plausible -->
+        <script
+            is:inline
+            async
+            src="https://plausible.io/js/pa-Evb9tteFoY29Nio466Iot.js"></script>
+        <script is:inline>
+            window.plausible =
+                window.plausible ||
+                function () {
+                    (plausible.q = plausible.q || []).push(arguments);
+                };
+            plausible.init =
+                plausible.init ||
+                function (i) {
+                    plausible.o = i || {};
+                };
+            plausible.init();
+        </script>
     </head>
     <body
         class="font-sans text-text bg-bg antialiased leading-[1.55] [text-rendering:optimizeLegibility]"
