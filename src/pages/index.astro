@@ -16,8 +16,8 @@ const allTags = tagsByFrequency(sorted);
 const total = sorted.length;
 const avatarSet = loadAvatarSet();
 
-const title = "Famous on Letterboxd";
-const description = `A searchable directory of ${total} famous actors, directors, musicians, and creators with verified public Letterboxd accounts.`;
+const title = "Fameboxd";
+const description = `A searchable directory of ${total} famous actors, directors, musicians, youtubers, and creators with verified Letterboxd accounts.`;
 ---
 
 <!doctype html>
@@ -27,7 +27,7 @@ const description = `A searchable directory of ${total} famous actors, directors
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="icon" href="/favicon.ico" />
-        <title>{title} — {total} celebrities who review films</title>
+        <title>{title}</title>
         <meta name="description" content={description} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
@@ -37,11 +37,6 @@ const description = `A searchable directory of ${total} famous actors, directors
     <body
         class="font-sans text-text bg-bg antialiased leading-[1.55] [text-rendering:optimizeLegibility]"
     >
-        <a
-            class="absolute left-[-999px] top-0 z-10 rounded-br-[10px] bg-orange px-4 py-[0.6rem] font-semibold text-bg focus:left-0"
-            href="#directory">Skip to the directory</a
-        >
-
         <Header />
 
         <main class="wrap">

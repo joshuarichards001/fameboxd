@@ -25,7 +25,7 @@
 /* Centered content column shared by the header, main, and footer. */
 @utility wrap {
 	width: 100%;
-	max-width: 1180px;
+	max-width: 1320px;
 	margin-inline: auto;
 	padding-inline: clamp(1rem, 4vw, 2.5rem);
 }

@@ -17,23 +17,23 @@ const { person: p, hasAvatar } = Astro.props;
 	data-haystack={`${p.name} ${p.description} ${p.tags.join(" ")}`.toLowerCase()}
 >
 	<article
-		class="flex w-full flex-col rounded-card border border-border bg-bg-raised px-5 pt-[1.2rem] pb-[1.1rem] transition-[border-color,transform,background] duration-[140ms] hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--color-orange)_45%,var(--color-border))] hover:bg-bg-raised-hover motion-reduce:transition-none"
+		class="flex w-full flex-col rounded-card border border-border bg-bg-raised px-4 pt-[0.9rem] pb-[0.85rem] transition-[border-color,transform,background] duration-[140ms] hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--color-orange)_45%,var(--color-border))] hover:bg-bg-raised-hover motion-reduce:transition-none"
 	>
-		<div class="flex items-center gap-[0.8rem]">
+		<div class="flex items-center gap-[0.7rem]">
 			{
 				hasAvatar ? (
 					<img
-						class="h-[52px] w-[52px] shrink-0 rounded-full border border-border bg-bg object-cover"
+						class="h-[42px] w-[42px] shrink-0 rounded-full border border-border bg-bg object-cover"
 						src={`/avatars/${p.username}.webp`}
-						width="52"
-						height="52"
+						width="42"
+						height="42"
 						loading="lazy"
 						decoding="async"
 						alt=""
 					/>
 				) : (
 					<span
-						class="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full border text-[1.05rem] font-bold tracking-[0.02em] text-[hsl(var(--hue)_55%_80%)] bg-[hsl(var(--hue)_32%_24%)] border-[hsl(var(--hue)_28%_34%)]"
+						class="flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-full border text-[0.9rem] font-bold tracking-[0.02em] text-[hsl(var(--hue)_55%_80%)] bg-[hsl(var(--hue)_32%_24%)] border-[hsl(var(--hue)_28%_34%)]"
 						aria-hidden="true"
 						style={`--hue:${hueFor(p.name)}`}
 					>
@@ -41,24 +41,24 @@ const { person: p, hasAvatar } = Astro.props;
 					</span>
 				)
 			}
-			<h2 class="m-0 text-[1.18rem] font-bold tracking-[-0.01em]">
+			<h2 class="m-0 text-[1.05rem] font-bold leading-snug tracking-[-0.01em]">
 				{p.name}
 			</h2>
 		</div>
-		<ul class="mt-[0.6rem] flex flex-wrap gap-[0.4rem]" aria-label="Tags">
+		<ul class="mt-2 flex flex-wrap gap-[0.35rem]" aria-label="Tags">
 			{
 				p.tags.map((t) => (
-					<li class="rounded-full border border-blue/30 bg-blue/[0.14] px-[0.55rem] py-[0.15rem] text-[0.72rem] font-bold uppercase tracking-[0.04em] text-blue">
+					<li class="rounded-full border border-blue/30 bg-blue/[0.14] px-2 py-[0.1rem] text-[0.68rem] font-bold uppercase tracking-[0.04em] text-blue">
 						{t}
 					</li>
 				))
 			}
 		</ul>
-		<p class="mt-[0.85rem] mb-[1.1rem] flex-1 text-[0.95rem] text-text-dim">
+		<p class="mt-2 mb-3 flex-1 text-[0.875rem] leading-[1.5] text-text-dim">
 			{p.description}
 		</p>
 		<a
-			class="group mt-auto inline-flex flex-wrap items-baseline gap-2 font-semibold text-text no-underline focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-blue"
+			class="group mt-auto inline-flex flex-wrap items-baseline gap-2 text-[0.9rem] font-semibold text-text no-underline focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-blue"
 			href={profileUrl(p.username)}
 			target="_blank"
 			rel="noopener"
@@ -67,7 +67,7 @@ const { person: p, hasAvatar } = Astro.props;
 				@{p.username}
 			</span>
 			<span
-				class="text-[0.82rem] font-medium text-text-faint"
+				class="text-[0.78rem] font-medium text-text-faint"
 				aria-hidden="true"
 			>
 				on Letterboxd ↗
