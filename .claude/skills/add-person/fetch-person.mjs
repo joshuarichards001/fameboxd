@@ -78,21 +78,21 @@ function parseIdentity(html) {
 	};
 }
 
-// Pick the profile owner's avatar. Custom avatars live under
-// /resized/avatar/upload/ and the owner's is served at the largest crop
-// (sidebar / follower avatars are only 80px). Accounts with no custom photo
-// only have the static default on s.ltrbxd.com — resolve to null for those so
-// the site renders its generated monogram instead.
+// Pick the profile owner's avatar from the og:image meta tag — the only
+// avatar on the page guaranteed to be the owner's (inline <img> avatars can
+// belong to other members, and Gravatar/Twitter-sourced avatars don't live
+// under /resized/avatar/upload/ at all). The static default on s.ltrbxd.com
+// means no custom photo — resolve to null so the site renders its generated
+// monogram. Gravatar og:images embed a default= fallback that would silently
+// serve that same static png; swap it for 404 so a missing Gravatar fails the
+// download instead of saving the placeholder.
 function resolveAvatarUrl(html) {
-	const matches = [
-		...html.matchAll(
-			/https:\/\/a\.ltrbxd\.com\/resized\/avatar\/upload\/[^\s"']*?avtr-0-(\d+)-0-\1-crop\.(?:jpg|png)[^\s"']*/g,
-		),
-	];
-	if (matches.length === 0) return null;
-	let best = matches[0];
-	for (const m of matches) if (Number(m[1]) > Number(best[1])) best = m;
-	return best[0];
+	const url = html.match(/<meta property="og:image" content="([^"]*)"/)?.[1];
+	if (!url || url.includes("s.ltrbxd.com/static/")) return null;
+	if (url.includes("gravatar.com/")) {
+		return url.replace(/default=[^&]*/, "default=404");
+	}
+	return decode(url);
 }
 
 async function saveAvatar(url, outPath) {
@@ -142,10 +142,18 @@ async function main() {
 		report.avatarSourceUrl = avatarUrl;
 		report.hasCustomAvatar = Boolean(avatarUrl);
 		if (avatarOut) {
-			report.avatarSaved = avatarUrl
-				? await saveAvatar(avatarUrl, avatarOut)
-				: null;
-			if (!avatarUrl)
+			try {
+				report.avatarSaved = avatarUrl
+					? await saveAvatar(avatarUrl, avatarOut)
+					: null;
+			} catch (err) {
+				// A Gravatar-backed profile whose Gravatar no longer exists
+				// 404s (we ask for default=404 on purpose) — monogram it.
+				if (!/^404 /.test(err.message)) throw err;
+				report.avatarSaved = null;
+				report.hasCustomAvatar = false;
+			}
+			if (!report.avatarSaved)
 				report.avatarNote =
 					"No custom avatar; the site will render a monogram.";
 		}

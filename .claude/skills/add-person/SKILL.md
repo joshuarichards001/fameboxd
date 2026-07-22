@@ -43,10 +43,17 @@ couldn't have verified by eye any better than the fetch just did.
 Write, matching the existing entries in `src/data/people.json`:
 
 - **description** — one concise sentence in the house style: what they're known
-  for (notable works, role, or channel). Look at neighbors for tone; keep it
-  tight (see e.g. Dacre Montgomery, Rian Johnson, Nando v Movies). The report's
-  `metaDescription` bio is useful raw material. If the handle differs from their
-  name in a notable way, you may note it (see Lukas Gage).
+  for (notable works, role, or channel) in real life — not on Letterboxd. Look
+  at neighbors for tone; keep it tight (see e.g. Dacre Montgomery, Rian Johnson,
+  Nando v Movies). Describe why the person is notable — their career, notable
+  work, or role — never their Letterboxd activity: no watch/film counts,
+  favorites, ratings, "logged", or the word Letterboxd itself (the site is the
+  Letterboxd directory; every entry implicitly has an account, so it doesn't
+  need saying). The report's `metaDescription` bio is useful raw material for
+  who they are, but don't lift its Letterboxd-specific details (film counts,
+  favorites lists) into the description. If the handle differs from their name
+  in a notable way, you may note it (see Lukas Gage) — that's about the handle,
+  not their Letterboxd usage.
 - **tags** — 1 to 3, drawn **only** from this fixed vocabulary (in
   `src/functions/validate.ts`): `actor`, `director`, `writer`, `youtuber`,
   `critic`, `musician`, `comedian`, `podcaster`, `athlete`, `developer`.
