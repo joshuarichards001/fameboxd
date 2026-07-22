@@ -303,9 +303,9 @@
       "actor"
     ],
     "lastWatched": {
-      "title": "The Voice of Hind Rajab",
-      "date": "2026-07-21",
-      "rating": null
+      "title": "The Invite",
+      "date": "2026-07-22",
+      "rating": 5
     }
   },
   {
@@ -1129,7 +1129,12 @@
     "description": "English actor known for Coronation Street and as companion Ruby Sunday in Doctor Who.",
     "tags": [
       "actor"
-    ]
+    ],
+    "lastWatched": {
+      "title": "Obsession",
+      "date": "2026-07-16",
+      "rating": 4.5
+    }
   },
   {
     "name": "Nando v Movies",
