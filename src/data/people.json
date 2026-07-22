@@ -782,33 +782,6 @@
     }
   },
   {
-    "name": "Joey Richter",
-    "username": "jonyricker",
-    "description": "Actor and StarKid mainstay known for A Very Potter Musical.",
-    "tags": [
-      "actor"
-    ],
-    "lastWatched": {
-      "title": "The Prestige",
-      "date": "2026-07-20",
-      "rating": 5
-    }
-  },
-  {
-    "name": "Jordan Horowitz",
-    "username": "jehorowitz",
-    "description": "Producer of La La Land.",
-    "tags": [
-      "producer",
-      "writer"
-    ],
-    "lastWatched": {
-      "title": "Parenthood",
-      "date": "2026-07-20",
-      "rating": null
-    }
-  },
-  {
     "name": "Jordan Myrick",
     "username": "jordanmyr1ck",
     "description": "Comedian and Smosh cast member.",
@@ -1259,19 +1232,6 @@
     }
   },
   {
-    "name": "Russell Hainline",
-    "username": "russellhfilm",
-    "description": "Screenwriter of Hot Frosty and a run of Hallmark holiday movies.",
-    "tags": [
-      "writer"
-    ],
-    "lastWatched": {
-      "title": "Once a Thief",
-      "date": "2026-07-20",
-      "rating": 4
-    }
-  },
-  {
     "name": "Ryan Hollinger",
     "username": "ryanhollinger",
     "description": "Video essayist whose YouTube channel analyzes horror and genre films.",
@@ -1347,20 +1307,6 @@
       "title": "Transcendence",
       "date": "2026-07-19",
       "rating": null
-    }
-  },
-  {
-    "name": "Sean Chandler",
-    "username": "seanchandler",
-    "description": "Film YouTuber behind Sean Chandler Talks About Stuff, posting movie reviews and rankings.",
-    "tags": [
-      "youtuber",
-      "critic"
-    ],
-    "lastWatched": {
-      "title": "Judge Dredd",
-      "date": "2026-06-26",
-      "rating": 2.5
     }
   },
   {
