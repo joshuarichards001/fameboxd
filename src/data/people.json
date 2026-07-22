@@ -26,6 +26,19 @@
     }
   },
   {
+    "name": "Anne Hathaway",
+    "username": "annehathaway",
+    "description": "Oscar-winning actress known for The Devil Wears Prada, Les Misérables, and The Princess Diaries.",
+    "tags": [
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "The Odyssey",
+      "date": "2026-07-14",
+      "rating": null
+    }
+  },
+  {
     "name": "Anthony Fantano",
     "username": "theneedledrop",
     "description": "Music critic on YouTube known as theneedledrop.",
