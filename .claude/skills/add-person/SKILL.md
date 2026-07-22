@@ -28,8 +28,15 @@ This prints a JSON report — `profileStatus`, `displayName`, `metaDescription`
 account has **no custom avatar** the report says so and saves nothing; that's
 fine, the site renders a generated initials monogram. Avatar conversion needs
 `cwebp` (`brew install webp`). After it saves, view the file to confirm it's the
-right photo. If `profileStatus` isn't 200, the handle is wrong or dead — stop
-and tell the user rather than adding a broken entry.
+right photo.
+
+Trust the user's word that the name and username belong to the same person —
+that's the whole point of them giving you both. Don't cross-check `displayName`
+or the bio against the given name and don't stop to ask for confirmation just
+because they differ (handles often don't match the name, or the account is
+under a nickname/alias). The one thing worth a hard stop is `profileStatus` not
+being 200 — that means the handle itself is dead or mistyped, which the user
+couldn't have verified by eye any better than the fetch just did.
 
 ### 2. Compose the entry
 
