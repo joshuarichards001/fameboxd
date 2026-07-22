@@ -2,7 +2,7 @@
   {
     "name": "Allan Arkush",
     "username": "aarkush",
-    "description": "Director of Rock 'n' Roll High School (1979) and a television director.",
+    "description": "Director of Rock 'n' Roll High School (1979) and a veteran television director.",
     "tags": [
       "director"
     ],
@@ -69,7 +69,7 @@
   {
     "name": "Carrie Coon & Tracy Letts",
     "username": "carrieandtracy",
-    "description": "Actress known for The Gilded Age and her Pulitzer-winning playwright husband, who share a single joint account.",
+    "description": "Actress known for The Leftovers and The Gilded Age and her Pulitzer-winning playwright husband, who share a single joint account.",
     "tags": [
       "actor",
       "writer"
@@ -151,16 +151,16 @@
   },
   {
     "name": "CinemaStix",
-    "username": "cinemastix",
-    "description": "Reed Belk, whose CinemaStix channel makes video essays about film craft and technique.",
+    "username": "cinemastixreal",
+    "description": "Danny Boyd, whose CinemaStix channel makes video essays about film craft and technique.",
     "tags": [
       "youtuber",
       "critic"
     ],
     "lastWatched": {
-      "title": "Obsession",
-      "date": "2026-06-20",
-      "rating": 3
+      "title": "Disclosure Day",
+      "date": "2026-06-09",
+      "rating": 2.5
     }
   },
   {
@@ -192,7 +192,7 @@
   {
     "name": "David Ehrlich",
     "username": "davidehrlich",
-    "description": "IndieWire's senior film critic, known for his annual video countdowns of the year's best films.",
+    "description": "IndieWire's chief film critic, known for his annual video countdowns of the year's best films.",
     "tags": [
       "critic"
     ],
@@ -587,7 +587,7 @@
   {
     "name": "Sam Lerner",
     "username": "samlerner",
-    "description": "Actor known for Project Almanac and the animated Monster House.",
+    "description": "Actor known for The Goldbergs, Project Almanac, and the animated Monster House.",
     "tags": [
       "actor"
     ],
@@ -692,7 +692,7 @@
   {
     "name": "Zachary Ruane",
     "username": "zacharyruane",
-    "description": "Comedian of the Australian sketch trio Aunty Donna.",
+    "description": "Comedian in the Australian sketch trio Aunty Donna.",
     "tags": [
       "comedian"
     ],
