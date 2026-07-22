@@ -1,5 +1,43 @@
 [
   {
+    "name": "Alex Winter",
+    "username": "alxwinter",
+    "description": "Bill of Bill & Ted, and documentary director of Downloaded and Zappa.",
+    "tags": [
+      "actor",
+      "director"
+    ],
+    "lastWatched": null
+  },
+  {
+    "name": "Alexei Toliopoulos",
+    "username": "thisisalexei",
+    "description": "Australian comedian behind Finding Drago and The Last Video Store podcast.",
+    "tags": [
+      "comedian",
+      "podcaster"
+    ],
+    "lastWatched": {
+      "title": "Going the Distance",
+      "date": "2026-07-17",
+      "rating": 3.5
+    }
+  },
+  {
+    "name": "Alfie Whiteman",
+    "username": "aaaalf",
+    "description": "Former Tottenham Hotspur goalkeeper now pursuing filmmaking and photography.",
+    "tags": [
+      "athlete",
+      "director"
+    ],
+    "lastWatched": {
+      "title": "Troy",
+      "date": "2026-07-18",
+      "rating": 3
+    }
+  },
+  {
     "name": "Allan Arkush",
     "username": "aarkush",
     "description": "Director of Rock 'n' Roll High School (1979) and a veteran television director.",
@@ -53,6 +91,20 @@
     }
   },
   {
+    "name": "Brendon Small",
+    "username": "brendonsmall",
+    "description": "Co-creator of Home Movies and Metalocalypse, and the guitarist behind Dethklok.",
+    "tags": [
+      "comedian",
+      "musician"
+    ],
+    "lastWatched": {
+      "title": "The World of Henry Orient",
+      "date": "2025-02-21",
+      "rating": null
+    }
+  },
+  {
     "name": "Brian Duffield",
     "username": "brianduffield",
     "description": "Screenwriter and director of Spontaneous and No One Will Save You.",
@@ -64,6 +116,33 @@
       "title": "The Odyssey",
       "date": "2026-07-19",
       "rating": null
+    }
+  },
+  {
+    "name": "Brody King",
+    "username": "brodyxking",
+    "description": "AEW professional wrestler who also fronts the hardcore band God's Hate.",
+    "tags": [
+      "athlete",
+      "musician"
+    ],
+    "lastWatched": {
+      "title": "Jackass: Best and Last",
+      "date": "2026-07-05",
+      "rating": 4
+    }
+  },
+  {
+    "name": "Bronson Reed",
+    "username": "bronniewatches",
+    "description": "Australian WWE superstar and former NXT North American Champion.",
+    "tags": [
+      "athlete"
+    ],
+    "lastWatched": {
+      "title": "The Odyssey",
+      "date": "2026-07-21",
+      "rating": 5
     }
   },
   {
@@ -135,6 +214,19 @@
     }
   },
   {
+    "name": "Charlie Wright",
+    "username": "chawlie_",
+    "description": "Actor known for Diary of a Wimpy Kid: The Long Haul.",
+    "tags": [
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "The Odyssey",
+      "date": "2026-07-18",
+      "rating": 2.5
+    }
+  },
+  {
     "name": "Chris Stuckmann",
     "username": "chrisstuckmann",
     "description": "Film reviewer on YouTube who made his feature directorial debut with the horror film Shelby Oaks.",
@@ -177,6 +269,33 @@
     }
   },
   {
+    "name": "Connor Ratliff",
+    "username": "connorratliff",
+    "description": "Comedian behind the Dead Eyes podcast and The George Lucas Talk Show.",
+    "tags": [
+      "comedian",
+      "podcaster"
+    ],
+    "lastWatched": {
+      "title": "Adventures of the Road-Runner",
+      "date": "2020-06-01",
+      "rating": 5
+    }
+  },
+  {
+    "name": "ConnorEatsPants",
+    "username": "connoreatspants",
+    "description": "Streamer and YouTuber known for Minecraft and variety broadcasts.",
+    "tags": [
+      "youtuber"
+    ],
+    "lastWatched": {
+      "title": "The Odyssey",
+      "date": "2026-07-12",
+      "rating": 5
+    }
+  },
+  {
     "name": "Dacre Montgomery",
     "username": "dacremontgomery",
     "description": "Australian actor known for Stranger Things and Elvis.",
@@ -199,6 +318,19 @@
     "lastWatched": {
       "title": "The Odyssey",
       "date": "2026-07-18",
+      "rating": null
+    }
+  },
+  {
+    "name": "Daniel Goldhaber",
+    "username": "chronopictures",
+    "description": "Director of Cam and How to Blow Up a Pipeline.",
+    "tags": [
+      "director"
+    ],
+    "lastWatched": {
+      "title": "A Summer's Tale",
+      "date": "2026-07-20",
       "rating": null
     }
   },
@@ -229,6 +361,34 @@
     }
   },
   {
+    "name": "David Farrier",
+    "username": "davidfarrier",
+    "description": "New Zealand journalist and documentarian behind Tickled and Dark Tourist.",
+    "tags": [
+      "director",
+      "podcaster"
+    ],
+    "lastWatched": {
+      "title": "Melania",
+      "date": "2026-01-29",
+      "rating": 0.5
+    }
+  },
+  {
+    "name": "Dax Flame",
+    "username": "daxflamefilms",
+    "description": "Vlogging pioneer and actor in 21 Jump Street and Project X.",
+    "tags": [
+      "youtuber",
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "Backrooms",
+      "date": "2026-06-01",
+      "rating": 5
+    }
+  },
+  {
     "name": "Demi Adejuyigbe",
     "username": "demiadejuyigbe",
     "description": "Comedian, writer, and podcaster known for his annual September 21st videos.",
@@ -243,6 +403,33 @@
     }
   },
   {
+    "name": "Drew Gooden",
+    "username": "drewisgooden",
+    "description": "Comedy YouTuber known for commentary videos and his Vine-era road work ahead joke.",
+    "tags": [
+      "youtuber",
+      "comedian"
+    ],
+    "lastWatched": {
+      "title": "The Odyssey",
+      "date": "2026-07-20",
+      "rating": 5
+    }
+  },
+  {
+    "name": "Dylan Gelula",
+    "username": "nalyd",
+    "description": "Actor known for Shithouse and Dream Scenario.",
+    "tags": [
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "Nirvanna the Band the Show the Movie",
+      "date": "2026-02-22",
+      "rating": 5
+    }
+  },
+  {
     "name": "Eddy Burback",
     "username": "eddyburback",
     "description": "Comedy YouTuber known for his deadpan cultural deep-dives.",
@@ -254,6 +441,42 @@
       "title": "The Odyssey",
       "date": "2026-07-17",
       "rating": null
+    }
+  },
+  {
+    "name": "Edgar Wright",
+    "username": "edgarwr1ght",
+    "description": "Director of Shaun of the Dead, Hot Fuzz, and Baby Driver.",
+    "tags": [
+      "director"
+    ],
+    "lastWatched": null
+  },
+  {
+    "name": "Elsie Fisher",
+    "username": "yowiescope",
+    "description": "Actor known for Eighth Grade and Castle Rock.",
+    "tags": [
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "Porky the Giant Killer",
+      "date": "2026-07-16",
+      "rating": null
+    }
+  },
+  {
+    "name": "Erik Griffin",
+    "username": "erikgriffin",
+    "description": "Comedian and actor known for Workaholics.",
+    "tags": [
+      "comedian",
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "Wuthering Heights",
+      "date": "2026-05-15",
+      "rating": 3
     }
   },
   {
@@ -285,6 +508,19 @@
     }
   },
   {
+    "name": "Frames of Nick",
+    "username": "framesofnick",
+    "description": "Video essayist behind the Frames of Nick YouTube channel.",
+    "tags": [
+      "youtuber"
+    ],
+    "lastWatched": {
+      "title": "The Odyssey",
+      "date": "2026-07-16",
+      "rating": 5
+    }
+  },
+  {
     "name": "Francis Ford Coppola",
     "username": "francisfcoppola",
     "description": "Five-time Oscar-winning director of The Godfather and Apocalypse Now.",
@@ -292,6 +528,33 @@
       "director"
     ],
     "lastWatched": null
+  },
+  {
+    "name": "Grace Kuhlenschmidt",
+    "username": "gkuhlenschmidt",
+    "description": "Comedian and correspondent on The Daily Show.",
+    "tags": [
+      "comedian"
+    ],
+    "lastWatched": {
+      "title": "Boys Go to Jupiter",
+      "date": "2024-06-08",
+      "rating": 5
+    }
+  },
+  {
+    "name": "Griffin Newman",
+    "username": "grifflightning",
+    "description": "Actor in The Tick and co-host of the Blank Check podcast.",
+    "tags": [
+      "actor",
+      "podcaster"
+    ],
+    "lastWatched": {
+      "title": "The Invite",
+      "date": "2026-07-17",
+      "rating": null
+    }
   },
   {
     "name": "Hari Nef",
@@ -321,6 +584,45 @@
     }
   },
   {
+    "name": "Iman Vellani",
+    "username": "iman_vell",
+    "description": "Actor known for playing Ms. Marvel in the MCU.",
+    "tags": [
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "The Invite",
+      "date": "2026-07-14",
+      "rating": 5
+    }
+  },
+  {
+    "name": "Ivy Wolk",
+    "username": "spicyboyivy",
+    "description": "Actor known for Anora.",
+    "tags": [
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "The Spiderwick Chronicles",
+      "date": "2026-07-17",
+      "rating": null
+    }
+  },
+  {
+    "name": "Jack Dylan Grazer",
+    "username": "calltoldtotal",
+    "description": "Actor known for It and Shazam!.",
+    "tags": [
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "Clambake",
+      "date": "2025-08-27",
+      "rating": 3.5
+    }
+  },
+  {
     "name": "Jack Harlow",
     "username": "missionaryjack",
     "description": "Grammy-nominated rapper.",
@@ -331,6 +633,111 @@
       "title": "Irma Vep",
       "date": "2026-07-18",
       "rating": null
+    }
+  },
+  {
+    "name": "Jade Thirlwall",
+    "username": "jadeofficial",
+    "description": "Little Mix member turned solo pop star.",
+    "tags": [
+      "musician"
+    ],
+    "lastWatched": {
+      "title": "One Day",
+      "date": "2025-05-13",
+      "rating": null
+    }
+  },
+  {
+    "name": "Jaeden Martell",
+    "username": "jaemart",
+    "description": "Actor known for It and Knives Out.",
+    "tags": [
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "Spring Breakers",
+      "date": "2026-04-25",
+      "rating": null
+    }
+  },
+  {
+    "name": "James A. Janisse",
+    "username": "deadmeatjames",
+    "description": "Host of Dead Meat, YouTube's biggest horror channel.",
+    "tags": [
+      "youtuber"
+    ],
+    "lastWatched": {
+      "title": "Minions & Monsters",
+      "date": "2026-07-12",
+      "rating": 3
+    }
+  },
+  {
+    "name": "James Acaster",
+    "username": "wallybeechum",
+    "description": "British comedian behind Repertoire and Cold Lasagne Hate Myself 1999.",
+    "tags": [
+      "comedian"
+    ],
+    "lastWatched": {
+      "title": "Enemy of the State",
+      "date": "2024-11-14",
+      "rating": 5
+    }
+  },
+  {
+    "name": "Jamie Bell",
+    "username": "1jamiebell",
+    "description": "Actor known for Billy Elliot, Rocketman, and All of Us Strangers.",
+    "tags": [
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "The Odyssey",
+      "date": "2026-07-17",
+      "rating": null
+    }
+  },
+  {
+    "name": "Jared Gilman",
+    "username": "jaredgilman",
+    "description": "Actor who starred as Sam in Wes Anderson's Moonrise Kingdom.",
+    "tags": [
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "Bottle Rocket",
+      "date": "2026-07-21",
+      "rating": 4.5
+    }
+  },
+  {
+    "name": "Jeremy Corbyn",
+    "username": "thejeremycorbyn",
+    "description": "Former UK Labour Party leader and MP for Islington North.",
+    "tags": [
+      "politician"
+    ],
+    "lastWatched": {
+      "title": "Misa Mi",
+      "date": "2025-09-10",
+      "rating": 5
+    }
+  },
+  {
+    "name": "Jim Beaver",
+    "username": "jumblejim",
+    "description": "Deadwood and Supernatural actor, and a published film historian.",
+    "tags": [
+      "actor",
+      "writer"
+    ],
+    "lastWatched": {
+      "title": "Twilight's Last Gleaming",
+      "date": "2026-07-21",
+      "rating": 4.5
     }
   },
   {
@@ -375,6 +782,46 @@
     }
   },
   {
+    "name": "Joey Richter",
+    "username": "jonyricker",
+    "description": "Actor and StarKid mainstay known for A Very Potter Musical.",
+    "tags": [
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "The Prestige",
+      "date": "2026-07-20",
+      "rating": 5
+    }
+  },
+  {
+    "name": "Jordan Horowitz",
+    "username": "jehorowitz",
+    "description": "Producer of La La Land.",
+    "tags": [
+      "producer",
+      "writer"
+    ],
+    "lastWatched": {
+      "title": "Parenthood",
+      "date": "2026-07-20",
+      "rating": null
+    }
+  },
+  {
+    "name": "Jordan Myrick",
+    "username": "jordanmyr1ck",
+    "description": "Comedian and Smosh cast member.",
+    "tags": [
+      "comedian"
+    ],
+    "lastWatched": {
+      "title": "Wild Wild West",
+      "date": "2026-07-18",
+      "rating": null
+    }
+  },
+  {
     "name": "Josh Richards",
     "username": "joshrichards",
     "description": "The visionary auteur who single-handedly willed this website into existence.",
@@ -385,6 +832,20 @@
       "title": "The Drama",
       "date": "2026-07-20",
       "rating": 4
+    }
+  },
+  {
+    "name": "Josh Ruben",
+    "username": "joshruben",
+    "description": "Director of Scare Me, Werewolves Within, and Heart Eyes.",
+    "tags": [
+      "director",
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "The Odyssey",
+      "date": "2026-07-18",
+      "rating": 4.5
     }
   },
   {
@@ -401,6 +862,19 @@
     }
   },
   {
+    "name": "JT",
+    "username": "thegirljtworld",
+    "description": "Rapper who broke out as half of City Girls.",
+    "tags": [
+      "musician"
+    ],
+    "lastWatched": {
+      "title": "Erupcja",
+      "date": "2026-04-23",
+      "rating": 4
+    }
+  },
+  {
     "name": "Karsten Runquist",
     "username": "kurstboy",
     "description": "Video-essayist and film YouTuber known for his reviews and personal filmmaking.",
@@ -412,6 +886,48 @@
       "title": "Come and See",
       "date": "2026-07-21",
       "rating": 5
+    }
+  },
+  {
+    "name": "Katya Zamolodchikova",
+    "username": "katya_zamo",
+    "description": "Drag Race legend and co-host of The Bald and the Beautiful podcast.",
+    "tags": [
+      "comedian",
+      "podcaster"
+    ],
+    "lastWatched": {
+      "title": "Longlegs",
+      "date": "2025-04-17",
+      "rating": 1
+    }
+  },
+  {
+    "name": "Kid Cudi",
+    "username": "scottmescudi84",
+    "description": "Rapper and actor known for Man on the Moon and Entergalactic.",
+    "tags": [
+      "musician",
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "Obsession",
+      "date": "2026-05-28",
+      "rating": 5
+    }
+  },
+  {
+    "name": "Kleber Mendonça Filho",
+    "username": "kmf",
+    "description": "Brazilian director of Bacurau, Aquarius, and The Secret Agent, and a former critic.",
+    "tags": [
+      "director",
+      "critic"
+    ],
+    "lastWatched": {
+      "title": "The Odyssey",
+      "date": "2026-07-21",
+      "rating": null
     }
   },
   {
@@ -442,6 +958,19 @@
     }
   },
   {
+    "name": "Lewis Pullman",
+    "username": "easteregg",
+    "description": "Actor known for Top Gun: Maverick and Thunderbolts.",
+    "tags": [
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "The Heat",
+      "date": "2025-04-20",
+      "rating": 3
+    }
+  },
+  {
     "name": "Lukas Gage",
     "username": "justinguarini",
     "description": "Actor known for The White Lotus and Euphoria, who uses the handle 'justinguarini.'",
@@ -469,6 +998,19 @@
     }
   },
   {
+    "name": "Maitreyi Ramakrishnan",
+    "username": "ramakrishnannn",
+    "description": "Star of Never Have I Ever.",
+    "tags": [
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "Supergirl",
+      "date": "2026-06-22",
+      "rating": null
+    }
+  },
+  {
     "name": "Martin Scorsese",
     "username": "mscorsese",
     "description": "Director of Taxi Driver and Goodfellas.",
@@ -476,6 +1018,34 @@
       "director"
     ],
     "lastWatched": null
+  },
+  {
+    "name": "Matt Gourley",
+    "username": "mattgourley",
+    "description": "Podcaster behind James Bonding and I Was There Too, and Conan O'Brien's podcast co-host.",
+    "tags": [
+      "podcaster",
+      "comedian"
+    ],
+    "lastWatched": {
+      "title": "Kicking & Screaming",
+      "date": "2026-07-17",
+      "rating": null
+    }
+  },
+  {
+    "name": "Max Minghella",
+    "username": "blanktape",
+    "description": "The Handmaid's Tale actor and director of Teen Spirit.",
+    "tags": [
+      "actor",
+      "director"
+    ],
+    "lastWatched": {
+      "title": "Good Time",
+      "date": "2026-07-21",
+      "rating": null
+    }
   },
   {
     "name": "Mckenna Grace",
@@ -527,6 +1097,33 @@
     }
   },
   {
+    "name": "Mike's Mic",
+    "username": "mikesmic",
+    "description": "YouTuber known for unhinged deep-dive recaps of TV shows.",
+    "tags": [
+      "youtuber"
+    ],
+    "lastWatched": {
+      "title": "The Grinch",
+      "date": "2026-07-21",
+      "rating": 3
+    }
+  },
+  {
+    "name": "Miles Bonsignore",
+    "username": "milesbon",
+    "description": "Try Guys producer turned host of The Perfect Person Podcast.",
+    "tags": [
+      "podcaster",
+      "youtuber"
+    ],
+    "lastWatched": {
+      "title": "The Wind Rises",
+      "date": "2026-07-19",
+      "rating": null
+    }
+  },
+  {
     "name": "Millie Gibson",
     "username": "milliegibbo",
     "description": "English actor known for Coronation Street and as companion Ruby Sunday in Doctor Who.",
@@ -563,6 +1160,19 @@
     }
   },
   {
+    "name": "Paul McCartney",
+    "username": "pmccartney",
+    "description": "Singer-songwriter and co-founder of the Beatles.",
+    "tags": [
+      "musician"
+    ],
+    "lastWatched": {
+      "title": "The Boys of Dungeon Lane: In Conversation with Paul McCartney and Paul Mescal",
+      "date": null,
+      "rating": null
+    }
+  },
+  {
     "name": "Paul Scheer",
     "username": "paulscheer",
     "description": "Comedian and host of the How Did This Get Made? podcast about bad movies.",
@@ -574,6 +1184,19 @@
       "title": "Drive",
       "date": "2026-07-21",
       "rating": 4
+    }
+  },
+  {
+    "name": "Paul Walter Hauser",
+    "username": "paulwhauser",
+    "description": "Actor known for Richard Jewell, I Tonya, and Black Bird.",
+    "tags": [
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "Observe and Report",
+      "date": "2026-07-21",
+      "rating": 3.5
     }
   },
   {
@@ -591,6 +1214,19 @@
     }
   },
   {
+    "name": "Ranboo",
+    "username": "ranbooliv",
+    "description": "Minecraft streamer and YouTuber with one of Twitch's biggest followings.",
+    "tags": [
+      "youtuber"
+    ],
+    "lastWatched": {
+      "title": "Obsession",
+      "date": "2026-05-22",
+      "rating": 4
+    }
+  },
+  {
     "name": "Rian Johnson",
     "username": "rcjohnso",
     "description": "Writer-director of Knives Out and Brick.",
@@ -602,6 +1238,32 @@
       "title": "So Evil My Love",
       "date": "2023-11-21",
       "rating": null
+    }
+  },
+  {
+    "name": "Rowan Blanchard",
+    "username": "rowan_blanchard",
+    "description": "Actor known for Girl Meets World and Snowpiercer.",
+    "tags": [
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "The Odyssey",
+      "date": "2026-07-18",
+      "rating": null
+    }
+  },
+  {
+    "name": "Russell Hainline",
+    "username": "russellhfilm",
+    "description": "Screenwriter of Hot Frosty and a run of Hallmark holiday movies.",
+    "tags": [
+      "writer"
+    ],
+    "lastWatched": {
+      "title": "Once a Thief",
+      "date": "2026-07-20",
+      "rating": 4
     }
   },
   {
@@ -627,6 +1289,20 @@
     ],
     "lastWatched": {
       "title": "The Odyssey",
+      "date": "2026-07-18",
+      "rating": null
+    }
+  },
+  {
+    "name": "Sarah Sherman",
+    "username": "sarahsquirm",
+    "description": "SNL cast member also known as Sarah Squirm.",
+    "tags": [
+      "comedian",
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "Once Bitten",
       "date": "2026-07-18",
       "rating": null
     }
@@ -683,6 +1359,29 @@
     }
   },
   {
+    "name": "Sean Fennessey",
+    "username": "seanfennessey",
+    "description": "Host of The Big Picture and co-host of The Rewatchables at The Ringer.",
+    "tags": [
+      "podcaster",
+      "critic"
+    ],
+    "lastWatched": {
+      "title": "Turn in the Wound",
+      "date": "2026-07-21",
+      "rating": null
+    }
+  },
+  {
+    "name": "Shawn Hatosy",
+    "username": "shawnyhats",
+    "description": "Actor known for Animal Kingdom and Southland.",
+    "tags": [
+      "actor"
+    ],
+    "lastWatched": null
+  },
+  {
     "name": "Spencer Agnew",
     "username": "spennser",
     "description": "Smosh host and comedy performer.",
@@ -694,6 +1393,47 @@
       "title": "The Furious",
       "date": "2026-07-11",
       "rating": 3
+    }
+  },
+  {
+    "name": "Stavros Halkias",
+    "username": "stavvybaby2",
+    "description": "Stand-up comedian and podcaster behind Stavvy's World.",
+    "tags": [
+      "comedian",
+      "podcaster"
+    ],
+    "lastWatched": {
+      "title": "Is This Thing On?",
+      "date": "2026-05-09",
+      "rating": 3
+    }
+  },
+  {
+    "name": "Tablo",
+    "username": "blonote",
+    "description": "Epik High frontman and Korean hip-hop pioneer.",
+    "tags": [
+      "musician"
+    ],
+    "lastWatched": {
+      "title": "A.I. Artificial Intelligence",
+      "date": "2026-06-02",
+      "rating": 4.5
+    }
+  },
+  {
+    "name": "Ted Nivison",
+    "username": "tednivison",
+    "description": "Comedy YouTuber known for long-form absurdist deep dives.",
+    "tags": [
+      "youtuber",
+      "comedian"
+    ],
+    "lastWatched": {
+      "title": "Disclosure Day",
+      "date": "2026-06-03",
+      "rating": null
     }
   },
   {
@@ -711,6 +1451,19 @@
     }
   },
   {
+    "name": "TommyInnit",
+    "username": "tommyinnitman",
+    "description": "Minecraft YouTuber and streamer, one of the platform's biggest.",
+    "tags": [
+      "youtuber"
+    ],
+    "lastWatched": {
+      "title": "Jim Henson Idea Man",
+      "date": "2024-06-02",
+      "rating": null
+    }
+  },
+  {
     "name": "Wim Wenders",
     "username": "wimwenders",
     "description": "German director of Paris, Texas and Wings of Desire.",
@@ -720,6 +1473,32 @@
     "lastWatched": {
       "title": "Nashville",
       "date": null,
+      "rating": null
+    }
+  },
+  {
+    "name": "Wyatt Oleff",
+    "username": "wyatto",
+    "description": "Actor known for It and I Am Not Okay with This.",
+    "tags": [
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "Sasquatch Sunset",
+      "date": "2024-04-19",
+      "rating": null
+    }
+  },
+  {
+    "name": "Zach Kornfeld",
+    "username": "korndiddy0",
+    "description": "YouTuber and one of the Try Guys.",
+    "tags": [
+      "youtuber"
+    ],
+    "lastWatched": {
+      "title": "The Odyssey",
+      "date": "2026-07-19",
       "rating": null
     }
   },
@@ -734,6 +1513,19 @@
       "title": "The Invite",
       "date": "2026-07-13",
       "rating": null
+    }
+  },
+  {
+    "name": "Zarah Sultana",
+    "username": "zarahsultana",
+    "description": "British MP and prominent left-wing voice in UK politics.",
+    "tags": [
+      "politician"
+    ],
+    "lastWatched": {
+      "title": "Disclosure Day",
+      "date": "2026-06-18",
+      "rating": 1.5
     }
   },
   {

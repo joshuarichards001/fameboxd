@@ -55,7 +55,8 @@ live in `src/functions/`:
 - `validate.ts` — `validatePeople` enforces: non-empty name/description, unique
   usernames matching `^[a-z0-9_]+$`, 1–3 tags drawn from a **fixed `VOCAB`**
   (actor, director, writer, youtuber, critic, musician, comedian, podcaster,
-  athlete, developer), and a well-formed `lastWatched` when present. Adding a
+  athlete, developer, politician, producer), and a well-formed `lastWatched`
+  when present. Adding a
   new tag means editing `VOCAB`.
 - `avatars.ts` — `loadAvatarSet()` reads `public/avatars/` at build time;
   **the filenames are the manifest** (no separate list). People with a matching
