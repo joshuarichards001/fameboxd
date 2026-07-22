@@ -478,6 +478,19 @@
     "lastWatched": null
   },
   {
+    "name": "Mckenna Grace",
+    "username": "kennyg07",
+    "description": "American actor known for Gifted, The Haunting of Hill House, and Ghostbusters: Afterlife.",
+    "tags": [
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "Obsession",
+      "date": "2026-07-03",
+      "rating": 4.5
+    }
+  },
+  {
     "name": "Michael Mann",
     "username": "michaelmann",
     "description": "Director of Heat, Collateral, and Miami Vice.",
