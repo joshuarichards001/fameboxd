@@ -91,6 +91,12 @@ there too. It's a Letterboxd-inspired dark theme.
 
 ## Adding or editing a person
 
+**Fast path:** the `add-person` skill (`.claude/skills/add-person/`) automates
+this from a name + Letterboxd username — it writes a house-style description and
+tags, fetches `lastWatched`, saves the avatar, and builds. Its helper
+`fetch-person.mjs` also prints the profile's display name, bio, and activity on
+its own. Do the steps below by hand when not using it:
+
 1. Add an entry to `src/data/people.json` (keep it alphabetical by `name`;
    `sortPeople` also enforces order at render). Omit `lastWatched` — the fetch
    script fills it in on the next run.
