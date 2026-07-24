@@ -51,6 +51,20 @@
     }
   },
   {
+    "name": "Amanda the Jedi",
+    "username": "amandathejedi",
+    "description": "YouTuber known for her comedic movie reviews and horror commentary.",
+    "tags": [
+      "youtuber",
+      "critic"
+    ],
+    "lastWatched": {
+      "title": "Evil Dead Burn",
+      "date": "2026-07-16",
+      "rating": null
+    }
+  },
+  {
     "name": "Aneesh Chaganty",
     "username": "aneeshchaganty",
     "description": "Filmmaker behind the screen-based thrillers Searching and Run.",
@@ -224,6 +238,20 @@
       "title": "The Odyssey",
       "date": "2026-07-18",
       "rating": 2.5
+    }
+  },
+  {
+    "name": "Chris Ryan",
+    "username": "chrisryan77",
+    "description": "The Ringer editor and co-host of the pop-culture podcast The Watch.",
+    "tags": [
+      "podcaster",
+      "critic"
+    ],
+    "lastWatched": {
+      "title": "The Odyssey",
+      "date": "2026-07-21",
+      "rating": null
     }
   },
   {
@@ -557,6 +585,20 @@
     }
   },
   {
+    "name": "HamzahTheFantastic",
+    "username": "movieloverwowza",
+    "description": "One half of the YouTube comedy duo Slushy Noobz.",
+    "tags": [
+      "youtuber",
+      "comedian"
+    ],
+    "lastWatched": {
+      "title": "Send Help",
+      "date": "2026-05-25",
+      "rating": 3
+    }
+  },
+  {
     "name": "Hari Nef",
     "username": "harinef",
     "description": "Actress and model known for Barbie and Transparent.",
@@ -698,6 +740,19 @@
       "title": "Disclosure Day",
       "date": "2026-07-22",
       "rating": null
+    }
+  },
+  {
+    "name": "Jane Remover",
+    "username": "crasher_wake",
+    "description": "Hyperpop and digicore musician known for Frailty and Census Designated.",
+    "tags": [
+      "musician"
+    ],
+    "lastWatched": {
+      "title": "Obsession",
+      "date": "2026-05-26",
+      "rating": 4.5
     }
   },
   {
@@ -862,6 +917,19 @@
     }
   },
   {
+    "name": "Katie Walsh",
+    "username": "katiewalshstx",
+    "description": "Film critic for the Tribune News Service and the Los Angeles Times.",
+    "tags": [
+      "critic"
+    ],
+    "lastWatched": {
+      "title": "Pools",
+      "date": "2026-07-19",
+      "rating": null
+    }
+  },
+  {
     "name": "Katya Zamolodchikova",
     "username": "katya_zamo",
     "description": "Drag Race legend and co-host of The Bald and the Beautiful podcast.",
@@ -901,6 +969,20 @@
       "title": "The Odyssey",
       "date": "2026-07-21",
       "rating": null
+    }
+  },
+  {
+    "name": "Kurtis Conner",
+    "username": "kurtis_conner",
+    "description": "Comedy YouTuber and stand-up comedian known for his commentary videos.",
+    "tags": [
+      "youtuber",
+      "comedian"
+    ],
+    "lastWatched": {
+      "title": "Backrooms",
+      "date": "2026-05-27",
+      "rating": 5
     }
   },
   {
@@ -1110,6 +1192,20 @@
     }
   },
   {
+    "name": "Mina Le",
+    "username": "gremlita",
+    "description": "YouTuber known for her video essays on fashion, film, and pop culture.",
+    "tags": [
+      "youtuber",
+      "critic"
+    ],
+    "lastWatched": {
+      "title": "The Invite",
+      "date": "2026-07-12",
+      "rating": null
+    }
+  },
+  {
     "name": "Nando v Movies",
     "username": "nandovmovies",
     "description": "Matthew Kelly, whose Nando v Movies channel offers comedic deep dives into superhero and genre cinema.",
@@ -1121,6 +1217,19 @@
       "title": "Backrooms",
       "date": "2026-07-16",
       "rating": 4
+    }
+  },
+  {
+    "name": "Noah Schnapp",
+    "username": "nschnapp",
+    "description": "American actor known for playing Will Byers in Stranger Things.",
+    "tags": [
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "Project Hail Mary",
+      "date": "2026-03-20",
+      "rating": 5
     }
   },
   {
@@ -1397,6 +1506,34 @@
     }
   },
   {
+    "name": "thatmartinkid",
+    "username": "thatmartinkid",
+    "description": "One half of the YouTube comedy duo Slushy Noobz.",
+    "tags": [
+      "youtuber",
+      "comedian"
+    ],
+    "lastWatched": {
+      "title": "Obsession",
+      "date": "2026-05-22",
+      "rating": 4
+    }
+  },
+  {
+    "name": "The Cosmonaut Variety Hour",
+    "username": "cosmonautmarkie",
+    "description": "YouTuber behind The Cosmonaut Variety Hour, making film and TV commentary.",
+    "tags": [
+      "youtuber",
+      "critic"
+    ],
+    "lastWatched": {
+      "title": "Backrooms",
+      "date": "2026-06-02",
+      "rating": 3
+    }
+  },
+  {
     "name": "Thomas Flight",
     "username": "thomasflight",
     "description": "Video essayist covering film and visual storytelling on YouTube.",
@@ -1408,6 +1545,19 @@
       "title": "The Odyssey",
       "date": "2026-07-22",
       "rating": 4.5
+    }
+  },
+  {
+    "name": "Timothy Simons",
+    "username": "timothycsimons",
+    "description": "Actor known for Veep and Nobody Wants This.",
+    "tags": [
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "Top Gun: Maverick",
+      "date": "2026-07-23",
+      "rating": null
     }
   },
   {
