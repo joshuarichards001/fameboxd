@@ -472,6 +472,19 @@
     }
   },
   {
+    "name": "Ed Sheeran",
+    "username": "tedsmovies",
+    "description": "Grammy-winning singer-songwriter behind hits like \"Shape of You\" and \"Perfect\".",
+    "tags": [
+      "musician"
+    ],
+    "lastWatched": {
+      "title": "Pusher III",
+      "date": "2026-07-27",
+      "rating": 3.5
+    }
+  },
+  {
     "name": "Edgar Wright",
     "username": "edgarwr1ght",
     "description": "Director of Shaun of the Dead, Hot Fuzz, and Baby Driver.",
