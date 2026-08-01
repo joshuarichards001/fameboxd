@@ -105,6 +105,19 @@
     }
   },
   {
+    "name": "Ben York Jones",
+    "username": "benyorkjones",
+    "description": "Screenwriter behind Like Crazy and co-creator of Netflix's Everything Sucks!.",
+    "tags": [
+      "writer"
+    ],
+    "lastWatched": {
+      "title": "Wicked: For Good",
+      "date": "2026-07-26",
+      "rating": null
+    }
+  },
+  {
     "name": "Brendon Small",
     "username": "brendonsmall",
     "description": "Co-creator of Home Movies and Metalocalypse, and the guitarist behind Dethklok.",
@@ -1246,6 +1259,20 @@
     }
   },
   {
+    "name": "Northernlion",
+    "username": "northernlion",
+    "description": "Twitch streamer and YouTuber known for The Binding of Isaac and the Northernlion Live Super Show.",
+    "tags": [
+      "youtuber",
+      "comedian"
+    ],
+    "lastWatched": {
+      "title": "Minions & Monsters",
+      "date": "2026-07-04",
+      "rating": 2
+    }
+  },
+  {
     "name": "Patrick H. Willems",
     "username": "patrickhwillems",
     "description": "Video essayist known for his long-form YouTube films about cinema.",
@@ -1297,6 +1324,19 @@
       "title": "The Big Chill",
       "date": "2026-07-30",
       "rating": 5
+    }
+  },
+  {
+    "name": "Petra Collins",
+    "username": "lolpetra",
+    "description": "Photographer and director whose work spans Gucci campaigns and music videos for Selena Gomez and Olivia Rodrigo.",
+    "tags": [
+      "director"
+    ],
+    "lastWatched": {
+      "title": "Lovely & Amazing",
+      "date": "2026-07-21",
+      "rating": null
     }
   },
   {
@@ -1401,6 +1441,20 @@
       "title": "Once Bitten",
       "date": "2026-07-18",
       "rating": null
+    }
+  },
+  {
+    "name": "Sasha Spielberg",
+    "username": "sashaspielberg",
+    "description": "Actor and musician who records as Buzzy Lee, with roles in The Rehearsal and The Post.",
+    "tags": [
+      "actor",
+      "musician"
+    ],
+    "lastWatched": {
+      "title": "Paris, Texas",
+      "date": "2026-07-31",
+      "rating": 5
     }
   },
   {
