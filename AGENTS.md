@@ -72,6 +72,9 @@ reformats `people.json` with `JSON.stringify`). A daily GitHub Action
 (`.github/workflows/refresh-activity.yml`) reruns it and commits the diff. The
 script degrades gracefully: per-person failures keep the previous (stale)
 `lastWatched`, and it refuses to write only if every fetch fails.
+`astro.config.mjs` also reads it to set each sitemap URL's `<lastmod>` (newest
+watch date among that page's people) — keep it off build time, which would
+mark every URL changed on every build.
 
 **Client-side filter/sort** is an inline `<script is:inline>` in
 `Directory.astro`. Each `PersonCard` exposes `data-tags` and `data-name`;
