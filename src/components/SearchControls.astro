@@ -59,6 +59,30 @@ const SORTS = [
 					);
 				})
 			}
+			<a
+				class="inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-dashed border-border bg-transparent px-3 py-1 text-[0.8rem] font-semibold text-text-faint no-underline transition-colors duration-[120ms] hover:border-orange hover:text-orange focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"
+				href="/"
+				role="button"
+				id="clear-pill"
+				title="Show everyone"
+				hidden={activeTag == null}
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 24 24"
+					width="12"
+					height="12"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="3"
+					stroke-linecap="round"
+					aria-hidden="true"
+				>
+					<line x1="5" y1="5" x2="19" y2="19"></line>
+					<line x1="19" y1="5" x2="5" y2="19"></line>
+				</svg>
+				Clear
+			</a>
 		</div>
 	</div>
 

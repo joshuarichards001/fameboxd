@@ -153,6 +153,9 @@ const { people, avatarSet, activeTag } = Astro.props;
 		var pills = Array.prototype.slice.call(
 			document.querySelectorAll(".pill"),
 		);
+		// Server-rendered visible only on tag pages; here it appears alongside
+		// the client-side filter and clears it without a navigation.
+		var clearPill = document.getElementById("clear-pill");
 		var activeTag = null;
 
 		function pillFor(tag) {
@@ -193,6 +196,7 @@ const { people, avatarSet, activeTag } = Astro.props;
 					on ? "/" : p.getAttribute("data-path"),
 				);
 			});
+			if (clearPill) clearPill.hidden = !activeTag;
 		}
 
 		// Keep the h1 and document title matching what the tag page would say.
@@ -238,6 +242,18 @@ const { people, avatarSet, activeTag } = Astro.props;
 				updateUrl();
 			});
 		});
+
+		if (clearPill) {
+			clearPill.addEventListener("click", function (e) {
+				if (e.metaKey || e.ctrlKey || e.shiftKey) return;
+				e.preventDefault();
+				activeTag = null;
+				syncPills();
+				syncHeadline();
+				apply();
+				updateUrl();
+			});
+		}
 
 		if (searchInput) {
 			searchInput.addEventListener("input", function () {
