@@ -35,16 +35,16 @@ const label = activeTag ? tagLabel(activeTag) : null;
 // actors/directors — that was competing with the tag pages for their queries.
 const title = activeTag
 	? tagPageTitle(activeTag, shown)
-	: `${total} Famous People on Letterboxd | Fameboxd`;
+	: `${total} Celebrities on Letterboxd | Fameboxd`;
 // Tag pages show the same line in the header and as the meta description.
 const intro = activeTag ? tagIntro(activeTag, shown) : undefined;
 const description =
 	intro ??
-	`A directory of ${total} famous people with verified Letterboxd accounts, from Martin Scorsese to Charli XCX. See their latest watches, updated daily.`;
+	`A directory of ${total} celebrities with verified Letterboxd accounts, from Martin Scorsese to Charli XCX. Updated daily.`;
 ---
 
 <Base title={title} description={description}>
-	<Header headline={label ?? "Famous"} intro={intro} />
+	<Header headline={label ?? "Celebrities"} intro={intro} />
 
 	<main class="wrap">
 		<SearchControls

@@ -199,7 +199,7 @@ const { people, avatarSet, activeTag } = Astro.props;
 		function syncHeadline() {
 			var pill = activeTag ? pillFor(activeTag) : null;
 			var label = pill ? pill.getAttribute("data-label") : null;
-			if (headlineEl) headlineEl.textContent = label || "Famous";
+			if (headlineEl) headlineEl.textContent = label || "Celebrities";
 			document.title =
 				(pill && pill.getAttribute("data-title")) || HOME_TITLE;
 		}
