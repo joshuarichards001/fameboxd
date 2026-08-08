@@ -65,23 +65,61 @@ const SORTS = [
 			class="mb-[0.4rem] block text-[0.78rem] font-semibold uppercase tracking-[0.06em] text-text-faint"
 			id="sort-label">Sort by</span
 		>
-		<div
-			class="flex flex-wrap gap-1.5"
-			role="group"
-			aria-labelledby="sort-label"
-		>
-			{
-				SORTS.map((s) => (
-					<button
-						type="button"
-						class="sort-pill cursor-pointer rounded-full border border-border bg-bg-raised px-3 py-1 text-[0.8rem] font-semibold text-text-dim transition-colors duration-[120ms] hover:bg-bg-raised-hover hover:text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue aria-pressed:border-blue aria-pressed:bg-blue aria-pressed:text-[#0c1418] motion-reduce:transition-none"
-						data-sort={s.key}
-						aria-pressed={s.key === "recent" ? "true" : "false"}
+		<div class="flex flex-wrap items-center gap-1.5">
+			<div
+				class="flex flex-wrap gap-1.5"
+				role="group"
+				aria-labelledby="sort-label"
+			>
+				{
+					SORTS.map((s) => (
+						<button
+							type="button"
+							class="sort-pill cursor-pointer rounded-full border border-border bg-bg-raised px-3 py-1 text-[0.8rem] font-semibold text-text-dim transition-colors duration-[120ms] hover:bg-bg-raised-hover hover:text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue aria-pressed:border-blue aria-pressed:bg-blue aria-pressed:text-[#0c1418] motion-reduce:transition-none"
+							data-sort={s.key}
+							aria-pressed={s.key === "recent" ? "true" : "false"}
+						>
+							{s.label}
+						</button>
+					))
+				}
+			</div>
+			<div
+				id="search-wrap"
+				class="group relative flex h-8 w-8 shrink-0 items-center transition-[width] duration-200 data-[open]:w-40 max-[520px]:data-[open]:w-32 motion-reduce:transition-none"
+			>
+				<input
+					type="search"
+					id="search-input"
+					placeholder="Search people…"
+					aria-label="Search people"
+					class="pointer-events-none absolute inset-0 h-8 w-full rounded-full border border-border bg-bg-raised py-1 pr-9 pl-3 text-[0.85rem] text-text opacity-0 outline-none transition-opacity duration-200 placeholder:text-text-faint focus:border-blue group-data-[open]:pointer-events-auto group-data-[open]:opacity-100 motion-reduce:transition-none"
+				/>
+				<button
+					type="button"
+					id="search-toggle"
+					aria-label="Search people"
+					aria-expanded="false"
+					aria-controls="search-input"
+					class="relative ml-auto flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-full border border-border bg-bg-raised text-text-dim transition-colors duration-[120ms] hover:bg-bg-raised-hover hover:text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 24 24"
+						width="15"
+						height="15"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2.25"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						aria-hidden="true"
 					>
-						{s.label}
-					</button>
-				))
-			}
+						<circle cx="11" cy="11" r="7" />
+						<line x1="21" y1="21" x2="16.65" y2="16.65" />
+					</svg>
+				</button>
+			</div>
 		</div>
 	</div>
 </section>

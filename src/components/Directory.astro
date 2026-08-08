@@ -71,20 +71,88 @@ const { people, avatarSet, activeTag } = Astro.props;
 			});
 		});
 
-		// Tag pages are pre-filtered on the server and only render their own
-		// cards, so their pills stay plain links (real navigations). The
-		// instant filter below needs every card in the DOM and only runs on
-		// the full directory at "/".
-		if (directory.hasAttribute("data-prefiltered")) return;
-
-		var HOME_TITLE = document.title;
 		var countEl = document.getElementById("count");
 		var emptyEl = document.getElementById("empty");
+		var total = cards.length;
+
+		// Search works on every page (home and tag pages alike) since each
+		// card already carries data-name.
+		var searchToggle = document.getElementById("search-toggle");
+		var searchInput = document.getElementById("search-input");
+		// The open state lives on the wrapper: it owns the width transition,
+		// and the input styles read it via group-data-[open].
+		var searchWrap = document.getElementById("search-wrap");
+		var query = "";
+
+		function matchesSearch(card) {
+			return (
+				!query || card.getAttribute("data-name").indexOf(query) !== -1
+			);
+		}
+
+		if (searchToggle && searchInput && searchWrap) {
+			searchToggle.addEventListener("click", function () {
+				if (searchWrap.hasAttribute("data-open")) {
+					searchInput.focus();
+					return;
+				}
+				searchWrap.setAttribute("data-open", "");
+				searchToggle.setAttribute("aria-expanded", "true");
+				searchInput.focus();
+			});
+
+			searchInput.addEventListener("blur", function () {
+				if (searchInput.value) return;
+				searchWrap.removeAttribute("data-open");
+				searchToggle.setAttribute("aria-expanded", "false");
+			});
+
+			searchInput.addEventListener("keydown", function (e) {
+				if (e.key === "Escape") {
+					searchInput.value = "";
+					// Clearing by script doesn't fire "input" — the filter
+					// below listens for it, so unfilter explicitly.
+					searchInput.dispatchEvent(new Event("input"));
+					searchInput.blur();
+				}
+			});
+		}
+
+		// Tag pages are pre-filtered on the server and only render their own
+		// cards, so their tag pills stay plain links (real navigations). The
+		// instant tag filter below needs every card in the DOM and only runs
+		// on the full directory at "/" — search still applies on top of the
+		// server-side tag filter.
+		if (directory.hasAttribute("data-prefiltered")) {
+			function applySearchOnly() {
+				var shown = 0;
+				for (var i = 0; i < cards.length; i++) {
+					var show = matchesSearch(cards[i]);
+					cards[i].hidden = !show;
+					if (show) shown++;
+				}
+				countEl.innerHTML =
+					"Showing <strong>" +
+					shown +
+					"</strong> of <strong>" +
+					total +
+					"</strong> people";
+				emptyEl.hidden = shown !== 0;
+			}
+			if (searchInput) {
+				searchInput.addEventListener("input", function () {
+					query = searchInput.value.trim().toLowerCase();
+					applySearchOnly();
+				});
+			}
+			return;
+		}
+
+		var HOME_TITLE = document.title;
 		var headlineEl = document.getElementById("headline");
 		var pills = Array.prototype.slice.call(
 			document.querySelectorAll(".pill"),
 		);
-		var total = cards.length;
 		var activeTag = null;
 
 		function pillFor(tag) {
@@ -99,10 +167,11 @@ const { people, avatarSet, activeTag } = Astro.props;
 			for (var i = 0; i < cards.length; i++) {
 				var card = cards[i];
 				var show =
-					!activeTag ||
-					(" " + card.getAttribute("data-tags") + " ").indexOf(
-						" " + activeTag + " ",
-					) !== -1;
+					(!activeTag ||
+						(" " + card.getAttribute("data-tags") + " ").indexOf(
+							" " + activeTag + " ",
+						) !== -1) &&
+					matchesSearch(card);
 				card.hidden = !show;
 				if (show) shown++;
 			}
@@ -170,6 +239,13 @@ const { people, avatarSet, activeTag } = Astro.props;
 				updateUrl();
 			});
 		});
+
+		if (searchInput) {
+			searchInput.addEventListener("input", function () {
+				query = searchInput.value.trim().toLowerCase();
+				apply();
+			});
+		}
 
 		window.addEventListener("popstate", initFromUrl);
 		initFromUrl();
