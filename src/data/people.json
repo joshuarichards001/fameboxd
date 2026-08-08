@@ -440,6 +440,19 @@
     }
   },
   {
+    "name": "Diamondbolt",
+    "username": "adambolt",
+    "description": "Australian YouTuber known for Transformers and Sonic the Hedgehog content alongside general movie and pop-culture commentary.",
+    "tags": [
+      "youtuber"
+    ],
+    "lastWatched": {
+      "title": "Rampart",
+      "date": "2026-08-08",
+      "rating": 1
+    }
+  },
+  {
     "name": "Drew Gooden",
     "username": "drewisgooden",
     "description": "Comedy YouTuber known for commentary videos and his Vine-era road work ahead joke.",
@@ -1240,6 +1253,16 @@
       "date": "2026-08-04",
       "rating": 3
     }
+  },
+  {
+    "name": "Nick Jonas",
+    "username": "nickjonas",
+    "description": "Singer and actor, member of the Jonas Brothers and star of Jumanji: Welcome to the Jungle.",
+    "tags": [
+      "musician",
+      "actor"
+    ],
+    "lastWatched": null
   },
   {
     "name": "Noah Schnapp",
