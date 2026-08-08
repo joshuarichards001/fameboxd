@@ -3,9 +3,13 @@ import { SUGGEST_FORM_URL } from "../data/site";
 
 interface Props {
 	headline?: string;
+	intro?: string;
 }
 
-const { headline = "Famous" } = Astro.props;
+const {
+	headline = "Famous",
+	intro = "A directory of notable actors, directors, musicians, and creators with real, public Letterboxd accounts.",
+} = Astro.props;
 ---
 
 <header
@@ -22,8 +26,7 @@ const { headline = "Famous" } = Astro.props;
 		<p
 			class="mt-2 mb-0 max-w-[56ch] text-[clamp(0.95rem,2vw,1.05rem)] text-text-dim"
 		>
-			A directory of notable actors, directors, musicians, and
-			creators with real, public Letterboxd accounts.
+			{intro}
 		</p>
 		<a
 			class="mt-4 inline-block rounded-full border border-border bg-bg-raised px-4 py-1.5 text-[0.85rem] font-semibold text-orange transition-colors duration-[120ms] hover:bg-bg-raised-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"

@@ -2,7 +2,7 @@
 import people from "../data/people.json";
 import { loadAvatarSet } from "../functions/avatars";
 import { sortByRecentActivity, sortPeople, tagsByFrequency } from "../functions/people";
-import { tagLabel } from "../functions/tags";
+import { tagIntro, tagLabel } from "../functions/tags";
 import { validatePeople } from "../functions/validate";
 import Base from "../layouts/Base.astro";
 import Directory from "./Directory.astro";
@@ -33,13 +33,15 @@ const label = activeTag ? tagLabel(activeTag) : null;
 const title = label
 	? `Famous ${label} on Letterboxd — Fameboxd`
 	: "Famous People on Letterboxd — Actors, Directors & Creators | Fameboxd";
-const description = label
-	? `${shown} famous ${label.toLowerCase()} with verified public Letterboxd accounts — see what they're watching, how they rate films, and their all-time favorites.`
-	: `A directory of ${total} famous actors, directors, musicians, youtubers, and creators with verified Letterboxd accounts.`;
+// Tag pages show the same line in the header and as the meta description.
+const intro = activeTag ? tagIntro(activeTag) : undefined;
+const description =
+	intro ??
+	`A directory of ${total} famous actors, directors, musicians, youtubers, and creators with verified Letterboxd accounts.`;
 ---
 
 <Base title={title} description={description}>
-	<Header headline={label ?? "Famous"} />
+	<Header headline={label ?? "Famous"} intro={intro} />
 
 	<main class="wrap">
 		<SearchControls

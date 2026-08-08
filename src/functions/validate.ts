@@ -1,4 +1,5 @@
 import type { Person } from "./people";
+import { tagIntro } from "./tags";
 
 const VOCAB = new Set([
 	"actor",
@@ -18,6 +19,7 @@ const VOCAB = new Set([
 // Build-time data validation (fails the build on bad data).
 export function validatePeople(people: Person[]): void {
 	const seen = new Set<string>();
+	const tagsInUse = new Set<string>();
 	for (const p of people) {
 		if (typeof p.name !== "string" || p.name.trim() === "") {
 			throw new Error(`Entry missing a valid "name": ${JSON.stringify(p)}`);
@@ -39,6 +41,7 @@ export function validatePeople(people: Person[]): void {
 			if (!VOCAB.has(tag)) {
 				throw new Error(`Entry "${p.name}" has an out-of-vocabulary tag: ${tag}`);
 			}
+			tagsInUse.add(tag);
 		}
 		if (p.lastWatched != null) {
 			const w = p.lastWatched;
@@ -51,6 +54,11 @@ export function validatePeople(people: Person[]): void {
 			if (w.rating != null && (typeof w.rating !== "number" || w.rating < 0.5 || w.rating > 5)) {
 				throw new Error(`Entry "${p.name}" has an invalid lastWatched rating: ${w.rating}`);
 			}
+		}
+	}
+	for (const tag of tagsInUse) {
+		if (!tagIntro(tag)) {
+			throw new Error(`Tag "${tag}" is in use but has no intro in tags.ts.`);
 		}
 	}
 }
