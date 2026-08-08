@@ -37,11 +37,11 @@ grid), and `Footer`. Two routes render it:
 - `src/pages/index.astro` — the full directory at `/`.
 - `src/pages/[tag].astro` — one SEO page per tag in use (`/directors/`,
   `/actors/`, …; slugs/labels from `src/functions/tags.ts`), pre-filtered
-  server-side with a targeted `<title>`, h1 ("Directors on Letterboxd"), and an
-  intro naming that tag's best-known people (`tagIntro` in `tags.ts`, which also
-  serves as the meta description). The intro is the only copy on the page not
-  repeated from `/`; without it Google reads the page as a duplicate and won't
-  index it.
+  server-side with a targeted `<title>`, h1 ("Directors on Letterboxd") and an
+  intro (`tagIntro`, which also serves as the meta description — keep near 155
+  chars). Every card on a tag page also appears on `/`, so that intro is the
+  only text unique to the URL: keep each tag's hand-written and distinct, or
+  Google reads the pages as duplicates of the homepage.
 
 Each card links directly to the person's Letterboxd profile (external, new
 tab). There are no per-person pages.
@@ -59,8 +59,8 @@ live in `src/functions/`:
   usernames matching `^[a-z0-9_]+$`, 1–3 tags drawn from a **fixed `VOCAB`**
   (actor, director, writer, youtuber, critic, musician, comedian, podcaster,
   athlete, developer, politician, producer), a well-formed `lastWatched` when
-  present, and a `tags.ts` intro for every tag in use. A new tag needs a
-  `VOCAB` entry **and** a `FEATURED` entry.
+  present, and an intro for every tag in use. A new tag needs a `VOCAB` entry
+  **and** an `INTROS` entry in `tags.ts`.
 - `avatars.ts` — `loadAvatarSet()` reads `public/avatars/` at build time;
   **the filenames are the manifest** (no separate list). People with a matching
   `public/avatars/<username>.webp` get a photo; everyone else gets a

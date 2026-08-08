@@ -1,5 +1,5 @@
 import type { Person } from "./people";
-import { tagIntro } from "./tags";
+import { hasTagIntro } from "./tags";
 
 const VOCAB = new Set([
 	"actor",
@@ -57,9 +57,10 @@ export function validatePeople(people: Person[]): void {
 		}
 	}
 	for (const tag of tagsInUse) {
-		// The count only shapes the copy; here we just need the tag to have one.
-		if (!tagIntro(tag, 0)) {
-			throw new Error(`Tag "${tag}" is in use but has no intro in tags.ts.`);
+		if (!hasTagIntro(tag)) {
+			throw new Error(
+				`Tag "${tag}" is in use but has no intro in tags.ts.`,
+			);
 		}
 	}
 }
