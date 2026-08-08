@@ -9,6 +9,31 @@ interface Props {
 const { title, description } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL("/og.png", Astro.site);
+
+// Google draws the site name shown above a search result from WebSite
+// structured data, so this is what makes results read "Fameboxd" rather than
+// the bare domain. Same on every page — deliberately describes the site, not
+// the page, which the title/description/og tags above already cover.
+const siteUrl = new URL("/", Astro.site).href;
+const schema = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "WebSite",
+			"@id": `${siteUrl}#website`,
+			name: "Fameboxd",
+			url: siteUrl,
+			publisher: { "@id": `${siteUrl}#organization` },
+		},
+		{
+			"@type": "Organization",
+			"@id": `${siteUrl}#organization`,
+			name: "Fameboxd",
+			url: siteUrl,
+			logo: new URL("/apple-touch-icon.png", Astro.site).href,
+		},
+	],
+};
 ---
 
 <!doctype html>
@@ -35,6 +60,11 @@ const ogImage = new URL("/og.png", Astro.site);
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={ogImage} />
+        <script
+            type="application/ld+json"
+            is:inline
+            set:html={JSON.stringify(schema)}
+        />
         <meta name="generator" content={Astro.generator} />
         <!-- Privacy-friendly analytics by Plausible -->
         <script
