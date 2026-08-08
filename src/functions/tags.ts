@@ -1,9 +1,15 @@
 // "director" -> "directors" (the tag page's URL path segment).
 export const tagSlug = (tag: string) => `${tag}s`;
 
+// "director" -> "Director", "youtuber" -> "YouTuber".
+export const tagLabelSingular = (tag: string) =>
+  tag === "youtuber" ? "YouTuber" : `${tag[0].toUpperCase()}${tag.slice(1)}`;
+
 // "director" -> "Directors", "youtuber" -> "YouTubers".
-export const tagLabel = (tag: string) =>
-  tag === "youtuber" ? "YouTubers" : `${tag[0].toUpperCase()}${tag.slice(1)}s`;
+export const tagLabel = (tag: string) => `${tagLabelSingular(tag)}s`;
+
+export const tagPageTitle = (tag: string, count: number) =>
+  `${count} ${tagLabel(tag)} on Letterboxd | Fameboxd`;
 
 // Each tag page's header line, reused as its meta description. Every card on a
 // tag page also appears on "/", so this line is the only text unique to the

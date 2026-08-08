@@ -1,8 +1,8 @@
 ---
 import people from "../data/people.json";
 import { loadAvatarSet } from "../functions/avatars";
-import { sortByRecentActivity, sortPeople, tagsByFrequency } from "../functions/people";
-import { tagIntro, tagLabel } from "../functions/tags";
+import { sortByRecentActivity, sortPeople, tagCounts, tagsByFrequency } from "../functions/people";
+import { tagIntro, tagLabel, tagPageTitle } from "../functions/tags";
 import { validatePeople } from "../functions/validate";
 import Base from "../layouts/Base.astro";
 import Directory from "./Directory.astro";
@@ -20,6 +20,7 @@ validatePeople(people);
 
 const sorted = sortPeople(people);
 const allTags = tagsByFrequency(sorted);
+const counts = tagCounts(sorted);
 const total = sorted.length;
 // Tag pages only render their own people; the client-side filter (homepage
 // only) needs the full set.
@@ -30,9 +31,11 @@ const shown = visible.length;
 const avatarSet = loadAvatarSet();
 
 const label = activeTag ? tagLabel(activeTag) : null;
-const title = label
-	? `Famous ${label} on Letterboxd — Fameboxd`
-	: "Famous People on Letterboxd — Actors, Directors & Creators | Fameboxd";
+// Counts lead the title as a click-through hook. The homepage no longer names
+// actors/directors — that was competing with the tag pages for their queries.
+const title = activeTag
+	? tagPageTitle(activeTag, shown)
+	: `${total} Famous People on Letterboxd | Fameboxd`;
 // Tag pages show the same line in the header and as the meta description.
 const intro = activeTag ? tagIntro(activeTag, shown) : undefined;
 const description =
@@ -46,6 +49,7 @@ const description =
 	<main class="wrap">
 		<SearchControls
 			allTags={allTags}
+			counts={counts}
 			total={total}
 			shown={shown}
 			activeTag={activeTag}

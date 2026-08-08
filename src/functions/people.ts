@@ -33,13 +33,18 @@ export function sortByRecentActivity(people: Person[]): Person[] {
 	);
 }
 
+// How many people carry each tag in use.
+export function tagCounts(people: Person[]): Map<string, number> {
+	const counts = new Map<string, number>();
+	for (const p of people) {
+		for (const t of p.tags) counts.set(t, (counts.get(t) ?? 0) + 1);
+	}
+	return counts;
+}
+
 // All tags in use, sorted by frequency then alphabetically, for the filter pills.
 export function tagsByFrequency(people: Person[]): string[] {
-	const tagCounts = new Map<string, number>();
-	for (const p of people) {
-		for (const t of p.tags) tagCounts.set(t, (tagCounts.get(t) ?? 0) + 1);
-	}
-	return [...tagCounts.entries()]
+	return [...tagCounts(people).entries()]
 		.sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
 		.map(([t]) => t);
 }

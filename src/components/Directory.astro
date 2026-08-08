@@ -200,9 +200,8 @@ const { people, avatarSet, activeTag } = Astro.props;
 			var pill = activeTag ? pillFor(activeTag) : null;
 			var label = pill ? pill.getAttribute("data-label") : null;
 			if (headlineEl) headlineEl.textContent = label || "Famous";
-			document.title = label
-				? "Famous " + label + " on Letterboxd — Fameboxd"
-				: HOME_TITLE;
+			document.title =
+				(pill && pill.getAttribute("data-title")) || HOME_TITLE;
 		}
 
 		// Mirror state into the URL so any view is shareable. The tag lives in

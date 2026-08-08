@@ -90,7 +90,10 @@ sort chips (recently active — the default, keeping the server-rendered
 Tag pills are real `<a>` links to the tag pages (crawlable); JS intercepts
 clicks and mirrors the active tag into the URL path instead (`pushState`), and
 restores state from the URL on load and `popstate`. Sort is deliberately not in
-the URL. No framework, no build step for this logic.
+the URL. The filtered view must present itself as the tag page it mirrors, so
+the pill carries `data-label` (h1) and `data-title` (document title, built by
+`tagPageTitle`) — read them, never rebuild those strings in the script. No
+framework, no build step for this logic.
 
 **Styling** is Tailwind v4 configured via the Vite plugin (`astro.config.mjs`) —
 there is no `tailwind.config`. Design tokens live in `@theme` in

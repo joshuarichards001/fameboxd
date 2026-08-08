@@ -1,14 +1,15 @@
 ---
-import { tagLabel, tagSlug } from "../functions/tags";
+import { tagLabel, tagPageTitle, tagSlug } from "../functions/tags";
 
 interface Props {
 	allTags: string[];
+	counts: Map<string, number>;
 	total: number;
 	shown: number;
 	activeTag: string | null;
 }
 
-const { allTags, total, shown, activeTag } = Astro.props;
+const { allTags, counts, total, shown, activeTag } = Astro.props;
 
 const SORTS = [
 	{ key: "recent", label: "Recently active" },
@@ -44,15 +45,16 @@ const SORTS = [
 					const active = tag === activeTag;
 					return (
 						<a
-							class="pill cursor-pointer rounded-full border border-border bg-bg-raised px-3 py-1 text-[0.8rem] font-semibold capitalize text-text-dim no-underline transition-colors duration-[120ms] hover:bg-bg-raised-hover hover:text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue aria-pressed:border-green aria-pressed:bg-green aria-pressed:text-[#0c1418] motion-reduce:transition-none"
+							class="pill cursor-pointer rounded-full border border-border bg-bg-raised px-3 py-1 text-[0.8rem] font-semibold text-text-dim no-underline transition-colors duration-[120ms] hover:bg-bg-raised-hover hover:text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue aria-pressed:border-green aria-pressed:bg-green aria-pressed:text-[#0c1418] motion-reduce:transition-none"
 							href={active ? "/" : `/${tagSlug(tag)}/`}
 							role="button"
 							data-tag={tag}
 							data-path={`/${tagSlug(tag)}/`}
 							data-label={tagLabel(tag)}
+							data-title={tagPageTitle(tag, counts.get(tag) ?? 0)}
 							aria-pressed={active ? "true" : "false"}
 						>
-							{tag}
+							{tagLabel(tag)}
 						</a>
 					);
 				})
