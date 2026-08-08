@@ -38,7 +38,7 @@ grid), and `Footer`. Two routes render it:
 - `src/pages/[tag].astro` — one SEO page per tag in use (`/directors/`,
   `/actors/`, …; slugs/labels from `src/functions/tags.ts`), pre-filtered
   server-side with a targeted `<title>`, h1 ("Directors on Letterboxd"), and an
-  intro naming that tag's best-known people (`INTROS` in `tags.ts`, which also
+  intro naming that tag's best-known people (`tagIntro` in `tags.ts`, which also
   serves as the meta description). The intro is the only copy on the page not
   repeated from `/`; without it Google reads the page as a duplicate and won't
   index it.
@@ -60,7 +60,7 @@ live in `src/functions/`:
   (actor, director, writer, youtuber, critic, musician, comedian, podcaster,
   athlete, developer, politician, producer), a well-formed `lastWatched` when
   present, and a `tags.ts` intro for every tag in use. A new tag needs a
-  `VOCAB` entry **and** an `INTROS` entry.
+  `VOCAB` entry **and** a `FEATURED` entry.
 - `avatars.ts` — `loadAvatarSet()` reads `public/avatars/` at build time;
   **the filenames are the manifest** (no separate list). People with a matching
   `public/avatars/<username>.webp` get a photo; everyone else gets a

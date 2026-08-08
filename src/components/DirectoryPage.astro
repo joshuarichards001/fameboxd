@@ -34,7 +34,7 @@ const title = label
 	? `Famous ${label} on Letterboxd — Fameboxd`
 	: "Famous People on Letterboxd — Actors, Directors & Creators | Fameboxd";
 // Tag pages show the same line in the header and as the meta description.
-const intro = activeTag ? tagIntro(activeTag) : undefined;
+const intro = activeTag ? tagIntro(activeTag, shown) : undefined;
 const description =
 	intro ??
 	`A directory of ${total} famous actors, directors, musicians, youtubers, and creators with verified Letterboxd accounts.`;

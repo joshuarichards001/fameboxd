@@ -57,7 +57,8 @@ export function validatePeople(people: Person[]): void {
 		}
 	}
 	for (const tag of tagsInUse) {
-		if (!tagIntro(tag)) {
+		// The count only shapes the copy; here we just need the tag to have one.
+		if (!tagIntro(tag, 0)) {
 			throw new Error(`Tag "${tag}" is in use but has no intro in tags.ts.`);
 		}
 	}
