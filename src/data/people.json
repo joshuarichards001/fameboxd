@@ -1,5 +1,47 @@
 [
   {
+    "name": "Adam Friedland",
+    "username": "adamfriedland",
+    "description": "Host of The Adam Friedland Show and formerly a third of the Cum Town podcast.",
+    "tags": [
+      "comedian",
+      "podcaster"
+    ],
+    "lastWatched": {
+      "title": "Dangerous Liaisons",
+      "date": "2026-01-02",
+      "rating": null
+    }
+  },
+  {
+    "name": "Alan Resnick",
+    "username": "alanresnick",
+    "description": "Adult Swim infomercial filmmaker behind Unedited Footage of a Bear, This House Has People in It and Alantutorial.",
+    "tags": [
+      "director",
+      "comedian"
+    ],
+    "lastWatched": {
+      "title": "All That Heaven Allows",
+      "date": "2026-08-07",
+      "rating": 4
+    }
+  },
+  {
+    "name": "Albert Birney",
+    "username": "albertbirney",
+    "description": "Director of Strawberry Mansion, Sylvio and Obex, plus the hand-animated Tux and Fanny films.",
+    "tags": [
+      "director",
+      "writer"
+    ],
+    "lastWatched": {
+      "title": "Teenage Sex and Death at Camp Miasma",
+      "date": "2026-08-01",
+      "rating": null
+    }
+  },
+  {
     "name": "Alex Winter",
     "username": "alxwinter",
     "description": "Bill of Bill & Ted, and documentary director of Downloaded and Zappa.",
@@ -621,6 +663,20 @@
     }
   },
   {
+    "name": "Graydon Weaver",
+    "username": "hugefilmguy",
+    "description": "Half of the YouTube duo Hivemind, alongside Riley Savage.",
+    "tags": [
+      "youtuber",
+      "podcaster"
+    ],
+    "lastWatched": {
+      "title": "Tuner",
+      "date": "2026-08-05",
+      "rating": 3.5
+    }
+  },
+  {
     "name": "Griffin Newman",
     "username": "grifflightning",
     "description": "Actor in The Tick and co-host of the Blank Check podcast.",
@@ -659,6 +715,20 @@
       "title": "Matador",
       "date": "2026-08-04",
       "rating": null
+    }
+  },
+  {
+    "name": "hbomberguy",
+    "username": "hbomberguy",
+    "description": "Harris Brewis, whose feature-length video essays dissect pop culture, video games and plagiarism.",
+    "tags": [
+      "youtuber",
+      "critic"
+    ],
+    "lastWatched": {
+      "title": "Obsession",
+      "date": "2026-06-30",
+      "rating": 3.5
     }
   },
   {
@@ -834,6 +904,20 @@
     }
   },
   {
+    "name": "Jeff Rauseo",
+    "username": "jeffrauseo",
+    "description": "Films At Home host and author of Lost in the Stream, on how algorithms reshaped moviegoing.",
+    "tags": [
+      "youtuber",
+      "writer"
+    ],
+    "lastWatched": {
+      "title": "The Benchwarmers",
+      "date": "2026-08-06",
+      "rating": 3
+    }
+  },
+  {
     "name": "Jeremy Corbyn",
     "username": "thejeremycorbyn",
     "description": "Former UK Labour Party leader and MP for Islington North.",
@@ -902,6 +986,20 @@
     }
   },
   {
+    "name": "Jonni Pepper-GoLions",
+    "username": "subtletynuance",
+    "description": "Animator behind Barber Westchester and The Final Exit of the Disciples of Ascensia, with guest work on Fionna and Cake.",
+    "tags": [
+      "director",
+      "writer"
+    ],
+    "lastWatched": {
+      "title": "The Hole",
+      "date": "2026-07-30",
+      "rating": 5
+    }
+  },
+  {
     "name": "Jordan Myrick",
     "username": "jordanmyr1ck",
     "description": "Comedian and Smosh cast member.",
@@ -965,6 +1063,20 @@
       "title": "Erupcja",
       "date": "2026-04-23",
       "rating": 4
+    }
+  },
+  {
+    "name": "Justin LaLiberty",
+    "username": "jlalibs",
+    "description": "Vinegar Syndrome curator and Cinématographe programmer, and a prolific writer on genre and exploitation cinema.",
+    "tags": [
+      "critic",
+      "writer"
+    ],
+    "lastWatched": {
+      "title": "Space Thing",
+      "date": "2026-08-07",
+      "rating": 3
     }
   },
   {
@@ -1140,6 +1252,20 @@
     "lastWatched": null
   },
   {
+    "name": "Matt Christman",
+    "username": "worsethan",
+    "description": "Co-host of the political comedy podcast Chapo Trap House.",
+    "tags": [
+      "podcaster",
+      "comedian"
+    ],
+    "lastWatched": {
+      "title": "Ghostbusters: Afterlife",
+      "date": "2021-11-23",
+      "rating": 2
+    }
+  },
+  {
     "name": "Matt Gourley",
     "username": "mattgourley",
     "description": "Podcaster behind James Bonding and I Was There Too, and Conan O'Brien's podcast co-host.",
@@ -1295,6 +1421,20 @@
     "lastWatched": null
   },
   {
+    "name": "Nick Mullen",
+    "username": "n_mullen",
+    "description": "Stand-up comedian and former host of the Cum Town podcast.",
+    "tags": [
+      "comedian",
+      "podcaster"
+    ],
+    "lastWatched": {
+      "title": "Weapons",
+      "date": "2025-08-21",
+      "rating": 4
+    }
+  },
+  {
     "name": "Noah Schnapp",
     "username": "nschnapp",
     "description": "American actor known for playing Will Byers in Stranger Things.",
@@ -1319,6 +1459,19 @@
       "title": "The Super Mario Galaxy Movie",
       "date": "2026-08-01",
       "rating": 1.5
+    }
+  },
+  {
+    "name": "Paddington Bear",
+    "username": "paddingtonbear",
+    "description": "The marmalade-loving bear from darkest Peru, star of the Paddington films.",
+    "tags": [
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "The Princess Bride",
+      "date": "2026-07-31",
+      "rating": null
     }
   },
   {
@@ -1389,6 +1542,20 @@
     }
   },
   {
+    "name": "Pop Culture Detective",
+    "username": "popdetective",
+    "description": "Video essayist whose channel picks apart masculinity and gender tropes in film and TV.",
+    "tags": [
+      "youtuber",
+      "critic"
+    ],
+    "lastWatched": {
+      "title": "Spider-Man: Brand New Day",
+      "date": "2026-08-01",
+      "rating": null
+    }
+  },
+  {
     "name": "R.L. Stine",
     "username": "rtl1",
     "description": "Horror author behind the Goosebumps and Fear Street book series.",
@@ -1436,6 +1603,20 @@
       "title": "So Evil My Love",
       "date": "2023-11-21",
       "rating": null
+    }
+  },
+  {
+    "name": "Riley Savage",
+    "username": "hivemindriley",
+    "description": "Half of the YouTube duo Hivemind, alongside Graydon Weaver.",
+    "tags": [
+      "youtuber",
+      "podcaster"
+    ],
+    "lastWatched": {
+      "title": "Mermaid",
+      "date": "2026-08-07",
+      "rating": 3
     }
   },
   {
@@ -1678,6 +1859,21 @@
     }
   },
   {
+    "name": "Todd in the Shadows",
+    "username": "shadowtodd",
+    "description": "Music critic on YouTube behind Pop Song Review and Trainwreckords.",
+    "tags": [
+      "youtuber",
+      "critic",
+      "musician"
+    ],
+    "lastWatched": {
+      "title": "Amelia",
+      "date": "2026-08-07",
+      "rating": 3.5
+    }
+  },
+  {
     "name": "TommyInnit",
     "username": "tommyinnitman",
     "description": "Minecraft YouTuber and streamer, one of the platform's biggest.",
@@ -1688,6 +1884,20 @@
       "title": "Jim Henson Idea Man",
       "date": "2024-06-02",
       "rating": null
+    }
+  },
+  {
+    "name": "Will Menaker",
+    "username": "codydad420",
+    "description": "Co-host of the political comedy podcast Chapo Trap House.",
+    "tags": [
+      "podcaster",
+      "comedian"
+    ],
+    "lastWatched": {
+      "title": "Normal",
+      "date": "2026-08-03",
+      "rating": 3
     }
   },
   {
