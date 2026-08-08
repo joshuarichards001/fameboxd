@@ -1,6 +1,12 @@
 ---
 import { hueFor, initials } from "../functions/avatars";
-import { profileUrl, stars, timeAgo, type Person } from "../functions/people";
+import {
+	compactCount,
+	profileUrl,
+	stars,
+	timeAgo,
+	type Person,
+} from "../functions/people";
 
 interface Props {
 	person: Person;
@@ -9,6 +15,7 @@ interface Props {
 
 const { person: p, hasAvatar } = Astro.props;
 const lastWatched = p.lastWatched ?? null;
+const followers = p.followers ?? null;
 ---
 
 <li
@@ -22,7 +29,9 @@ const lastWatched = p.lastWatched ?? null;
 		href={profileUrl(p.username)}
 		target="_blank"
 		rel="noopener"
-		aria-label={`${p.name} on Letterboxd`}
+		aria-label={`${p.name} on Letterboxd${
+			followers == null ? "" : `, ${followers.toLocaleString("en")} followers`
+		}`}
 	>
 		<div class="flex items-center gap-[0.7rem]">
 			{
@@ -46,9 +55,38 @@ const lastWatched = p.lastWatched ?? null;
 					</span>
 				)
 			}
-			<h2 class="m-0 text-[1.05rem] font-bold leading-snug tracking-[-0.01em]">
+			<h2
+				class="m-0 min-w-0 flex-1 text-[1.05rem] font-bold leading-snug tracking-[-0.01em]"
+			>
 				{p.name}
 			</h2>
+			{
+				followers != null && (
+					<span
+						class="flex shrink-0 items-center gap-1 self-start text-[0.75rem] font-semibold text-text-faint tabular-nums"
+						title={`${followers.toLocaleString("en")} followers on Letterboxd`}
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							width="11"
+							height="11"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2.5"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							aria-hidden="true"
+						>
+							<path d="M16 20v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+							<circle cx="9" cy="7" r="4" />
+							<path d="M22 20v-2a4 4 0 0 0-3-3.87" />
+							<path d="M16 3.13a4 4 0 0 1 0 7.75" />
+						</svg>
+						{compactCount(followers)}
+					</span>
+				)
+			}
 		</div>
 		<ul class="mt-2 flex flex-wrap gap-[0.35rem]" aria-label="Tags">
 			{

@@ -31,7 +31,7 @@ import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
-const UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)";
+const UA = "fameboxd/1.0 (+https://fameboxd.com)";
 
 const decode = (s) =>
 	s

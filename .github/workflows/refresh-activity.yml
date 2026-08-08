@@ -1,4 +1,4 @@
-name: Refresh Letterboxd activity
+name: Refresh Letterboxd data
 
 on:
   schedule:
@@ -21,6 +21,10 @@ jobs:
       - name: Fetch most recent watches
         run: node scripts/fetch-activity.mjs
 
+      # Both counts are on the card, so they refresh together on one commit.
+      - name: Fetch follower counts
+        run: node scripts/fetch-followers.mjs
+
       - name: Commit if changed
         id: commit
         run: |
@@ -31,7 +35,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add src/data/people.json
-          git commit -m "Refresh Letterboxd activity data"
+          git commit -m "Refresh Letterboxd activity and follower data"
           git push
           echo "changed=true" >> "$GITHUB_OUTPUT"
 

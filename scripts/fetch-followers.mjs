@@ -15,7 +15,7 @@ const PEOPLE_PATH = fileURLToPath(
 	new URL("../src/data/people.json", import.meta.url),
 );
 
-const UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)";
+const UA = "fameboxd/1.0 (+https://fameboxd.com)";
 const CONCURRENCY = 4;
 
 async function get(url) {

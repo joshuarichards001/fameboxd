@@ -84,11 +84,14 @@ mark every URL changed on every build. Once that Action commits, it runs
 derives the same URL set the sitemap lists from `people.json`. Ownership is
 proved by `public/<key>.txt`, whose filename must match `KEY` in the script.
 
-**Follower data** is the `followers` field on each entry — never displayed, it
-only feeds the "Follows" sort. Same shape as activity data: committed, not
-fetched at build time; `scripts/fetch-followers.mjs` refreshes it and a weekly
-Action (`.github/workflows/refresh-followers.yml`) commits the diff; per-person
-failures keep the stale count. The count is scraped from the sub-nav tooltip on
+**Follower data** is the `followers` field on each entry — shown in the card's
+top-right corner (`compactCount`, exact number in the `title`) and feeding the
+"Followers" sort. Same shape as activity data: committed, not fetched at build
+time; `scripts/fetch-followers.mjs` refreshes it in the same daily Action as
+activity, on one commit; per-person failures keep the stale count. Both fetch
+scripts identify themselves with a `fameboxd/1.0` UA rather than a browser
+string — `/rss/` and `/followers/` are both allowed by Letterboxd's robots.txt.
+The count is scraped from the sub-nav tooltip on
 `letterboxd.com/<username>/followers/` — **the profile page itself is
 Cloudflare-blocked (403)** to plain HTTP clients whatever headers you send, so
 never scrape that; the followers page and RSS are unaffected. Anything only the
@@ -99,7 +102,7 @@ profile carries (the avatar's `og:image`, the bio) needs a real browser.
 `data-followers`;
 the script filters cards by one active tag pill, and reorders them via the
 sort chips (recently active — the default, keeping the server-rendered
-`sortByRecentActivity` order — A–Z on `data-name`, and Follows on
+`sortByRecentActivity` order — A–Z on `data-name`, and Followers on
 `data-followers`).
 Tag pills are real `<a>` links to the tag pages (crawlable); JS intercepts
 clicks and mirrors the active tag into the URL path instead (`pushState`), and

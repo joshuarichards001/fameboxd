@@ -55,6 +55,19 @@ export function stars(rating: number): string {
 	return "★".repeat(Math.floor(rating)) + (rating % 1 ? "½" : "");
 }
 
+// 493432 -> "493K", 9767 -> "9.8K", 20 -> "20". Abbreviated so a six-figure
+// count still fits the card's top-right corner; the card's title attribute
+// carries the exact number.
+export function compactCount(n: number): string {
+	if (n < 1000) return String(n);
+	const trim = (s: string) => s.replace(/\.0$/, "");
+	if (n < 10_000) return `${trim((n / 1000).toFixed(1))}K`;
+	// Round first, so 999,999 reads "1M" rather than "1000K".
+	const k = Math.round(n / 1000);
+	if (k < 1000) return `${k}K`;
+	return `${trim((n / 1_000_000).toFixed(1))}M`;
+}
+
 // "2026-07-19" -> "today" | "yesterday" | "2 days ago" | "3 weeks ago" | ...
 // Computed at build time; the daily rebuild keeps it within a day of accurate.
 export function timeAgo(iso: string): string {

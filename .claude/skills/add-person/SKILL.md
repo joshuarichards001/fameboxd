@@ -87,8 +87,8 @@ Write, matching the existing entries in `src/data/people.json`:
   genuinely new category means editing `VOCAB` first.
 - **lastWatched** — copy the `lastWatched` object from the report verbatim
   (it's already in the right `{ title, date, rating } | null` shape).
-- **followers** — copy the `followers` number from the report. It's never
-  displayed; it only feeds the "Followers" sort on the directory.
+- **followers** — copy the `followers` number from the report. It shows in the
+  card's top-right corner and feeds the "Followers" sort.
 
 ### 4. Insert into people.json, alphabetically by name
 
@@ -121,6 +121,6 @@ Fix any error it reports.
 ## Notes
 
 - The script mirrors `scripts/fetch-activity.mjs` for `lastWatched` and
-  `scripts/fetch-followers.mjs` for `followers`; the daily and weekly refresh
-  Actions keep both current after you add the person, so it's fine if the
-  values are a little stale.
+  `scripts/fetch-followers.mjs` for `followers`; the daily refresh Action keeps
+  both current after you add the person, so it's fine if the values are a
+  little stale.
