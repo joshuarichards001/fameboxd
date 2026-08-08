@@ -1,0 +1,34 @@
+name: Refresh Letterboxd follower counts
+
+on:
+  schedule:
+    - cron: "43 9 * * 1" # weekly, Mondays; off the hour and clear of the daily activity run
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Fetch follower counts
+        run: node scripts/fetch-followers.mjs
+
+      - name: Commit if changed
+        run: |
+          if git diff --quiet src/data/people.json; then
+            echo "No changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/people.json
+          git commit -m "Refresh Letterboxd follower counts"
+          git push

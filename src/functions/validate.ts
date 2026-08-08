@@ -55,6 +55,12 @@ export function validatePeople(people: Person[]): void {
 				throw new Error(`Entry "${p.name}" has an invalid lastWatched rating: ${w.rating}`);
 			}
 		}
+		if (
+			p.followers != null &&
+			(!Number.isInteger(p.followers) || p.followers < 0)
+		) {
+			throw new Error(`Entry "${p.name}" has an invalid followers count: ${p.followers}`);
+		}
 	}
 	for (const tag of tagsInUse) {
 		if (!hasTagIntro(tag)) {

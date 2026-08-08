@@ -1,21 +1,30 @@
 // Helper for the `add-person` skill. Given a Letterboxd username it:
 //   • fetches the most recent diary entry (lastWatched) from the RSS feed,
-//   • scrapes identity signals from the public profile (display name + the
-//     meta description, which lists film counts, favorites, and bio) so the
-//     caller can verify the handle really belongs to the named person —
-//     usernames get recycled, so a handle from a listicle may now be someone
-//     else, and
-//   • optionally downloads the profile avatar and converts it to a 160×160
-//     .webp (the site's avatar convention).
+//   • fetches the follower count from the followers page, which doubles as the
+//     liveness check (404 there means the handle is dead or mistyped),
+//   • tries the public profile for identity signals (display name + the meta
+//     description, which lists film counts, favorites, and bio) and the avatar
+//     URL, and
+//   • downloads an avatar and converts it to a 160×160 .webp (the site's
+//     avatar convention).
 //
 // It writes NOTHING to people.json — the skill instructions handle that.
 //
 // Usage:
-//   node fetch-person.mjs <username>                      # read-only report
-//   node fetch-person.mjs <username> --avatar-out <path>  # also save avatar
+//   node fetch-person.mjs <username>                       # read-only report
+//   node fetch-person.mjs <username> --avatar-out <path>   # also save avatar
+//   node fetch-person.mjs <username> --avatar-out <path> --avatar-url <url>
+//
+// **The profile page is Cloudflare-blocked (403) to plain HTTP clients** — no
+// user-agent or header combination gets through, and no other profile subpage
+// carries the owner's avatar or bio. So identity signals and the avatar URL
+// have to come from a real browser; the skill instructions cover that, and
+// `--avatar-url` feeds the og:image found there back into the conversion
+// pipeline below. RSS and the followers page are unaffected.
 //
 // Prints a single JSON object on stdout. The lastWatched parsing mirrors
-// scripts/fetch-activity.mjs (a tiny parser kept in sync by hand).
+// scripts/fetch-activity.mjs, and the followers parsing scripts/
+// fetch-followers.mjs (tiny parsers kept in sync by hand).
 
 import { execFileSync } from "node:child_process";
 import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
@@ -56,6 +65,18 @@ function parseLastWatched(xml) {
 		};
 	}
 	return null;
+}
+
+// Follower count from the followers page's sub-nav tooltip
+// (`title="493,432&nbsp;people"`) — mirrors scripts/fetch-followers.mjs. The
+// tooltip is omitted when nobody follows them.
+function parseFollowers(html, username) {
+	const link = html.match(
+		new RegExp(`<a href="/${username}/followers/"([^>]*)>`),
+	);
+	if (!link) throw new Error("no followers link in page");
+	const count = link[1].match(/title="([\d,]+)(?:&nbsp;|\s)/);
+	return count ? Number(count[1].replace(/,/g, "")) : 0;
 }
 
 function textBetween(html, re) {
@@ -128,37 +149,58 @@ async function main() {
 		console.error("Usage: node fetch-person.mjs <username> [--avatar-out <path>]");
 		process.exit(2);
 	}
-	const i = rest.indexOf("--avatar-out");
-	const avatarOut = i !== -1 ? rest[i + 1] : null;
+	const flag = (name) => {
+		const i = rest.indexOf(name);
+		return i !== -1 ? rest[i + 1] : null;
+	};
+	const avatarOut = flag("--avatar-out");
+	// og:image read from the profile in a real browser (see the header note).
+	const avatarUrlOverride = flag("--avatar-url");
 
 	const report = { username };
 
-	// Profile: identity signals + avatar.
+	// Followers page: the count, and the liveness check — it 404s for a handle
+	// that doesn't exist, which the blocked profile page can no longer tell us.
+	try {
+		const html = await get(`https://letterboxd.com/${username}/followers/`);
+		report.accountLive = true;
+		report.followers = parseFollowers(html, username);
+	} catch (err) {
+		report.accountLive = !/^404 /.test(err.message);
+		report.followersError = err.message;
+	}
+
+	// Profile: identity signals + avatar. Expected to 403 — see the header
+	// note; the report says so plainly rather than looking like an outage.
+	let avatarUrl = avatarUrlOverride;
 	try {
 		const html = await get(`https://letterboxd.com/${username}/`);
 		report.profileStatus = 200;
 		Object.assign(report, parseIdentity(html));
-		const avatarUrl = resolveAvatarUrl(html);
-		report.avatarSourceUrl = avatarUrl;
-		report.hasCustomAvatar = Boolean(avatarUrl);
-		if (avatarOut) {
-			try {
-				report.avatarSaved = avatarUrl
-					? await saveAvatar(avatarUrl, avatarOut)
-					: null;
-			} catch (err) {
-				// A Gravatar-backed profile whose Gravatar no longer exists
-				// 404s (we ask for default=404 on purpose) — monogram it.
-				if (!/^404 /.test(err.message)) throw err;
-				report.avatarSaved = null;
-				report.hasCustomAvatar = false;
-			}
-			if (!report.avatarSaved)
-				report.avatarNote =
-					"No custom avatar; the site will render a monogram.";
-		}
+		avatarUrl ??= resolveAvatarUrl(html);
 	} catch (err) {
 		report.profileError = err.message;
+		if (/^403 /.test(err.message)) {
+			report.profileNote =
+				"Profile is Cloudflare-blocked to plain HTTP clients (expected). " +
+				"Read og:image / the bio in a browser and pass --avatar-url.";
+		}
+	}
+
+	if (avatarUrl) report.avatarSourceUrl = avatarUrl;
+	report.hasCustomAvatar = Boolean(avatarUrl);
+	if (avatarOut && avatarUrl) {
+		try {
+			report.avatarSaved = await saveAvatar(avatarUrl, avatarOut);
+		} catch (err) {
+			// A Gravatar-backed profile whose Gravatar no longer exists 404s
+			// (we ask for default=404 on purpose) — monogram it.
+			if (!/^404 /.test(err.message)) throw err;
+			report.avatarSaved = null;
+			report.hasCustomAvatar = false;
+			report.avatarNote =
+				"No custom avatar; the site will render a monogram.";
+		}
 	}
 
 	// RSS: most recent diary entry.

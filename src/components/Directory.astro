@@ -42,11 +42,20 @@ const { people, avatarSet, activeTag } = Astro.props;
 		// which is already most-recently-active first.
 		function applySort() {
 			var order = cards.slice();
+			function byName(a, b) {
+				var an = a.getAttribute("data-name");
+				var bn = b.getAttribute("data-name");
+				return an < bn ? -1 : an > bn ? 1 : 0;
+			}
 			if (sort === "az") {
+				order.sort(byName);
+			} else if (sort === "followers") {
+				// Most followed first; people with no fetched count sort as 0.
 				order.sort(function (a, b) {
-					var an = a.getAttribute("data-name");
-					var bn = b.getAttribute("data-name");
-					return an < bn ? -1 : an > bn ? 1 : 0;
+					return (
+						Number(b.getAttribute("data-followers")) -
+							Number(a.getAttribute("data-followers")) || byName(a, b)
+					);
 				});
 			}
 			for (var k = 0; k < order.length; k++) {

@@ -26,6 +26,8 @@ astro dev status | logs | stop  # manage the background server
 - `npm run fetch-activity` — refresh each person's `lastWatched` in
   `src/data/people.json` from Letterboxd (see Activity data below). Never run
   by the build.
+- `npm run fetch-followers` — refresh each person's `followers` in
+  `src/data/people.json` (see Follower data below). Never run by the build.
 
 ## Architecture
 
@@ -82,11 +84,23 @@ mark every URL changed on every build. Once that Action commits, it runs
 derives the same URL set the sitemap lists from `people.json`. Ownership is
 proved by `public/<key>.txt`, whose filename must match `KEY` in the script.
 
+**Follower data** is the `followers` field on each entry — never displayed, it
+only feeds the "Follows" sort. Same shape as activity data: committed, not
+fetched at build time; `scripts/fetch-followers.mjs` refreshes it and a weekly
+Action (`.github/workflows/refresh-followers.yml`) commits the diff; per-person
+failures keep the stale count. The count is scraped from the sub-nav tooltip on
+`letterboxd.com/<username>/followers/` — **the profile page itself is
+Cloudflare-blocked (403)** to plain HTTP clients whatever headers you send, so
+never scrape that; the followers page and RSS are unaffected. Anything only the
+profile carries (the avatar's `og:image`, the bio) needs a real browser.
+
 **Client-side filter/sort** is an inline `<script is:inline>` in
-`Directory.astro`. Each `PersonCard` exposes `data-tags` and `data-name`;
+`Directory.astro`. Each `PersonCard` exposes `data-tags`, `data-name` and
+`data-followers`;
 the script filters cards by one active tag pill, and reorders them via the
 sort chips (recently active — the default, keeping the server-rendered
-`sortByRecentActivity` order — and A–Z, which sorts on `data-name`).
+`sortByRecentActivity` order — A–Z on `data-name`, and Follows on
+`data-followers`).
 Tag pills are real `<a>` links to the tag pages (crawlable); JS intercepts
 clicks and mirrors the active tag into the URL path instead (`pushState`), and
 restores state from the URL on load and `popstate`. Sort is deliberately not in

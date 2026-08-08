@@ -10,6 +10,7 @@ export interface Person {
 	description: string;
 	tags: string[];
 	lastWatched?: LastWatched | null;
+	followers?: number | null;
 }
 
 export const profileUrl = (username: string) =>
