@@ -89,7 +89,6 @@
     "username": "aaaalf",
     "description": "Former Tottenham Hotspur goalkeeper now pursuing filmmaking and photography.",
     "tags": [
-      "athlete",
       "director"
     ],
     "lastWatched": {
@@ -210,35 +209,6 @@
       "rating": null
     },
     "followers": 3515
-  },
-  {
-    "name": "Brody King",
-    "username": "brodyxking",
-    "description": "AEW professional wrestler who also fronts the hardcore band God's Hate.",
-    "tags": [
-      "athlete",
-      "musician"
-    ],
-    "lastWatched": {
-      "title": "Spider-Man: Brand New Day",
-      "date": "2026-08-03",
-      "rating": 5
-    },
-    "followers": 1165
-  },
-  {
-    "name": "Bronson Reed",
-    "username": "bronniewatches",
-    "description": "Australian WWE superstar and former NXT North American Champion.",
-    "tags": [
-      "athlete"
-    ],
-    "lastWatched": {
-      "title": "Spider-Man: Brand New Day",
-      "date": "2026-08-05",
-      "rating": 3.5
-    },
-    "followers": 6584
   },
   {
     "name": "Caddicarus",
@@ -1057,20 +1027,6 @@
       "rating": 3
     },
     "followers": 6807
-  },
-  {
-    "name": "Jeremy Corbyn",
-    "username": "thejeremycorbyn",
-    "description": "Former UK Labour Party leader and MP for Islington North.",
-    "tags": [
-      "politician"
-    ],
-    "lastWatched": {
-      "title": "Misa Mi",
-      "date": "2025-09-10",
-      "rating": 5
-    },
-    "followers": 20798
   },
   {
     "name": "Jim Beaver",
@@ -2346,20 +2302,6 @@
       "rating": null
     },
     "followers": 8763
-  },
-  {
-    "name": "Zarah Sultana",
-    "username": "zarahsultana",
-    "description": "British MP and prominent left-wing voice in UK politics.",
-    "tags": [
-      "politician"
-    ],
-    "lastWatched": {
-      "title": "Life Support",
-      "date": "2026-07-27",
-      "rating": 5
-    },
-    "followers": 4074
   },
   {
     "name": "Ziwe",

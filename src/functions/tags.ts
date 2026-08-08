@@ -33,10 +33,6 @@ const INTROS: Record<string, (count: number) => string> = {
     `${count} musicians with public Letterboxd accounts, including Charli XCX, Ed Sheeran, Paul McCartney and Kid Cudi. See what they're watching and rating.`,
   writer: (count) =>
     `${count} screenwriters and authors with public Letterboxd accounts, including R.L. Stine, Rian Johnson, Mike Flanagan and Christopher McQuarrie.`,
-  athlete: (count) =>
-    `${count} athletes with public Letterboxd accounts, including WWE's Bronson Reed, AEW's Brody King and footballer-turned-filmmaker Alfie Whiteman.`,
-  politician: (count) =>
-    `${count} politicians with public Letterboxd accounts: Jeremy Corbyn and Zarah Sultana, both British MPs who log and rate films publicly.`,
   developer: (count) =>
     `${count} developer with a public Letterboxd account: Josh Richards, who built this directory. See what he's been watching lately.`,
 };

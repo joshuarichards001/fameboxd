@@ -10,9 +10,7 @@ const VOCAB = new Set([
 	"musician",
 	"comedian",
 	"podcaster",
-	"athlete",
 	"developer",
-	"politician",
 	"producer",
 ]);
 

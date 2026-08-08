@@ -60,7 +60,7 @@ live in `src/functions/`:
 - `validate.ts` — `validatePeople` enforces: non-empty name/description, unique
   usernames matching `^[a-z0-9_]+$`, 1–3 tags drawn from a **fixed `VOCAB`**
   (actor, director, writer, youtuber, critic, musician, comedian, podcaster,
-  athlete, developer, politician, producer), a well-formed `lastWatched` when
+  developer, producer), a well-formed `lastWatched` when
   present, and an intro for every tag in use. A new tag needs a `VOCAB` entry
   **and** an `INTROS` entry in `tags.ts`.
 - `avatars.ts` — `loadAvatarSet()` reads `public/avatars/` at build time;

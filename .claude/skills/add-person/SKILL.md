@@ -82,9 +82,9 @@ Write, matching the existing entries in `src/data/people.json`:
   not their Letterboxd usage.
 - **tags** — 1 to 3, drawn **only** from this fixed vocabulary (in
   `src/functions/validate.ts`): `actor`, `director`, `writer`, `youtuber`,
-  `critic`, `musician`, `comedian`, `podcaster`, `athlete`, `developer`,
-  `politician`, `producer`. Anything outside it fails the build; adding a
-  genuinely new category means editing `VOCAB` first.
+  `critic`, `musician`, `comedian`, `podcaster`, `developer`, `producer`.
+  Anything outside it fails the build; adding a genuinely new category means
+  editing `VOCAB` first.
 - **lastWatched** — copy the `lastWatched` object from the report verbatim
   (it's already in the right `{ title, date, rating } | null` shape).
 - **followers** — copy the `followers` number from the report. It shows in the
