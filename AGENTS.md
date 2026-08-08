@@ -77,7 +77,10 @@ script degrades gracefully: per-person failures keep the previous (stale)
 `lastWatched`, and it refuses to write only if every fetch fails.
 `astro.config.mjs` also reads it to set each sitemap URL's `<lastmod>` (newest
 watch date among that page's people) — keep it off build time, which would
-mark every URL changed on every build.
+mark every URL changed on every build. Once that Action commits, it runs
+`scripts/submit-indexnow.mjs` (IndexNow — Bing and friends, not Google), which
+derives the same URL set the sitemap lists from `people.json`. Ownership is
+proved by `public/<key>.txt`, whose filename must match `KEY` in the script.
 
 **Client-side filter/sort** is an inline `<script is:inline>` in
 `Directory.astro`. Each `PersonCard` exposes `data-tags` and `data-name`;

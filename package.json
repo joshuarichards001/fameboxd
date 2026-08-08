@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "fetch-activity": "node scripts/fetch-activity.mjs",
+    "submit-indexnow": "node scripts/submit-indexnow.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"

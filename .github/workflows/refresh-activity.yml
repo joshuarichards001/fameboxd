@@ -22,6 +22,7 @@ jobs:
         run: node scripts/fetch-activity.mjs
 
       - name: Commit if changed
+        id: commit
         run: |
           if git diff --quiet src/data/people.json; then
             echo "No changes."
@@ -32,3 +33,8 @@ jobs:
           git add src/data/people.json
           git commit -m "Refresh Letterboxd activity data"
           git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Tell IndexNow the pages changed
+        if: steps.commit.outputs.changed == 'true'
+        run: node scripts/submit-indexnow.mjs
