@@ -84,6 +84,18 @@ mark every URL changed on every build. Once that Action commits, it runs
 derives the same URL set the sitemap lists from `people.json`. Ownership is
 proved by `public/<key>.txt`, whose filename must match `KEY` in the script.
 
+**The full diary** is `src/data/activity.json` —
+`{ generatedAt, people: { <username>: DiaryEntry[] } }`, written by the same
+fetch script from the same requests and committed alongside `people.json` (the
+Action stages both). The Letterboxd film slug (`the-odyssey-2026`) is the join
+key between a person and a film; the types and `filmEntryUrl` live in
+`src/functions/activity.ts`, and `validateActivity` gates the file at build
+time. The feed only returns the ~50 most recently logged entries, so each run
+merges rather than overwrites: fresh entries replace everything inside the
+feed's watched-date range (so deletions propagate) and older entries are kept,
+capped at 200 per person. Keys stay alphabetical and entries newest-first, or
+the daily commit diff churns.
+
 **Follower data** is the `followers` field on each entry — shown in the card's
 top-right corner (`compactCount`, exact number in the `title`) and feeding the
 "Followers" sort. Same shape as activity data: committed, not fetched at build

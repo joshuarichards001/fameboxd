@@ -1,6 +1,6 @@
 // Fetches each person's Letterboxd follower count into the `followers` field
 // of src/data/people.json. Run via `npm run fetch-followers`; the GitHub
-// Action does this weekly. The build never fetches — it only reads the
+// Action does this daily. The build never fetches — it only reads the
 // committed JSON, so a Letterboxd outage can't break deploys.
 //
 // The count comes from the followers page's sub-nav tooltip
