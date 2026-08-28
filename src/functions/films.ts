@@ -33,8 +33,9 @@ export const filmPageUrl = (slug: string) => `/films/${slug}/`;
 export const letterboxdFilmUrl = (slug: string) =>
 	`https://letterboxd.com/film/${slug}/`;
 
-// "The Odyssey (2026)". A handful of entries carry no year.
-export const filmTitle = (film: Film) =>
+// "The Odyssey (2026)". A handful of entries carry no year. Takes the title
+// and year alone so a raw diary entry can be labelled the same way a film can.
+export const filmTitle = (film: { title: string; year: number | null }) =>
 	film.year != null ? `${film.title} (${film.year})` : film.title;
 
 const watchedDate = (e: DiaryEntry) => e.watchedDate ?? "";

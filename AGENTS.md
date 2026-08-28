@@ -67,6 +67,16 @@ and must never be presented as Letterboxd's own. `/films/` lists all of them,
 which is why its per-row styling is hoisted onto the `<table>` — repeating the
 classes on 3,499 rows cost a megabyte of HTML.
 
+**`/recent/` and `/feed.xml`** (`src/pages/recent.astro`,
+`src/pages/feed.xml.ts`) both render `recentWatches(activity, people, limit)`
+from `src/functions/recent.ts` — the newest watches across everyone, which
+drops undated entries and anything dated after today (`watchedDate` is
+user-entered, and one typo'd future date would pin itself to the top for a
+year). The feed is hand-rolled RSS 2.0: escape every interpolated value (film
+titles contain `&`), and take no date from the build clock — `lastBuildDate`
+comes off the newest item, so two builds on unchanged data are byte-identical.
+Feed autodiscovery lives in `Base.astro`, so it is on every page.
+
 A card is a **stretched link**: the person's name is an `<a>` to their page
 whose `after:inset-0` overlay covers the card, and the `@username` handle sits
 one layer above that overlay (z-index 1) as the only link out to the profile —

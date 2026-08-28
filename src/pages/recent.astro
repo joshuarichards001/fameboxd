@@ -1,0 +1,168 @@
+---
+import Footer from "../components/Footer.astro";
+import activity from "../data/activity.json";
+import people from "../data/people.json";
+import { personPageUrl } from "../functions/activity";
+import { hueFor, initials, loadAvatarSet } from "../functions/avatars";
+import { filmPageUrl } from "../functions/films";
+import { stars, timeAgo, type Person } from "../functions/people";
+import { recentWatches } from "../functions/recent";
+import Base from "../layouts/Base.astro";
+
+// The freshest URL on the site: it changes materially every day, so it earns
+// frequent crawling, and every row is a door into a person page and a film
+// page. 100 rows currently spans four or five days of watching.
+const rows = recentWatches(activity, people as Person[], 100);
+const avatars = loadAvatarSet();
+
+// The films at the top change daily, which is the whole point of the line.
+// Same 158-character budget as the person and film pages; a title that won't
+// fit is skipped and the shorter ones behind it still make it in.
+const newest = [...new Set(rows.map((r) => r.entry.title))];
+const lead = `The ${rows.length} most recent films logged by celebrities on Letterboxd, newest first.`;
+const line = (films: string[]) =>
+	films.length > 0
+		? `${lead} Just watched: ${films.join(", ")}. Updated daily.`
+		: `${lead} Updated daily.`;
+const chosen: string[] = [];
+for (const film of newest.slice(0, 4)) {
+	if (line([...chosen, film]).length <= 158) chosen.push(film);
+}
+
+const title = "Recently Watched by Celebrities on Letterboxd | Fameboxd";
+const description = line(chosen);
+---
+
+<Base title={title} description={description}>
+	<main class="wrap py-8">
+		<a
+			class="text-[0.9rem] font-semibold text-text-dim no-underline transition-colors duration-[120ms] hover:text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"
+			href="/">&larr; All people</a
+		>
+
+		<header class="mt-6 flex flex-wrap items-end justify-between gap-4">
+			<h1
+				class="m-0 max-w-[20ch] text-[clamp(1.6rem,4.5vw,2.4rem)] font-extrabold leading-[1.1] tracking-[-0.02em]"
+			>
+				What celebrities are watching <span class="text-orange"
+					>right now</span
+				>
+			</h1>
+			<a
+				class="inline-flex items-center gap-2 rounded-full bg-orange px-5 py-2 text-[0.95rem] font-bold text-bg no-underline transition-colors duration-[120ms] hover:bg-[color-mix(in_srgb,var(--color-orange)_80%,white)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"
+				href="/feed.xml">Subscribe by RSS</a
+			>
+		</header>
+
+		<p class="mt-4 max-w-[68ch] text-[0.95rem] leading-[1.6] text-text-dim">
+			{description}
+		</p>
+
+		<div class="mt-8 overflow-x-auto">
+			{/* Per-row styling hoisted onto the table: this page is rebuilt and
+			    recrawled daily, so the same classes repeated across 100 rows are
+			    bytes it pays for every time. */}
+			<table
+				class="w-full min-w-[560px] border-collapse text-left text-[0.9rem] [&_th]:py-2 [&_th]:pr-3 [&_td]:py-2 [&_td]:pr-3 [&_tbody_tr]:border-b [&_tbody_tr]:border-border/50 [&_tbody_th]:font-normal [&_a]:font-semibold [&_a]:text-text [&_a]:no-underline [&_a]:transition-colors [&_a]:duration-[120ms] [&_a:hover]:text-orange [&_a:focus-visible]:outline-2 [&_a:focus-visible]:outline-offset-2 [&_a:focus-visible]:outline-blue motion-reduce:[&_a]:transition-none"
+			>
+				<caption class="mb-3 text-left text-[0.85rem] text-text-faint">
+					The newest entries in the public Letterboxd diaries of the {
+						people.length
+					} celebrities in this directory, refreshed daily.
+				</caption>
+				<thead>
+					<tr
+						class="border-b border-border [&_th]:text-[0.72rem] [&_th]:font-bold [&_th]:uppercase [&_th]:tracking-[0.08em] [&_th]:text-text-faint"
+					>
+						<th scope="col">Person</th>
+						<th scope="col">Watched</th>
+						<th scope="col">Rating</th>
+						<th scope="col">When</th>
+					</tr>
+				</thead>
+				<tbody>
+					{
+						rows.map(({ person, entry }) => (
+							<tr>
+								<th scope="row">
+									<span class="flex items-center gap-2">
+										{avatars.has(person.username) ? (
+											<img
+												class="h-7 w-7 shrink-0 rounded-full border border-border bg-bg object-cover"
+												src={`/avatars/${person.username}.webp`}
+												width="28"
+												height="28"
+												loading="lazy"
+												decoding="async"
+												alt=""
+											/>
+										) : (
+											<span
+												class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border text-[0.62rem] font-bold text-[hsl(var(--hue)_55%_80%)] bg-[hsl(var(--hue)_32%_24%)] border-[hsl(var(--hue)_28%_34%)]"
+												aria-hidden="true"
+												style={`--hue:${hueFor(person.name)}`}
+											>
+												{initials(person.name)}
+											</span>
+										)}
+										<a href={personPageUrl(person.username)}>{person.name}</a>
+									</span>
+								</th>
+								<td>
+									<a href={filmPageUrl(entry.slug)}>{entry.title}</a>
+									{entry.year != null && (
+										<span class="ml-1.5 text-text-faint tabular-nums">
+											{entry.year}
+										</span>
+									)}
+									{entry.rewatch && (
+										<span class="ml-1.5 text-[0.8rem] text-text-faint">
+											<span aria-hidden="true">&#8635;</span>
+											<span class="sr-only">Rewatch</span>
+										</span>
+									)}
+									{entry.liked && (
+										<span class="ml-1.5 text-[0.8rem] text-orange">
+											<span aria-hidden="true">&#9829;</span>
+											<span class="sr-only">Liked</span>
+										</span>
+									)}
+								</td>
+								<td class="whitespace-nowrap">
+									{entry.rating != null ? (
+										<span
+											class="text-green"
+											role="img"
+											aria-label={`Rated ${entry.rating} out of 5`}
+										>
+											{stars(entry.rating)}
+										</span>
+									) : (
+										/* No rating reads as an empty cell. */
+										<span class="text-text-faint" aria-hidden="true">
+											&mdash;
+										</span>
+									)}
+								</td>
+								<td class="whitespace-nowrap text-text-faint">
+									<time datetime={entry.watchedDate} title={entry.watchedDate}>
+										{timeAgo(entry.watchedDate)}
+									</time>
+								</td>
+							</tr>
+						))
+					}
+				</tbody>
+			</table>
+		</div>
+
+		<p class="mt-6 mb-0 text-[0.9rem] text-text-dim">
+			<a
+				class="font-semibold text-orange underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
+				href="/films/">Every film these celebrities have watched &rarr;</a
+			>
+		</p>
+	</main>
+
+	<Footer />
+</Base>
