@@ -45,8 +45,20 @@ grid), and `Footer`. Two routes render it:
   only text unique to the URL: keep each tag's hand-written and distinct, or
   Google reads the pages as duplicates of the homepage.
 
-Each card links directly to the person's Letterboxd profile (external, new
-tab). There are no per-person pages.
+**Person pages** are `src/pages/people/[username].astro` — `/people/<username>/`,
+one for **every** person in `people.json`, no threshold and no exceptions. The
+dozen with an empty diary get an empty state instead of a table: "yes, the
+account is real, and nothing is logged on it" is the answer their name is
+searched with. Build the path with `personPageUrl(username)` from
+`src/functions/activity.ts` rather than hardcoding it. `/people/` itself has no
+index — the homepage already lists everyone.
+
+A card is a **stretched link**: the person's name is an `<a>` to their page
+whose `after:inset-0` overlay covers the card, and the `@username` handle sits
+one layer above that overlay (z-index 1) as the only link out to the profile —
+keep it under the sticky
+filter bar's 5, or handles scroll over the header. HTML forbids nesting `<a>`,
+so anything else clickable inside a card has to join that pattern, not wrap it.
 
 **Data is the source of truth.** `src/data/people.json` is an array of
 `{ name, username, description, tags, lastWatched }` (see the `Person`
@@ -155,3 +167,4 @@ its own. Do the steps below by hand when not using it:
 
 - `CLAUDE.md` is a symlink to `AGENTS.md` — edit `AGENTS.md`; both stay in sync.
 - Requires Node >= 22.12. TypeScript uses Astro's `strict` tsconfig.
+- Never commit code without letting me verify the changes first.

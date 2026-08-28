@@ -1,4 +1,5 @@
 ---
+import { personPageUrl } from "../functions/activity";
 import { hueFor, initials } from "../functions/avatars";
 import {
 	compactCount,
@@ -24,14 +25,11 @@ const followers = p.followers ?? null;
 	data-tags={p.tags.join(" ")}
 	data-followers={p.followers ?? 0}
 >
-	<a
-		class="group flex w-full flex-col rounded-card border border-border bg-bg-raised px-4 pt-[0.9rem] pb-[0.85rem] no-underline transition-[border-color,background] duration-[140ms] hover:border-[color-mix(in_srgb,var(--color-orange)_45%,var(--color-border))] hover:bg-bg-raised-hover focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-blue motion-reduce:transition-none"
-		href={profileUrl(p.username)}
-		target="_blank"
-		rel="noopener"
-		aria-label={`${p.name} on Letterboxd${
-			followers == null ? "" : `, ${followers.toLocaleString("en")} followers`
-		}`}
+	{/* The card lifts on hover, except while the handle below is hovered:
+	    that link goes somewhere else, so the card shouldn't claim the cursor.
+	    .card-handle is a marker for that :has() check, not a style hook. */}
+	<div
+		class="group relative flex w-full flex-col rounded-card border border-border bg-bg-raised px-4 pt-[0.9rem] pb-[0.85rem] transition-[border-color,background] duration-[140ms] not-has-[.card-handle:hover]:hover:border-[color-mix(in_srgb,var(--color-orange)_45%,var(--color-border))] not-has-[.card-handle:hover]:hover:bg-bg-raised-hover focus-within:outline-2 focus-within:outline-offset-[3px] focus-within:outline-blue motion-reduce:transition-none"
 	>
 		<div class="flex items-center gap-[0.7rem]">
 			{
@@ -58,7 +56,14 @@ const followers = p.followers ?? null;
 			<h2
 				class="m-0 min-w-0 flex-1 text-[1.05rem] font-bold leading-snug tracking-[-0.01em]"
 			>
-				{p.name}
+				{/* Stretched link: its ::after covers the card, so a click
+				    anywhere lands here. The name is its accessible name. */}
+				<a
+					class="rounded-[3px] no-underline after:absolute after:inset-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
+					href={personPageUrl(p.username)}
+				>
+					{p.name}
+				</a>
 			</h2>
 			{
 				followers != null && (
@@ -111,6 +116,7 @@ const followers = p.followers ?? null;
 							{lastWatched.rating != null && (
 								<span
 									class="shrink-0 text-green"
+									role="img"
 									aria-label={`rated ${lastWatched.rating} out of 5`}
 								>
 									{stars(lastWatched.rating)}
@@ -124,17 +130,20 @@ const followers = p.followers ?? null;
 					</span>
 				)
 			}
-			<span class="mt-1 flex items-baseline justify-between gap-2 text-[0.9rem] font-semibold">
-				<span class="text-orange tabular-nums group-hover:underline">
-					@{p.username}
-				</span>
-				<span
-					class="text-[0.75rem] font-medium text-text-faint"
-					aria-hidden="true"
-				>
-					letterboxd &nearr;
-				</span>
-			</span>
+			{/* Sits above the stretched link's overlay, so this handle alone
+			    is the way out to the real profile. z-1 is enough to clear that
+			    overlay and stays under the sticky filter bar's z-5, which the
+			    handle would otherwise scroll over. Shrunk to its own text with
+			    self-start, so the underline tracks the link's hit area. */}
+			<a
+				class="card-handle relative z-1 mt-1 self-start rounded-[3px] text-[0.9rem] font-semibold text-orange tabular-nums no-underline hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
+				href={profileUrl(p.username)}
+				target="_blank"
+				rel="noopener"
+				aria-label={`@${p.username} on Letterboxd`}
+			>
+				@{p.username}
+			</a>
 		</span>
-	</a>
+	</div>
 </li>

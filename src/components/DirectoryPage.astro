@@ -18,7 +18,6 @@ interface Props {
 const { activeTag = null } = Astro.props;
 
 validatePeople(people);
-// Nothing here renders the diary yet; this is the build-time gate on it.
 validateActivity(activity, people);
 
 const sorted = sortPeople(people);
