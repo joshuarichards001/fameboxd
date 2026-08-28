@@ -1,0 +1,242 @@
+---
+import Footer from "../../components/Footer.astro";
+import activity from "../../data/activity.json";
+import people from "../../data/people.json";
+import { personPageUrl } from "../../functions/activity";
+import { hueFor, initials, loadAvatarSet } from "../../functions/avatars";
+import {
+	celebrityNoun,
+	filmDescription,
+	filmIndex,
+	filmTitle,
+	letterboxdFilmUrl,
+	rankedFilms,
+	type Film,
+} from "../../functions/films";
+import { stars, timeAgo, type Person } from "../../functions/people";
+import Base from "../../layouts/Base.astro";
+
+// One page per film in the data, no threshold — a film a single celebrity
+// logged still answers "did anyone famous watch this", which is the question
+// the slug gets searched with.
+export function getStaticPaths() {
+	const byUsername = new Map((people as Person[]).map((p) => [p.username, p]));
+	const avatars = loadAvatarSet();
+
+	return rankedFilms(filmIndex(activity)).map((film) => ({
+		params: { slug: film.slug },
+		props: {
+			film,
+			rows: film.watchers.map((w) => {
+				const person = byUsername.get(w.username);
+				// validateActivity already rejects unknown usernames; failing here
+				// too keeps the headline count and the table rows the same number.
+				if (!person) {
+					throw new Error(`activity.json has a watcher with no person entry: ${w.username}`);
+				}
+				return { person, entry: w.entry, hasAvatar: avatars.has(w.username) };
+			}),
+		},
+	}));
+}
+
+interface Row {
+	person: Person;
+	entry: Film["watchers"][number]["entry"];
+	hasAvatar: boolean;
+}
+
+interface Props {
+	film: Film;
+	rows: Row[];
+}
+
+const { film, rows } = Astro.props;
+const count = rows.length;
+const heading = filmTitle(film);
+// The names most likely to be recognised, for the meta description only.
+const notable = [...rows]
+	.sort((a, b) => (b.person.followers ?? 0) - (a.person.followers ?? 0))
+	.map((r) => r.person.name);
+
+const title = `${count} ${count === 1 ? "Celebrity" : "Celebrities"} Watched ${heading} | Fameboxd`;
+const description = filmDescription(film, notable);
+---
+
+<Base title={title} description={description}>
+	<main class="wrap py-8">
+		<a
+			class="text-[0.9rem] font-semibold text-text-dim no-underline transition-colors duration-[120ms] hover:text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"
+			href="/films/">&larr; All films</a
+		>
+
+		<header class="mt-6 flex flex-wrap items-end justify-between gap-4">
+			<h1
+				class="m-0 max-w-[22ch] text-[clamp(1.6rem,4.5vw,2.4rem)] font-extrabold leading-[1.1] tracking-[-0.02em]"
+			>
+				<span class="text-orange tabular-nums">{count}</span>{" "}
+				{celebrityNoun(count)}
+				{count === 1 ? " has" : " have"} logged {heading}
+			</h1>
+			<a
+				class="inline-flex items-center gap-2 rounded-full bg-orange px-5 py-2 text-[0.95rem] font-bold text-bg no-underline transition-colors duration-[120ms] hover:bg-[color-mix(in_srgb,var(--color-orange)_80%,white)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"
+				href={letterboxdFilmUrl(film.slug)}
+				target="_blank"
+				rel="noopener"
+			>
+				{film.title} on Letterboxd &nearr;
+			</a>
+		</header>
+
+		{/* The quotable line. Never phrase this as a Letterboxd average — it is
+		    the average across the people on this page, and nobody else. */}
+		<div
+			class="mt-6 flex flex-wrap gap-x-10 gap-y-4 rounded-card border border-border bg-bg-raised px-5 py-4"
+		>
+			<p class="m-0">
+				<span class="block text-[1.8rem] font-extrabold leading-none tabular-nums"
+					>{count}</span
+				>
+				<span class="mt-1 block text-[0.8rem] uppercase tracking-[0.08em] text-text-faint"
+					>{count === 1 ? "has" : "have"} logged it</span
+				>
+			</p>
+			<p class="m-0">
+				<span class="block text-[1.8rem] font-extrabold leading-none tabular-nums"
+					>{film.rated}</span
+				>
+				<span class="mt-1 block text-[0.8rem] uppercase tracking-[0.08em] text-text-faint"
+					>rated it</span
+				>
+			</p>
+			{
+				film.average != null && (
+					<p class="m-0">
+						<span class="block text-[1.8rem] font-extrabold leading-none tabular-nums text-green">
+							{film.average.toFixed(1)}
+							<span class="text-[1.2rem]">★</span>
+						</span>
+						<span class="mt-1 block text-[0.8rem] uppercase tracking-[0.08em] text-text-faint">
+							{film.rated === 1 ? "their rating" : `average of those ${film.rated}`}
+						</span>
+					</p>
+				)
+			}
+		</div>
+		<p class="mt-2 max-w-[68ch] text-[0.85rem] text-text-faint">
+			{
+				film.average == null
+					? "Nobody on this page rated it, so there is no average to show."
+					: film.rated === 1
+						? "One celebrity's rating, not Letterboxd's site-wide average."
+						: `Averaged across the ${film.rated} ${celebrityNoun(film.rated)} on this page who rated it — not Letterboxd's site-wide average.`
+			}
+		</p>
+
+		<section class="mt-8" aria-labelledby="watchers-heading">
+			<h2
+				id="watchers-heading"
+				class="m-0 text-[0.8rem] font-bold uppercase tracking-[0.08em] text-text-faint"
+			>
+				Who watched it
+			</h2>
+
+			<div class="mt-3 overflow-x-auto">
+				<table class="w-full min-w-[420px] border-collapse text-left text-[0.9rem]">
+					<thead>
+						<tr class="border-b border-border">
+							<th
+								class="py-2 pr-3 text-[0.72rem] font-bold uppercase tracking-[0.08em] text-text-faint"
+								scope="col">Person</th
+							>
+							<th
+								class="py-2 pr-3 text-[0.72rem] font-bold uppercase tracking-[0.08em] text-text-faint"
+								scope="col">Rating</th
+							>
+							<th
+								class="py-2 text-[0.72rem] font-bold uppercase tracking-[0.08em] text-text-faint"
+								scope="col">Watched</th
+							>
+						</tr>
+					</thead>
+					<tbody>
+						{
+							rows.map(({ person, entry, hasAvatar }) => (
+								<tr class="border-b border-border/50">
+									<td class="py-2 pr-3">
+										<span class="flex items-center gap-2">
+											{hasAvatar ? (
+												<img
+													class="h-7 w-7 shrink-0 rounded-full border border-border bg-bg object-cover"
+													src={`/avatars/${person.username}.webp`}
+													width="28"
+													height="28"
+													loading="lazy"
+													decoding="async"
+													alt=""
+												/>
+											) : (
+												<span
+													class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border text-[0.62rem] font-bold text-[hsl(var(--hue)_55%_80%)] bg-[hsl(var(--hue)_32%_24%)] border-[hsl(var(--hue)_28%_34%)]"
+													aria-hidden="true"
+													style={`--hue:${hueFor(person.name)}`}
+												>
+													{initials(person.name)}
+												</span>
+											)}
+											<a
+												class="font-semibold text-text no-underline transition-colors duration-[120ms] hover:text-orange focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"
+												href={personPageUrl(person.username)}
+											>
+												{person.name}
+											</a>
+											{entry.rewatch && (
+												<span class="text-[0.8rem] text-text-faint">
+													<span aria-hidden="true">&#8635;</span>
+													<span class="sr-only">Rewatch</span>
+												</span>
+											)}
+											{entry.liked && (
+												<span class="text-[0.8rem] text-orange">
+													<span aria-hidden="true">&#9829;</span>
+													<span class="sr-only">Liked</span>
+												</span>
+											)}
+										</span>
+									</td>
+									<td class="py-2 pr-3 whitespace-nowrap">
+										{entry.rating != null ? (
+											<span
+												class="text-green"
+												role="img"
+												aria-label={`Rated ${entry.rating} out of 5`}
+											>
+												{stars(entry.rating)}
+											</span>
+										) : (
+											/* No rating and no date read as empty cells. */
+											<span class="text-text-faint" aria-hidden="true">
+												&mdash;
+											</span>
+										)}
+									</td>
+									<td class="py-2 whitespace-nowrap text-text-faint">
+										{entry.watchedDate ? (
+											<time datetime={entry.watchedDate} title={entry.watchedDate}>
+												{timeAgo(entry.watchedDate)}
+											</time>
+										) : (
+											<span aria-hidden="true">&mdash;</span>
+										)}
+									</td>
+								</tr>
+							))
+						}
+					</tbody>
+				</table>
+			</div>
+		</section>
+	</main>
+
+	<Footer />
+</Base>

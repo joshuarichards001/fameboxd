@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-A static site: a directory of famous people (actors, directors,
+A static site: a directory of celebrities (actors, directors,
 musicians, creators) with verified public Letterboxd accounts. Each card shows
 the person's most recent watch and links straight to their Letterboxd profile.
 Built with Astro 7 (no UI framework runtime) and Tailwind CSS v4. Everything
@@ -52,6 +52,20 @@ account is real, and nothing is logged on it" is the answer their name is
 searched with. Build the path with `personPageUrl(username)` from
 `src/functions/activity.ts` rather than hardcoding it. `/people/` itself has no
 index — the homepage already lists everyone.
+
+**Film pages** are `src/pages/films/[slug].astro` — `/films/<slug>/`, one for
+**every** film in `activity.json`, no threshold, including the ~2,500 a single
+person logged. `src/functions/films.ts` inverts `activity.json` into the
+slug→watchers index everything else reads (`filmIndex`, `rankedFilms`,
+`filmPageUrl`); there is no "has a page" predicate to ask, so link with
+`filmPageUrl(slug)` unconditionally. A watcher is a **person, not an entry** —
+repeat logs collapse to that person's most recent one, and the count in the
+`<h1>` must equal the rows in the table. Most films have one watcher, so copy
+here needs the singular (`celebrityNoun`), and an "average" of one rating is
+phrased as that person's rating. The average is over the watchers on the page
+and must never be presented as Letterboxd's own. `/films/` lists all of them,
+which is why its per-row styling is hoisted onto the `<table>` — repeating the
+classes on 3,499 rows cost a megabyte of HTML.
 
 A card is a **stretched link**: the person's name is an `<a>` to their page
 whose `after:inset-0` overlay covers the card, and the `@username` handle sits

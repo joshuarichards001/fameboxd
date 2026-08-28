@@ -5,12 +5,12 @@ import people from "../../data/people.json";
 import {
 	diaryStats,
 	entriesFor,
-	filmEntryUrl,
 	filmNoun,
 	personDescription,
 	type DiaryEntry,
 } from "../../functions/activity";
 import { hueFor, initials, loadAvatarSet } from "../../functions/avatars";
+import { filmPageUrl } from "../../functions/films";
 import { profileUrl, stars, timeAgo, type Person } from "../../functions/people";
 import { tagSlug } from "../../functions/tags";
 import Base from "../../layouts/Base.astro";
@@ -190,9 +190,7 @@ const description = personDescription(p.name, p.username, entries);
 										<td class="py-2 pr-3">
 											<a
 												class="font-semibold text-text no-underline transition-colors duration-[120ms] hover:text-orange focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"
-												href={filmEntryUrl(p.username, e.slug)}
-												target="_blank"
-												rel="noopener"
+												href={filmPageUrl(e.slug)}
 											>
 												{e.title}
 											</a>
