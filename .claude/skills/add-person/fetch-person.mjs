@@ -16,11 +16,11 @@
 //   node fetch-person.mjs <username> --avatar-out <path> --avatar-url <url>
 //
 // **The profile page is Cloudflare-blocked (403) to plain HTTP clients** — no
-// user-agent or header combination gets through, and no other profile subpage
-// carries the owner's avatar or bio. So identity signals and the avatar URL
-// have to come from a real browser; the skill instructions cover that, and
-// `--avatar-url` feeds the og:image found there back into the conversion
-// pipeline below. RSS and the followers page are unaffected.
+// user-agent or header combination gets through, and in a real browser it now
+// serves a CAPTCHA rather than the page. The avatar no longer needs it: the
+// followers page carries the owner's own avatar in its header (see
+// avatarFromFollowersPage), so this runs unattended. Only the bio still lives
+// solely on the profile. RSS and the followers page are unaffected.
 //
 // Prints a single JSON object on stdout. The lastWatched parsing mirrors
 // scripts/fetch-activity.mjs, and the followers parsing scripts/
@@ -99,10 +99,34 @@ function parseIdentity(html) {
 	};
 }
 
-// Pick the profile owner's avatar from the og:image meta tag — the only
-// avatar on the page guaranteed to be the owner's (inline <img> avatars can
-// belong to other members, and Gravatar/Twitter-sourced avatars don't live
-// under /resized/avatar/upload/ at all). The static default on s.ltrbxd.com
+// The followers page header links the owner's own avatar, so it arrives on the
+// same request as the follower count. Anchor the match on their own href:
+// every other <img> on that page belongs to a member of the list (picking one
+// of those was the bug fixed on 2026-07-22). The header serves it at 24px, but
+// the size is just a path segment, so rewriting it asks the resizer for the
+// same 1000px original og:image used to hand us — and the rewrite covers both
+// uploaded avatars and Twitter-mirrored ones, whose paths differ. Gravatar and
+// the static default are handled as they are below.
+function avatarFromFollowersPage(html, username) {
+	const src = html.match(
+		new RegExp(
+			`<a class="avatar[^"]*" href="/${username}/"[^>]*>\\s*<img src="([^"]+)"`,
+		),
+	)?.[1];
+	if (!src) return null;
+	const url = decode(src);
+	if (url.includes("s.ltrbxd.com/static/")) return null;
+	if (url.includes("gravatar.com/")) {
+		return url
+			.replace(/size=\d+/, "size=1000")
+			.replace(/default=[^&]*/, "default=404");
+	}
+	return url.replace(/-0-\d+-0-\d+-crop/, "-0-1000-0-1000-crop");
+}
+
+// Fallback for the rare case the profile answers: og:image is the only avatar
+// on that page guaranteed to be the owner's (inline <img> avatars can belong
+// to other members). The static default on s.ltrbxd.com
 // means no custom photo — resolve to null so the site renders its generated
 // monogram. Gravatar og:images embed a default= fallback that would silently
 // serve that same static png; swap it for 404 so a missing Gravatar fails the
@@ -154,25 +178,27 @@ async function main() {
 		return i !== -1 ? rest[i + 1] : null;
 	};
 	const avatarOut = flag("--avatar-out");
-	// og:image read from the profile in a real browser (see the header note).
+	// Explicit override; the followers page finds the avatar on its own now.
 	const avatarUrlOverride = flag("--avatar-url");
 
 	const report = { username };
+	let avatarUrl = avatarUrlOverride;
 
-	// Followers page: the count, and the liveness check — it 404s for a handle
-	// that doesn't exist, which the blocked profile page can no longer tell us.
+	// Followers page: the count, the avatar, and the liveness check — it 404s
+	// for a handle that doesn't exist, which the blocked profile can't tell us.
 	try {
 		const html = await get(`https://letterboxd.com/${username}/followers/`);
 		report.accountLive = true;
 		report.followers = parseFollowers(html, username);
+		avatarUrl ??= avatarFromFollowersPage(html, username);
 	} catch (err) {
 		report.accountLive = !/^404 /.test(err.message);
 		report.followersError = err.message;
 	}
 
-	// Profile: identity signals + avatar. Expected to 403 — see the header
-	// note; the report says so plainly rather than looking like an outage.
-	let avatarUrl = avatarUrlOverride;
+	// Profile: the bio, and the avatar if the followers page somehow had none.
+	// Expected to 403 — the report says so plainly rather than looking like an
+	// outage.
 	try {
 		const html = await get(`https://letterboxd.com/${username}/`);
 		report.profileStatus = 200;
@@ -182,8 +208,8 @@ async function main() {
 		report.profileError = err.message;
 		if (/^403 /.test(err.message)) {
 			report.profileNote =
-				"Profile is Cloudflare-blocked to plain HTTP clients (expected). " +
-				"Read og:image / the bio in a browser and pass --avatar-url.";
+				"Profile is Cloudflare-blocked to plain HTTP clients (expected); " +
+				"the avatar came from the followers page. Only the bio is lost.";
 		}
 	}
 
