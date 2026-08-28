@@ -167,6 +167,21 @@
     "followers": 124
   },
   {
+    "name": "Anurag Kashyap",
+    "username": "anuragkashyap",
+    "description": "Indian director of Gangs of Wasseypur and Dev.D, and a mainstay of independent Hindi cinema.",
+    "tags": [
+      "director",
+      "writer"
+    ],
+    "lastWatched": {
+      "title": "Blue Heron",
+      "date": "2026-08-23",
+      "rating": null
+    },
+    "followers": 52106
+  },
+  {
     "name": "Ben York Jones",
     "username": "benyorkjones",
     "description": "Screenwriter behind Like Crazy and co-creator of Netflix's Everything Sucks!.",
@@ -416,6 +431,21 @@
       "rating": null
     },
     "followers": 69402
+  },
+  {
+    "name": "Courtney Miller",
+    "username": "cococomill",
+    "description": "Smosh cast member and sketch comedian.",
+    "tags": [
+      "youtuber",
+      "comedian"
+    ],
+    "lastWatched": {
+      "title": "Spider-Man: Brand New Day",
+      "date": "2026-08-17",
+      "rating": 5
+    },
+    "followers": 4423
   },
   {
     "name": "Dacre Montgomery",
@@ -755,6 +785,21 @@
     "followers": 18427
   },
   {
+    "name": "Greg Sestero",
+    "username": "ohhigreg",
+    "description": "Actor who played Mark in The Room and wrote the memoir The Disaster Artist.",
+    "tags": [
+      "actor",
+      "writer"
+    ],
+    "lastWatched": {
+      "title": "The Substance",
+      "date": "2024-10-14",
+      "rating": 5
+    },
+    "followers": 1888
+  },
+  {
     "name": "Griffin Newman",
     "username": "grifflightning",
     "description": "Actor in The Tick and co-host of the Blank Check podcast.",
@@ -872,6 +917,20 @@
     "followers": 41294
   },
   {
+    "name": "J.A. Bayona",
+    "username": "jabayona",
+    "description": "Spanish director of The Impossible, A Monster Calls and Society of the Snow.",
+    "tags": [
+      "director"
+    ],
+    "lastWatched": {
+      "title": "The Beloved",
+      "date": "2026-08-26",
+      "rating": null
+    },
+    "followers": 3884
+  },
+  {
     "name": "Jack Dylan Grazer",
     "username": "calltoldtotal",
     "description": "Actor known for It and Shazam!.",
@@ -926,6 +985,21 @@
       "rating": null
     },
     "followers": 14788
+  },
+  {
+    "name": "Jamelle Bouie",
+    "username": "jbouie",
+    "description": "New York Times opinion columnist who co-hosts the film podcast Unclear and Present Danger.",
+    "tags": [
+      "writer",
+      "podcaster"
+    ],
+    "lastWatched": {
+      "title": "The X-Files",
+      "date": "2026-08-25",
+      "rating": 2.5
+    },
+    "followers": 35422
   },
   {
     "name": "James A. Janisse",
@@ -1387,6 +1461,21 @@
     "followers": 1653
   },
   {
+    "name": "Louise Weard",
+    "username": "weardjupiter",
+    "description": "Canadian filmmaker behind the Castration Movie series.",
+    "tags": [
+      "director",
+      "writer"
+    ],
+    "lastWatched": {
+      "title": "Anything That Moves",
+      "date": "2026-08-27",
+      "rating": null
+    },
+    "followers": 8980
+  },
+  {
     "name": "Lukas Gage",
     "username": "justinguarini",
     "description": "Actor known for The White Lotus and Euphoria, who uses the handle 'justinguarini.'",
@@ -1566,6 +1655,22 @@
     "followers": 151570
   },
   {
+    "name": "Mike Mitchell",
+    "username": "mynamesmitch",
+    "description": "Comedian and actor who co-hosts the Doughboys podcast.",
+    "tags": [
+      "comedian",
+      "actor",
+      "podcaster"
+    ],
+    "lastWatched": {
+      "title": "In & Out",
+      "date": "2026-08-14",
+      "rating": 5
+    },
+    "followers": 8677
+  },
+  {
     "name": "Mike's Mic",
     "username": "mikesmic",
     "description": "YouTuber known for unhinged deep-dive recaps of TV shows.",
@@ -1622,6 +1727,36 @@
       "rating": null
     },
     "followers": 25530
+  },
+  {
+    "name": "Mitra Jouhari",
+    "username": "fashionista69",
+    "description": "Comedian and writer who co-created and starred in Three Busy Debras.",
+    "tags": [
+      "comedian",
+      "writer",
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "One Night Only",
+      "date": "2026-08-16",
+      "rating": null
+    },
+    "followers": 7090
+  },
+  {
+    "name": "mxmtoon",
+    "username": "maiapog",
+    "description": "Bedroom-pop singer-songwriter known for prom dress and the album rising.",
+    "tags": [
+      "musician"
+    ],
+    "lastWatched": {
+      "title": "Raising Arizona",
+      "date": "2026-08-24",
+      "rating": 4.5
+    },
+    "followers": 11618
   },
   {
     "name": "Nando v Movies",
@@ -1723,6 +1858,20 @@
     "followers": 1911
   },
   {
+    "name": "Paco Plaza",
+    "username": "pacoplaza",
+    "description": "Spanish horror director who co-created the REC series and made Verónica.",
+    "tags": [
+      "director"
+    ],
+    "lastWatched": {
+      "title": "Insidious: Out of the Further",
+      "date": "2026-08-23",
+      "rating": null
+    },
+    "followers": 1313
+  },
+  {
     "name": "Paddington Bear",
     "username": "paddingtonbear",
     "description": "The marmalade-loving bear from darkest Peru, star of the Paddington films.",
@@ -1745,8 +1894,8 @@
       "critic"
     ],
     "lastWatched": {
-      "title": "Nine to Five",
-      "date": "2026-08-26",
+      "title": "Deep Cover",
+      "date": "2026-08-27",
       "rating": null
     },
     "followers": 87703
@@ -2060,6 +2209,22 @@
     "followers": 20771
   },
   {
+    "name": "Shayne Topp",
+    "username": "movieshayne",
+    "description": "Smosh cast member, previously a regular on Disney Channel's So Random!",
+    "tags": [
+      "youtuber",
+      "comedian",
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "Dune: Part Two",
+      "date": "2024-03-10",
+      "rating": 4.5
+    },
+    "followers": 4925
+  },
+  {
     "name": "Sophy Romvari",
     "username": "sophy",
     "description": "Canadian filmmaker behind the short Still Processing and Blue Heron, her Locarno-winning debut feature.",
@@ -2072,6 +2237,21 @@
       "rating": null
     },
     "followers": 3341
+  },
+  {
+    "name": "soupytime",
+    "username": "soupgeorg",
+    "description": "Georgie, a comedian who posts short-form videos as soupytime.",
+    "tags": [
+      "comedian",
+      "youtuber"
+    ],
+    "lastWatched": {
+      "title": "Backrooms",
+      "date": "2026-08-10",
+      "rating": 3.5
+    },
+    "followers": 6837
   },
   {
     "name": "Spencer Agnew",
@@ -2231,6 +2411,21 @@
       "rating": null
     },
     "followers": 5572
+  },
+  {
+    "name": "Vera Drew",
+    "username": "veradrew22",
+    "description": "Writer-director and editor behind The People's Joker.",
+    "tags": [
+      "director",
+      "writer"
+    ],
+    "lastWatched": {
+      "title": "Nine to Five",
+      "date": "2026-08-25",
+      "rating": 5
+    },
+    "followers": 17525
   },
   {
     "name": "Will Menaker",
