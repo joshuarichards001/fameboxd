@@ -1,6 +1,8 @@
 ---
-import { personPageUrl } from "../functions/activity";
+import activity from "../data/activity.json";
+import { entriesFor, personPageUrl } from "../functions/activity";
 import { hueFor, initials } from "../functions/avatars";
+import { filmPageUrl } from "../functions/films";
 import {
 	compactCount,
 	profileUrl,
@@ -17,6 +19,16 @@ interface Props {
 const { person: p, hasAvatar } = Astro.props;
 const lastWatched = p.lastWatched ?? null;
 const followers = p.followers ?? null;
+// `lastWatched` is the most recently *logged* watch while the diary is ordered
+// by watched date, so the two heads aren't always the same entry — match on
+// title and date to get the slug /films/<slug>/ is built from. A backdated
+// watch pushed past the diary's 200-entry cap has nothing left to match, and
+// then the title renders unlinked rather than pointing at a missing page.
+const lastWatchedSlug = lastWatched
+	? (entriesFor(activity, p.username).find(
+			(e) => e.title === lastWatched.title && e.watchedDate === lastWatched.date,
+		)?.slug ?? null)
+	: null;
 ---
 
 <li
@@ -25,11 +37,11 @@ const followers = p.followers ?? null;
 	data-tags={p.tags.join(" ")}
 	data-followers={p.followers ?? 0}
 >
-	{/* The card lifts on hover, except while the handle below is hovered:
-	    that link goes somewhere else, so the card shouldn't claim the cursor.
-	    .card-handle is a marker for that :has() check, not a style hook. */}
+	{/* The card lifts on hover, except while one of the links below is hovered:
+	    those go somewhere other than the person page, so the card shouldn't claim
+	    the cursor. .card-out marks them for that :has() check, not a style hook. */}
 	<div
-		class="group relative flex w-full flex-col rounded-card border border-border bg-bg-raised px-4 pt-[0.9rem] pb-[0.85rem] transition-[border-color,background] duration-[140ms] not-has-[.card-handle:hover]:hover:border-[color-mix(in_srgb,var(--color-orange)_45%,var(--color-border))] not-has-[.card-handle:hover]:hover:bg-bg-raised-hover focus-within:outline-2 focus-within:outline-offset-[3px] focus-within:outline-blue motion-reduce:transition-none"
+		class="group relative flex w-full flex-col rounded-card border border-border bg-bg-raised px-4 pt-[0.9rem] pb-[0.85rem] transition-[border-color,background] duration-[140ms] not-has-[.card-out:hover]:hover:border-[color-mix(in_srgb,var(--color-orange)_45%,var(--color-border))] not-has-[.card-out:hover]:hover:bg-bg-raised-hover focus-within:outline-2 focus-within:outline-offset-[3px] focus-within:outline-blue motion-reduce:transition-none"
 	>
 		<div class="flex items-center gap-[0.7rem]">
 			{
@@ -110,9 +122,18 @@ const followers = p.followers ?? null;
 				lastWatched && (
 					<span class="flex items-baseline gap-x-1.5 text-[0.8rem] leading-snug">
 							<span class="shrink-0 text-text-faint">Watched</span>
-							<span class="min-w-0 truncate font-semibold text-text-dim">
-								{lastWatched.title}
-							</span>
+							{lastWatchedSlug ? (
+								<a
+									class="card-out relative z-1 min-w-0 truncate font-semibold text-text-dim no-underline hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
+									href={filmPageUrl(lastWatchedSlug)}
+								>
+									{lastWatched.title}
+								</a>
+							) : (
+								<span class="min-w-0 truncate font-semibold text-text-dim">
+									{lastWatched.title}
+								</span>
+							)}
 							{lastWatched.rating != null && (
 								<span
 									class="shrink-0 text-green"
@@ -136,13 +157,15 @@ const followers = p.followers ?? null;
 			    handle would otherwise scroll over. Shrunk to its own text with
 			    self-start, so the underline tracks the link's hit area. */}
 			<a
-				class="card-handle relative z-1 mt-1 self-start rounded-[3px] text-[0.9rem] font-semibold text-orange tabular-nums no-underline hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
+				class="card-out relative z-1 mt-1 self-start rounded-[3px] text-[0.9rem] font-semibold text-orange tabular-nums no-underline hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
 				href={profileUrl(p.username)}
 				target="_blank"
 				rel="noopener"
 				aria-label={`@${p.username} on Letterboxd`}
 			>
-				@{p.username}
+				@{p.username}<span class="ml-0.5 text-[0.75rem]" aria-hidden="true"
+					>&nearr;</span
+				>
 			</a>
 		</span>
 	</div>
