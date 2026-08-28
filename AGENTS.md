@@ -106,8 +106,11 @@ string — `/rss/` and `/followers/` are both allowed by Letterboxd's robots.txt
 The count is scraped from the sub-nav tooltip on
 `letterboxd.com/<username>/followers/` — **the profile page itself is
 Cloudflare-blocked (403)** to plain HTTP clients whatever headers you send, so
-never scrape that; the followers page and RSS are unaffected. Anything only the
-profile carries (the avatar's `og:image`, the bio) needs a real browser.
+never scrape that; the followers page and RSS are unaffected. That page also
+carries the owner's own avatar in its header, which is where the `add-person`
+skill gets it — the profile's `og:image` is no longer needed, and a real
+browser no longer helps (the profile serves a CAPTCHA). The bio is the one
+thing now unreachable.
 
 **Client-side filter/sort** is an inline `<script is:inline>` in
 `Directory.astro`. Each `PersonCard` exposes `data-tags`, `data-name` and

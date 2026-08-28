@@ -11,19 +11,21 @@ add a complete, validated entry to `src/data/people.json` and drop their avatar
 into `public/avatars/`. If either the name or username is missing, ask for it
 before starting.
 
-The helper script `.claude/skills/add-person/fetch-person.mjs` does the
-mechanical fetching (activity, follower count, and avatar conversion). You
-compose the description and pick the tags.
+The helper script `.claude/skills/add-person/fetch-person.mjs` does all the
+mechanical fetching — activity, follower count, and the avatar. You compose the
+description and pick the tags.
 
 ## Steps
 
-### 1. Fetch activity + followers
+### 1. Fetch everything
 
 ```
-node .claude/skills/add-person/fetch-person.mjs <username>
+node .claude/skills/add-person/fetch-person.mjs <username> --avatar-out public/avatars/<username>.webp
 ```
 
-This prints a JSON report — `accountLive`, `followers`, and `lastWatched`.
+This prints a JSON report — `accountLive`, `followers`, `lastWatched`, and
+`hasCustomAvatar` / `avatarSaved`. It needs no browser and no network access
+beyond Letterboxd.
 
 Trust the user's word that the name and username belong to the same person —
 that's the whole point of them giving you both. Don't cross-check the display
@@ -34,37 +36,21 @@ under a nickname/alias). The one thing worth a hard stop is `accountLive` being
 couldn't have verified by eye any better than the fetch just did.
 
 Expect `profileError: "403 …"` in the report. **The profile page is
-Cloudflare-blocked to plain HTTP clients** and no header combination gets
-through, so the script can't see the avatar or bio — that's the next step's
-job, not a failure. Followers and activity are unaffected.
+Cloudflare-blocked to plain HTTP clients**, and in a real browser it now serves
+a CAPTCHA — so the bio is simply unavailable, and the description in step 2 has
+to come from what you know about the person. This is not a failure: followers,
+activity and the avatar all come from unblocked pages.
 
-### 2. Fetch the avatar (needs a real browser)
+The avatar is taken from the followers page, which carries the owner's own
+photo in its header; the script upsizes it and converts it to the site's
+160×160 `.webp`. Conversion needs `cwebp` (`brew install webp`). After it saves,
+view the file to confirm it's a real photo of the right person.
 
-The owner's avatar URL lives only in the profile page's `og:image`, and no
-unblocked subpage carries it. A real browser loads the profile fine, so open
-`https://letterboxd.com/<username>/` in the Browser pane and read:
+`hasCustomAvatar: false` means they've set no photo (`avatarSourceUrl` absent,
+or a Gravatar that 404s) — skip the avatar and the site renders a generated
+initials monogram.
 
-```js
-document.querySelector('meta[property="og:image"]')?.content
-```
-
-- A URL under `a.ltrbxd.com/resized/avatar/…` or `gravatar.com` is their photo.
-  Pass it back to the script, which downloads and converts it to the site's
-  160×160 `.webp`:
-
-  ```
-  node .claude/skills/add-person/fetch-person.mjs <username> --avatar-out public/avatars/<username>.webp --avatar-url "<og:image url>"
-  ```
-
-  Conversion needs `cwebp` (`brew install webp`). After it saves, view the file
-  to confirm it's the right photo.
-- A URL under `s.ltrbxd.com/static/` means **no custom avatar** — skip the
-  avatar entirely; the site renders a generated initials monogram.
-
-While that page is open, its `meta[name="description"]` (film count, favorites,
-bio) is useful raw material for the description below.
-
-### 3. Compose the entry
+### 2. Compose the entry
 
 Write, matching the existing entries in `src/data/people.json`:
 
@@ -75,22 +61,21 @@ Write, matching the existing entries in `src/data/people.json`:
   work, or role — never their Letterboxd activity: no watch/film counts,
   favorites, ratings, "logged", or the word Letterboxd itself (the site is the
   Letterboxd directory; every entry implicitly has an account, so it doesn't
-  need saying). The bio read in step 2 is useful raw material for who they are,
-  but don't lift its Letterboxd-specific details (film counts, favorites lists)
-  into the description. If the handle differs from their name
+  need saying). If the handle differs from their name
   in a notable way, you may note it (see Lukas Gage) — that's about the handle,
   not their Letterboxd usage.
 - **tags** — 1 to 3, drawn **only** from this fixed vocabulary (in
   `src/functions/validate.ts`): `actor`, `director`, `writer`, `youtuber`,
   `critic`, `musician`, `comedian`, `podcaster`, `developer`, `producer`.
-  Anything outside it fails the build; adding a genuinely new category means
-  editing `VOCAB` first.
+  Anything outside it fails the build. So does a tag with no `INTROS` entry in
+  `src/functions/tags.ts`, which is why `producer` is unusable as it stands —
+  a genuinely new category needs both.
 - **lastWatched** — copy the `lastWatched` object from the report verbatim
   (it's already in the right `{ title, date, rating } | null` shape).
 - **followers** — copy the `followers` number from the report. It shows in the
   card's top-right corner and feeds the "Followers" sort.
 
-### 4. Insert into people.json, alphabetically by name
+### 3. Insert into people.json, alphabetically by name
 
 Insert the object into the array keeping it **alphabetical by `name`** (compare
 the full display name; `sortPeople` also enforces this at render, and validation
@@ -107,7 +92,7 @@ rejects duplicate usernames). Shape:
 }
 ```
 
-### 5. Validate with a build
+### 4. Validate with a build
 
 ```
 npm run build
@@ -124,3 +109,7 @@ Fix any error it reports.
   `scripts/fetch-followers.mjs` for `followers`; the daily refresh Action keeps
   both current after you add the person, so it's fine if the values are a
   little stale.
+- It does not touch `src/data/activity.json`, so until the daily Action runs,
+  the new person's `/people/<username>/` page shows the empty-diary state even
+  though they have one. Run `npm run fetch-activity` if the site is being
+  deployed before then — it refreshes everyone, so expect a wide diff.
