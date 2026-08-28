@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-28T12:20:41.908Z",
+  "generatedAt": "2026-08-28T20:49:54.549Z",
   "people": {
     "1jamiebell": [
       {
@@ -12327,6 +12327,16 @@
     ],
     "chrisstuckmann": [
       {
+        "slug": "buddy-2026",
+        "title": "Buddy",
+        "year": 2026,
+        "tmdb": 1514026,
+        "watchedDate": "2026-08-28",
+        "rating": null,
+        "rewatch": false,
+        "liked": true
+      },
+      {
         "slug": "dead-of-winter",
         "title": "Dead of Winter",
         "year": 1987,
@@ -14486,6 +14496,16 @@
       }
     ],
     "connoreatspants": [
+      {
+        "slug": "grand-theft-auto-vi-an-extended-look",
+        "title": "Grand Theft Auto VI: An Extended Look",
+        "year": 2026,
+        "tmdb": 1744462,
+        "watchedDate": "2026-08-27",
+        "rating": null,
+        "rewatch": false,
+        "liked": false
+      },
       {
         "slug": "spider-man-brand-new-day",
         "title": "Spider-Man: Brand New Day",
@@ -21852,6 +21872,16 @@
       }
     ],
     "framesofnick": [
+      {
+        "slug": "grand-theft-auto-vi-an-extended-look",
+        "title": "Grand Theft Auto VI: An Extended Look",
+        "year": 2026,
+        "tmdb": 1744462,
+        "watchedDate": "2026-08-28",
+        "rating": 5,
+        "rewatch": false,
+        "liked": false
+      },
       {
         "slug": "finding-emily",
         "title": "Finding Emily",
@@ -29808,6 +29838,16 @@
       }
     ],
     "jeffrauseo": [
+      {
+        "slug": "minions-monsters-2026",
+        "title": "Minions & Monsters",
+        "year": 2026,
+        "tmdb": 1315772,
+        "watchedDate": "2026-08-26",
+        "rating": 3.5,
+        "rewatch": false,
+        "liked": false
+      },
       {
         "slug": "men-in-black",
         "title": "Men in Black",
@@ -39451,6 +39491,16 @@
     ],
     "lilfilm": [
       {
+        "slug": "idiots-2026",
+        "title": "Idiots",
+        "year": 2026,
+        "tmdb": 445466,
+        "watchedDate": "2026-08-27",
+        "rating": null,
+        "rewatch": false,
+        "liked": false
+      },
+      {
         "slug": "the-children-of-violent-rome",
         "title": "The Children of Violent Rome",
         "year": 1976,
@@ -46333,6 +46383,16 @@
     ],
     "nandovmovies": [
       {
+        "slug": "mutiny-2026",
+        "title": "Mutiny",
+        "year": 2026,
+        "tmdb": 1288445,
+        "watchedDate": "2026-08-28",
+        "rating": 2.5,
+        "rewatch": false,
+        "liked": true
+      },
+      {
         "slug": "the-end-of-oak-street",
         "title": "The End of Oak Street",
         "year": 2026,
@@ -48875,6 +48935,16 @@
     ],
     "patrickhwillems": [
       {
+        "slug": "nine-to-five",
+        "title": "Nine to Five",
+        "year": 1980,
+        "tmdb": 19494,
+        "watchedDate": "2026-08-26",
+        "rating": null,
+        "rewatch": false,
+        "liked": false
+      },
+      {
         "slug": "a-face-in-the-crowd",
         "title": "A Face in the Crowd",
         "year": 1957,
@@ -48892,6 +48962,16 @@
         "watchedDate": "2026-08-22",
         "rating": null,
         "rewatch": true,
+        "liked": true
+      },
+      {
+        "slug": "two-lovers",
+        "title": "Two Lovers",
+        "year": 2008,
+        "tmdb": 10362,
+        "watchedDate": "2026-08-20",
+        "rating": null,
+        "rewatch": false,
         "liked": true
       },
       {
@@ -49343,26 +49423,6 @@
         "rating": null,
         "rewatch": false,
         "liked": true
-      },
-      {
-        "slug": "exit-8",
-        "title": "Exit 8",
-        "year": 2025,
-        "tmdb": 1408208,
-        "watchedDate": "2026-05-25",
-        "rating": null,
-        "rewatch": false,
-        "liked": false
-      },
-      {
-        "slug": "mortal-kombat-ii",
-        "title": "Mortal Kombat II",
-        "year": 2026,
-        "tmdb": 931285,
-        "watchedDate": "2026-05-25",
-        "rating": null,
-        "rewatch": false,
-        "liked": false
       },
       {
         "slug": "peter-pan",
@@ -53818,7 +53878,7 @@
         "year": 1985,
         "tmdb": 294,
         "watchedDate": "2026-08-27",
-        "rating": null,
+        "rating": 3,
         "rewatch": false,
         "liked": false
       },
@@ -57691,6 +57751,16 @@
     ],
     "subtletynuance": [
       {
+        "slug": "niu-lai",
+        "title": "Niu Lai",
+        "year": 2026,
+        "tmdb": 1748007,
+        "watchedDate": "2026-08-28",
+        "rating": 5,
+        "rewatch": false,
+        "liked": true
+      },
+      {
         "slug": "the-hole",
         "title": "The Hole",
         "year": 1998,
@@ -59491,6 +59561,16 @@
     ],
     "thejoelynch": [
       {
+        "slug": "muriels-wedding",
+        "title": "Muriel's Wedding",
+        "year": 1994,
+        "tmdb": 236,
+        "watchedDate": "2026-08-27",
+        "rating": 4,
+        "rewatch": true,
+        "liked": true
+      },
+      {
         "slug": "motor-city",
         "title": "Motor City",
         "year": 2025,
@@ -59977,16 +60057,6 @@
         "tmdb": 16061,
         "watchedDate": "2026-07-10",
         "rating": 3,
-        "rewatch": false,
-        "liked": true
-      },
-      {
-        "slug": "i-spit-on-your-grave",
-        "title": "I Spit on Your Grave",
-        "year": 1978,
-        "tmdb": 25239,
-        "watchedDate": "2026-07-10",
-        "rating": 3.5,
         "rewatch": false,
         "liked": true
       }
