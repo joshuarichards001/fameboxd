@@ -23,6 +23,10 @@ export interface Film {
 	slug: string;
 	title: string;
 	year: number | null;
+	// TMDB's id for the film, for the structured data's sameAs. Consistent
+	// wherever it appears (0 conflicts across 3,499 slugs), so any non-null
+	// entry identifies it; 69 slugs carry none and stay null.
+	tmdb: number | null;
 	watchers: FilmWatcher[];
 	rated: number;
 	average: number | null;
@@ -76,6 +80,7 @@ export function filmIndex(activity: ActivityData): Map<string, Film> {
 			slug,
 			title: newest.entry.title,
 			year: newest.entry.year,
+			tmdb: watchers.map((w) => w.entry.tmdb).find((t) => t != null) ?? null,
 			watchers,
 			rated: ratings.length,
 			average: ratings.length

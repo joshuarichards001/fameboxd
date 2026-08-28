@@ -77,6 +77,17 @@ titles contain `&`), and take no date from the build clock — `lastBuildDate`
 comes off the newest item, so two builds on unchanged data are byte-identical.
 Feed autodiscovery lives in `Base.astro`, so it is on every page.
 
+**Structured data** is JSON-LD in `Base.astro`'s `@graph`: `WebSite` +
+`Organization` on every page, plus a page's optional `schema` prop, whose nodes
+come from `src/functions/schema.ts` (`directorySchema`, `personPageSchema`,
+`filmPageSchema`). Every node carries an absolute `@id` off the page it lives
+on, so one person is one entity across the directory, their own page and every
+film they logged — extend those helpers rather than hand-writing nodes. Film
+pages **must never emit `aggregateRating`**: our average is how a few of the
+163 people here rated a film, not how the film is rated. Google's Rich Results
+Test therefore calls `Movie` ineligible for want of an `image` (a poster) —
+expected, and not a reason to add one.
+
 A card is a **stretched link**: the person's name is an `<a>` to their page
 whose `after:inset-0` overlay covers the card, and the `@username` handle sits
 one layer above that overlay (z-index 1) as the only link out to the profile —

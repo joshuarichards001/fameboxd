@@ -14,6 +14,7 @@ import {
 	type Film,
 } from "../../functions/films";
 import { stars, timeAgo, type Person } from "../../functions/people";
+import { filmPageSchema } from "../../functions/schema";
 import Base from "../../layouts/Base.astro";
 
 // One page per film in the data, no threshold — a film a single celebrity
@@ -61,9 +62,15 @@ const notable = [...rows]
 
 const title = `${count} ${count === 1 ? "Celebrity" : "Celebrities"} Watched ${heading} | Fameboxd`;
 const description = filmDescription(film, notable);
+// Watchers in table order. No aggregateRating — see schema.ts.
+const schema = filmPageSchema({
+	site: new URL("/", Astro.site),
+	film,
+	watchers: rows.map((r) => r.person),
+});
 ---
 
-<Base title={title} description={description}>
+<Base title={title} description={description} schema={schema}>
 	<main class="wrap py-8">
 		<a
 			class="text-[0.9rem] font-semibold text-text-dim no-underline transition-colors duration-[120ms] hover:text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"

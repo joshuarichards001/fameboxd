@@ -12,6 +12,7 @@ import {
 import { hueFor, initials, loadAvatarSet } from "../../functions/avatars";
 import { filmPageUrl } from "../../functions/films";
 import { profileUrl, stars, timeAgo, type Person } from "../../functions/people";
+import { personPageSchema } from "../../functions/schema";
 import { tagSlug } from "../../functions/tags";
 import Base from "../../layouts/Base.astro";
 
@@ -44,9 +45,14 @@ const diaryCaption =
 
 const title = `${p.name} on Letterboxd (@${p.username}) — Fameboxd`;
 const description = personDescription(p.name, p.username, entries);
+const schema = personPageSchema({
+	site: new URL("/", Astro.site),
+	person: p,
+	hasAvatar,
+});
 ---
 
-<Base title={title} description={description}>
+<Base title={title} description={description} schema={schema}>
 	<main class="wrap py-8">
 		<a
 			class="text-[0.9rem] font-semibold text-text-dim no-underline transition-colors duration-[120ms] hover:text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"
