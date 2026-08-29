@@ -1,4 +1,3 @@
-import type { ActivityData } from "./activity";
 import type { Person } from "./people";
 import { hasTagIntro } from "./tags";
 
@@ -66,34 +65,6 @@ export function validatePeople(people: Person[]): void {
 			throw new Error(
 				`Tag "${tag}" is in use but has no intro in tags.ts.`,
 			);
-		}
-	}
-}
-
-// Build-time validation of src/data/activity.json against people.json.
-export function validateActivity(activity: ActivityData, people: Person[]): void {
-	const known = new Set(people.map((p) => p.username));
-	for (const [username, entries] of Object.entries(activity.people)) {
-		if (!known.has(username)) {
-			throw new Error(`activity.json has entries for an unknown username: ${username}`);
-		}
-		for (const e of entries) {
-			if (typeof e.slug !== "string" || !/^[a-z0-9-]+$/.test(e.slug)) {
-				throw new Error(`Entry for "${username}" has an invalid film slug: ${e.slug}`);
-			}
-			if (typeof e.title !== "string" || e.title.trim() === "") {
-				throw new Error(`Entry "${e.slug}" for "${username}" is missing a title.`);
-			}
-			if (e.watchedDate != null && !/^\d{4}-\d{2}-\d{2}$/.test(e.watchedDate)) {
-				throw new Error(
-					`Entry "${e.slug}" for "${username}" has an invalid watchedDate: ${e.watchedDate}`,
-				);
-			}
-			if (e.rating != null && (typeof e.rating !== "number" || e.rating < 0.5 || e.rating > 5)) {
-				throw new Error(
-					`Entry "${e.slug}" for "${username}" has an invalid rating: ${e.rating}`,
-				);
-			}
 		}
 	}
 }

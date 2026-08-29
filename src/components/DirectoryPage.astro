@@ -1,10 +1,9 @@
 ---
-import activity from "../data/activity.json";
 import people from "../data/people.json";
 import { loadAvatarSet } from "../functions/avatars";
 import { sortByRecentActivity, sortPeople, tagCounts, tagsByFrequency } from "../functions/people";
 import { tagIntro, tagLabel, tagPageTitle } from "../functions/tags";
-import { validateActivity, validatePeople } from "../functions/validate";
+import { validatePeople } from "../functions/validate";
 import Base from "../layouts/Base.astro";
 import Directory from "./Directory.astro";
 import Footer from "./Footer.astro";
@@ -18,8 +17,6 @@ interface Props {
 const { activeTag = null } = Astro.props;
 
 validatePeople(people);
-// Nothing here renders the diary yet; this is the build-time gate on it.
-validateActivity(activity, people);
 
 const sorted = sortPeople(people);
 const allTags = tagsByFrequency(sorted);
