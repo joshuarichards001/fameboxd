@@ -3,11 +3,19 @@
 // lines and the build stays dependency-free.
 
 import type { APIRoute } from "astro";
-import activity from "../data/activity.json";
 import people from "../data/people.json";
-import { filmPageUrl, filmTitle } from "../functions/films";
+import { activity, personPageUrl } from "../functions/activity";
+import { filmPageUrl, filmTitle, hasFilmPage } from "../functions/films";
 import { stars, type Person } from "../functions/people";
 import { recentWatches, type RecentWatch } from "../functions/recent";
+
+// Where an item points. A film over the page threshold has its own page —
+// the cross-section is the interesting destination — and everything else goes
+// to the person whose diary the watch came from, so no item links nowhere.
+const itemLink = (watch: RecentWatch) =>
+	hasFilmPage(watch.entry.slug)
+		? filmPageUrl(watch.entry.slug)
+		: personPageUrl(watch.person.username);
 
 const ENTITIES: Record<string, string> = {
 	"&": "&amp;",
@@ -69,7 +77,7 @@ ${items
 	.map(
 		(watch) => `		<item>
 			<title>${xml(itemTitle(watch))}</title>
-			<link>${xml(url(filmPageUrl(watch.entry.slug)))}</link>
+			<link>${xml(url(itemLink(watch)))}</link>
 			<description>${xml(itemDescription(watch))}</description>
 			<pubDate>${rfc822(watch.entry.watchedDate)}</pubDate>
 			<guid isPermaLink="false">${xml(`fameboxd:${watch.person.username}:${watch.entry.slug}:${watch.entry.watchedDate}`)}</guid>

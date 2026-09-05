@@ -5,11 +5,15 @@
 // (validateActivity enforces that) and every person has a page, so a watcher
 // never needs gating beyond this.
 //
-// Every film in the data gets a page, down to the ~2,500 that exactly one
-// person logged: there is no threshold and no predicate to ask, the same call
-// the maintainer made for person pages.
+// A film earns a page once FILM_PAGE_MIN_WATCHERS of them logged it. The
+// cross-section is the whole point, and one celebrity watching something is
+// not one: at a threshold of 1 the site was 3,499 film pages of which 2,677
+// held a single row, drowning the ~500 that actually answer the query in near
+// duplicates of each other. Below the threshold no page is built and nothing
+// links to a film page, so no URL is ever published and later withdrawn —
+// ask hasFilmPage before linking.
 
-import type { ActivityData, DiaryEntry } from "./activity";
+import { activity, type ActivityData, type DiaryEntry } from "./activity";
 
 export interface FilmWatcher {
 	username: string;
@@ -24,13 +28,15 @@ export interface Film {
 	title: string;
 	year: number | null;
 	// TMDB's id for the film, for the structured data's sameAs. Consistent
-	// wherever it appears (0 conflicts across 3,499 slugs), so any non-null
-	// entry identifies it; 69 slugs carry none and stay null.
+	// wherever it appears (0 conflicts across all 3,740 slugs), so any non-null
+	// entry identifies it; a handful carry none and stay null.
 	tmdb: number | null;
 	watchers: FilmWatcher[];
 	rated: number;
 	average: number | null;
 }
+
+export const FILM_PAGE_MIN_WATCHERS = 3;
 
 export const filmPageUrl = (slug: string) => `/films/${slug}/`;
 
@@ -69,7 +75,7 @@ export function filmIndex(activity: ActivityData): Map<string, Film> {
 	for (const [slug, watchers] of byFilm) {
 		watchers.sort(compareWatchers);
 		// Title and year are consistent across the dataset (0 conflicts across
-		// 3,499 slugs), so taking the newest entry's is a tie-break, not a merge.
+		// all slugs), so taking the newest entry's is a tie-break, not a merge.
 		const newest = watchers.reduce((a, b) =>
 			watchedDate(b.entry) > watchedDate(a.entry) ? b : a,
 		);
@@ -91,8 +97,8 @@ export function filmIndex(activity: ActivityData): Map<string, Film> {
 	return index;
 }
 
-// Every film, most-watched first — the order /films/ ranks them in, and the
-// list every film page is generated from.
+// Every film in the data, most-watched first — including the ones with too few
+// watchers to get a page, because person pages still list their titles.
 export function rankedFilms(index: Map<string, Film>): Film[] {
 	return [...index.values()].sort(
 		(a, b) =>
@@ -100,8 +106,26 @@ export function rankedFilms(index: Map<string, Film>): Film[] {
 	);
 }
 
-// "celebrity" / "celebrities". Most films have exactly one watcher, so the
-// singular is the common case, not an edge case.
+// Inverted once for the whole build. Every page that links a film consults it,
+// and re-inverting 7,000 entries per person card is the one place where doing
+// this lazily would show up in build time.
+export const films: Map<string, Film> = filmIndex(activity);
+
+// Does /films/<slug>/ exist? The only question worth asking before linking one.
+export const hasFilmPage = (slug: string): boolean =>
+	(films.get(slug)?.watchers.length ?? 0) >= FILM_PAGE_MIN_WATCHERS;
+
+// The films that get a page, most-watched first — what /films/ lists and what
+// /films/<slug>/ is generated from.
+export function filmPages(index: Map<string, Film> = films): Film[] {
+	return rankedFilms(index).filter(
+		(f) => f.watchers.length >= FILM_PAGE_MIN_WATCHERS,
+	);
+}
+
+// "celebrity" / "celebrities". Plural everywhere a film page uses it now that
+// three watchers are the minimum, but the diary rows below the threshold still
+// reach it with one.
 export const celebrityNoun = (n: number) => (n === 1 ? "celebrity" : "celebrities");
 
 // "Anne Hathaway, Ayo Edebiri and Barry Jenkins".

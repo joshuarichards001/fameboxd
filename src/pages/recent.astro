@@ -1,10 +1,9 @@
 ---
 import Footer from "../components/Footer.astro";
-import activity from "../data/activity.json";
 import people from "../data/people.json";
-import { personPageUrl } from "../functions/activity";
+import { activity, personPageUrl } from "../functions/activity";
 import { hueFor, initials, loadAvatarSet } from "../functions/avatars";
-import { filmPageUrl } from "../functions/films";
+import { filmPageUrl, hasFilmPage } from "../functions/films";
 import { stars, timeAgo, type Person } from "../functions/people";
 import { recentWatches } from "../functions/recent";
 import Base from "../layouts/Base.astro";
@@ -109,7 +108,13 @@ const description = line(chosen);
 									</span>
 								</th>
 								<td>
-									<a href={filmPageUrl(entry.slug)}>{entry.title}</a>
+									{/* Films under the page threshold have no URL to point at,
+									    so the title renders as plain text rather than a link. */}
+									{hasFilmPage(entry.slug) ? (
+										<a href={filmPageUrl(entry.slug)}>{entry.title}</a>
+									) : (
+										<span class="font-semibold text-text">{entry.title}</span>
+									)}
 									{entry.year != null && (
 										<span class="ml-1.5 text-text-faint tabular-nums">
 											{entry.year}

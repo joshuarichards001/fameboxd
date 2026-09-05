@@ -1,30 +1,28 @@
 ---
 import Footer from "../../components/Footer.astro";
-import activity from "../../data/activity.json";
 import people from "../../data/people.json";
 import { personPageUrl } from "../../functions/activity";
 import { hueFor, initials, loadAvatarSet } from "../../functions/avatars";
 import {
 	celebrityNoun,
 	filmDescription,
-	filmIndex,
+	filmPages,
 	filmTitle,
 	letterboxdFilmUrl,
-	rankedFilms,
 	type Film,
 } from "../../functions/films";
 import { stars, timeAgo, type Person } from "../../functions/people";
 import { filmPageSchema } from "../../functions/schema";
 import Base from "../../layouts/Base.astro";
 
-// One page per film in the data, no threshold — a film a single celebrity
-// logged still answers "did anyone famous watch this", which is the question
-// the slug gets searched with.
+// One page per film that FILM_PAGE_MIN_WATCHERS celebrities logged. Below that
+// the page is a single row restating one diary line, which the person's own
+// page already carries — see the threshold note in films.ts.
 export function getStaticPaths() {
 	const byUsername = new Map((people as Person[]).map((p) => [p.username, p]));
 	const avatars = loadAvatarSet();
 
-	return rankedFilms(filmIndex(activity)).map((film) => ({
+	return filmPages().map((film) => ({
 		params: { slug: film.slug },
 		props: {
 			film,

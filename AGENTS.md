@@ -53,19 +53,20 @@ searched with. Build the path with `personPageUrl(username)` from
 `src/functions/activity.ts` rather than hardcoding it. `/people/` itself has no
 index — the homepage already lists everyone.
 
-**Film pages** are `src/pages/films/[slug].astro` — `/films/<slug>/`, one for
-**every** film in `activity.json`, no threshold, including the ~2,500 a single
-person logged. `src/functions/films.ts` inverts `activity.json` into the
-slug→watchers index everything else reads (`filmIndex`, `rankedFilms`,
-`filmPageUrl`); there is no "has a page" predicate to ask, so link with
-`filmPageUrl(slug)` unconditionally. A watcher is a **person, not an entry** —
-repeat logs collapse to that person's most recent one, and the count in the
-`<h1>` must equal the rows in the table. Most films have one watcher, so copy
-here needs the singular (`celebrityNoun`), and an "average" of one rating is
-phrased as that person's rating. The average is over the watchers on the page
-and must never be presented as Letterboxd's own. `/films/` lists all of them,
-which is why its per-row styling is hoisted onto the `<table>` — repeating the
-classes on 3,499 rows cost a megabyte of HTML.
+**Film pages** are `src/pages/films/[slug].astro` — `/films/<slug>/`, one per
+film that **`FILM_PAGE_MIN_WATCHERS` (3) or more** people logged; the other
+~3,250 get no page, because a single row restating one diary line is already on
+that person's page. `src/functions/films.ts` inverts `activity.json` into the
+slug→watchers index everything else reads (`films`, the build's one inversion;
+`filmPages` for the ones with a page; `filmPageUrl`). **Ask `hasFilmPage(slug)`
+before linking a film** — below the threshold the title renders as plain text,
+so no URL is ever published and later withdrawn. A watcher is a **person, not
+an entry** — repeat logs collapse to that person's most recent one, and the
+count in the `<h1>` must equal the rows in the table. The average is over the
+watchers on the page and must never be presented as Letterboxd's own. `/films/`
+lists every page, which is why its per-row styling is hoisted onto the
+`<table>` — repeating the classes on every row cost a megabyte of HTML back
+when every film had one.
 
 **`/recent/` and `/feed.xml`** (`src/pages/recent.astro`,
 `src/pages/feed.xml.ts`) both render `recentWatches(activity, people, limit)`
@@ -88,12 +89,15 @@ pages **must never emit `aggregateRating`**: our average is how a few of the
 Test therefore calls `Movie` ineligible for want of an `image` (a poster) —
 expected, and not a reason to add one.
 
-A card is a **stretched link**: the person's name is an `<a>` to their page
-whose `after:inset-0` overlay covers the card, and the `@username` handle sits
-one layer above that overlay (z-index 1) as the only link out to the profile —
-keep it under the sticky
-filter bar's 5, or handles scroll over the header. HTML forbids nesting `<a>`,
-so anything else clickable inside a card has to join that pattern, not wrap it.
+A card is a **stretched link to the Letterboxd profile** — pressing a card
+leaves the site, which is what a directory card is for. The person's name is
+that `<a>`, its `after:inset-0` overlay covers the card, and the `@username`
+handle is plain text because the card already goes there. The card's internal
+exits — the diary link (`N films →`, to the person page) and the last-watched
+film title — sit one layer above that overlay (z-index 1, `.card-out`); keep
+them under the sticky filter bar's 5, or they scroll over the header. HTML
+forbids nesting `<a>`, so anything else clickable inside a card has to join
+that pattern, not wrap it.
 
 **Data is the source of truth.** `src/data/people.json` is an array of
 `{ name, username, description, tags, lastWatched }` (see the `Person`
@@ -131,13 +135,18 @@ mark every URL changed on every build. Once that Action commits, it runs
 derives the same URL set the sitemap lists from `people.json`. Ownership is
 proved by `public/<key>.txt`, whose filename must match `KEY` in the script.
 
-**The full diary** is `src/data/activity.json` —
-`{ generatedAt, people: { <username>: DiaryEntry[] } }`, written by the same
-fetch script from the same requests and committed alongside `people.json` (the
-Action stages both). The Letterboxd film slug (`the-odyssey-2026`) is the join
-key between a person and a film; the types and `filmEntryUrl` live in
-`src/functions/activity.ts`, and `validateActivity` gates the file at build
-time. The feed only returns the ~50 most recently logged entries, so each run
+**The full diary** is `src/data/activity.json`, written by the same fetch
+script from the same requests and committed alongside `people.json` (the Action
+stages both). It is stored **normalized**: `{ generatedAt, films, people }`,
+where `films` holds each film's title/year/tmdb once and `people` holds entries
+of `{s,d,r,w?,l?}` written **one per line**. Never hand-edit or
+`JSON.stringify` it — `packActivity` in the fetch script owns the format, and
+both properties are load-bearing (63% smaller than the flat form, and a new
+watch is a one-line commit diff). Import the hydrated **`activity`** from
+`src/functions/activity.ts`, never the JSON: `loadActivity` rehydrates the flat
+`DiaryEntry` everything downstream reads, once per build. The Letterboxd film
+slug (`the-odyssey-2026`) is the join key between a person and a film, and
+`validateActivity` gates the file at build time. The feed only returns the ~50 most recently logged entries, so each run
 merges rather than overwrites: fresh entries replace everything inside the
 feed's watched-date range (so deletions propagate) and older entries are kept,
 capped at 200 per person. Keys stay alphabetical and entries newest-first, or

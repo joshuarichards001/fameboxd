@@ -8,6 +8,11 @@
 // The feed returns the ~50 most recently logged entries, so activity.json is
 // merged rather than overwritten: entries older than the feed's window are
 // kept, entries inside it are replaced wholesale (so deletions propagate).
+//
+// activity.json is written normalized — film titles held once in `films`,
+// entries one per line — see ActivityFile in src/functions/activity.ts. Merging
+// happens on the flat entries, so this script hydrates on read and packs on
+// write; nothing in between needs to know the stored shape.
 
 import { readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
@@ -33,6 +38,56 @@ const decode = (s) =>
 		.replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(Number(n)));
 
 const serialize = (data) => JSON.stringify(data, null, "  ") + "\n";
+
+// Flat entries -> the stored shape. Film metadata is deduplicated into `films`;
+// entries keep one line each, so a new watch stays a one-line commit diff.
+function packActivity(generatedAt, byUsername) {
+	const films = {};
+	const people = {};
+	for (const username of Object.keys(byUsername).sort()) {
+		people[username] = byUsername[username].map((e) => {
+			const seen = films[e.slug];
+			if (!seen) films[e.slug] = [e.title, e.year ?? null, e.tmdb ?? null];
+			// An entry that predates tmdb ids in the feed shouldn't blank one we
+			// already have, so only fill the gap.
+			else if (seen[2] == null && e.tmdb != null) seen[2] = e.tmdb;
+			const packed = { s: e.slug, d: e.watchedDate ?? null, r: e.rating ?? null };
+			if (e.rewatch) packed.w = 1;
+			if (e.liked) packed.l = 1;
+			return packed;
+		});
+	}
+	const j = JSON.stringify;
+	const filmLines = Object.keys(films)
+		.sort()
+		.map((slug) => `    ${j(slug)}: ${j(films[slug])}`);
+	const peopleLines = Object.entries(people).map(
+		([username, entries]) =>
+			`    ${j(username)}: [\n${entries.map((e) => `      ${j(e)}`).join(",\n")}\n    ]`,
+	);
+	return `{\n  ${j("generatedAt")}: ${j(generatedAt)},\n  ${j("films")}: {\n${filmLines.join(",\n")}\n  },\n  ${j("people")}: {\n${peopleLines.join(",\n")}\n  }\n}\n`;
+}
+
+// The stored shape -> flat entries, mirroring loadActivity in activity.ts.
+function unpackActivity(file) {
+	const out = {};
+	for (const [username, entries] of Object.entries(file?.people ?? {})) {
+		out[username] = entries.map((e) => {
+			const [title, year, tmdb] = file.films[e.s] ?? [e.s, null, null];
+			return {
+				slug: e.s,
+				title,
+				year,
+				tmdb,
+				watchedDate: e.d ?? null,
+				rating: e.r ?? null,
+				rewatch: e.w === 1,
+				liked: e.l === 1,
+			};
+		});
+	}
+	return out;
+}
 
 async function get(url) {
 	const res = await fetch(url, { headers: { "user-agent": UA } });
@@ -90,7 +145,7 @@ async function main() {
 	const people = JSON.parse(before);
 	const beforeActivity = await readFile(ACTIVITY_PATH, "utf8").catch(() => null);
 	const prevActivity = beforeActivity ? JSON.parse(beforeActivity) : null;
-	const previous = prevActivity?.people ?? {};
+	const previous = unpackActivity(prevActivity);
 
 	let failures = 0;
 	const fresh = new Map();
@@ -141,16 +196,13 @@ async function main() {
 
 	// Compare against the old timestamp, so an unchanged diary is a no-op
 	// rather than a daily one-line commit.
-	const candidate = serialize({
-		generatedAt: prevActivity?.generatedAt ?? "",
-		people: merged,
-	});
+	const candidate = packActivity(prevActivity?.generatedAt ?? "", merged);
 	if (candidate === beforeActivity) {
 		console.log("No diary changes; leaving activity.json untouched.");
 	} else {
 		await writeFile(
 			ACTIVITY_PATH,
-			serialize({ generatedAt: new Date().toISOString(), people: merged }),
+			packActivity(new Date().toISOString(), merged),
 		);
 		const total = Object.values(merged).reduce((n, e) => n + e.length, 0);
 		console.log(

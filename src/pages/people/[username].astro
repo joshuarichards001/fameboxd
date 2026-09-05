@@ -1,8 +1,8 @@
 ---
 import Footer from "../../components/Footer.astro";
-import activity from "../../data/activity.json";
 import people from "../../data/people.json";
 import {
+	activity,
 	diaryStats,
 	entriesFor,
 	filmNoun,
@@ -10,7 +10,7 @@ import {
 	type DiaryEntry,
 } from "../../functions/activity";
 import { hueFor, initials, loadAvatarSet } from "../../functions/avatars";
-import { filmPageUrl } from "../../functions/films";
+import { filmPageUrl, hasFilmPage } from "../../functions/films";
 import { profileUrl, stars, timeAgo, type Person } from "../../functions/people";
 import { personPageSchema } from "../../functions/schema";
 import { tagSlug } from "../../functions/tags";
@@ -194,12 +194,19 @@ const schema = personPageSchema({
 								recent.map((e) => (
 									<tr class="border-b border-border/50">
 										<td class="py-2 pr-3">
-											<a
-												class="font-semibold text-text no-underline transition-colors duration-[120ms] hover:text-orange focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"
-												href={filmPageUrl(e.slug)}
-											>
-												{e.title}
-											</a>
+											{/* Only films over the page threshold have somewhere to
+											    go; the rest are the majority of any one diary, and
+											    render as plain titles. */}
+											{hasFilmPage(e.slug) ? (
+												<a
+													class="font-semibold text-text no-underline transition-colors duration-[120ms] hover:text-orange focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"
+													href={filmPageUrl(e.slug)}
+												>
+													{e.title}
+												</a>
+											) : (
+												<span class="font-semibold text-text">{e.title}</span>
+											)}
 											{e.year != null && (
 												<span class="ml-1.5 text-text-faint tabular-nums">
 													{e.year}

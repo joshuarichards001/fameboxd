@@ -1,19 +1,22 @@
 ---
 import Footer from "../../components/Footer.astro";
 import Header from "../../components/Header.astro";
-import activity from "../../data/activity.json";
 import people from "../../data/people.json";
-import { filmIndex, filmPageUrl, rankedFilms } from "../../functions/films";
+import {
+	FILM_PAGE_MIN_WATCHERS,
+	filmPageUrl,
+	filmPages,
+} from "../../functions/films";
 import Base from "../../layouts/Base.astro";
 
 // The crawl hub: it is what makes every film page reachable in two hops from
 // the homepage, and "the films celebrities watch" is a page in its own right.
-const films = rankedFilms(filmIndex(activity));
+const films = filmPages();
 const count = films.length;
 const top = films[0];
 
 const title = `${count} Films Celebrities Watch on Letterboxd | Fameboxd`;
-const intro = `Every film logged by any of the ${people.length} celebrities in this directory, ranked by how many of them watched it. Led by ${top.title}, with ${top.watchers.length}. Updated daily.`;
+const intro = `Every film that ${FILM_PAGE_MIN_WATCHERS} or more of the ${people.length} celebrities in this directory have logged, ranked by how many of them watched it. Led by ${top.title}, with ${top.watchers.length}. Updated daily.`;
 ---
 
 <Base title={title} description={intro}>
@@ -21,9 +24,9 @@ const intro = `Every film logged by any of the ${people.length} celebrities in t
 
 	<main class="wrap py-8">
 		<div class="overflow-x-auto">
-			{/* 3,499 rows, so the per-row styling is hoisted onto the table: the
-			    same classes repeated on every cell cost more than a megabyte of
-			    HTML on their own. */}
+			{/* Several hundred rows, so the per-row styling is hoisted onto the
+			    table: the same classes repeated on every cell cost more than a
+			    megabyte of HTML back when every film had a row. */}
 			<table
 				class="w-full min-w-[420px] border-collapse text-left text-[0.9rem] [&_th]:py-2 [&_td]:py-2 [&_td]:text-right [&_td]:tabular-nums [&_td]:pl-3 [&_tbody_tr]:border-b [&_tbody_tr]:border-border/50 [&_tbody_th]:font-normal [&_tbody_th_span]:ml-1.5 [&_tbody_th_span]:text-text-faint [&_tbody_th_span]:tabular-nums [&_td_b]:font-normal [&_td_b]:text-green [&_a]:font-semibold [&_a]:text-text [&_a]:no-underline [&_a]:transition-colors [&_a]:duration-[120ms] [&_a:hover]:text-orange [&_a:focus-visible]:outline-2 [&_a:focus-visible]:outline-offset-2 [&_a:focus-visible]:outline-blue motion-reduce:[&_a]:transition-none"
 			>
