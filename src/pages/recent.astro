@@ -4,7 +4,7 @@ import people from "../data/people.json";
 import { activity, personPageUrl, posterUrl } from "../functions/activity";
 import { hueFor, initials, loadAvatarSet } from "../functions/avatars";
 import { celebrityNoun, filmPageUrl, hasFilmPage } from "../functions/films";
-import { stars, timeAgo, type Person } from "../functions/people";
+import { stars, timeAgoShort, type Person } from "../functions/people";
 import { recentWatches } from "../functions/recent";
 import {
 	TRENDING_DAYS,
@@ -72,18 +72,16 @@ const description = line(chosen);
 					>
 						Most watched this month
 					</h2>
-					<p class="mt-1 mb-0 text-[0.85rem] text-text-dim">
-						The films at least {TRENDING_MIN_WATCHERS} of them logged in the
-						last {TRENDING_DAYS} days.
-					</p>
-					{/* Two across on a phone rather than four: at four, a poster is
-					    80px wide and the title under it wraps to three lines. */}
-					<ul class="mt-4 grid max-w-[900px] grid-cols-2 gap-4 sm:grid-cols-4">
+					{/* One row of four at every width. The poster is the title, so the
+					    name it replaces has to reach a screen reader some other way:
+					    through the image's alt, or the fallback tile's own text. */}
+					<ul class="mt-4 grid max-w-[900px] grid-cols-4 gap-2 sm:gap-4">
 						{trending.map((film) => (
 							<li>
 								<a
 									class="group block no-underline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-blue"
 									href={filmPageUrl(film.slug)}
+									title={film.title}
 								>
 									<div class="overflow-hidden rounded-card border border-border bg-bg-raised">
 										{film.poster ? (
@@ -91,37 +89,28 @@ const description = line(chosen);
 												class="block aspect-[2/3] w-full object-cover transition-transform duration-[160ms] group-hover:scale-[1.03] motion-reduce:transition-none"
 												src={posterUrl(film.poster, 300)}
 												srcset={`${posterUrl(film.poster, 300)} 300w, ${posterUrl(film.poster, 600)} 600w`}
-												sizes="(min-width: 640px) 220px, 45vw"
+												sizes="(min-width: 640px) 220px, 23vw"
 												width="300"
 												height="450"
 												decoding="async"
-												alt=""
+												alt={film.title}
 											/>
 										) : (
-											/* A film logged before its poster was captured. The
-											   title is already below, so this is the tile the
-											   monogram avatars are: colored, not blank. */
+											/* A film logged before its poster was captured: the
+											   tile the monogram avatars are, colored rather than
+											   blank — and the only place the title is written. */
 											<span
-												class="flex aspect-[2/3] w-full items-center justify-center p-3 text-center text-[0.85rem] font-bold text-[hsl(var(--hue)_55%_80%)] bg-[hsl(var(--hue)_32%_24%)]"
-												aria-hidden="true"
+												class="flex aspect-[2/3] w-full items-center justify-center p-2 text-center text-[0.7rem] font-bold sm:p-3 sm:text-[0.85rem] text-[hsl(var(--hue)_55%_80%)] bg-[hsl(var(--hue)_32%_24%)]"
 												style={`--hue:${hueFor(film.title)}`}
 											>
 												{film.title}
 											</span>
 										)}
 									</div>
-									<p class="mt-2 mb-0 text-[0.85rem] font-semibold leading-[1.35] text-text transition-colors duration-[120ms] group-hover:text-orange motion-reduce:transition-none">
-										{film.title}
-										{film.year != null && (
-											<span class="ml-1 font-normal text-text-faint tabular-nums">
-												{film.year}
-											</span>
-										)}
-									</p>
 									{/* "this month", because a film page counts every watcher
 									    it ever had — 30 here against 36 there reads as a
 									    contradiction unless the window is on the label. */}
-									<p class="mt-0.5 mb-0 text-[0.78rem] text-text-faint">
+									<p class="mt-2 mb-0 text-[0.66rem] text-text-faint transition-colors duration-[120ms] group-hover:text-text-dim sm:text-[0.78rem] motion-reduce:transition-none">
 										{film.watchers} {celebrityNoun(film.watchers)} this month
 									</p>
 								</a>
@@ -137,7 +126,7 @@ const description = line(chosen);
 			    recrawled daily, so the same classes repeated across 100 rows are
 			    bytes it pays for every time. */}
 			<table
-				class="w-full min-w-[560px] border-collapse text-left text-[0.9rem] [&_th]:py-2 [&_th]:pr-3 [&_td]:py-2 [&_td]:pr-3 [&_tbody_tr]:border-b [&_tbody_tr]:border-border/50 [&_tbody_th]:font-normal [&_a]:font-semibold [&_a]:text-text [&_a]:no-underline [&_a]:transition-colors [&_a]:duration-[120ms] [&_a:hover]:text-orange [&_a:focus-visible]:outline-2 [&_a:focus-visible]:outline-offset-2 [&_a:focus-visible]:outline-blue motion-reduce:[&_a]:transition-none"
+				class="w-full table-fixed border-collapse text-left text-[0.9rem] [&_th]:py-2 [&_th]:pr-3 [&_td]:py-2 [&_td]:pr-3 [&_tbody_tr]:border-b [&_tbody_tr]:border-border/50 [&_tbody_th]:font-normal [&_tbody_td:first-of-type>span]:flex [&_tbody_td:first-of-type>span]:items-baseline [&_tbody_td:first-of-type>span]:gap-1.5 [&_a]:truncate [&_a]:font-semibold [&_a]:text-text [&_a]:no-underline [&_a]:transition-colors [&_a]:duration-[120ms] [&_a:hover]:text-orange [&_a:focus-visible]:outline-2 [&_a:focus-visible]:outline-offset-2 [&_a:focus-visible]:outline-blue motion-reduce:[&_a]:transition-none"
 			>
 				<caption class="mb-3 text-left text-[0.85rem] text-text-faint">
 					The newest entries in the public Letterboxd diaries of the {
@@ -148,10 +137,12 @@ const description = line(chosen);
 					<tr
 						class="border-b border-border [&_th]:text-[0.72rem] [&_th]:font-bold [&_th]:uppercase [&_th]:tracking-[0.08em] [&_th]:text-text-faint"
 					>
-						<th scope="col">Person</th>
+						<th class="w-10" scope="col">
+							<span class="sr-only">Person</span>
+						</th>
 						<th scope="col">Watched</th>
-						<th scope="col">Rating</th>
-						<th scope="col">When</th>
+						<th class="w-[5.25rem]" scope="col">Rating</th>
+						<th class="w-[4.25rem]" scope="col">When</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -159,54 +150,64 @@ const description = line(chosen);
 						rows.map(({ person, entry }) => (
 							<tr>
 								<th scope="row">
-									<span class="flex items-center gap-2">
+									<a
+										class="block w-7"
+										href={personPageUrl(person.username)}
+										title={person.name}
+									>
 										{avatars.has(person.username) ? (
 											<img
-												class="h-7 w-7 shrink-0 rounded-full border border-border bg-bg object-cover"
+												class="h-7 w-7 rounded-full border border-border bg-bg object-cover"
 												src={`/avatars/${person.username}.webp`}
 												width="28"
 												height="28"
 												loading="lazy"
 												decoding="async"
-												alt=""
+												alt={person.name}
 											/>
 										) : (
-											<span
-												class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border text-[0.62rem] font-bold text-[hsl(var(--hue)_55%_80%)] bg-[hsl(var(--hue)_32%_24%)] border-[hsl(var(--hue)_28%_34%)]"
-												aria-hidden="true"
-												style={`--hue:${hueFor(person.name)}`}
-											>
-												{initials(person.name)}
-											</span>
+											<>
+												<span
+													class="flex h-7 w-7 items-center justify-center rounded-full border text-[0.62rem] font-bold text-[hsl(var(--hue)_55%_80%)] bg-[hsl(var(--hue)_32%_24%)] border-[hsl(var(--hue)_28%_34%)]"
+													aria-hidden="true"
+													style={`--hue:${hueFor(person.name)}`}
+												>
+													{initials(person.name)}
+												</span>
+												<span class="sr-only">{person.name}</span>
+											</>
 										)}
-										<a href={personPageUrl(person.username)}>{person.name}</a>
-									</span>
+									</a>
 								</th>
 								<td>
-									{/* Films under the page threshold have no URL to point at,
-									    so the title renders as plain text rather than a link. */}
-									{hasFilmPage(entry.slug) ? (
-										<a href={filmPageUrl(entry.slug)}>{entry.title}</a>
-									) : (
-										<span class="font-semibold text-text">{entry.title}</span>
-									)}
-									{entry.year != null && (
-										<span class="ml-1.5 text-text-faint tabular-nums">
-											{entry.year}
-										</span>
-									)}
-									{entry.rewatch && (
-										<span class="ml-1.5 text-[0.8rem] text-text-faint">
-											<span aria-hidden="true">&#8635;</span>
-											<span class="sr-only">Rewatch</span>
-										</span>
-									)}
-									{entry.liked && (
-										<span class="ml-1.5 text-[0.8rem] text-orange">
-											<span aria-hidden="true">&#9829;</span>
-											<span class="sr-only">Liked</span>
-										</span>
-									)}
+									<span>
+										{/* Films under the page threshold have no URL to point at,
+										    so the title renders as plain text rather than a link. */}
+										{hasFilmPage(entry.slug) ? (
+											<a href={filmPageUrl(entry.slug)}>{entry.title}</a>
+										) : (
+											<span class="truncate font-semibold text-text">
+												{entry.title}
+											</span>
+										)}
+										{entry.year != null && (
+											<span class="text-[0.75rem] text-text-faint tabular-nums">
+												{entry.year}
+											</span>
+										)}
+										{entry.rewatch && (
+											<span class="text-[0.8rem] text-text-faint">
+												<span aria-hidden="true">&#8635;</span>
+												<span class="sr-only">Rewatch</span>
+											</span>
+										)}
+										{entry.liked && (
+											<span class="text-[0.8rem] text-orange">
+												<span aria-hidden="true">&#9829;</span>
+												<span class="sr-only">Liked</span>
+											</span>
+										)}
+									</span>
 								</td>
 								<td class="whitespace-nowrap">
 									{entry.rating != null ? (
@@ -226,7 +227,7 @@ const description = line(chosen);
 								</td>
 								<td class="whitespace-nowrap text-text-faint">
 									<time datetime={entry.watchedDate} title={entry.watchedDate}>
-										{timeAgo(entry.watchedDate)}
+										{timeAgoShort(entry.watchedDate)}
 									</time>
 								</td>
 							</tr>

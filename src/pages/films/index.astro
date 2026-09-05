@@ -28,7 +28,7 @@ const intro = `Every film that ${FILM_PAGE_MIN_WATCHERS} or more of the ${people
 			    table: the same classes repeated on every cell cost more than a
 			    megabyte of HTML back when every film had a row. */}
 			<table
-				class="w-full min-w-[420px] border-collapse text-left text-[0.9rem] [&_th]:py-2 [&_td]:py-2 [&_td]:text-right [&_td]:tabular-nums [&_td]:pl-3 [&_tbody_tr]:border-b [&_tbody_tr]:border-border/50 [&_tbody_th]:font-normal [&_tbody_th_span]:ml-1.5 [&_tbody_th_span]:text-text-faint [&_tbody_th_span]:tabular-nums [&_td_b]:font-normal [&_td_b]:text-green [&_a]:font-semibold [&_a]:text-text [&_a]:no-underline [&_a]:transition-colors [&_a]:duration-[120ms] [&_a:hover]:text-orange [&_a:focus-visible]:outline-2 [&_a:focus-visible]:outline-offset-2 [&_a:focus-visible]:outline-blue motion-reduce:[&_a]:transition-none"
+				class="w-full table-fixed border-collapse text-left text-[0.9rem] [&_th]:py-2 [&_td]:py-2 [&_td]:text-right [&_td]:tabular-nums [&_td]:pl-3 [&_tbody_tr]:border-b [&_tbody_tr]:border-border/50 [&_tbody_th]:font-normal [&_tbody_th>span]:flex [&_tbody_th>span]:items-baseline [&_tbody_th>span]:gap-1.5 [&_tbody_th_span_span]:shrink-0 [&_tbody_th_span_span]:text-text-faint [&_tbody_th_span_span]:tabular-nums [&_a]:truncate [&_td_b]:font-normal [&_td_b]:text-green [&_a]:font-semibold [&_a]:text-text [&_a]:no-underline [&_a]:transition-colors [&_a]:duration-[120ms] [&_a:hover]:text-orange [&_a:focus-visible]:outline-2 [&_a:focus-visible]:outline-offset-2 [&_a:focus-visible]:outline-blue motion-reduce:[&_a]:transition-none"
 			>
 				<caption class="mb-3 text-left text-[0.85rem] text-text-faint">
 					Counted from each celebrity's public Letterboxd diary, refreshed
@@ -40,8 +40,8 @@ const intro = `Every film that ${FILM_PAGE_MIN_WATCHERS} or more of the ${people
 						class="border-b border-border [&_th]:text-[0.72rem] [&_th]:font-bold [&_th]:uppercase [&_th]:tracking-[0.08em] [&_th]:text-text-faint"
 					>
 						<th scope="col">Film</th>
-						<th class="text-right" scope="col">Watchers</th>
-						<th class="text-right" scope="col">Average</th>
+						<th class="w-[4.75rem] text-right" scope="col">Watchers</th>
+						<th class="w-[4.5rem] text-right" scope="col">Average</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -49,8 +49,10 @@ const intro = `Every film that ${FILM_PAGE_MIN_WATCHERS} or more of the ${people
 						films.map((film) => (
 							<tr>
 								<th scope="row">
-									<a href={filmPageUrl(film.slug)}>{film.title}</a>
-									{film.year != null && <span>{film.year}</span>}
+									<span>
+										<a href={filmPageUrl(film.slug)}>{film.title}</a>
+										{film.year != null && <span>{film.year}</span>}
+									</span>
 								</th>
 								<td>{film.watchers.length}</td>
 								<td class="text-text-dim">

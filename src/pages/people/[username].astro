@@ -11,7 +11,12 @@ import {
 } from "../../functions/activity";
 import { hueFor, initials, loadAvatarSet } from "../../functions/avatars";
 import { filmPageUrl, hasFilmPage } from "../../functions/films";
-import { profileUrl, stars, timeAgo, type Person } from "../../functions/people";
+import {
+	profileUrl,
+	stars,
+	timeAgoShort,
+	type Person,
+} from "../../functions/people";
 import { personPageSchema } from "../../functions/schema";
 import { tagSlug } from "../../functions/tags";
 import Base from "../../layouts/Base.astro";
@@ -113,7 +118,7 @@ const schema = personPageSchema({
 				</ul>
 			</div>
 			<a
-				class="ml-auto inline-flex items-center gap-2 rounded-full bg-orange px-5 py-2 text-[0.95rem] font-bold text-bg no-underline transition-colors duration-[120ms] hover:bg-[color-mix(in_srgb,var(--color-orange)_80%,white)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"
+				class="inline-flex items-center gap-2 rounded-full bg-orange px-5 py-2 sm:ml-auto text-[0.95rem] font-bold text-bg no-underline transition-colors duration-[120ms] hover:bg-[color-mix(in_srgb,var(--color-orange)_80%,white)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"
 				href={profileUrl(p.username)}
 				target="_blank"
 				rel="noopener"
@@ -166,7 +171,7 @@ const schema = personPageSchema({
 
 				<div class="mt-3 overflow-x-auto">
 					<table
-						class="w-full min-w-[420px] border-collapse text-left text-[0.9rem]"
+						class="w-full table-fixed border-collapse text-left text-[0.9rem]"
 					>
 						<thead>
 							<tr class="border-b border-border">
@@ -175,11 +180,11 @@ const schema = personPageSchema({
 									scope="col">Film</th
 								>
 								<th
-									class="py-2 pr-3 text-[0.72rem] font-bold uppercase tracking-[0.08em] text-text-faint"
+									class="w-[5.25rem] py-2 pr-3 text-[0.72rem] font-bold uppercase tracking-[0.08em] text-text-faint"
 									scope="col">Rating</th
 								>
 								<th
-									class="py-2 text-[0.72rem] font-bold uppercase tracking-[0.08em] text-text-faint"
+									class="w-[4.25rem] py-2 text-[0.72rem] font-bold uppercase tracking-[0.08em] text-text-faint"
 									scope="col">Watched</th
 								>
 							</tr>
@@ -189,36 +194,42 @@ const schema = personPageSchema({
 								recent.map((e) => (
 									<tr class="border-b border-border/50">
 										<td class="py-2 pr-3">
-											{/* Only films over the page threshold have somewhere to
-											    go; the rest are the majority of any one diary, and
-											    render as plain titles. */}
-											{hasFilmPage(e.slug) ? (
-												<a
-													class="font-semibold text-text no-underline transition-colors duration-[120ms] hover:text-orange focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"
-													href={filmPageUrl(e.slug)}
-												>
-													{e.title}
-												</a>
-											) : (
-												<span class="font-semibold text-text">{e.title}</span>
-											)}
-											{e.year != null && (
-												<span class="ml-1.5 text-text-faint tabular-nums">
-													{e.year}
-												</span>
-											)}
-											{e.rewatch && (
-												<span class="ml-1.5 text-[0.8rem] text-text-faint">
-													<span aria-hidden="true">&#8635;</span>
-													<span class="sr-only">Rewatch</span>
-												</span>
-											)}
-											{e.liked && (
-												<span class="ml-1.5 text-[0.8rem] text-orange">
-													<span aria-hidden="true">&#9829;</span>
-													<span class="sr-only">Liked</span>
-												</span>
-											)}
+											{/* The title is the only part that may be cut: the year
+											    and the two badges sit outside it and never shrink. */}
+											<span class="flex items-baseline gap-1.5">
+												{/* Only films over the page threshold have somewhere to
+												    go; the rest are the majority of any one diary, and
+												    render as plain titles. */}
+												{hasFilmPage(e.slug) ? (
+													<a
+														class="truncate font-semibold text-text no-underline transition-colors duration-[120ms] hover:text-orange focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"
+														href={filmPageUrl(e.slug)}
+													>
+														{e.title}
+													</a>
+												) : (
+													<span class="truncate font-semibold text-text">
+														{e.title}
+													</span>
+												)}
+												{e.year != null && (
+													<span class="shrink-0 text-[0.75rem] text-text-faint tabular-nums">
+														{e.year}
+													</span>
+												)}
+												{e.rewatch && (
+													<span class="shrink-0 text-[0.8rem] text-text-faint">
+														<span aria-hidden="true">&#8635;</span>
+														<span class="sr-only">Rewatch</span>
+													</span>
+												)}
+												{e.liked && (
+													<span class="shrink-0 text-[0.8rem] text-orange">
+														<span aria-hidden="true">&#9829;</span>
+														<span class="sr-only">Liked</span>
+													</span>
+												)}
+											</span>
 										</td>
 										<td class="py-2 pr-3 whitespace-nowrap">
 											{e.rating != null ? (
@@ -239,7 +250,7 @@ const schema = personPageSchema({
 										<td class="py-2 whitespace-nowrap text-text-faint">
 											{e.watchedDate ? (
 												<time datetime={e.watchedDate} title={e.watchedDate}>
-													{timeAgo(e.watchedDate)}
+													{timeAgoShort(e.watchedDate)}
 												</time>
 											) : (
 												<span aria-hidden="true">&mdash;</span>

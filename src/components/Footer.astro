@@ -1,44 +1,87 @@
 ---
 import { SUGGEST_FORM_URL } from "../data/site";
+
+// Two link columns and a blurb. On a phone the blurb takes the full row and the
+// two columns sit side by side under it; from `sm` up all three share one row.
+const browse = [
+	{ href: "/", label: "All people" },
+	{ href: "/films/", label: "Films celebrities watch" },
+	{ href: "/recent/", label: "Recently watched" },
+	{ href: "/feed.xml", label: "RSS feed" },
+];
+// All three leave the site, so they all get target/rel below.
+const project = [
+	{ href: SUGGEST_FORM_URL, label: "Suggest a person" },
+	{
+		href: "https://github.com/joshuarichards001/fameboxd",
+		label: "Source on GitHub",
+	},
+	{ href: "https://josh.work", label: "Made by Josh Richards" },
+];
+const linkClass =
+	"text-text-dim no-underline transition-colors duration-[120ms] hover:text-orange focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none";
+const headingClass =
+	"m-0 text-[0.72rem] font-bold uppercase tracking-[0.08em] text-text-faint";
 ---
 
-<footer class="mt-10 border-t border-border pt-6 pb-8">
-    <div class="wrap">
-        <p class="m-0 mb-3 text-[0.9rem] text-text-dim">
-            <a class="text-blue underline" href="/">All people</a> &middot; <a
-                class="text-blue underline"
-                href="/films/">Films celebrities watch</a
-            > &middot; <a class="text-blue underline" href="/recent/"
-                >Recently watched</a
-            > &middot; <a class="text-blue underline" href="/feed.xml">RSS feed</a
-            >
-        </p>
-        <p class="m-0 mb-3 max-w-[60ch] text-[0.9rem] text-text-dim">
-            Know someone missing? <a
-                class="text-blue underline"
-                href={SUGGEST_FORM_URL}
-                target="_blank"
-                rel="noopener">Suggest a person</a
-            >.
-        </p>
-        <p class="m-0 max-w-[60ch] text-[0.9rem] text-text-faint">
-            An unofficial fan directory. Not affiliated with, endorsed by, or
-            connected to letterboxd.com. All profiles link out to their owners'
-            public accounts, and profile pictures are each person's own public
-            Letterboxd avatar.
-        </p>
-        <p class="m-0 mt-3 max-w-[60ch] text-[0.9rem] text-text-faint">
-            Open source on <a
-                class="text-blue underline"
-                href="https://github.com/joshuarichards001/fameboxd"
-                target="_blank"
-                rel="noopener">GitHub</a
-            >. Made by <a
-                class="text-blue underline"
-                href="https://josh.work"
-                target="_blank"
-                rel="noopener">Josh Richards</a
-            >.
-        </p>
-    </div>
+<footer class="mt-12 border-t border-border pt-8 pb-10">
+	<div class="wrap">
+		<div class="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4">
+			<div class="col-span-2">
+				<p class="m-0 text-[1rem] font-extrabold tracking-[-0.01em]">
+					Fameboxd
+				</p>
+				<p
+					class="m-0 mt-2 max-w-[44ch] text-[0.85rem] leading-[1.6] text-text-dim"
+				>
+					A directory of celebrities with public Letterboxd accounts, and what
+					they have been watching lately. Rebuilt daily.
+				</p>
+			</div>
+
+			<nav aria-labelledby="footer-browse">
+				<h2 class={headingClass} id="footer-browse">Browse</h2>
+				<ul class="m-0 mt-3 flex list-none flex-col gap-2 p-0 text-[0.9rem]">
+					{
+						browse.map((l) => (
+							<li>
+								<a class={linkClass} href={l.href}>
+									{l.label}
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</nav>
+
+			<nav aria-labelledby="footer-project">
+				<h2 class={headingClass} id="footer-project">This site</h2>
+				<ul class="m-0 mt-3 flex list-none flex-col gap-2 p-0 text-[0.9rem]">
+					{
+						project.map((l) => (
+							<li>
+								<a
+									class={linkClass}
+									href={l.href}
+									target="_blank"
+									rel="noopener"
+								>
+									{l.label}
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</nav>
+		</div>
+
+		<p
+			class="m-0 mt-8 border-t border-border pt-6 text-[0.8rem] leading-[1.6] text-text-faint"
+		>
+			An unofficial fan directory. Not affiliated with, endorsed by, or
+			connected to letterboxd.com. All profiles link out to their owners' public
+			accounts, and profile pictures are each person's own public Letterboxd
+			avatar.
+		</p>
+	</div>
 </footer>

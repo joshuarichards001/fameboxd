@@ -68,13 +68,18 @@ export function compactCount(n: number): string {
 	return `${trim((n / 1_000_000).toFixed(1))}M`;
 }
 
-// "2026-07-19" -> "today" | "yesterday" | "2 days ago" | "3 weeks ago" | ...
-// Computed at build time; the daily rebuild keeps it within a day of accurate.
-export function timeAgo(iso: string): string {
-	const days = Math.max(
+// Whole days between a watched date and the build. Shared by both formatters.
+function daysSince(iso: string): number {
+	return Math.max(
 		0,
 		Math.floor((Date.now() - new Date(`${iso}T00:00:00Z`).getTime()) / 86_400_000),
 	);
+}
+
+// "2026-07-19" -> "today" | "yesterday" | "2 days ago" | "3 weeks ago" | ...
+// Computed at build time; the daily rebuild keeps it within a day of accurate.
+export function timeAgo(iso: string): string {
+	const days = daysSince(iso);
 	const unit = (n: number, name: string) =>
 		`${n} ${name}${n === 1 ? "" : "s"} ago`;
 	if (days === 0) return "today";
@@ -83,4 +88,17 @@ export function timeAgo(iso: string): string {
 	if (days < 30) return unit(Math.round(days / 7), "week");
 	if (days < 365) return unit(Math.round(days / 30), "month");
 	return unit(Math.round(days / 365), "year");
+}
+
+// The same thing in a table cell's worth of characters: "3d ago", "2w ago",
+// "5m ago", "2y ago". The cell's <time> keeps the exact date in its title, so
+// nothing is lost by abbreviating — and the column stays narrow enough that a
+// phone doesn't have to scroll the table sideways to reach it.
+export function timeAgoShort(iso: string): string {
+	const days = daysSince(iso);
+	if (days === 0) return "today";
+	if (days < 7) return `${days}d ago`;
+	if (days < 30) return `${Math.round(days / 7)}w ago`;
+	if (days < 365) return `${Math.round(days / 30)}m ago`;
+	return `${Math.round(days / 365)}y ago`;
 }
