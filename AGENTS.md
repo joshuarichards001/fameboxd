@@ -137,12 +137,17 @@ reformats `people.json` with `JSON.stringify`). A daily GitHub Action
 (`.github/workflows/refresh-activity.yml`) reruns it and commits the diff. The
 script degrades gracefully: per-person failures keep the previous (stale)
 `lastWatched`, and it refuses to write only if every fetch fails.
-`astro.config.mjs` also reads it to set each sitemap URL's `<lastmod>` (newest
-watch date among that page's people) — keep it off build time, which would
-mark every URL changed on every build. Once that Action commits, it runs
+`astro.config.mjs` sets each sitemap URL's `<lastmod>` from `activity.json` —
+the newest watch on that page, ignoring dates after `generatedAt` — and asks
+the router's own helpers (`personPageUrl`, `filmPages`) which URLs exist, so
+the sitemap can't advertise a 404. Keep both off build time, which would mark
+every URL changed on every build. Once that Action commits, it runs
 `scripts/submit-indexnow.mjs` (IndexNow — Bing and friends, not Google), which
-derives the same URL set the sitemap lists from `people.json`. Ownership is
-proved by `public/<key>.txt`, whose filename must match `KEY` in the script.
+submits only what that commit changed: it diffs `activity.json` against
+`HEAD~1`, so it has to run **after** the commit, and falls back to the core
+pages when there is no previous revision or more than 200 URLs moved
+(`--dry-run` prints the list instead of posting). Ownership is proved by
+`public/<key>.txt`, whose filename must match `KEY` in the script.
 
 **The full diary** is `src/data/activity.json`, written by the same fetch
 script from the same requests and committed alongside `people.json` (the Action
