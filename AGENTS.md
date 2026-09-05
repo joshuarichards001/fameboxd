@@ -98,6 +98,13 @@ pages **must never emit `aggregateRating`**: our average is how a few of the
 Test therefore calls `Movie` ineligible for want of an `image` (a poster) —
 expected, and not a reason to add one.
 
+**The site nav** is `src/components/Nav.astro`, rendered by `Base.astro`, so
+every page gets it without opting in — don't add a per-page back link that
+duplicates one of its three destinations. It marks the current section from
+`Astro.url.pathname`, asking `hasTagIntro` whether a one-segment path is a tag
+page, and it has no JS: three short links fit a 320px screen, which is why
+there is no burger menu.
+
 A card is a **stretched link to the Letterboxd profile** — pressing a card
 leaves the site, which is what a directory card is for. The person's name is
 that `<a>`, its `after:inset-0` overlay covers the card, and the `@username`

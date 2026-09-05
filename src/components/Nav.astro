@@ -1,0 +1,54 @@
+---
+import { hasTagIntro } from "../functions/tags";
+
+// Site-wide nav, rendered by Base.astro so every page carries the same one.
+// Three links is the whole site: the directory, the daily feed of watches, and
+// the film index. They fit on a 320px screen at this size, so there is no
+// burger menu and no client-side JS behind it.
+const LINKS = [
+	{ href: "/", label: "People" },
+	{ href: "/films/", label: "Films" },
+	{ href: "/recent/", label: "Recent" },
+];
+
+// Which link to mark current. Person pages and the tag pages (/directors/,
+// /actors/, …) are the directory under a filter, so they light up "People";
+// tag slugs are recognised by asking tags.ts rather than by pattern, so a
+// one-segment URL that isn't a tag (404) lights up nothing.
+const path = Astro.url.pathname;
+const segment = path.replace(/^\/|\/$/g, "");
+const current =
+	path === "/recent/"
+		? "/recent/"
+		: path.startsWith("/films")
+			? "/films/"
+			: path === "/" ||
+				  path.startsWith("/people/") ||
+				  hasTagIntro(segment.replace(/s$/, ""))
+				? "/"
+				: null;
+---
+
+<nav class="border-b border-border" aria-label="Main">
+	<div class="wrap flex items-center justify-between gap-3 py-3">
+		<a
+			class="text-[0.85rem] font-extrabold uppercase tracking-[0.14em] text-text no-underline transition-colors duration-[120ms] hover:text-orange focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"
+			href="/">Fameboxd</a
+		>
+		<ul class="m-0 flex list-none items-center gap-0.5 p-0 sm:gap-1">
+			{
+				LINKS.map((link) => (
+					<li>
+						<a
+							class="block rounded-full px-2.5 py-1.5 text-[0.85rem] font-semibold text-text-dim no-underline transition-colors duration-[120ms] hover:bg-bg-raised hover:text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue aria-[current=page]:bg-bg-raised aria-[current=page]:text-orange motion-reduce:transition-none sm:px-3"
+							href={link.href}
+							aria-current={link.href === current ? "page" : undefined}
+						>
+							{link.label}
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</nav>

@@ -70,15 +70,10 @@ const schema = filmPageSchema({
 
 <Base title={title} description={description} schema={schema}>
 	<main class="wrap py-8">
-		<a
-			class="text-[0.9rem] font-semibold text-text-dim no-underline transition-colors duration-[120ms] hover:text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"
-			href="/films/">&larr; All films</a
-		>
-
 		{/* Poster beside the header and the stats, not above them: the numbers
 		    are what this page is for, and a poster on its own row pushes them
 		    under the fold on a laptop. */}
-		<div class="mt-6 flex flex-col gap-6 sm:flex-row sm:items-start">
+		<div class="flex flex-col gap-6 sm:flex-row sm:items-start">
 			{
 				film.poster ? (
 					<img
