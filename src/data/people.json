@@ -175,7 +175,7 @@
       "writer"
     ],
     "lastWatched": {
-      "title": "Furies",
+      "title": "The Difficult Bride",
       "date": "2026-09-05",
       "rating": null
     },
@@ -294,9 +294,9 @@
       "critic"
     ],
     "lastWatched": {
-      "title": "Coyote vs. Acme",
-      "date": "2026-08-27",
-      "rating": 5
+      "title": "Hearst Castle: Building the Dream",
+      "date": "2026-09-05",
+      "rating": null
     },
     "followers": 7222
   },
@@ -367,7 +367,7 @@
       "critic"
     ],
     "lastWatched": {
-      "title": "The Glass House",
+      "title": "Guilty Conscience",
       "date": "2026-09-05",
       "rating": null
     },
@@ -483,8 +483,8 @@
       "director"
     ],
     "lastWatched": {
-      "title": "Enemy of the State",
-      "date": "2026-09-04",
+      "title": "Primetime",
+      "date": "2026-09-05",
       "rating": null
     },
     "followers": 9557
@@ -497,9 +497,9 @@
       "critic"
     ],
     "lastWatched": {
-      "title": "A Long Winter",
-      "date": "2026-09-04",
-      "rating": 3
+      "title": "Elsinore",
+      "date": "2026-09-05",
+      "rating": 1.5
     },
     "followers": 216484
   },
@@ -1256,9 +1256,9 @@
       "writer"
     ],
     "lastWatched": {
-      "title": "Voodoo",
-      "date": "2026-09-04",
-      "rating": 2
+      "title": "Gandahar",
+      "date": "2026-09-05",
+      "rating": 4.5
     },
     "followers": 19778
   },
@@ -1407,6 +1407,20 @@
       "rating": null
     },
     "followers": 3406
+  },
+  {
+    "name": "Lee Unkrich",
+    "username": "richuncle237",
+    "description": "Oscar-winning Pixar director of Coco and Toy Story 3.",
+    "tags": [
+      "director"
+    ],
+    "lastWatched": {
+      "title": "The Fall",
+      "date": "2019-03-30",
+      "rating": null
+    },
+    "followers": 1879
   },
   {
     "name": "Lewis Pullman",
@@ -1566,8 +1580,8 @@
       "comedian"
     ],
     "lastWatched": {
-      "title": "Untold: Raygun: Breaking Badly",
-      "date": "2026-09-02",
+      "title": "Sleepaway Camp III: Teenage Wasteland",
+      "date": "2026-08-26",
       "rating": null
     },
     "followers": 14239
@@ -1586,6 +1600,20 @@
       "rating": null
     },
     "followers": 4981
+  },
+  {
+    "name": "Maxwell Jenkins",
+    "username": "maxwelljenkins",
+    "description": "Actor who played Will Robinson in Netflix's Lost in Space, with roles in Arcadian and The Bondsman.",
+    "tags": [
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "The Odyssey",
+      "date": "2026-07-30",
+      "rating": 4
+    },
+    "followers": 388
   },
   {
     "name": "Mckenna Grace",
@@ -1894,8 +1922,8 @@
       "critic"
     ],
     "lastWatched": {
-      "title": "Coyote vs. Acme",
-      "date": "2026-08-28",
+      "title": "Spider-Man: Brand New Day",
+      "date": "2026-09-03",
       "rating": null
     },
     "followers": 87937
@@ -2192,8 +2220,8 @@
       "critic"
     ],
     "lastWatched": {
-      "title": "The Liberation",
-      "date": "2026-09-04",
+      "title": "Ink",
+      "date": "2026-09-05",
       "rating": null
     },
     "followers": 117032
@@ -2413,6 +2441,20 @@
     "followers": 5623
   },
   {
+    "name": "Vanillamace",
+    "username": "realvanilla",
+    "description": "Twitch variety streamer and TikToker, one of the platform's most-subscribed broadcasters.",
+    "tags": [
+      "youtuber"
+    ],
+    "lastWatched": {
+      "title": "Buddy",
+      "date": "2026-08-29",
+      "rating": 2
+    },
+    "followers": 8871
+  },
+  {
     "name": "Vera Drew",
     "username": "veradrew22",
     "description": "Writer-director and editor behind The People's Joker.",
@@ -2469,6 +2511,20 @@
       "rating": null
     },
     "followers": 16251
+  },
+  {
+    "name": "Yasmeen Fletcher",
+    "username": "yasmeenfletcher",
+    "description": "Actor who played Nakia in Marvel's Ms. Marvel, and appeared in Andi Mack and Upside-Down Magic.",
+    "tags": [
+      "actor"
+    ],
+    "lastWatched": {
+      "title": "The Green Ray",
+      "date": "2026-08-24",
+      "rating": 4
+    },
+    "followers": 497
   },
   {
     "name": "Zach Kornfeld",
