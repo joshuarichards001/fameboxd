@@ -7,12 +7,12 @@
 // never needs gating beyond this.
 //
 // A film earns a page once FILM_PAGE_MIN_WATCHERS of them logged it. The
-// cross-section is the whole point, and one celebrity watching something is
-// not one: at a threshold of 1 the site was 3,499 film pages of which 2,677
-// held a single row, drowning the ~500 that actually answer the query in near
-// duplicates of each other. Below the threshold no page is built and nothing
-// links to a film page, so no URL is ever published and later withdrawn —
-// ask hasFilmPage before linking.
+// cross-section is the whole point, and a handful of celebrities watching
+// something is not one: at a threshold of 1 the site was 3,499 film pages of
+// which 2,677 held a single row, drowning the few dozen that actually answer
+// the query in near duplicates of each other. Below the threshold no page is
+// built and nothing links to a film page, so no URL is ever published and
+// later withdrawn — ask hasFilmPage before linking.
 
 import { activity, type ActivityData, type DiaryEntry } from "./activity";
 
@@ -41,7 +41,7 @@ export interface Film {
 	average: number | null;
 }
 
-export const FILM_PAGE_MIN_WATCHERS = 3;
+export const FILM_PAGE_MIN_WATCHERS = 10;
 
 export const filmPageUrl = (slug: string) => `/films/${slug}/`;
 

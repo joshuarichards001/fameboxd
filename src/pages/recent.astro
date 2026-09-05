@@ -19,10 +19,10 @@ import Base from "../layouts/Base.astro";
 const rows = recentWatches(activity, people as Person[], 100);
 const avatars = loadAvatarSet();
 
-// What the page leads with: the month's most-watched films, as posters. Five
-// watchers in a month is at least five all time, so each one clears
-// FILM_PAGE_MIN_WATCHERS and has a page — the guard is what keeps that true if
-// either threshold moves, rather than publishing a link to a page nobody built.
+// What the page leads with: the month's most-watched films, as posters. A film
+// trending this month need not clear FILM_PAGE_MIN_WATCHERS all time, so the
+// guard is load-bearing: it drops the ones with no page rather than publishing
+// a link to a page nobody built.
 const trending = trendingFilms(activity).filter((f) => hasFilmPage(f.slug));
 
 // The films at the top change daily, which is the whole point of the line.

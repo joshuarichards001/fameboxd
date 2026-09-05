@@ -57,9 +57,9 @@ searched with. Build the path with `personPageUrl(username)` from
 index — the homepage already lists everyone.
 
 **Film pages** are `src/pages/films/[slug].astro` — `/films/<slug>/`, one per
-film that **`FILM_PAGE_MIN_WATCHERS` (3) or more** people logged; the other
-~3,250 get no page, because a single row restating one diary line is already on
-that person's page. `src/functions/films.ts` inverts `activity.json` into the
+film that **`FILM_PAGE_MIN_WATCHERS` (10) or more** people logged; the other
+~3,850 get no page, because a thin table restating a couple of diary lines is
+already on those people's pages. `src/functions/films.ts` inverts `activity.json` into the
 slug→watchers index everything else reads (`films`, the build's one inversion;
 `filmPages` for the ones with a page; `filmPageUrl`). **Ask `hasFilmPage(slug)`
 before linking a film** — below the threshold the title renders as plain text,
