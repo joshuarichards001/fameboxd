@@ -1,0 +1,276 @@
+---
+import Footer from "../../components/Footer.astro";
+import people from "../../data/people.json";
+import {
+	activity,
+	diaryStats,
+	entriesFor,
+	filmNoun,
+	personDescription,
+	type DiaryEntry,
+} from "../../functions/activity";
+import { hueFor, initials, loadAvatarSet } from "../../functions/avatars";
+import { filmPageUrl, hasFilmPage } from "../../functions/films";
+import { profileUrl, stars, timeAgo, type Person } from "../../functions/people";
+import { personPageSchema } from "../../functions/schema";
+import { tagSlug } from "../../functions/tags";
+import Base from "../../layouts/Base.astro";
+
+// One page per person, no exceptions — every card in the directory leads to
+// one. The dozen people with an empty diary get the empty state below, which
+// still answers the question their name is searched with.
+export function getStaticPaths() {
+	return (people as Person[]).map((person) => ({
+		params: { username: person.username },
+		props: { person, entries: entriesFor(activity, person.username) },
+	}));
+}
+
+interface Props {
+	person: Person;
+	entries: DiaryEntry[];
+}
+
+const { person: p, entries } = Astro.props;
+const hasAvatar = loadAvatarSet().has(p.username);
+const followers = p.followers ?? null;
+const stats = diaryStats(entries);
+// The feed carries the 50 most recent entries; older ones are retained but
+// belong to the film pages, not to a wall of table rows here.
+const recent = entries.slice(0, 50);
+const diaryCaption =
+	recent.length === 1
+		? `The most recent film ${p.name} logged on Letterboxd, refreshed daily.`
+		: `The ${recent.length} most recent films ${p.name} logged on Letterboxd, refreshed daily.`;
+
+const title = `${p.name} on Letterboxd (@${p.username}) — Fameboxd`;
+const description = personDescription(p.name, p.username, entries);
+const schema = personPageSchema({
+	site: new URL("/", Astro.site),
+	person: p,
+	hasAvatar,
+});
+---
+
+<Base title={title} description={description} schema={schema}>
+	<main class="wrap py-8">
+		<a
+			class="text-[0.9rem] font-semibold text-text-dim no-underline transition-colors duration-[120ms] hover:text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"
+			href="/">&larr; All people</a
+		>
+
+		<header class="mt-6 flex flex-wrap items-center gap-4">
+			{
+				hasAvatar ? (
+					<img
+						class="h-[72px] w-[72px] shrink-0 rounded-full border border-border bg-bg object-cover"
+						src={`/avatars/${p.username}.webp`}
+						width="72"
+						height="72"
+						alt=""
+					/>
+				) : (
+					<span
+						class="flex h-[72px] w-[72px] shrink-0 items-center justify-center rounded-full border text-[1.4rem] font-bold tracking-[0.02em] text-[hsl(var(--hue)_55%_80%)] bg-[hsl(var(--hue)_32%_24%)] border-[hsl(var(--hue)_28%_34%)]"
+						aria-hidden="true"
+						style={`--hue:${hueFor(p.name)}`}
+					>
+						{initials(p.name)}
+					</span>
+				)
+			}
+			<div class="min-w-0">
+				<h1
+					class="m-0 text-[clamp(1.5rem,4vw,2.1rem)] font-extrabold leading-[1.1] tracking-[-0.02em]"
+				>
+					{p.name}
+				</h1>
+				<p
+					class="m-0 mt-1 flex flex-wrap items-baseline gap-x-2 text-[0.9rem] text-text-dim"
+				>
+					<span class="font-semibold text-orange tabular-nums">
+						@{p.username}
+					</span>
+					{
+						followers != null && (
+							<span class="text-text-faint tabular-nums">
+								{followers.toLocaleString("en")} followers
+							</span>
+						)
+					}
+				</p>
+				<ul
+					class="mt-1.5 flex flex-wrap items-center gap-[0.35rem] p-0"
+					aria-label="Tags"
+				>
+					{
+						p.tags.map((t) => (
+							<li class="list-none">
+								<a
+									class="block rounded-full border border-blue/30 bg-blue/[0.14] px-2 py-[0.1rem] text-[0.68rem] font-bold uppercase tracking-[0.04em] text-blue no-underline transition-colors duration-[120ms] hover:bg-blue/25 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"
+									href={`/${tagSlug(t)}/`}
+								>
+									{t}
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+			<a
+				class="ml-auto inline-flex items-center gap-2 rounded-full bg-orange px-5 py-2 text-[0.95rem] font-bold text-bg no-underline transition-colors duration-[120ms] hover:bg-[color-mix(in_srgb,var(--color-orange)_80%,white)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"
+				href={profileUrl(p.username)}
+				target="_blank"
+				rel="noopener"
+			>
+				View on Letterboxd &nearr;
+			</a>
+		</header>
+
+		<p class="mt-4 max-w-[68ch] text-[0.95rem] leading-[1.6] text-text-dim">
+			{p.description}
+		</p>
+
+		{
+			entries.length === 0 ? (
+				<p class="mt-4 rounded-card border border-border bg-bg-raised px-4 py-3 text-[0.95rem] text-text-dim">
+					<strong class="text-text">No films logged publicly yet.</strong>{" "}
+					@{p.username} is a real Letterboxd account, but its public diary is
+					empty. This page is rebuilt daily, so anything they log will show up
+					here.
+				</p>
+			) : (
+				<p class="mt-4 rounded-card border border-border bg-bg-raised px-4 py-3 text-[0.95rem] text-text">
+					<strong class="tabular-nums">{stats.logged}</strong>{" "}
+					{filmNoun(stats.logged)} logged,{" "}
+					<strong class="tabular-nums">{stats.rated}</strong> rated
+					{stats.average != null && (
+						<>
+							, average{" "}
+							<strong class="tabular-nums">{stats.average.toFixed(1)}</strong>
+							<span class="text-green">★</span>
+						</>
+					)}
+					.
+				</p>
+			)
+		}
+
+		{
+			entries.length > 0 && (
+			<section class="mt-8" aria-labelledby="diary-heading">
+				<h2
+					id="diary-heading"
+					class="m-0 text-[0.8rem] font-bold uppercase tracking-[0.08em] text-text-faint"
+				>
+					Recent diary
+				</h2>
+				<p class="mt-1 mb-0 text-[0.85rem] text-text-faint">
+					{diaryCaption}
+				</p>
+
+				<div class="mt-3 overflow-x-auto">
+					<table
+						class="w-full min-w-[420px] border-collapse text-left text-[0.9rem]"
+					>
+						<thead>
+							<tr class="border-b border-border">
+								<th
+									class="py-2 pr-3 text-[0.72rem] font-bold uppercase tracking-[0.08em] text-text-faint"
+									scope="col">Film</th
+								>
+								<th
+									class="py-2 pr-3 text-[0.72rem] font-bold uppercase tracking-[0.08em] text-text-faint"
+									scope="col">Rating</th
+								>
+								<th
+									class="py-2 text-[0.72rem] font-bold uppercase tracking-[0.08em] text-text-faint"
+									scope="col">Watched</th
+								>
+							</tr>
+						</thead>
+						<tbody>
+							{
+								recent.map((e) => (
+									<tr class="border-b border-border/50">
+										<td class="py-2 pr-3">
+											{/* Only films over the page threshold have somewhere to
+											    go; the rest are the majority of any one diary, and
+											    render as plain titles. */}
+											{hasFilmPage(e.slug) ? (
+												<a
+													class="font-semibold text-text no-underline transition-colors duration-[120ms] hover:text-orange focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"
+													href={filmPageUrl(e.slug)}
+												>
+													{e.title}
+												</a>
+											) : (
+												<span class="font-semibold text-text">{e.title}</span>
+											)}
+											{e.year != null && (
+												<span class="ml-1.5 text-text-faint tabular-nums">
+													{e.year}
+												</span>
+											)}
+											{e.rewatch && (
+												<span class="ml-1.5 text-[0.8rem] text-text-faint">
+													<span aria-hidden="true">&#8635;</span>
+													<span class="sr-only">Rewatch</span>
+												</span>
+											)}
+											{e.liked && (
+												<span class="ml-1.5 text-[0.8rem] text-orange">
+													<span aria-hidden="true">&#9829;</span>
+													<span class="sr-only">Liked</span>
+												</span>
+											)}
+										</td>
+										<td class="py-2 pr-3 whitespace-nowrap">
+											{e.rating != null ? (
+												<span
+													class="text-green"
+													role="img"
+													aria-label={`Rated ${e.rating} out of 5`}
+												>
+													{stars(e.rating)}
+												</span>
+											) : (
+												/* No rating and no date read as empty cells. */
+												<span class="text-text-faint" aria-hidden="true">
+													&mdash;
+												</span>
+											)}
+										</td>
+										<td class="py-2 whitespace-nowrap text-text-faint">
+											{e.watchedDate ? (
+												<time datetime={e.watchedDate} title={e.watchedDate}>
+													{timeAgo(e.watchedDate)}
+												</time>
+											) : (
+												<span aria-hidden="true">&mdash;</span>
+											)}
+										</td>
+									</tr>
+								))
+							}
+						</tbody>
+					</table>
+				</div>
+
+				<p class="mt-4 mb-0 text-[0.9rem] text-text-dim">
+					<a
+						class="font-semibold text-orange underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
+						href={profileUrl(p.username)}
+						target="_blank"
+						rel="noopener"
+					>
+						See everything @{p.username} has logged on Letterboxd &nearr;
+					</a>
+				</p>
+			</section>
+			)
+		}
+	</main>
+
+	<Footer />
+</Base>

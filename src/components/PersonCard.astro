@@ -1,5 +1,12 @@
 ---
+import {
+	activity,
+	entriesFor,
+	filmNoun,
+	personPageUrl,
+} from "../functions/activity";
 import { hueFor, initials } from "../functions/avatars";
+import { filmPageUrl, hasFilmPage } from "../functions/films";
 import {
 	compactCount,
 	profileUrl,
@@ -16,6 +23,26 @@ interface Props {
 const { person: p, hasAvatar } = Astro.props;
 const lastWatched = p.lastWatched ?? null;
 const followers = p.followers ?? null;
+const entries = entriesFor(activity, p.username);
+// `lastWatched` is the most recently *logged* watch while the diary is ordered
+// by watched date, so the two heads aren't always the same entry — match on
+// title and date to get the slug /films/<slug>/ is built from. A backdated
+// watch pushed past the diary's 200-entry cap has nothing left to match, and
+// most films are under the page threshold anyway; either way the title renders
+// unlinked rather than pointing at a page that was never built.
+const lastWatchedSlug = lastWatched
+	? (entries.find(
+			(e) => e.title === lastWatched.title && e.watchedDate === lastWatched.date,
+		)?.slug ?? null)
+	: null;
+const lastWatchedHref =
+	lastWatchedSlug && hasFilmPage(lastWatchedSlug)
+		? filmPageUrl(lastWatchedSlug)
+		: null;
+// The dozen empty diaries would read "0 films", which undersells a link whose
+// page exists to say the account is real and nothing is logged on it.
+const diaryLabel =
+	entries.length > 0 ? `${entries.length} ${filmNoun(entries.length)}` : "Diary";
 ---
 
 <li
@@ -24,14 +51,12 @@ const followers = p.followers ?? null;
 	data-tags={p.tags.join(" ")}
 	data-followers={p.followers ?? 0}
 >
-	<a
-		class="group flex w-full flex-col rounded-card border border-border bg-bg-raised px-4 pt-[0.9rem] pb-[0.85rem] no-underline transition-[border-color,background] duration-[140ms] hover:border-[color-mix(in_srgb,var(--color-orange)_45%,var(--color-border))] hover:bg-bg-raised-hover focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-blue motion-reduce:transition-none"
-		href={profileUrl(p.username)}
-		target="_blank"
-		rel="noopener"
-		aria-label={`${p.name} on Letterboxd${
-			followers == null ? "" : `, ${followers.toLocaleString("en")} followers`
-		}`}
+	{/* The card lifts on hover, except while one of the links below is hovered:
+	    those go somewhere other than the Letterboxd profile the card itself
+	    opens, so the card shouldn't claim the cursor. .card-out marks them for
+	    that :has() check, not a style hook. */}
+	<div
+		class="group relative flex w-full flex-col rounded-card border border-border bg-bg-raised px-4 pt-[0.9rem] pb-[0.85rem] transition-[border-color,background] duration-[140ms] not-has-[.card-out:hover]:hover:border-[color-mix(in_srgb,var(--color-orange)_45%,var(--color-border))] not-has-[.card-out:hover]:hover:bg-bg-raised-hover focus-within:outline-2 focus-within:outline-offset-[3px] focus-within:outline-blue motion-reduce:transition-none"
 	>
 		<div class="flex items-center gap-[0.7rem]">
 			{
@@ -58,7 +83,19 @@ const followers = p.followers ?? null;
 			<h2
 				class="m-0 min-w-0 flex-1 text-[1.05rem] font-bold leading-snug tracking-[-0.01em]"
 			>
-				{p.name}
+				{/* Stretched link: its ::after covers the card, so a click anywhere
+				    lands here — and the card's destination is the Letterboxd profile,
+				    which is what people press a card for. The diary link at the
+				    bottom is the way to this person's page here. */}
+				<a
+					class="rounded-[3px] no-underline after:absolute after:inset-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
+					href={profileUrl(p.username)}
+					target="_blank"
+					rel="noopener"
+					aria-label={`${p.name} on Letterboxd`}
+				>
+					{p.name}
+				</a>
 			</h2>
 			{
 				followers != null && (
@@ -105,12 +142,22 @@ const followers = p.followers ?? null;
 				lastWatched && (
 					<span class="flex items-baseline gap-x-1.5 text-[0.8rem] leading-snug">
 							<span class="shrink-0 text-text-faint">Watched</span>
-							<span class="min-w-0 truncate font-semibold text-text-dim">
-								{lastWatched.title}
-							</span>
+							{lastWatchedHref ? (
+								<a
+									class="card-out relative z-1 min-w-0 truncate font-semibold text-text-dim no-underline hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
+									href={lastWatchedHref}
+								>
+									{lastWatched.title}
+								</a>
+							) : (
+								<span class="min-w-0 truncate font-semibold text-text-dim">
+									{lastWatched.title}
+								</span>
+							)}
 							{lastWatched.rating != null && (
 								<span
 									class="shrink-0 text-green"
+									role="img"
 									aria-label={`rated ${lastWatched.rating} out of 5`}
 								>
 									{stars(lastWatched.rating)}
@@ -124,17 +171,28 @@ const followers = p.followers ?? null;
 					</span>
 				)
 			}
-			<span class="mt-1 flex items-baseline justify-between gap-2 text-[0.9rem] font-semibold">
-				<span class="text-orange tabular-nums group-hover:underline">
-					@{p.username}
-				</span>
+			{/* The handle is where the card already goes, so it is plain text —
+			    a second link to the same profile would just double every card's
+			    tab stops. The diary link beside it is the card's one exit that
+			    isn't Letterboxd, and sits above the stretched link's overlay:
+			    z-1 clears that overlay and stays under the sticky filter bar's
+			    z-5, which it would otherwise scroll over. */}
+			<span class="mt-1 flex items-baseline justify-between gap-2">
 				<span
-					class="text-[0.75rem] font-medium text-text-faint"
-					aria-hidden="true"
+					class="min-w-0 truncate text-[0.9rem] font-semibold text-orange tabular-nums"
 				>
-					letterboxd &nearr;
+					@{p.username}<span class="ml-0.5 text-[0.75rem]" aria-hidden="true"
+						>&nearr;</span
+					>
 				</span>
+				<a
+					class="card-out relative z-1 shrink-0 rounded-[3px] text-[0.78rem] font-semibold text-text-faint no-underline hover:text-text hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
+					href={personPageUrl(p.username)}
+					aria-label={`${p.name}'s diary on Fameboxd`}
+				>
+					{diaryLabel}<span class="ml-0.5" aria-hidden="true">&rarr;</span>
+				</a>
 			</span>
 		</span>
-	</a>
+	</div>
 </li>

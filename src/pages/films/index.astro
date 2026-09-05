@@ -1,0 +1,76 @@
+---
+import Footer from "../../components/Footer.astro";
+import Header from "../../components/Header.astro";
+import people from "../../data/people.json";
+import {
+	FILM_PAGE_MIN_WATCHERS,
+	filmPageUrl,
+	filmPages,
+} from "../../functions/films";
+import Base from "../../layouts/Base.astro";
+
+// The crawl hub: it is what makes every film page reachable in two hops from
+// the homepage, and "the films celebrities watch" is a page in its own right.
+const films = filmPages();
+const count = films.length;
+const top = films[0];
+
+const title = `${count} Films Celebrities Watch on Letterboxd | Fameboxd`;
+const intro = `Every film that ${FILM_PAGE_MIN_WATCHERS} or more of the ${people.length} celebrities in this directory have logged, ranked by how many of them watched it. Led by ${top.title}, with ${top.watchers.length}. Updated daily.`;
+---
+
+<Base title={title} description={intro}>
+	<Header headline={`${count} films celebrities watch`} intro={intro} />
+
+	<main class="wrap py-8">
+		<div class="overflow-x-auto">
+			{/* Several hundred rows, so the per-row styling is hoisted onto the
+			    table: the same classes repeated on every cell cost more than a
+			    megabyte of HTML back when every film had a row. */}
+			<table
+				class="w-full min-w-[420px] border-collapse text-left text-[0.9rem] [&_th]:py-2 [&_td]:py-2 [&_td]:text-right [&_td]:tabular-nums [&_td]:pl-3 [&_tbody_tr]:border-b [&_tbody_tr]:border-border/50 [&_tbody_th]:font-normal [&_tbody_th_span]:ml-1.5 [&_tbody_th_span]:text-text-faint [&_tbody_th_span]:tabular-nums [&_td_b]:font-normal [&_td_b]:text-green [&_a]:font-semibold [&_a]:text-text [&_a]:no-underline [&_a]:transition-colors [&_a]:duration-[120ms] [&_a:hover]:text-orange [&_a:focus-visible]:outline-2 [&_a:focus-visible]:outline-offset-2 [&_a:focus-visible]:outline-blue motion-reduce:[&_a]:transition-none"
+			>
+				<caption class="mb-3 text-left text-[0.85rem] text-text-faint">
+					Counted from each celebrity's public Letterboxd diary, refreshed
+					daily. Ratings are averaged across the celebrities here who rated the
+					film, not across Letterboxd.
+				</caption>
+				<thead>
+					<tr
+						class="border-b border-border [&_th]:text-[0.72rem] [&_th]:font-bold [&_th]:uppercase [&_th]:tracking-[0.08em] [&_th]:text-text-faint"
+					>
+						<th scope="col">Film</th>
+						<th class="text-right" scope="col">Watchers</th>
+						<th class="text-right" scope="col">Average</th>
+					</tr>
+				</thead>
+				<tbody>
+					{
+						films.map((film) => (
+							<tr>
+								<th scope="row">
+									<a href={filmPageUrl(film.slug)}>{film.title}</a>
+									{film.year != null && <span>{film.year}</span>}
+								</th>
+								<td>{film.watchers.length}</td>
+								<td class="text-text-dim">
+									{film.average != null ? (
+										<>
+											{film.average.toFixed(1)}
+											<b>★</b>
+										</>
+									) : (
+										/* No rating from anyone here reads as an empty cell. */
+										<span aria-hidden="true">&mdash;</span>
+									)}
+								</td>
+							</tr>
+						))
+					}
+				</tbody>
+			</table>
+		</div>
+	</main>
+
+	<Footer />
+</Base>

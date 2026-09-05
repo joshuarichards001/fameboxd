@@ -1,9 +1,11 @@
 ---
 import people from "../data/people.json";
+import { activity } from "../functions/activity";
 import { loadAvatarSet } from "../functions/avatars";
 import { sortByRecentActivity, sortPeople, tagCounts, tagsByFrequency } from "../functions/people";
+import { directorySchema } from "../functions/schema";
 import { tagIntro, tagLabel, tagPageTitle } from "../functions/tags";
-import { validatePeople } from "../functions/validate";
+import { validateActivity, validatePeople } from "../functions/validate";
 import Base from "../layouts/Base.astro";
 import Directory from "./Directory.astro";
 import Footer from "./Footer.astro";
@@ -17,6 +19,7 @@ interface Props {
 const { activeTag = null } = Astro.props;
 
 validatePeople(people);
+validateActivity(activity, people);
 
 const sorted = sortPeople(people);
 const allTags = tagsByFrequency(sorted);
@@ -41,9 +44,20 @@ const intro = activeTag ? tagIntro(activeTag, shown) : undefined;
 const description =
 	intro ??
 	`A directory of ${total} celebrities with verified Letterboxd accounts, from Martin Scorsese to Charli XCX. Updated daily.`;
+
+// Card order is the rendered order, and the rendered order is what the
+// ItemList below describes — so build it once and hand it to both.
+const ordered = sortByRecentActivity(visible);
+const schema = directorySchema({
+	site: new URL("/", Astro.site),
+	pathname: Astro.url.pathname,
+	name: activeTag ? `${label} on Letterboxd` : `${total} Celebrities on Letterboxd`,
+	description,
+	people: ordered,
+});
 ---
 
-<Base title={title} description={description}>
+<Base title={title} description={description} schema={schema}>
 	<Header headline={label ?? "Celebrities"} intro={intro} />
 
 	<main class="wrap">
@@ -55,7 +69,7 @@ const description =
 			activeTag={activeTag}
 		/>
 		<Directory
-			people={sortByRecentActivity(visible)}
+			people={ordered}
 			avatarSet={avatarSet}
 			activeTag={activeTag}
 		/>

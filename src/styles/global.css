@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Tailwind scans every non-gitignored file for class names, and film slugs in
+   activity.json read like utilities ("the-ring-1998" -> .ring-1998). No markup
+   lives in the data, so keep it out of the scan. */
+@source not "../data";
+
 /* --- Design tokens (Letterboxd-inspired dark theme) ---
    Each --color-* entry generates matching utilities: bg-bg, text-text-dim,
    border-border, text-orange, etc. */

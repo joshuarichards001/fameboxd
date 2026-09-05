@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-A static site: a directory of famous people (actors, directors,
+A static site: a directory of celebrities (actors, directors,
 musicians, creators) with verified public Letterboxd accounts. Each card shows
 the person's most recent watch and links straight to their Letterboxd profile.
 Built with Astro 7 (no UI framework runtime) and Tailwind CSS v4. Everything
@@ -45,8 +45,59 @@ grid), and `Footer`. Two routes render it:
   only text unique to the URL: keep each tag's hand-written and distinct, or
   Google reads the pages as duplicates of the homepage.
 
-Each card links directly to the person's Letterboxd profile (external, new
-tab). There are no per-person pages.
+**Person pages** are `src/pages/people/[username].astro` — `/people/<username>/`,
+one for **every** person in `people.json`, no threshold and no exceptions. The
+dozen with an empty diary get an empty state instead of a table: "yes, the
+account is real, and nothing is logged on it" is the answer their name is
+searched with. Build the path with `personPageUrl(username)` from
+`src/functions/activity.ts` rather than hardcoding it. `/people/` itself has no
+index — the homepage already lists everyone.
+
+**Film pages** are `src/pages/films/[slug].astro` — `/films/<slug>/`, one per
+film that **`FILM_PAGE_MIN_WATCHERS` (3) or more** people logged; the other
+~3,250 get no page, because a single row restating one diary line is already on
+that person's page. `src/functions/films.ts` inverts `activity.json` into the
+slug→watchers index everything else reads (`films`, the build's one inversion;
+`filmPages` for the ones with a page; `filmPageUrl`). **Ask `hasFilmPage(slug)`
+before linking a film** — below the threshold the title renders as plain text,
+so no URL is ever published and later withdrawn. A watcher is a **person, not
+an entry** — repeat logs collapse to that person's most recent one, and the
+count in the `<h1>` must equal the rows in the table. The average is over the
+watchers on the page and must never be presented as Letterboxd's own. `/films/`
+lists every page, which is why its per-row styling is hoisted onto the
+`<table>` — repeating the classes on every row cost a megabyte of HTML back
+when every film had one.
+
+**`/recent/` and `/feed.xml`** (`src/pages/recent.astro`,
+`src/pages/feed.xml.ts`) both render `recentWatches(activity, people, limit)`
+from `src/functions/recent.ts` — the newest watches across everyone, which
+drops undated entries and anything dated after today (`watchedDate` is
+user-entered, and one typo'd future date would pin itself to the top for a
+year). The feed is hand-rolled RSS 2.0: escape every interpolated value (film
+titles contain `&`), and take no date from the build clock — `lastBuildDate`
+comes off the newest item, so two builds on unchanged data are byte-identical.
+Feed autodiscovery lives in `Base.astro`, so it is on every page.
+
+**Structured data** is JSON-LD in `Base.astro`'s `@graph`: `WebSite` +
+`Organization` on every page, plus a page's optional `schema` prop, whose nodes
+come from `src/functions/schema.ts` (`directorySchema`, `personPageSchema`,
+`filmPageSchema`). Every node carries an absolute `@id` off the page it lives
+on, so one person is one entity across the directory, their own page and every
+film they logged — extend those helpers rather than hand-writing nodes. Film
+pages **must never emit `aggregateRating`**: our average is how a few of the
+163 people here rated a film, not how the film is rated. Google's Rich Results
+Test therefore calls `Movie` ineligible for want of an `image` (a poster) —
+expected, and not a reason to add one.
+
+A card is a **stretched link to the Letterboxd profile** — pressing a card
+leaves the site, which is what a directory card is for. The person's name is
+that `<a>`, its `after:inset-0` overlay covers the card, and the `@username`
+handle is plain text because the card already goes there. The card's internal
+exits — the diary link (`N films →`, to the person page) and the last-watched
+film title — sit one layer above that overlay (z-index 1, `.card-out`); keep
+them under the sticky filter bar's 5, or they scroll over the header. HTML
+forbids nesting `<a>`, so anything else clickable inside a card has to join
+that pattern, not wrap it.
 
 **Data is the source of truth.** `src/data/people.json` is an array of
 `{ name, username, description, tags, lastWatched }` (see the `Person`
@@ -83,6 +134,23 @@ mark every URL changed on every build. Once that Action commits, it runs
 `scripts/submit-indexnow.mjs` (IndexNow — Bing and friends, not Google), which
 derives the same URL set the sitemap lists from `people.json`. Ownership is
 proved by `public/<key>.txt`, whose filename must match `KEY` in the script.
+
+**The full diary** is `src/data/activity.json`, written by the same fetch
+script from the same requests and committed alongside `people.json` (the Action
+stages both). It is stored **normalized**: `{ generatedAt, films, people }`,
+where `films` holds each film's title/year/tmdb once and `people` holds entries
+of `{s,d,r,w?,l?}` written **one per line**. Never hand-edit or
+`JSON.stringify` it — `packActivity` in the fetch script owns the format, and
+both properties are load-bearing (63% smaller than the flat form, and a new
+watch is a one-line commit diff). Import the hydrated **`activity`** from
+`src/functions/activity.ts`, never the JSON: `loadActivity` rehydrates the flat
+`DiaryEntry` everything downstream reads, once per build. The Letterboxd film
+slug (`the-odyssey-2026`) is the join key between a person and a film, and
+`validateActivity` gates the file at build time. The feed only returns the ~50 most recently logged entries, so each run
+merges rather than overwrites: fresh entries replace everything inside the
+feed's watched-date range (so deletions propagate) and older entries are kept,
+capped at 200 per person. Keys stay alphabetical and entries newest-first, or
+the daily commit diff churns.
 
 **Follower data** is the `followers` field on each entry — shown in the card's
 top-right corner (`compactCount`, exact number in the `title`) and feeding the
@@ -146,3 +214,4 @@ its own. Do the steps below by hand when not using it:
 
 - `CLAUDE.md` is a symlink to `AGENTS.md` — edit `AGENTS.md`; both stay in sync.
 - Requires Node >= 22.12. TypeScript uses Astro's `strict` tsconfig.
+- Never commit code without letting me verify the changes first.

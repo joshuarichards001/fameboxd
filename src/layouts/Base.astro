@@ -4,16 +4,20 @@ import "../styles/global.css";
 interface Props {
 	title: string;
 	description: string;
+	// Page-specific JSON-LD, appended to the @graph below. Build the nodes with
+	// src/functions/schema.ts so their @ids line up across page types.
+	schema?: object[];
 }
 
-const { title, description } = Astro.props;
+const { title, description, schema: pageSchema = [] } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL("/og.png", Astro.site);
 
 // Google draws the site name shown above a search result from WebSite
 // structured data, so this is what makes results read "Fameboxd" rather than
-// the bare domain. Same on every page — deliberately describes the site, not
-// the page, which the title/description/og tags above already cover.
+// the bare domain. These two stay on every page — deliberately describing the
+// site, not the page, which the title/description/og tags above already cover.
+// What the page itself is comes in through `schema`.
 const siteUrl = new URL("/", Astro.site).href;
 const schema = {
 	"@context": "https://schema.org",
@@ -32,8 +36,12 @@ const schema = {
 			url: siteUrl,
 			logo: new URL("/apple-touch-icon.png", Astro.site).href,
 		},
+		...pageSchema,
 	],
 };
+// Film titles and names go into this block verbatim; escaping "<" keeps a
+// title that ever contains "</script>" from closing it. Still valid JSON.
+const schemaJson = JSON.stringify(schema).replace(/</g, "\\u003c");
 ---
 
 <!doctype html>
@@ -48,6 +56,12 @@ const schema = {
         <meta name="description" content={description} />
         <link rel="canonical" href={canonical} />
         <link rel="sitemap" href="/sitemap-index.xml" />
+        <link
+            rel="alternate"
+            type="application/rss+xml"
+            title="Fameboxd"
+            href="/feed.xml"
+        />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
@@ -63,7 +77,7 @@ const schema = {
         <script
             type="application/ld+json"
             is:inline
-            set:html={JSON.stringify(schema)}
+            set:html={schemaJson}
         />
         <meta name="generator" content={Astro.generator} />
         <!-- Privacy-friendly analytics by Plausible -->
