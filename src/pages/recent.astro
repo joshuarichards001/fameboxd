@@ -1,11 +1,16 @@
 ---
 import Footer from "../components/Footer.astro";
 import people from "../data/people.json";
-import { activity, personPageUrl } from "../functions/activity";
+import { activity, personPageUrl, posterUrl } from "../functions/activity";
 import { hueFor, initials, loadAvatarSet } from "../functions/avatars";
-import { filmPageUrl, hasFilmPage } from "../functions/films";
+import { celebrityNoun, filmPageUrl, hasFilmPage } from "../functions/films";
 import { stars, timeAgo, type Person } from "../functions/people";
 import { recentWatches } from "../functions/recent";
+import {
+	TRENDING_DAYS,
+	TRENDING_MIN_WATCHERS,
+	trendingFilms,
+} from "../functions/trending";
 import Base from "../layouts/Base.astro";
 
 // The freshest URL on the site: it changes materially every day, so it earns
@@ -13,6 +18,12 @@ import Base from "../layouts/Base.astro";
 // page. 100 rows currently spans four or five days of watching.
 const rows = recentWatches(activity, people as Person[], 100);
 const avatars = loadAvatarSet();
+
+// What the page leads with: the month's most-watched films, as posters. Five
+// watchers in a month is at least five all time, so each one clears
+// FILM_PAGE_MIN_WATCHERS and has a page — the guard is what keeps that true if
+// either threshold moves, rather than publishing a link to a page nobody built.
+const trending = trendingFilms(activity).filter((f) => hasFilmPage(f.slug));
 
 // The films at the top change daily, which is the whole point of the line.
 // Same 158-character budget as the person and film pages; a title that won't
@@ -56,6 +67,75 @@ const description = line(chosen);
 		<p class="mt-4 max-w-[68ch] text-[0.95rem] leading-[1.6] text-text-dim">
 			{description}
 		</p>
+
+		{
+			trending.length > 0 && (
+				<section class="mt-8" aria-labelledby="trending">
+					<h2
+						id="trending"
+						class="m-0 text-[1.05rem] font-bold tracking-[-0.01em]"
+					>
+						Most watched this month
+					</h2>
+					<p class="mt-1 mb-0 text-[0.85rem] text-text-dim">
+						The films at least {TRENDING_MIN_WATCHERS} of them logged in the
+						last {TRENDING_DAYS} days.
+					</p>
+					{/* Two across on a phone rather than four: at four, a poster is
+					    80px wide and the title under it wraps to three lines. */}
+					<ul class="mt-4 grid max-w-[900px] grid-cols-2 gap-4 sm:grid-cols-4">
+						{trending.map((film) => (
+							<li>
+								<a
+									class="group block no-underline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-blue"
+									href={filmPageUrl(film.slug)}
+								>
+									<div class="overflow-hidden rounded-card border border-border bg-bg-raised">
+										{film.poster ? (
+											<img
+												class="block aspect-[2/3] w-full object-cover transition-transform duration-[160ms] group-hover:scale-[1.03] motion-reduce:transition-none"
+												src={posterUrl(film.poster, 300)}
+												srcset={`${posterUrl(film.poster, 300)} 300w, ${posterUrl(film.poster, 600)} 600w`}
+												sizes="(min-width: 640px) 220px, 45vw"
+												width="300"
+												height="450"
+												decoding="async"
+												alt=""
+											/>
+										) : (
+											/* A film logged before its poster was captured. The
+											   title is already below, so this is the tile the
+											   monogram avatars are: colored, not blank. */
+											<span
+												class="flex aspect-[2/3] w-full items-center justify-center p-3 text-center text-[0.85rem] font-bold text-[hsl(var(--hue)_55%_80%)] bg-[hsl(var(--hue)_32%_24%)]"
+												aria-hidden="true"
+												style={`--hue:${hueFor(film.title)}`}
+											>
+												{film.title}
+											</span>
+										)}
+									</div>
+									<p class="mt-2 mb-0 text-[0.85rem] font-semibold leading-[1.35] text-text transition-colors duration-[120ms] group-hover:text-orange motion-reduce:transition-none">
+										{film.title}
+										{film.year != null && (
+											<span class="ml-1 font-normal text-text-faint tabular-nums">
+												{film.year}
+											</span>
+										)}
+									</p>
+									{/* "this month", because a film page counts every watcher
+									    it ever had — 30 here against 36 there reads as a
+									    contradiction unless the window is on the label. */}
+									<p class="mt-0.5 mb-0 text-[0.78rem] text-text-faint">
+										{film.watchers} {celebrityNoun(film.watchers)} this month
+									</p>
+								</a>
+							</li>
+						))}
+					</ul>
+				</section>
+			)
+		}
 
 		<div class="mt-8 overflow-x-auto">
 			{/* Per-row styling hoisted onto the table: this page is rebuilt and

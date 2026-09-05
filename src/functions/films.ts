@@ -1,7 +1,8 @@
 // The cross-section: which of the celebrities in the directory logged a given
 // film. Built by inverting activity.json on the film slug, which spec 01
-// established as the join key between a person and a film. Pure over
-// ActivityData — every username in it is a person in people.json
+// established as the join key between a person and a film; the film's own facts
+// (title, year, tmdb, poster) ride in on the hydrated entries, from films.json.
+// Pure over ActivityData — every username in it is a person in people.json
 // (validateActivity enforces that) and every person has a page, so a watcher
 // never needs gating beyond this.
 //
@@ -31,6 +32,10 @@ export interface Film {
 	// wherever it appears (0 conflicts across all 3,740 slugs), so any non-null
 	// entry identifies it; a handful carry none and stay null.
 	tmdb: number | null;
+	// Letterboxd CDN path for the artwork, sized by posterUrl. Null only for a
+	// film fetch-posters.mjs hasn't reached yet, so the page falls back rather
+	// than assuming one is there.
+	poster: string | null;
 	watchers: FilmWatcher[];
 	rated: number;
 	average: number | null;
@@ -87,6 +92,7 @@ export function filmIndex(activity: ActivityData): Map<string, Film> {
 			title: newest.entry.title,
 			year: newest.entry.year,
 			tmdb: watchers.map((w) => w.entry.tmdb).find((t) => t != null) ?? null,
+			poster: newest.entry.poster,
 			watchers,
 			rated: ratings.length,
 			average: ratings.length

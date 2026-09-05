@@ -1,4 +1,4 @@
-import type { ActivityData } from "./activity";
+import type { ActivityData, FilmsFile } from "./activity";
 import type { Person } from "./people";
 import { hasTagIntro } from "./tags";
 
@@ -66,6 +66,47 @@ export function validatePeople(people: Person[]): void {
 			throw new Error(
 				`Tag "${tag}" is in use but has no intro in tags.ts.`,
 			);
+		}
+	}
+}
+
+// A stored poster is a bare CDN path that the pages interpolate into an
+// <img src>, and it is scraped off a third party, so its shape is checked
+// rather than trusted: no scheme, host, query or traversal. The apostrophe is
+// in the list because Letterboxd genuinely serves one ("marvin's%20room") and
+// it threatens none of those things inside a double-quoted attribute; widening
+// it further wants the same argument made again.
+const POSTER_PATH = /^[A-Za-z0-9][A-Za-z0-9._%'/-]*$/;
+
+// Build-time validation of src/data/films.json. Every film carries all four
+// slots — a missing poster is null, never an absent element — because the
+// whole point of the split from activity.json was that the presence of a
+// field should not encode anything.
+export function validateFilms(films: FilmsFile): void {
+	for (const [slug, film] of Object.entries(films)) {
+		if (!Array.isArray(film) || film.length !== 4) {
+			throw new Error(
+				`Film "${slug}" must be [title, year, tmdb, poster]: ${JSON.stringify(film)}`,
+			);
+		}
+		const [title, year, tmdb, poster] = film;
+		if (typeof title !== "string" || title.trim() === "") {
+			throw new Error(`Film "${slug}" is missing a title.`);
+		}
+		if (year != null && !Number.isInteger(year)) {
+			throw new Error(`Film "${slug}" has an invalid year: ${year}`);
+		}
+		if (tmdb != null && !Number.isInteger(tmdb)) {
+			throw new Error(`Film "${slug}" has an invalid tmdb id: ${tmdb}`);
+		}
+		if (
+			poster != null &&
+			(typeof poster !== "string" ||
+				!POSTER_PATH.test(poster) ||
+				poster.includes("..") ||
+				poster.includes("//"))
+		) {
+			throw new Error(`Film "${slug}" has an invalid poster path: ${poster}`);
 		}
 	}
 }

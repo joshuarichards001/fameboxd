@@ -1,11 +1,15 @@
 ---
 import people from "../data/people.json";
-import { activity } from "../functions/activity";
+import { activity, filmsFile } from "../functions/activity";
 import { loadAvatarSet } from "../functions/avatars";
 import { sortByRecentActivity, sortPeople, tagCounts, tagsByFrequency } from "../functions/people";
 import { directorySchema } from "../functions/schema";
 import { tagIntro, tagLabel, tagPageTitle } from "../functions/tags";
-import { validateActivity, validatePeople } from "../functions/validate";
+import {
+	validateActivity,
+	validateFilms,
+	validatePeople,
+} from "../functions/validate";
 import Base from "../layouts/Base.astro";
 import Directory from "./Directory.astro";
 import Footer from "./Footer.astro";
@@ -20,6 +24,7 @@ const { activeTag = null } = Astro.props;
 
 validatePeople(people);
 validateActivity(activity, people);
+validateFilms(filmsFile);
 
 const sorted = sortPeople(people);
 const allTags = tagsByFrequency(sorted);

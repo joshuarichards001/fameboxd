@@ -28,6 +28,9 @@ astro dev status | logs | stop  # manage the background server
   by the build.
 - `npm run fetch-followers` — refresh each person's `followers` in
   `src/data/people.json` (see Follower data below). Never run by the build.
+- `npm run fetch-posters` — fill in the missing posters in
+  `src/data/films.json` (see Film data below). Incremental; never run by the
+  build.
 
 ## Architecture
 
@@ -63,7 +66,10 @@ before linking a film** — below the threshold the title renders as plain text,
 so no URL is ever published and later withdrawn. A watcher is a **person, not
 an entry** — repeat logs collapse to that person's most recent one, and the
 count in the `<h1>` must equal the rows in the table. The average is over the
-watchers on the page and must never be presented as Letterboxd's own. `/films/`
+watchers on the page and must never be presented as Letterboxd's own. The page
+leads with the film's poster beside that header; it falls back to a titled tile
+rather than assuming `film.poster` is set, since a film added today has no
+poster until `fetch-posters` next runs. `/films/`
 lists every page, which is why its per-row styling is hoisted onto the
 `<table>` — repeating the classes on every row cost a megabyte of HTML back
 when every film had one.
@@ -73,7 +79,10 @@ when every film had one.
 from `src/functions/recent.ts` — the newest watches across everyone, which
 drops undated entries and anything dated after today (`watchedDate` is
 user-entered, and one typo'd future date would pin itself to the top for a
-year). The feed is hand-rolled RSS 2.0: escape every interpolated value (film
+year). `/recent/` leads with a poster strip of the month's most-watched films
+from `src/functions/trending.ts` — a **person, not an entry**, is a watcher, so
+a rewatch never counts twice. Its thresholds are its own; `films.ts` answers
+the all-time question and cannot answer this one. The feed is hand-rolled RSS 2.0: escape every interpolated value (film
 titles contain `&`), and take no date from the build clock — `lastBuildDate`
 comes off the newest item, so two builds on unchanged data are byte-identical.
 Feed autodiscovery lives in `Base.astro`, so it is on every page.
@@ -137,20 +146,43 @@ proved by `public/<key>.txt`, whose filename must match `KEY` in the script.
 
 **The full diary** is `src/data/activity.json`, written by the same fetch
 script from the same requests and committed alongside `people.json` (the Action
-stages both). It is stored **normalized**: `{ generatedAt, films, people }`,
-where `films` holds each film's title/year/tmdb once and `people` holds entries
-of `{s,d,r,w?,l?}` written **one per line**. Never hand-edit or
+stages both). It is stored **normalized**: `{ generatedAt, people }`, where
+`people` holds entries of `{s,d,r,w?,l?}` written **one per line**; the film
+facts they point at live in `films.json` below. Never hand-edit or
 `JSON.stringify` it — `packActivity` in the fetch script owns the format, and
-both properties are load-bearing (63% smaller than the flat form, and a new
+both properties are load-bearing (a fraction of the flat form's size, and a new
 watch is a one-line commit diff). Import the hydrated **`activity`** from
-`src/functions/activity.ts`, never the JSON: `loadActivity` rehydrates the flat
-`DiaryEntry` everything downstream reads, once per build. The Letterboxd film
-slug (`the-odyssey-2026`) is the join key between a person and a film, and
-`validateActivity` gates the file at build time. The feed only returns the ~50 most recently logged entries, so each run
-merges rather than overwrites: fresh entries replace everything inside the
-feed's watched-date range (so deletions propagate) and older entries are kept,
-capped at 200 per person. Keys stay alphabetical and entries newest-first, or
-the daily commit diff churns.
+`src/functions/activity.ts`, never the JSON: `loadActivity` joins the two files
+into the flat `DiaryEntry` everything downstream reads, once per build. The
+Letterboxd film slug (`the-odyssey-2026`) is the join key between a person and
+a film, and `validateActivity` gates the file at build time. The feed only
+returns the ~50 most recently logged entries, so each run merges rather than
+overwrites: fresh entries replace everything inside the feed's watched-date
+range (so deletions propagate) and older entries are kept, capped at 200 per
+person. Keys stay alphabetical and entries newest-first, or the daily commit
+diff churns.
+
+**Film data** is `src/data/films.json`: `slug -> [title, year, tmdb, poster]`,
+one film per line, alphabetical, owned by `scripts/films-file.mjs` (both fetch
+scripts import its packer — never write this file any other way). It is a
+separate file from `activity.json` on purpose: these are facts about a film,
+true whether or not anyone watched it lately, while `activity.json` is a log
+that changes daily. **Every film carries all four slots**, `null` where
+unknown — presence of a field must never encode anything, which is exactly the
+bug the split fixed.
+
+The `poster` is a Letterboxd CDN path with the size suffix stripped;
+`posterUrl` rebuilds it at one of the two widths that CDN actually serves (most
+sizes, 400x600 included, answer 403). It reaches the file two ways:
+`fetch-activity` gets one free from the RSS entry description, but only while
+that entry is inside the feed's ~50-entry window, so
+`scripts/fetch-posters.mjs` fills the rest from each film's own page — its
+JSON-LD `Movie` node carries the same URL. Film pages are served normally to a
+plain client, unlike member profiles, and robots.txt allows them for a named
+agent like ours. That script is incremental (it only fetches `null` posters,
+checkpointing as it goes) and **never overwrites**, so `fetch-activity` must
+keep gap-filling rather than rebuilding a film's row, or every daily run would
+undo the backfill.
 
 **Follower data** is the `followers` field on each entry — shown in the card's
 top-right corner (`compactCount`, exact number in the `title`) and feeding the

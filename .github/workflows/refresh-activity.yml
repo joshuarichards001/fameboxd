@@ -21,6 +21,11 @@ jobs:
       - name: Fetch most recent watches
         run: node scripts/fetch-activity.mjs
 
+      # Only the films fetch-activity just added are missing a poster, so this
+      # is a handful of requests a day once the catalogue is filled in.
+      - name: Fetch posters for new films
+        run: node scripts/fetch-posters.mjs
+
       # Both counts are on the card, so they refresh together on one commit.
       - name: Fetch follower counts
         run: node scripts/fetch-followers.mjs
@@ -28,13 +33,13 @@ jobs:
       - name: Commit if changed
         id: commit
         run: |
-          if git diff --quiet src/data/people.json src/data/activity.json; then
+          if git diff --quiet src/data/people.json src/data/activity.json src/data/films.json; then
             echo "No changes."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add src/data/people.json src/data/activity.json
+          git add src/data/people.json src/data/activity.json src/data/films.json
           git commit -m "Refresh Letterboxd activity and follower data"
           git push
           echo "changed=true" >> "$GITHUB_OUTPUT"

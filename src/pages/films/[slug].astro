@@ -1,7 +1,7 @@
 ---
 import Footer from "../../components/Footer.astro";
 import people from "../../data/people.json";
-import { personPageUrl } from "../../functions/activity";
+import { personPageUrl, posterUrl } from "../../functions/activity";
 import { hueFor, initials, loadAvatarSet } from "../../functions/avatars";
 import {
 	celebrityNoun,
@@ -75,68 +75,100 @@ const schema = filmPageSchema({
 			href="/films/">&larr; All films</a
 		>
 
-		<header class="mt-6 flex flex-wrap items-end justify-between gap-4">
-			<h1
-				class="m-0 max-w-[22ch] text-[clamp(1.6rem,4.5vw,2.4rem)] font-extrabold leading-[1.1] tracking-[-0.02em]"
-			>
-				<span class="text-orange tabular-nums">{count}</span>{" "}
-				{celebrityNoun(count)}
-				{count === 1 ? " has" : " have"} logged {heading}
-			</h1>
-			<a
-				class="inline-flex items-center gap-2 rounded-full bg-orange px-5 py-2 text-[0.95rem] font-bold text-bg no-underline transition-colors duration-[120ms] hover:bg-[color-mix(in_srgb,var(--color-orange)_80%,white)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"
-				href={letterboxdFilmUrl(film.slug)}
-				target="_blank"
-				rel="noopener"
-			>
-				{film.title} on Letterboxd &nearr;
-			</a>
-		</header>
-
-		{/* The quotable line. Never phrase this as a Letterboxd average — it is
-		    the average across the people on this page, and nobody else. */}
-		<div
-			class="mt-6 flex flex-wrap gap-x-10 gap-y-4 rounded-card border border-border bg-bg-raised px-5 py-4"
-		>
-			<p class="m-0">
-				<span class="block text-[1.8rem] font-extrabold leading-none tabular-nums"
-					>{count}</span
-				>
-				<span class="mt-1 block text-[0.8rem] uppercase tracking-[0.08em] text-text-faint"
-					>{count === 1 ? "has" : "have"} logged it</span
-				>
-			</p>
-			<p class="m-0">
-				<span class="block text-[1.8rem] font-extrabold leading-none tabular-nums"
-					>{film.rated}</span
-				>
-				<span class="mt-1 block text-[0.8rem] uppercase tracking-[0.08em] text-text-faint"
-					>rated it</span
-				>
-			</p>
+		{/* Poster beside the header and the stats, not above them: the numbers
+		    are what this page is for, and a poster on its own row pushes them
+		    under the fold on a laptop. */}
+		<div class="mt-6 flex flex-col gap-6 sm:flex-row sm:items-start">
 			{
-				film.average != null && (
-					<p class="m-0">
-						<span class="block text-[1.8rem] font-extrabold leading-none tabular-nums text-green">
-							{film.average.toFixed(1)}
-							<span class="text-[1.2rem]">★</span>
-						</span>
-						<span class="mt-1 block text-[0.8rem] uppercase tracking-[0.08em] text-text-faint">
-							{film.rated === 1 ? "their rating" : `average of those ${film.rated}`}
-						</span>
-					</p>
+				film.poster ? (
+					<img
+						class="w-[150px] shrink-0 self-start rounded-card border border-border bg-bg-raised sm:w-[200px]"
+						src={posterUrl(film.poster, 300)}
+						srcset={`${posterUrl(film.poster, 300)} 300w, ${posterUrl(film.poster, 600)} 600w`}
+						sizes="(min-width: 640px) 200px, 150px"
+						width="300"
+						height="450"
+						decoding="async"
+						alt=""
+					/>
+				) : (
+					/* fetch-posters.mjs hasn't reached this film yet. The title is
+					   in the h1 alongside, so this stands in rather than collapsing
+					   the layout. */
+					<span
+						class="flex aspect-[2/3] w-[150px] shrink-0 self-start items-center justify-center rounded-card border border-border bg-bg-raised p-3 text-center text-[0.85rem] font-bold text-text-faint sm:w-[200px]"
+						aria-hidden="true"
+					>
+						{film.title}
+					</span>
 				)
 			}
+
+			<div class="min-w-0 flex-1">
+				<header class="flex flex-wrap items-end justify-between gap-4">
+					<h1
+						class="m-0 max-w-[22ch] text-[clamp(1.6rem,4.5vw,2.4rem)] font-extrabold leading-[1.1] tracking-[-0.02em]"
+					>
+						<span class="text-orange tabular-nums">{count}</span>{" "}
+						{celebrityNoun(count)}
+						{count === 1 ? " has" : " have"} logged {heading}
+					</h1>
+					<a
+						class="inline-flex items-center gap-2 rounded-full bg-orange px-5 py-2 text-[0.95rem] font-bold text-bg no-underline transition-colors duration-[120ms] hover:bg-[color-mix(in_srgb,var(--color-orange)_80%,white)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"
+						href={letterboxdFilmUrl(film.slug)}
+						target="_blank"
+						rel="noopener"
+					>
+						{film.title} on Letterboxd &nearr;
+					</a>
+				</header>
+
+				{/* The quotable line. Never phrase this as a Letterboxd average — it is
+				    the average across the people on this page, and nobody else. */}
+				<div
+					class="mt-6 flex flex-wrap gap-x-10 gap-y-4 rounded-card border border-border bg-bg-raised px-5 py-4"
+				>
+					<p class="m-0">
+						<span class="block text-[1.8rem] font-extrabold leading-none tabular-nums"
+							>{count}</span
+						>
+						<span class="mt-1 block text-[0.8rem] uppercase tracking-[0.08em] text-text-faint"
+							>{count === 1 ? "has" : "have"} logged it</span
+						>
+					</p>
+					<p class="m-0">
+						<span class="block text-[1.8rem] font-extrabold leading-none tabular-nums"
+							>{film.rated}</span
+						>
+						<span class="mt-1 block text-[0.8rem] uppercase tracking-[0.08em] text-text-faint"
+							>rated it</span
+						>
+					</p>
+					{
+						film.average != null && (
+							<p class="m-0">
+								<span class="block text-[1.8rem] font-extrabold leading-none tabular-nums text-green">
+									{film.average.toFixed(1)}
+									<span class="text-[1.2rem]">★</span>
+								</span>
+								<span class="mt-1 block text-[0.8rem] uppercase tracking-[0.08em] text-text-faint">
+									{film.rated === 1 ? "their rating" : `average of those ${film.rated}`}
+								</span>
+							</p>
+						)
+					}
+				</div>
+				<p class="mt-2 max-w-[68ch] text-[0.85rem] text-text-faint">
+					{
+						film.average == null
+							? "Nobody on this page rated it, so there is no average to show."
+							: film.rated === 1
+								? "One celebrity's rating, not Letterboxd's site-wide average."
+								: `Averaged across the ${film.rated} ${celebrityNoun(film.rated)} on this page who rated it — not Letterboxd's site-wide average.`
+					}
+				</p>
+			</div>
 		</div>
-		<p class="mt-2 max-w-[68ch] text-[0.85rem] text-text-faint">
-			{
-				film.average == null
-					? "Nobody on this page rated it, so there is no average to show."
-					: film.rated === 1
-						? "One celebrity's rating, not Letterboxd's site-wide average."
-						: `Averaged across the ${film.rated} ${celebrityNoun(film.rated)} on this page who rated it — not Letterboxd's site-wide average.`
-			}
-		</p>
 
 		<section class="mt-8" aria-labelledby="watchers-heading">
 			<h2
