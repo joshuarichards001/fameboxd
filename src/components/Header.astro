@@ -32,13 +32,25 @@ const {
 		>
 			{intro}
 		</p>
-		<a
-			class="mt-4 inline-block rounded-full border border-border bg-bg-raised px-4 py-1.5 text-[0.85rem] font-semibold text-orange transition-colors duration-[120ms] hover:bg-bg-raised-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"
-			href={SUGGEST_FORM_URL}
-			target="_blank"
-			rel="noopener"
-		>
-			Suggest a person &rarr;
-		</a>
+		{/* /recent/ leads: it is the page that gives a first-time visitor a
+		    reason to come back, and suggesting a person is what you do after
+		    the directory has convinced you — so the off-site form stays
+		    secondary. This header never renders on /recent/ itself. */}
+		<div class="mt-4 flex flex-wrap items-center gap-2">
+			<a
+				class="inline-block rounded-full bg-orange px-4 py-1.5 text-[0.85rem] font-bold text-bg no-underline transition-colors duration-[120ms] hover:bg-[color-mix(in_srgb,var(--color-orange)_80%,white)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"
+				href="/recent/"
+			>
+				Popular films this month
+			</a>
+			<a
+				class="inline-block rounded-full border border-border bg-bg-raised px-4 py-1.5 text-[0.85rem] font-semibold text-orange transition-colors duration-[120ms] hover:bg-bg-raised-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"
+				href={SUGGEST_FORM_URL}
+				target="_blank"
+				rel="noopener"
+			>
+				Suggest a person &nearr;
+			</a>
+		</div>
 	</div>
 </header>
