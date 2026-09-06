@@ -10,9 +10,11 @@ import type { ActivityData } from "./activity";
 
 export const TRENDING_DAYS = 30;
 // Five is what separates "the films everyone here saw this month" from the
-// long tail: 21 films clear it today, and the top four are clear of the rest.
+// long tail: 21 films clear it today, well clear of the six the strip shows.
 export const TRENDING_MIN_WATCHERS = 5;
-export const TRENDING_LIMIT = 4;
+// Six, because the strip is three across on a phone and six on a wide screen:
+// two full rows or one, never a row with a hole in it.
+export const TRENDING_LIMIT = 6;
 
 export interface TrendingFilm {
 	slug: string;

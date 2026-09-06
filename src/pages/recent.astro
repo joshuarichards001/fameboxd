@@ -6,11 +6,7 @@ import { hueFor, initials, loadAvatarSet } from "../functions/avatars";
 import { celebrityNoun, filmPageUrl, hasFilmPage } from "../functions/films";
 import { stars, timeAgoShort, type Person } from "../functions/people";
 import { recentWatches } from "../functions/recent";
-import {
-	TRENDING_DAYS,
-	TRENDING_MIN_WATCHERS,
-	trendingFilms,
-} from "../functions/trending";
+import { TRENDING_LIMIT, trendingFilms } from "../functions/trending";
 import Base from "../layouts/Base.astro";
 
 // The freshest URL on the site: it changes materially every day, so it earns
@@ -22,8 +18,11 @@ const avatars = loadAvatarSet();
 // What the page leads with: the month's most-watched films, as posters. A film
 // trending this month need not clear FILM_PAGE_MIN_WATCHERS all time, so the
 // guard is load-bearing: it drops the ones with no page rather than publishing
-// a link to a page nobody built.
-const trending = trendingFilms(activity).filter((f) => hasFilmPage(f.slug));
+// a link to a page nobody built. Filter before the cut, or a pageless film in
+// the top six leaves the strip a poster short of a full row.
+const trending = trendingFilms(activity, { limit: Infinity })
+	.filter((f) => hasFilmPage(f.slug))
+	.slice(0, TRENDING_LIMIT);
 
 // The films at the top change daily, which is the whole point of the line.
 // Same 158-character budget as the person and film pages; a title that won't
@@ -72,10 +71,11 @@ const description = line(chosen);
 					>
 						Most watched this month
 					</h2>
-					{/* One row of four at every width. The poster is the title, so the
-					    name it replaces has to reach a screen reader some other way:
-					    through the image's alt, or the fallback tile's own text. */}
-					<ul class="mt-4 grid max-w-[900px] grid-cols-4 gap-2 sm:gap-4">
+					{/* Two rows of three on a phone, one row of six from sm up. The
+					    poster is the title, so the name it replaces has to reach a
+					    screen reader some other way: through the image's alt, or the
+					    fallback tile's own text. */}
+					<ul class="mt-4 grid max-w-[900px] grid-cols-3 gap-2 sm:grid-cols-6 sm:gap-4">
 						{trending.map((film) => (
 							<li>
 								<a
@@ -89,7 +89,7 @@ const description = line(chosen);
 												class="block aspect-[2/3] w-full object-cover transition-transform duration-[160ms] group-hover:scale-[1.03] motion-reduce:transition-none"
 												src={posterUrl(film.poster, 300)}
 												srcset={`${posterUrl(film.poster, 300)} 300w, ${posterUrl(film.poster, 600)} 600w`}
-												sizes="(min-width: 640px) 220px, 23vw"
+												sizes="(min-width: 640px) 150px, 31vw"
 												width="300"
 												height="450"
 												decoding="async"
