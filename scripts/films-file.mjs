@@ -43,10 +43,34 @@ export const packFilms = (films) => {
 // Defined here because both fetch scripts read a poster out of different
 // documents (an RSS description, a film page's JSON-LD) that happen to carry
 // the same URL: one regex, or they drift and one of them silently stores none.
-export const posterBase = (url) =>
-	url?.match(
+//
+// The RSS description arrives HTML-escaped, so an apostrophe in the path
+// ("marvin's%20room", which Letterboxd genuinely serves) reaches us as
+// "&#039;" — stored raw it is a path that resolves to nothing and fails
+// validateFilms, i.e. breaks the build on the daily commit. Entities are
+// decoded first, and anything still outside the shape validateFilms accepts is
+// refused rather than written, so a surprise from either document leaves the
+// poster null for the next run instead of taking the site down.
+const decodeEntities = (s) =>
+	s
+		.replace(/&#(\d+);/g, (_, n) => String.fromCharCode(Number(n)))
+		.replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCharCode(parseInt(n, 16)))
+		.replace(/&quot;/g, '"')
+		.replace(/&apos;/g, "'")
+		.replace(/&amp;/g, "&");
+
+const POSTER_PATH = /^[A-Za-z0-9][A-Za-z0-9._%'/-]*$/;
+
+export const posterBase = (url) => {
+	const base = url == null ? null : decodeEntities(url).match(
 		/a\.ltrbxd\.com\/resized\/([^"?\s]+?)-0-\d+-0-\d+-crop(?:-resize\d+)?\.(?:jpe?g|png)/,
-	)?.[1] ?? null;
+	)?.[1];
+	if (!base) return null;
+	if (!POSTER_PATH.test(base) || base.includes("..") || base.includes("//")) {
+		return null;
+	}
+	return base;
+};
 
 export async function readFilms() {
 	const text = await readFile(FILMS_PATH, "utf8").catch(() => null);
