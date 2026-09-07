@@ -70,9 +70,13 @@ watchers on the page and must never be presented as Letterboxd's own. The page
 leads with the film's poster beside that header; it falls back to a titled tile
 rather than assuming `film.poster` is set, since a film added today has no
 poster until `fetch-posters` next runs. `/films/`
-lists every page, which is why its per-row styling is hoisted onto the
-`<table>` — repeating the classes on every row cost a megabyte of HTML back
-when every film had one.
+lists every page as a poster wall — three across on a phone, nine on a desktop,
+each poster carrying the watcher count in its bottom-left corner and the average
+in its bottom-right. The poster is the only title on it, so the film's name has
+to reach a screen reader (and a crawler, as the link's anchor text) through the
+image's `alt` or the fallback tile's own text. Its per-tile styling is hoisted
+onto the `<ul>`, the way the table it replaced hoisted its rows: repeated on
+every tile those classes cost more than the rest of the page put together.
 
 **`/recent/` and `/feed.xml`** (`src/pages/recent.astro`,
 `src/pages/feed.xml.ts`) both render `recentWatches(activity, people, limit)`
