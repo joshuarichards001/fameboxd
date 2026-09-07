@@ -2,10 +2,14 @@
 import Footer from "../../components/Footer.astro";
 import Header from "../../components/Header.astro";
 import people from "../../data/people.json";
+import { posterUrl } from "../../functions/activity";
+import { hueFor } from "../../functions/avatars";
 import {
 	FILM_PAGE_MIN_WATCHERS,
+	celebrityNoun,
 	filmPageUrl,
 	filmPages,
+	filmTitle,
 } from "../../functions/films";
 import Base from "../../layouts/Base.astro";
 
@@ -23,55 +27,76 @@ const intro = `Every film that ${FILM_PAGE_MIN_WATCHERS} or more of the ${people
 	<Header headline={`${count} films celebrities watch`} intro={intro} />
 
 	<main class="wrap py-8">
-		<div class="overflow-x-auto">
-			{/* Several hundred rows, so the per-row styling is hoisted onto the
-			    table: the same classes repeated on every cell cost more than a
-			    megabyte of HTML back when every film had a row. */}
-			<table
-				class="w-full table-fixed border-collapse text-left text-[0.9rem] [&_th]:py-2 [&_td]:py-2 [&_td]:text-right [&_td]:tabular-nums [&_td]:pl-3 [&_tbody_tr]:border-b [&_tbody_tr]:border-border/50 [&_tbody_th]:font-normal [&_tbody_th>span]:flex [&_tbody_th>span]:items-baseline [&_tbody_th>span]:gap-1.5 [&_tbody_th_span_span]:shrink-0 [&_tbody_th_span_span]:text-text-faint [&_tbody_th_span_span]:tabular-nums [&_a]:truncate [&_td_b]:font-normal [&_td_b]:text-green [&_a]:font-semibold [&_a]:text-text [&_a]:no-underline [&_a]:transition-colors [&_a]:duration-[120ms] [&_a:hover]:text-orange [&_a:focus-visible]:outline-2 [&_a:focus-visible]:outline-offset-2 [&_a:focus-visible]:outline-blue motion-reduce:[&_a]:transition-none"
-			>
-				<caption class="mb-3 text-left text-[0.85rem] text-text-faint">
-					Counted from each celebrity's public Letterboxd diary, refreshed
-					daily. Ratings are averaged across the celebrities here who rated the
-					film, not across Letterboxd.
-				</caption>
-				<thead>
-					<tr
-						class="border-b border-border [&_th]:text-[0.72rem] [&_th]:font-bold [&_th]:uppercase [&_th]:tracking-[0.08em] [&_th]:text-text-faint"
-					>
-						<th scope="col">Film</th>
-						<th class="w-[4.75rem] text-right" scope="col">Watchers</th>
-						<th class="w-[4.5rem] text-right" scope="col">Average</th>
-					</tr>
-				</thead>
-				<tbody>
-					{
-						films.map((film) => (
-							<tr>
-								<th scope="row">
-									<span>
-										<a href={filmPageUrl(film.slug)}>{film.title}</a>
-										{film.year != null && <span>{film.year}</span>}
-									</span>
-								</th>
-								<td>{film.watchers.length}</td>
-								<td class="text-text-dim">
-									{film.average != null ? (
-										<>
-											{film.average.toFixed(1)}
-											<b>★</b>
-										</>
-									) : (
-										/* No rating from anyone here reads as an empty cell. */
-										<span aria-hidden="true">&mdash;</span>
-									)}
-								</td>
-							</tr>
-						))
-					}
-				</tbody>
-			</table>
-		</div>
+		<p class="max-w-[68ch] text-[0.85rem] text-text-faint">
+			Counted from each celebrity's public Letterboxd diary, refreshed daily.
+			Each poster carries the number who logged the film on the left and their
+			average rating on the right — averaged across the celebrities here who
+			rated it, not across Letterboxd.
+		</p>
+
+		{/* A poster wall, most-watched first: three across on a phone, nine on a
+		    desktop. Two CDN URLs per tile already make this page three times the
+		    size of the table it replaced, so the per-tile styling is hoisted onto
+		    the list the way that table hoisted its rows — repeated on all 64 tiles
+		    those classes would cost more than the rest of the page put together.
+		    The badges are a bare <b> (watchers, bottom left) and <i> (average
+		    rating, bottom right): elements as styling hooks, so a tile stays three
+		    tags rather than three tags and a paragraph of classes. */}
+		<ul
+			class="mt-6 grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-9 lg:gap-3 [&_a]:relative [&_a]:block [&_a]:overflow-hidden [&_a]:rounded-card [&_a]:border [&_a]:border-border [&_a]:bg-bg-raised [&_a]:no-underline [&_a:focus-visible]:outline-2 [&_a:focus-visible]:outline-offset-2 [&_a:focus-visible]:outline-blue [&_img]:block [&_img]:aspect-[2/3] [&_img]:w-full [&_img]:object-cover [&_img]:transition-transform [&_img]:duration-[160ms] [&_a:hover_img]:scale-[1.03] motion-reduce:[&_img]:transition-none [&_:is(b,i)]:absolute [&_:is(b,i)]:bottom-1 [&_:is(b,i)]:rounded [&_:is(b,i)]:bg-bg/85 [&_:is(b,i)]:px-1 [&_:is(b,i)]:py-px [&_:is(b,i)]:text-[0.62rem] [&_:is(b,i)]:font-bold [&_:is(b,i)]:not-italic [&_:is(b,i)]:leading-[1.5] [&_:is(b,i)]:tabular-nums sm:[&_:is(b,i)]:text-[0.7rem] [&_b]:left-1 [&_b]:text-text [&_i]:right-1 [&_i]:text-green"
+		>
+			{
+				films.map((film, i) => (
+					<li>
+						{/* The poster is the title, so the name it replaces reaches a
+						    screen reader — and a crawler, as this link's anchor text —
+						    through the image's alt, or the fallback tile's own text. */}
+						<a href={filmPageUrl(film.slug)} title={filmTitle(film)}>
+							{film.poster ? (
+								<img
+									src={posterUrl(film.poster, 300)}
+									srcset={`${posterUrl(film.poster, 300)} 300w, ${posterUrl(film.poster, 600)} 600w`}
+									sizes="(min-width: 1024px) 130px, (min-width: 768px) 16vw, (min-width: 640px) 24vw, 31vw"
+									width="300"
+									height="450"
+									/* The first row is what a visitor sees before scrolling;
+									   the sixty-odd behind it can wait. */
+									loading={i < 9 ? "eager" : "lazy"}
+									decoding="async"
+									alt={film.title}
+								/>
+							) : (
+								/* A film whose poster fetch-posters.mjs hasn't reached yet:
+								   the tile the monogram avatars are, colored rather than
+								   blank — and the only place the title is written. */
+								<span
+									class="flex aspect-[2/3] w-full items-center justify-center p-1.5 text-center text-[0.62rem] font-bold sm:p-2 sm:text-[0.75rem] text-[hsl(var(--hue)_55%_80%)] bg-[hsl(var(--hue)_32%_24%)]"
+									style={`--hue:${hueFor(film.title)}`}
+								>
+									{film.title}
+								</span>
+							)}
+							<b>
+								{film.watchers.length}
+								<span class="sr-only">
+									{" "}
+									{celebrityNoun(film.watchers.length)} logged it
+								</span>
+							</b>
+							{/* No rating from anyone here leaves the corner empty, the way
+							    it read as an empty cell before. */}
+							{film.average != null && (
+								<i>
+									{film.average.toFixed(1)}
+									<span aria-hidden="true">★</span>
+									<span class="sr-only"> average rating</span>
+								</i>
+							)}
+						</a>
+					</li>
+				))
+			}
+		</ul>
 	</main>
 
 	<Footer />
