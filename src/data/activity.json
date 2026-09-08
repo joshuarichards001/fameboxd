@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-07T15:02:45.004Z",
+  "generatedAt": "2026-09-08T13:36:46.272Z",
   "people": {
     "1jamiebell": [
       {"s":"the-invite-2026","d":"2026-08-21","r":null},
@@ -106,6 +106,7 @@
       {"s":"cast-away","d":"2025-06-13","r":3}
     ],
     "aarkush": [
+      {"s":"exiled","d":"2026-09-06","r":4.5},
       {"s":"breaking-news","d":"2026-09-02","r":4},
       {"s":"fallen-1998","d":"2026-08-31","r":1.5},
       {"s":"yearning","d":"2026-08-31","r":5},
@@ -164,6 +165,7 @@
       {"s":"legends-2026","d":"2026-05-26","r":3.5}
     ],
     "adambolt": [
+      {"s":"shang-chi-and-the-legend-of-the-ten-rings","d":"2026-09-08","r":3.5,"w":1,"l":1},
       {"s":"zootopia-2","d":"2026-09-07","r":3,"l":1},
       {"s":"terminator-2-judgment-day","d":"2026-09-06","r":4.5,"w":1,"l":1},
       {"s":"krisha-2015","d":"2026-09-04","r":3,"l":1},
@@ -546,6 +548,10 @@
       {"s":"sinners-2025","d":"2026-04-03","r":null,"l":1}
     ],
     "anuragkashyap": [
+      {"s":"bunker-2026-1","d":"2026-09-08","r":null,"l":1},
+      {"s":"look-back-2026","d":"2026-09-08","r":null,"l":1},
+      {"s":"conversation-with-the-sea","d":"2026-09-07","r":null,"l":1},
+      {"s":"valerie-and-her-week-of-wonders","d":"2026-09-07","r":null,"w":1,"l":1},
       {"s":"the-burning-giants","d":"2026-09-07","r":null},
       {"s":"the-spiral-2026","d":"2026-09-07","r":null,"l":1},
       {"s":"arrested-memory","d":"2026-09-07","r":null,"l":1},
@@ -942,6 +948,7 @@
       {"s":"star-wars-episode-i-the-phantom-menace","d":"2026-02-22","r":null}
     ],
     "caddicarus": [
+      {"s":"the-sheep-detectives","d":"2026-09-06","r":3.5,"l":1},
       {"s":"coyote-vs-acme","d":"2026-09-03","r":4,"l":1},
       {"s":"the-end-of-oak-street","d":"2026-08-30","r":3},
       {"s":"jim-henson-idea-man","d":"2026-08-21","r":4,"l":1},
@@ -1089,6 +1096,7 @@
       {"s":"the-virgin-suicides","d":"2025-06-08","r":4,"l":1}
     ],
     "carrieandtracy": [
+      {"s":"directed-by-john-ford","d":"2026-09-07","r":null},
       {"s":"rosebush-pruning","d":"2026-09-06","r":null,"w":1},
       {"s":"come-see-me-in-the-good-light","d":"2026-09-06","r":null},
       {"s":"is-god-is","d":"2026-09-06","r":null},
@@ -1201,6 +1209,7 @@
       {"s":"arco","d":"2026-01-25","r":null,"l":1}
     ],
     "chad_hartigan": [
+      {"s":"singapore","d":"2026-09-07","r":null},
       {"s":"the-adventures-of-elmo-in-grouchland","d":"2026-09-06","r":null},
       {"s":"sweeney-todd-the-demon-barber-of-fleet-street-2007","d":"2026-09-05","r":null},
       {"s":"moana-2016","d":"2026-09-05","r":null},
@@ -1410,6 +1419,8 @@
       {"s":"ghostbusters","d":"2026-04-20","r":4,"w":1}
     ],
     "chrisstuckmann": [
+      {"s":"dominion-prequel-to-the-exorcist","d":"2026-09-08","r":null},
+      {"s":"devil","d":"2026-09-07","r":null,"w":1,"l":1},
       {"s":"the-last-house-on-the-left-2009","d":"2026-09-07","r":null,"l":1},
       {"s":"hide-and-seek","d":"2026-09-06","r":null,"w":1,"l":1},
       {"s":"the-skeleton-key","d":"2026-09-06","r":null,"w":1,"l":1},
@@ -1458,8 +1469,6 @@
       {"s":"only-yesterday","d":"2026-08-09","r":null,"w":1,"l":1},
       {"s":"last-action-hero","d":"2026-08-08","r":null,"w":1,"l":1},
       {"s":"the-adventures-of-elmo-in-grouchland","d":"2026-08-08","r":null,"l":1},
-      {"s":"paw-patrol-the-dino-movie","d":"2026-08-08","r":null,"l":1},
-      {"s":"the-mission","d":"2026-08-08","r":null,"l":1},
       {"s":"the-shipping-news","d":"2026-08-07","r":null},
       {"s":"goosebumps-the-scarecrow-walks-at-midnight","d":"2026-08-06","r":null,"w":1,"l":1},
       {"s":"the-night-of-the-hunter","d":"2026-08-05","r":null,"w":1,"l":1},
@@ -1478,6 +1487,7 @@
       {"s":"tootsie","d":"2026-07-26","r":null,"l":1}
     ],
     "chronopictures": [
+      {"s":"musk-2026","d":"2026-09-07","r":null},
       {"s":"possible-love","d":"2026-09-06","r":null,"l":1},
       {"s":"moonfish","d":"2026-09-06","r":null},
       {"s":"the-departed","d":"2026-09-06","r":null,"w":1,"l":1},
@@ -1668,6 +1678,7 @@
       {"s":"assault-on-precinct-13","d":"2025-10-21","r":5,"w":1,"l":1}
     ],
     "connoreatspants": [
+      {"s":"coyote-vs-acme","d":"2026-09-07","r":3,"l":1},
       {"s":"the-mandalorian-and-grogu","d":"2026-09-05","r":2},
       {"s":"grand-theft-auto-vi-an-extended-look","d":"2026-08-27","r":null},
       {"s":"spider-man-brand-new-day","d":"2026-07-30","r":4,"l":1},
@@ -1873,6 +1884,7 @@
       {"s":"highest-2-lowest","d":"2026-04-05","r":null,"l":1}
     ],
     "dafnekeen": [
+      {"s":"the-sheep-detectives","d":"2026-09-07","r":null,"l":1},
       {"s":"speak-no-evil-2024","d":"2026-09-05","r":null,"l":1},
       {"s":"funny-games","d":"2026-09-02","r":null,"l":1},
       {"s":"the-usual-suspects","d":"2026-08-28","r":null,"l":1},
@@ -1928,6 +1940,7 @@
       {"s":"ponyo","d":"2025-07-18","r":null,"w":1,"l":1}
     ],
     "davidehrlich": [
+      {"s":"look-back-2026","d":"2026-09-07","r":3.5},
       {"s":"possible-love","d":"2026-09-06","r":4.5},
       {"s":"making-marie-antoinette","d":"2026-09-05","r":null,"l":1},
       {"s":"elsinore","d":"2026-09-05","r":1.5},
@@ -2095,6 +2108,8 @@
       {"s":"death-of-a-unicorn","d":"2026-03-27","r":2.5}
     ],
     "demiadejuyigbe": [
+      {"s":"tony-2026","d":"2026-09-07","r":null,"l":1},
+      {"s":"whats-up-doc-1972","d":"2026-09-07","r":5,"w":1,"l":1},
       {"s":"malignant-2021","d":"2026-09-06","r":4.5,"w":1,"l":1},
       {"s":"i-swear","d":"2026-08-31","r":4.5,"l":1},
       {"s":"novocaine-2025","d":"2026-08-31","r":null},
@@ -2143,7 +2158,6 @@
       {"s":"ready-or-not-2-here-i-come","d":"2026-05-04","r":null},
       {"s":"bicentennial-man","d":"2026-05-04","r":null,"l":1},
       {"s":"life-or-something-like-it","d":"2026-05-04","r":null,"l":1},
-      {"s":"eternity-2025-1","d":"2026-05-04","r":null,"l":1},
       {"s":"jack-tucker-comedy-standup-hour","d":"2026-05-03","r":null,"l":1},
       {"s":"squids","d":"2026-05-02","r":null,"l":1},
       {"s":"popstar-never-stop-never-stopping","d":"2026-04-25","r":5,"w":1,"l":1},
@@ -2208,6 +2222,7 @@
       {"s":"joy-ride","d":"2023-01-04","r":null}
     ],
     "eddyburback": [
+      {"s":"hot-rod","d":"2026-09-07","r":null,"l":1},
       {"s":"tarzan","d":"2026-08-30","r":null,"l":1},
       {"s":"akira","d":"2026-08-29","r":null,"l":1},
       {"s":"grand-theft-auto-vi-an-extended-look","d":"2026-08-27","r":null,"l":1},
@@ -2262,6 +2277,7 @@
       {"s":"uncut-gems","d":"2026-04-17","r":null,"w":1,"l":1}
     ],
     "erikgriffin": [
+      {"s":"the-odyssey-2026","d":"2026-09-07","r":4,"l":1},
       {"s":"supergirl-2026","d":"2026-07-29","r":4},
       {"s":"wuthering-heights-2026","d":"2026-05-15","r":3},
       {"s":"send-help","d":"2026-05-15","r":5},
@@ -2298,6 +2314,7 @@
       {"s":"the-godfather","d":"2025-01-30","r":5,"l":1}
     ],
     "esmail": [
+      {"s":"the-runner-2026-2","d":"2026-09-08","r":null},
       {"s":"morvern-callar","d":"2026-09-07","r":null},
       {"s":"star-wars-episode-ii-attack-of-the-clones","d":"2026-09-06","r":null,"w":1},
       {"s":"star-wars-episode-i-the-phantom-menace","d":"2026-09-04","r":null,"w":1},
@@ -2518,6 +2535,8 @@
       {"s":"the-long-walk-2025","d":"2025-09-08","r":null,"l":1}
     ],
     "framesofnick": [
+      {"s":"hope-2026","d":"2026-09-07","r":2.5},
+      {"s":"my-neighbor-totoro","d":"2026-09-07","r":5,"l":1},
       {"s":"high-school-musical-2","d":"2026-09-06","r":5,"w":1,"l":1},
       {"s":"porco-rosso","d":"2026-09-03","r":4,"l":1},
       {"s":"grand-theft-auto-vi-an-extended-look","d":"2026-08-28","r":5},
@@ -3143,6 +3162,7 @@
       {"s":"sisa-2025","d":"2026-03-15","r":null}
     ],
     "itscharlibb": [
+      {"s":"tony-2026","d":"2026-09-07","r":null},
       {"s":"the-evil-dead","d":"2026-09-06","r":null},
       {"s":"dream-lover","d":"2026-09-02","r":null,"l":1},
       {"s":"personal-shopper","d":"2026-09-02","r":5,"w":1,"l":1},
@@ -3383,6 +3403,7 @@
       {"s":"how-i-see-me","d":"2026-04-13","r":null,"w":1,"l":1}
     ],
     "jaredgilman": [
+      {"s":"hope-2026","d":"2026-09-07","r":4.5,"l":1},
       {"s":"inherent-vice","d":"2026-09-06","r":5,"w":1,"l":1},
       {"s":"dire-duplicity","d":"2026-09-05","r":5,"l":1},
       {"s":"celine-and-julie-go-boating","d":"2026-09-05","r":5,"l":1},
@@ -3604,9 +3625,11 @@
       {"s":"12-angry-men","d":"2023-05-07","r":5}
     ],
     "jlalibs": [
+      {"s":"thirst-1979","d":"2026-09-07","r":3.5,"w":1},
+      {"s":"door-1988","d":"2026-09-07","r":4},
       {"s":"terror-train","d":"2026-09-06","r":3,"w":1},
       {"s":"butterfly-kiss","d":"2026-09-06","r":4},
-      {"s":"buddy-2026","d":"2026-09-06","r":4},
+      {"s":"buddy-2026","d":"2026-09-06","r":3.5},
       {"s":"by-any-means-2026","d":"2026-09-06","r":3},
       {"s":"night-of-the-vamp-friars","d":"2026-09-05","r":null,"w":1},
       {"s":"apocalypse-now","d":"2026-09-05","r":5,"w":1,"l":1},
@@ -3737,6 +3760,7 @@
       {"s":"puppygirl","d":"2026-06-08","r":null,"l":1}
     ],
     "jordanmyr1ck": [
+      {"s":"colony-2026","d":"2026-09-07","r":null,"l":1},
       {"s":"inside-man","d":"2026-09-06","r":null,"l":1},
       {"s":"dead-mans-wire","d":"2026-09-06","r":null},
       {"s":"the-rip-2026","d":"2026-09-05","r":null},
@@ -3785,7 +3809,6 @@
       {"s":"the-shrouds","d":"2026-05-03","r":null},
       {"s":"thrash-2026","d":"2026-05-01","r":null},
       {"s":"trust-me-the-false-prophet-2026","d":"2026-04-30","r":null,"l":1},
-      {"s":"hokum","d":"2026-04-30","r":null,"l":1},
       {"s":"gothika","d":null,"r":null,"l":1},
       {"s":"mother-mary-2026","d":"2026-04-29","r":null},
       {"s":"over-your-dead-body-2026","d":"2026-04-24","r":null,"l":1},
@@ -3950,6 +3973,8 @@
       {"s":"black-mirror-the-national-anthem","d":null,"r":1.5}
     ],
     "jumblejim": [
+      {"s":"herbie-goes-bananas","d":"2026-09-08","r":2},
+      {"s":"the-520-an-hour-dream","d":"2026-09-07","r":4},
       {"s":"delta-fox","d":"2026-09-04","r":1},
       {"s":"catastrophe-2001","d":"2026-09-02","r":3.5},
       {"s":"elizabeth","d":"2026-09-02","r":5},
@@ -4062,6 +4087,7 @@
       {"s":"tangerine","d":"2025-12-09","r":5}
     ],
     "katiewalshstx": [
+      {"s":"this-is-buzz","d":"2026-09-07","r":null},
       {"s":"relentless-2021","d":"2026-09-05","r":null},
       {"s":"filipinana-2026","d":"2026-09-04","r":null,"l":1},
       {"s":"onslaught-2026","d":"2026-09-04","r":null},
@@ -4109,7 +4135,6 @@
       {"s":"tony-2026","d":"2026-07-24","r":null,"l":1},
       {"s":"teenage-sex-and-death-at-camp-miasma","d":"2026-07-21","r":null,"w":1,"l":1},
       {"s":"motor-city","d":"2026-07-20","r":null},
-      {"s":"pools-2024-1","d":"2026-07-19","r":null},
       {"s":"hadestown-the-musical","d":"2026-07-15","r":null,"l":1},
       {"s":"her-private-hell-2026","d":"2026-07-08","r":null},
       {"s":"moana","d":"2026-07-07","r":null},
@@ -4570,6 +4595,8 @@
       {"s":"sorry-baby-2025","d":"2026-01-03","r":null}
     ],
     "lilfilm": [
+      {"s":"blowin-up","d":"2026-09-07","r":null},
+      {"s":"edge-of-darkness-2010","d":"2026-09-07","r":null},
       {"s":"night-school","d":"2026-09-06","r":null},
       {"s":"onslaught-2026","d":"2026-09-05","r":null},
       {"s":"the-delinquents-1960","d":"2026-08-30","r":null},
@@ -4618,7 +4645,6 @@
       {"s":"the-odyssey-2026","d":"2026-07-18","r":null},
       {"s":"the-mysterious-gaze-of-the-flamingo","d":"2026-07-18","r":null},
       {"s":"poison-ivy-1992","d":"2026-07-17","r":null},
-      {"s":"hunters-blood","d":"2026-07-17","r":null},
       {"s":"wadd-the-life-times-of-john-c-holmes-1999","d":"2026-07-11","r":null},
       {"s":"evil-dead-burn","d":"2026-07-10","r":null},
       {"s":"the-big-bus","d":"2026-07-09","r":null},
@@ -4737,6 +4763,7 @@
       {"s":"heavy-trip","d":"2026-04-15","r":null}
     ],
     "lolpetra": [
+      {"s":"body-of-evidence","d":"2026-09-07","r":null},
       {"s":"blackberry-2023","d":"2026-08-31","r":null},
       {"s":"depeche-mode-101","d":"2026-08-26","r":null},
       {"s":"the-blue-dahlia","d":"2026-08-26","r":null},
@@ -4808,6 +4835,7 @@
       {"s":"monkeybone","d":null,"r":3.5}
     ],
     "maiapog": [
+      {"s":"the-guest-2014","d":"2026-09-07","r":null,"l":1},
       {"s":"aliens","d":"2026-09-03","r":null,"l":1},
       {"s":"the-maltese-falcon-1941","d":"2026-09-02","r":null},
       {"s":"tony-2026","d":"2026-08-30","r":null},
@@ -5428,6 +5456,8 @@
       {"s":"magnolia","d":null,"r":5}
     ],
     "nandovmovies": [
+      {"s":"coyote-vs-acme","d":"2026-09-08","r":4,"l":1},
+      {"s":"the-runner-2026-2","d":"2026-09-08","r":1.5},
       {"s":"mutiny-2026","d":"2026-08-28","r":2.5,"l":1},
       {"s":"the-end-of-oak-street","d":"2026-08-11","r":4,"l":1},
       {"s":"the-last-house-2026","d":"2026-08-10","r":2},
@@ -5760,6 +5790,7 @@
       {"s":"paddington","d":null,"r":null}
     ],
     "patrickhwillems": [
+      {"s":"hope-2026","d":"2026-09-07","r":null,"l":1},
       {"s":"batman-1989","d":"2026-09-06","r":null,"w":1},
       {"s":"onslaught-2026","d":"2026-09-05","r":null},
       {"s":"spider-man-brand-new-day","d":"2026-09-03","r":null,"w":1},
@@ -5874,6 +5905,7 @@
       {"s":"top-secret","d":"2026-04-30","r":4,"w":1,"l":1}
     ],
     "paulwhauser": [
+      {"s":"orion-and-the-dark","d":"2026-09-06","r":3.5,"w":1,"l":1},
       {"s":"send-help","d":"2026-09-03","r":3.5,"l":1},
       {"s":"wag-the-dog","d":"2026-09-03","r":3,"w":1,"l":1},
       {"s":"coyote-vs-acme","d":"2026-08-29","r":3.5},
@@ -6144,6 +6176,7 @@
       {"s":"velvet-buzzsaw","d":"2019-02-12","r":null,"w":1}
     ],
     "rowan_blanchard": [
+      {"s":"trust","d":"2026-09-07","r":4.5,"l":1},
       {"s":"amadeus","d":"2026-09-06","r":5},
       {"s":"exotica","d":"2026-08-30","r":4},
       {"s":"pusher-iii","d":"2026-08-29","r":null,"w":1,"l":1},
@@ -6385,6 +6418,8 @@
       {"s":"portrait-of-jennie","d":"2026-06-06","r":5}
     ],
     "schaffrillas": [
+      {"s":"super-mario-bros-1985","d":"2026-09-08","r":3.5},
+      {"s":"crimson-peak","d":"2026-09-07","r":4},
       {"s":"hellboy-ii-the-golden-army","d":"2026-09-06","r":4},
       {"s":"twilight-2008","d":"2026-09-05","r":2,"w":1},
       {"s":"hellboy","d":"2026-09-05","r":3},
@@ -6418,7 +6453,7 @@
       {"s":"rubberface","d":"2026-07-12","r":2.5},
       {"s":"kick-ass-2","d":"2026-07-10","r":1.5},
       {"s":"the-invite-2026","d":"2026-07-09","r":4},
-      {"s":"copper-mountain","d":"2026-07-08","r":3.5},
+      {"s":"copper-mountain","d":"2026-07-08","r":1},
       {"s":"the-majestic","d":"2026-07-08","r":4},
       {"s":"pools-2024-1","d":"2026-07-08","r":4},
       {"s":"lemony-snickets-a-series-of-unfortunate-events","d":"2026-07-06","r":3.5},
@@ -6479,6 +6514,9 @@
       {"s":"the-truman-show","d":null,"r":5,"l":1}
     ],
     "seanfennessey": [
+      {"s":"the-gypsy-moths","d":"2026-09-07","r":null},
+      {"s":"bat21","d":"2026-09-07","r":null},
+      {"s":"the-wrong-girls","d":"2026-09-07","r":null},
       {"s":"you-can-see-everything","d":"2026-09-06","r":null,"l":1},
       {"s":"elsinore","d":"2026-09-06","r":null},
       {"s":"bucking-fastard","d":"2026-09-05","r":null},
@@ -6525,9 +6563,6 @@
       {"s":"awakenings","d":"2026-08-17","r":null},
       {"s":"the-best-of-times-1986","d":"2026-08-16","r":null},
       {"s":"union-county-2026","d":"2026-08-16","r":null,"w":1},
-      {"s":"mary-beth-barone-galaxy-brain","d":"2026-08-15","r":null},
-      {"s":"the-last-house-2026","d":"2026-08-15","r":null},
-      {"s":"the-end-of-oak-street","d":"2026-08-14","r":null,"w":1,"l":1},
       {"s":"mayday-2026","d":"2026-04-11","r":null}
     ],
     "shadowtodd": [
@@ -6798,6 +6833,7 @@
       {"s":"sentimental-value-2025","d":"2025-11-23","r":5,"l":1}
     ],
     "stavvybaby2": [
+      {"s":"teenage-sex-and-death-at-camp-miasma","d":"2026-09-07","r":4,"l":1},
       {"s":"tony-2026","d":"2026-08-22","r":5,"l":1},
       {"s":"is-this-thing-on-2025","d":"2026-05-09","r":3,"l":1},
       {"s":"marty-supreme","d":"2025-12-19","r":5,"l":1},
@@ -7000,6 +7036,10 @@
       {"s":"the-moment-2026","d":"2026-01-29","r":5,"l":1}
     ],
     "thejoelynch": [
+      {"s":"disney-worldbuilders","d":"2026-09-07","r":null},
+      {"s":"cuddly-toys","d":"2026-09-07","r":4,"l":1},
+      {"s":"onslaught-2026","d":"2026-09-07","r":3.5,"l":1},
+      {"s":"star-trek-iii-the-search-for-spock","d":"2026-09-06","r":3.5,"w":1,"l":1},
       {"s":"when-we-went-mad","d":"2026-09-06","r":3.5,"l":1},
       {"s":"rudy","d":"2026-09-05","r":4,"w":1,"l":1},
       {"s":"pirates-of-the-caribbean-the-curse-of-the-black-pearl","d":"2026-09-04","r":4,"w":1,"l":1},
@@ -7183,6 +7223,7 @@
       {"s":"afternoons-of-solitude","d":"2025-12-09","r":4}
     ],
     "timothycsimons": [
+      {"s":"lost-bullet","d":"2026-09-07","r":null},
       {"s":"fast-five","d":"2026-09-06","r":null,"w":1},
       {"s":"spider-man-brand-new-day","d":"2026-09-05","r":null},
       {"s":"species","d":"2026-09-04","r":null,"w":1},
@@ -7297,6 +7338,7 @@
       {"s":"miss-americana","d":"2024-01-27","r":3.5,"w":1,"l":1}
     ],
     "veradrew22": [
+      {"s":"velvet-goldmine","d":"2026-09-07","r":5,"l":1},
       {"s":"babygirl-2024","d":"2026-09-05","r":4,"l":1},
       {"s":"creep-2","d":"2026-09-04","r":5,"w":1,"l":1},
       {"s":"the-thing","d":"2026-09-04","r":5,"w":1,"l":1},
@@ -7345,7 +7387,6 @@
       {"s":"pontypool","d":"2026-06-26","r":5,"l":1},
       {"s":"again-again-2026","d":"2026-06-24","r":null,"l":1},
       {"s":"smooth-2023","d":"2026-06-23","r":5,"l":1},
-      {"s":"iykyk-if-you-know-you-know","d":"2026-06-23","r":5,"l":1},
       {"s":"i-saw-the-tv-glow","d":"2024-06-01","r":null}
     ],
     "wallybeechum": [
@@ -7401,6 +7442,7 @@
       {"s":"dogma","d":"2024-02-18","r":5,"w":1,"l":1}
     ],
     "weardjupiter": [
+      {"s":"a-scanner-darkly","d":"2026-09-07","r":null,"w":1,"l":1},
       {"s":"treasure-island-1999-1","d":"2026-09-05","r":null,"l":1},
       {"s":"screamplay","d":"2026-09-02","r":null},
       {"s":"lynch-one","d":"2026-08-31","r":null},
