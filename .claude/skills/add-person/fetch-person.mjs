@@ -5,7 +5,7 @@
 //   • tries the public profile for identity signals (display name + the meta
 //     description, which lists film counts, favorites, and bio) and the avatar
 //     URL, and
-//   • downloads an avatar and converts it to a 160×160 .webp (the site's
+//   • downloads an avatar and converts it to a 96×96 .webp (the site's
 //     avatar convention).
 //
 // It writes NOTHING to people.json — the skill instructions handle that.
@@ -148,11 +148,14 @@ async function saveAvatar(url, outPath) {
 	try {
 		execFileSync("cwebp", [
 			"-quiet",
+			// The card renders these at 42px, so 96 covers a 2x screen with a
+			// little to spare. They were 160 until 2026-09-10, which was 51%
+			// more bytes for pixels no display could use.
 			"-resize",
-			"160",
-			"160",
+			"96",
+			"96",
 			"-q",
-			"82",
+			"85",
 			src,
 			"-o",
 			outPath,

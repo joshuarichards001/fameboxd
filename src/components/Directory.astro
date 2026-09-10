@@ -9,7 +9,35 @@ interface Props {
 }
 
 const { people, avatarSet, activeTag } = Astro.props;
+
+// The grid is at most four columns wide, so this is the first row on the
+// widest layout — the avatars a visitor sees before scrolling.
+const EAGER_AVATARS = 4;
 ---
+
+{/* The follower icon appears on nearly every card; inlining the same four
+    paths 180 times cost 70 KB of HTML, so it is defined once and instanced
+    with <use>. Positioned off-layout rather than display:none, which is the
+    form of this trick that every browser honours for <use>. */}
+<svg
+	aria-hidden="true"
+	style="position:absolute;width:0;height:0;overflow:hidden"
+>
+	<symbol
+		id="i-followers"
+		viewBox="0 0 24 24"
+		fill="none"
+		stroke="currentColor"
+		stroke-width="2.5"
+		stroke-linecap="round"
+		stroke-linejoin="round"
+	>
+		<path d="M16 20v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+		<circle cx="9" cy="7" r="4"></circle>
+		<path d="M22 20v-2a4 4 0 0 0-3-3.87"></path>
+		<path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+	</symbol>
+</svg>
 
 <ul
 	class="mt-4 grid grid-cols-[repeat(auto-fill,minmax(min(100%,21rem),1fr))] gap-3"
@@ -17,8 +45,12 @@ const { people, avatarSet, activeTag } = Astro.props;
 	data-prefiltered={activeTag != null ? "" : undefined}
 >
 	{
-		people.map((p) => (
-			<PersonCard person={p} hasAvatar={avatarSet.has(p.username)} />
+		people.map((p, i) => (
+			<PersonCard
+				person={p}
+				hasAvatar={avatarSet.has(p.username)}
+				eager={i < EAGER_AVATARS}
+			/>
 		))
 	}
 </ul>

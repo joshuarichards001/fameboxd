@@ -18,9 +18,12 @@ import {
 interface Props {
 	person: Person;
 	hasAvatar: boolean;
+	// The first row of cards is above the fold, so lazy-loading their avatars
+	// only delays them until after layout. Directory sets this on that row.
+	eager?: boolean;
 }
 
-const { person: p, hasAvatar } = Astro.props;
+const { person: p, hasAvatar, eager = false } = Astro.props;
 const lastWatched = p.lastWatched ?? null;
 const followers = p.followers ?? null;
 const entries = entriesFor(activity, p.username);
@@ -46,7 +49,7 @@ const diaryLabel =
 ---
 
 <li
-	class="card flex [&[hidden]]:hidden"
+	class="card"
 	data-name={p.name.toLowerCase()}
 	data-tags={p.tags.join(" ")}
 	data-followers={p.followers ?? 0}
@@ -56,7 +59,7 @@ const diaryLabel =
 	    opens, so the card shouldn't claim the cursor. .card-out marks them for
 	    that :has() check, not a style hook. */}
 	<div
-		class="group relative flex w-full flex-col rounded-card border border-border bg-bg-raised px-4 pt-[0.9rem] pb-[0.85rem] transition-[border-color,background] duration-[140ms] not-has-[.card-out:hover]:hover:border-[color-mix(in_srgb,var(--color-orange)_45%,var(--color-border))] not-has-[.card-out:hover]:hover:bg-bg-raised-hover focus-within:outline-2 focus-within:outline-offset-[3px] focus-within:outline-blue motion-reduce:transition-none"
+		class="group relative flex w-full flex-col rounded-card border border-border bg-bg-raised px-4 pt-[0.9rem] pb-[0.85rem] transition-[border-color,background] duration-[140ms] not-has-[.card-out:hover]:hover:border-[color-mix(in_srgb,var(--color-orange)_45%,var(--color-border))] not-has-[.card-out:hover]:hover:bg-bg-raised-hover motion-reduce:transition-none"
 	>
 		<div class="flex items-center gap-[0.7rem]">
 			{
@@ -66,7 +69,8 @@ const diaryLabel =
 						src={`/avatars/${p.username}.webp`}
 						width="42"
 						height="42"
-						loading="lazy"
+						loading={eager ? "eager" : "lazy"}
+						fetchpriority={eager ? "high" : undefined}
 						decoding="async"
 						alt=""
 					/>
@@ -103,22 +107,11 @@ const diaryLabel =
 						class="flex shrink-0 items-center gap-1 self-start text-[0.75rem] font-semibold text-text-faint tabular-nums"
 						title={`${followers.toLocaleString("en")} followers on Letterboxd`}
 					>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							viewBox="0 0 24 24"
-							width="11"
-							height="11"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2.5"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							aria-hidden="true"
-						>
-							<path d="M16 20v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-							<circle cx="9" cy="7" r="4" />
-							<path d="M22 20v-2a4 4 0 0 0-3-3.87" />
-							<path d="M16 3.13a4 4 0 0 1 0 7.75" />
+						{/* One <symbol> in Directory.astro, instanced here: inlining
+						    this icon 180 times cost 70 KB of HTML and ~720 DOM
+						    nodes, which is most of its parse cost. */}
+						<svg width="11" height="11" aria-hidden="true">
+							<use href="#i-followers" />
 						</svg>
 						{compactCount(followers)}
 					</span>

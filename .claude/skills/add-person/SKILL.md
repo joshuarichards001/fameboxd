@@ -43,7 +43,7 @@ activity and the avatar all come from unblocked pages.
 
 The avatar is taken from the followers page, which carries the owner's own
 photo in its header; the script upsizes it and converts it to the site's
-160×160 `.webp`. Conversion needs `cwebp` (`brew install webp`). After it saves,
+96×96 `.webp`. Conversion needs `cwebp` (`brew install webp`). After it saves,
 view the file to confirm it's a real photo of the right person.
 
 `hasCustomAvatar: false` means they've set no photo (`avatarSourceUrl` absent,

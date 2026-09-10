@@ -49,3 +49,35 @@
 			transparent 55%
 		);
 }
+
+/* --- Person card ---
+   The one class the card's markup doesn't get from Tailwind, because none of
+   this is expressible as an inline utility on 180 <li>s. Everything else about
+   a card is styled in PersonCard.astro. */
+@utility card {
+	display: flex;
+
+	/* 180 cards over tens of thousands of pixels: skip layout and paint for
+	   the ones off screen. This is what makes scrolling cheap — a full style
+	   recalc plus layout of this page costs ~4.8ms without it and ~0.2ms with
+	   it. The `auto` in contain-intrinsic-size makes the browser remember each
+	   card's real height once it has rendered, which matters because they run
+	   from ~250px to ~720px and one fixed guess would jump the scrollbar. */
+	content-visibility: auto;
+	contain-intrinsic-size: auto 320px;
+
+	/* The focus ring lives here rather than on the card's inner wrapper: the
+	   paint containment that comes with content-visibility clips descendants
+	   to this box, and it swallowed the ring and its 3px offset whole. The
+	   wrapper fills this element exactly, so it draws where it always did. */
+	&:focus-within {
+		outline: 2px solid var(--color-blue);
+		outline-offset: 3px;
+	}
+
+	/* display:flex above would otherwise beat [hidden]; the filter script
+	   hides cards that way. */
+	&[hidden] {
+		display: none;
+	}
+}
