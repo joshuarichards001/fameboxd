@@ -1,0 +1,65 @@
+---
+import { posterUrl } from "../functions/activity";
+import { celebrityNoun, filmPageUrl, filmTitle, type Film } from "../functions/films";
+
+interface PosterItem {
+	film: Pick<Film, "slug" | "title" | "year" | "poster">;
+	watchers: number;
+	average: number | null;
+}
+
+interface Props {
+	items: PosterItem[];
+	className: string;
+	sizes: string;
+	eagerCount: number;
+	watcherPeriod?: string;
+}
+
+const { items, className, sizes, eagerCount, watcherPeriod } = Astro.props;
+---
+
+{/* One symbol for the whole grid keeps the icon out of every tile's markup. */}
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+	<symbol id="i-film-watcher" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+		<circle cx="12" cy="8" r="4" />
+		<path d="M4 21a8 8 0 0 1 16 0" />
+	</symbol>
+</svg>
+<ul class:list={["grid grid-cols-3 gap-2", className]}>
+	{items.map(({ film, watchers, average }, index) => (
+		<li class="min-w-0">
+			<a
+				class="group relative block aspect-[2/3] overflow-hidden rounded-card border border-border bg-bg-raised no-underline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-blue"
+				href={filmPageUrl(film.slug)}
+				title={filmTitle(film)}
+				aria-label={`${filmTitle(film)}: ${watchers} ${celebrityNoun(watchers)} watched${watcherPeriod ? ` ${watcherPeriod}` : ""}; ${average == null ? "no average rating" : `average rating ${average.toFixed(1)} out of 5 among the celebrities here who rated it`}`}
+			>
+				{film.poster ? (
+					<img
+						class="block h-full w-full object-cover transition-transform duration-[160ms] group-hover:scale-[1.03] motion-reduce:transition-none"
+						src={posterUrl(film.poster, 300)}
+						srcset={`${posterUrl(film.poster, 300)} 300w, ${posterUrl(film.poster, 600)} 600w`}
+						sizes={sizes}
+						width="300"
+						height="450"
+						loading={index < eagerCount ? "eager" : "lazy"}
+						decoding="async"
+						alt=""
+					/>
+				) : (
+					<span class="flex h-full w-full items-center justify-center p-2 text-center text-[0.7rem] font-bold text-text-faint sm:text-[0.8rem]" aria-hidden="true">
+						{film.title}
+					</span>
+				)}
+				<span class="absolute inset-x-1 bottom-1 flex items-center justify-between gap-1 text-[0.7rem] font-bold leading-none tabular-nums text-white sm:text-[0.78rem]" aria-hidden="true">
+					<span class="inline-flex shrink-0 items-center gap-0.5 rounded-full bg-black/80 px-1 py-1 sm:px-1.5">
+						<svg class="h-3 w-3 shrink-0"><use href="#i-film-watcher" /></svg>
+						{watchers}
+					</span>
+					<span class="shrink-0 rounded-full bg-black/80 px-1 py-1 sm:px-1.5">{average != null ? `${average.toFixed(1)}★` : "—"}</span>
+				</span>
+			</a>
+		</li>
+	))}
+</ul>

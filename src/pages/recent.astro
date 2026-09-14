@@ -1,9 +1,10 @@
 ---
 import Footer from "../components/Footer.astro";
+import FilmPosterGrid from "../components/FilmPosterGrid.astro";
 import people from "../data/people.json";
-import { activity, personPageUrl, posterUrl } from "../functions/activity";
+import { activity, personPageUrl } from "../functions/activity";
 import { hueFor, initials, loadAvatarSet } from "../functions/avatars";
-import { celebrityNoun, filmPageUrl, hasFilmPage } from "../functions/films";
+import { films, filmPageUrl, hasFilmPage } from "../functions/films";
 import { stars, timeAgoShort, type Person } from "../functions/people";
 import { recentWatches } from "../functions/recent";
 import { TRENDING_LIMIT, trendingFilms } from "../functions/trending";
@@ -63,52 +64,20 @@ const description = line(chosen);
 					>
 						Most watched this month
 					</h2>
-					{/* Two rows of three on a phone, one row of six from sm up. The
-					    poster is the title, so the name it replaces has to reach a
-					    screen reader some other way: through the image's alt, or the
-					    fallback tile's own text. */}
-					<ul class="mt-4 grid max-w-[900px] grid-cols-3 gap-2 sm:grid-cols-6 sm:gap-4">
-						{trending.map((film) => (
-							<li>
-								<a
-									class="group block no-underline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-blue"
-									href={filmPageUrl(film.slug)}
-									title={film.title}
-								>
-									<div class="overflow-hidden rounded-card border border-border bg-bg-raised">
-										{film.poster ? (
-											<img
-												class="block aspect-[2/3] w-full object-cover transition-transform duration-[160ms] group-hover:scale-[1.03] motion-reduce:transition-none"
-												src={posterUrl(film.poster, 300)}
-												srcset={`${posterUrl(film.poster, 300)} 300w, ${posterUrl(film.poster, 600)} 600w`}
-												sizes="(min-width: 640px) 150px, 31vw"
-												width="300"
-												height="450"
-												decoding="async"
-												alt={film.title}
-											/>
-										) : (
-											/* A film logged before its poster was captured: the
-											   tile the monogram avatars are, colored rather than
-											   blank — and the only place the title is written. */
-											<span
-												class="flex aspect-[2/3] w-full items-center justify-center p-2 text-center text-[0.7rem] font-bold sm:p-3 sm:text-[0.85rem] text-[hsl(var(--hue)_55%_80%)] bg-[hsl(var(--hue)_32%_24%)]"
-												style={`--hue:${hueFor(film.title)}`}
-											>
-												{film.title}
-											</span>
-										)}
-									</div>
-									{/* "this month", because a film page counts every watcher
-									    it ever had — 30 here against 36 there reads as a
-									    contradiction unless the window is on the label. */}
-									<p class="mt-2 mb-0 text-[0.66rem] text-text-faint transition-colors duration-[120ms] group-hover:text-text-dim sm:text-[0.78rem] motion-reduce:transition-none">
-										{film.watchers} {celebrityNoun(film.watchers)} this month
-									</p>
-								</a>
-							</li>
-						))}
-					</ul>
+					<p class="mt-1 text-[0.8rem] text-text-faint">
+						Viewer counts are for this month; ratings average the celebrities here who rated each film.
+					</p>
+					<FilmPosterGrid
+						items={trending.map((film) => ({
+							film,
+							watchers: film.watchers,
+							average: films.get(film.slug)?.average ?? null,
+						}))}
+						className="mt-4 max-w-[900px] sm:grid-cols-6 sm:gap-4"
+						sizes="(min-width: 640px) 150px, 31vw"
+						eagerCount={6}
+						watcherPeriod="this month"
+					/>
 				</section>
 			)
 		}
