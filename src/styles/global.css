@@ -50,6 +50,39 @@
 		);
 }
 
+/* Film titles only link when enough people have logged them to earn a page.
+   Keep that distinction visible without requiring a hover: plain titles retain
+   the normal text colour, while page links use the site's orange accent and a
+   persistent underline. */
+@utility film-page-link {
+	color: var(--color-orange);
+	font-weight: 600;
+	text-decoration-line: underline;
+	text-decoration-color: color-mix(
+		in srgb,
+		var(--color-orange) 55%,
+		transparent
+	);
+	text-underline-offset: 0.16em;
+	transition:
+		color 120ms,
+		text-decoration-color 120ms;
+
+	&:hover {
+		color: color-mix(in srgb, var(--color-orange) 80%, white);
+		text-decoration-color: currentColor;
+	}
+
+	&:focus-visible {
+		outline: 2px solid var(--color-blue);
+		outline-offset: 2px;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		transition: none;
+	}
+}
+
 /* --- Person card ---
    The one class the card's markup doesn't get from Tailwind, because none of
    this is expressible as an inline utility on 180 <li>s. Everything else about

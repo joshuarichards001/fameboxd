@@ -202,7 +202,7 @@ const schema = personPageSchema({
 												    render as plain titles. */}
 												{hasFilmPage(e.slug) ? (
 													<a
-														class="truncate font-semibold text-text no-underline transition-colors duration-[120ms] hover:text-orange focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"
+														class="film-page-link truncate"
 														href={filmPageUrl(e.slug)}
 													>
 														{e.title}

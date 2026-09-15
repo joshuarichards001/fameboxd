@@ -87,7 +87,7 @@ const description = line(chosen);
 			    recrawled daily, so the same classes repeated across 100 rows are
 			    bytes it pays for every time. */}
 			<table
-				class="w-full table-fixed border-collapse text-left text-[0.9rem] [&_th]:py-2 [&_th]:pr-3 [&_td]:py-2 [&_td]:pr-3 [&_tbody_tr]:border-b [&_tbody_tr]:border-border/50 [&_tbody_th]:font-normal [&_tbody_td:first-of-type>span]:flex [&_tbody_td:first-of-type>span]:items-baseline [&_tbody_td:first-of-type>span]:gap-1.5 [&_a]:truncate [&_a]:font-semibold [&_a]:text-text [&_a]:no-underline [&_a]:transition-colors [&_a]:duration-[120ms] [&_a:hover]:text-orange [&_a:focus-visible]:outline-2 [&_a:focus-visible]:outline-offset-2 [&_a:focus-visible]:outline-blue motion-reduce:[&_a]:transition-none"
+				class="w-full table-fixed border-collapse text-left text-[0.9rem] [&_th]:py-2 [&_th]:pr-3 [&_td]:py-2 [&_td]:pr-3 [&_tbody_tr]:border-b [&_tbody_tr]:border-border/50 [&_tbody_th]:font-normal [&_tbody_td:first-of-type>span]:flex [&_tbody_td:first-of-type>span]:items-baseline [&_tbody_td:first-of-type>span]:gap-1.5"
 			>
 				<caption class="mb-3 text-left text-[0.85rem] text-text-faint">
 					The newest entries in the public Letterboxd diaries of the {
@@ -112,7 +112,7 @@ const description = line(chosen);
 							<tr>
 								<th scope="row">
 									<a
-										class="block w-7"
+										class="block w-7 rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
 										href={personPageUrl(person.username)}
 										title={person.name}
 									>
@@ -145,7 +145,12 @@ const description = line(chosen);
 										{/* Films under the page threshold have no URL to point at,
 										    so the title renders as plain text rather than a link. */}
 										{hasFilmPage(entry.slug) ? (
-											<a href={filmPageUrl(entry.slug)}>{entry.title}</a>
+											<a
+												class="film-page-link truncate"
+												href={filmPageUrl(entry.slug)}
+											>
+												{entry.title}
+											</a>
 										) : (
 											<span class="truncate font-semibold text-text">
 												{entry.title}
