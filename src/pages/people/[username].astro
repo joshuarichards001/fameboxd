@@ -265,6 +265,25 @@ const schema = personPageSchema({
                             </div>
                         </figure>
                     )}
+                    {profile.mostLoved.length > 0 && (
+                        <section
+                            class="rounded-card border border-border bg-bg-raised p-4"
+                            aria-labelledby="loved-heading"
+                        >
+                            <h3
+                                id="loved-heading"
+                                class="m-0 text-[0.9rem] font-bold"
+                            >
+                                Most loved
+                            </h3>
+                            <div class="mt-3">
+                                <ProfileFilmGrid
+                                    items={profile.mostLoved}
+                                    eagerCount={3}
+                                />
+                            </div>
+                        </section>
+                    )}
                     {profile.releaseDecades.length > 0 && (
                         <figure class="m-0 rounded-card border border-border bg-bg-raised p-4">
                             <h3 class="m-0 text-[0.9rem] font-bold">
@@ -293,29 +312,10 @@ const schema = personPageSchema({
                             </ul>
                         </figure>
                     )}
-                    {profile.mostLoved.length > 0 && (
-                        <section
-                            class="rounded-card border border-border bg-bg-raised p-4"
-                            aria-labelledby="loved-heading"
-                        >
-                            <h3
-                                id="loved-heading"
-                                class="m-0 text-[0.9rem] font-bold"
-                            >
-                                Most loved
-                            </h3>
-                            <div class="mt-3">
-                                <ProfileFilmGrid
-                                    items={profile.mostLoved}
-                                    eagerCount={3}
-                                />
-                            </div>
-                        </section>
-                    )}
                     {profile.viewingHistory.length > 0 && (
                         <figure class="m-0 rounded-card border border-border bg-bg-raised p-4">
                             <h3 class="m-0 text-[0.9rem] font-bold">
-                                Viewing history
+                                Films watched by year
                             </h3>
                             <ul class="mt-3 grid gap-1.5 p-0">
                                 {profile.viewingHistory.map((bucket) => (
