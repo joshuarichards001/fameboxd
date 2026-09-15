@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-09-15T00:01:30.351Z",
+  "generatedAt": "2026-09-15T14:19:28.614Z",
   "entries": [
+    {"s":"exit-8","d":"2026-09-14","r":null},
+    {"s":"our-hero-balthazar","d":"2026-09-14","r":null},
     {"s":"vintage-violence","d":"2026-09-13","r":null,"l":1},
     {"s":"the-devils","d":"2026-09-10","r":null,"w":1,"l":1},
     {"s":"love-and-death-on-long-island","d":"2026-09-08","r":null,"l":1},
@@ -49,7 +51,6 @@
     {"s":"revolutionary-girl-utena-the-movie","d":"2026-07-09","r":null,"l":1},
     {"s":"the-story-of-film-a-new-generation","d":"2026-07-08","r":null},
     {"s":"the-story-of-film-an-odyssey-2011","d":"2026-07-07","r":null,"w":1,"l":1},
-    {"s":"citizen-vigilante","d":"2026-07-07","r":null},
     {"s":"obsession-2025","d":"2026-07-04","r":null,"l":1},
     {"s":"duck-amuck","d":"2026-07-03","r":null,"w":1,"l":1},
     {"s":"rejected","d":"2026-07-03","r":null,"w":1,"l":1},
