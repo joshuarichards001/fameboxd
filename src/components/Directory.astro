@@ -89,6 +89,13 @@ const EAGER_AVATARS = 4;
 							Number(a.getAttribute("data-followers")) || byName(a, b)
 					);
 				});
+			} else if (sort === "films") {
+				order.sort(function (a, b) {
+					return (
+						Number(b.getAttribute("data-films")) -
+							Number(a.getAttribute("data-films")) || byName(a, b)
+					);
+				});
 			}
 			for (var k = 0; k < order.length; k++) {
 				directory.appendChild(order[k]);

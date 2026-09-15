@@ -37,6 +37,7 @@ const diaryLabel =
 	data-name={p.name.toLowerCase()}
 	data-tags={p.tags.join(" ")}
 	data-followers={p.followers ?? 0}
+	data-films={entries.length}
 >
 	{/* The card lifts on hover, except while the diary link below is hovered:
 	    it goes somewhere other than the Letterboxd profile the card itself
