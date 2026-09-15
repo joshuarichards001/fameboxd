@@ -17,10 +17,12 @@
 //
 // The run is incremental: after the first pass fills the catalogue, each later
 // run only fetches the handful of films somebody watched for the first time.
-// Per-film failures leave the poster null so the next run retries it, and
-// nothing is ever overwritten, so a poster only gets fetched once.
+// Pass --min-watchers=N to restrict a run to films logged by at least N distinct
+// people. Per-film failures leave the poster null so the next run retries it,
+// and nothing is ever overwritten, so a poster only gets fetched once.
 
 import { posterBase, readFilms, writeFilms } from "./films-file.mjs";
+import { readPeopleFiles } from "./people-files.mjs";
 
 const UA = "fameboxd/1.0 (+https://fameboxd.com)";
 const CONCURRENCY = 4;
@@ -32,6 +34,27 @@ const limitArg = process.argv.find((arg) => arg.startsWith("--limit="));
 const limit = limitArg ? Number(limitArg.slice(8)) : Infinity;
 if (!(limit > 0 && (Number.isInteger(limit) || limit === Infinity))) {
 	throw new Error("--limit must be a positive integer");
+}
+const minWatchersArg = process.argv.find((arg) =>
+	arg.startsWith("--min-watchers="),
+);
+const minWatchers = minWatchersArg ? Number(minWatchersArg.slice(15)) : 0;
+if (!(Number.isInteger(minWatchers) && minWatchers >= 0)) {
+	throw new Error("--min-watchers must be a non-negative integer");
+}
+
+async function slugsWithMinimumWatchers(minimum) {
+	if (minimum === 0) return null;
+	const people = await readPeopleFiles();
+	const watchers = new Map();
+	for (const diary of Object.values(people)) {
+		for (const slug of new Set(diary.entries.map((entry) => entry.s))) {
+			watchers.set(slug, (watchers.get(slug) ?? 0) + 1);
+		}
+	}
+	return new Set(
+		[...watchers].filter(([, count]) => count >= minimum).map(([slug]) => slug),
+	);
 }
 
 // The film page's JSON-LD Movie node. It sits in a CDATA wrapper, which JSON
@@ -56,7 +79,10 @@ function posterFromPage(html) {
 
 async function main() {
 	const films = await readFilms();
-	const missingFilms = Object.keys(films).filter((slug) => films[slug][3] == null);
+	const eligible = await slugsWithMinimumWatchers(minWatchers);
+	const missingFilms = Object.keys(films).filter(
+		(slug) => films[slug][3] == null && (eligible == null || eligible.has(slug)),
+	);
 	// Rotate limited daily batches so a permanently missing poster cannot
 	// prevent later slugs from ever being attempted.
 	const start = Number.isFinite(limit) && missingFilms.length
@@ -66,10 +92,16 @@ async function main() {
 		? [...missingFilms.slice(start), ...missingFilms.slice(0, start)].slice(0, limit)
 		: missingFilms;
 	if (queue.length === 0) {
-		console.log("Every film already has a poster.");
+		console.log(
+			minWatchers > 0
+				? `Every film with at least ${minWatchers} watchers already has a poster.`
+				: "Every film already has a poster.",
+		);
 		return;
 	}
-	console.log(`Fetching ${queue.length} posters...`);
+	console.log(
+		`Fetching ${queue.length} posters${minWatchers > 0 ? ` for films with at least ${minWatchers} watchers` : ""}...`,
+	);
 
 	let done = 0;
 	let filled = 0;
