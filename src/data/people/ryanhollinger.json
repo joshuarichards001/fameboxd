@@ -1,0 +1,29 @@
+{
+  "generatedAt": "2026-09-14T15:52:46.262Z",
+  "entries": [
+    {"s":"rambo-last-blood","d":"2019-10-01","r":1},
+    {"s":"ready-or-not-2019","d":"2019-09-30","r":3.5},
+    {"s":"it-chapter-two","d":"2019-09-06","r":3.5},
+    {"s":"scary-stories-to-tell-in-the-dark-2019","d":"2019-08-20","r":1.5},
+    {"s":"once-upon-a-time-in-hollywood","d":"2019-08-20","r":3.5},
+    {"s":"ruin-me","d":"2019-08-15","r":3},
+    {"s":"the-bay","d":"2019-08-09","r":4.5,"w":1,"l":1},
+    {"s":"fast-furious-presents-hobbs-shaw","d":"2019-08-03","r":2},
+    {"s":"the-dead-dont-die-2019","d":"2019-07-19","r":3.5},
+    {"s":"aziz-ansari-right-now","d":"2019-07-18","r":4.5},
+    {"s":"midsommar","d":"2019-07-04","r":4},
+    {"s":"dragged-across-concrete","d":"2019-04-21","r":4},
+    {"s":"hellboy-2019","d":"2019-04-20","r":1},
+    {"s":"pet-sematary-2019","d":"2019-04-15","r":2.5},
+    {"s":"the-silence-2019","d":"2019-04-13","r":0.5},
+    {"s":"hell-fest","d":"2019-04-13","r":2},
+    {"s":"observe-and-report","d":"2019-04-06","r":3},
+    {"s":"the-worlds-end","d":"2019-04-05","r":3.5,"w":1},
+    {"s":"hot-fuzz","d":"2019-04-05","r":5,"w":1,"l":1},
+    {"s":"shaun-of-the-dead","d":"2019-04-05","r":4,"w":1},
+    {"s":"i-am-legend","d":"2019-04-02","r":2,"w":1},
+    {"s":"under-the-silver-lake","d":"2019-04-01","r":3},
+    {"s":"slaughterhouse-rulez","d":"2019-03-30","r":1},
+    {"s":"us-2019","d":"2019-03-29","r":4}
+  ]
+}

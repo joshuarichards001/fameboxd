@@ -1,0 +1,20 @@
+{
+  "generatedAt": "2026-09-14T15:52:46.262Z",
+  "entries": [
+    {"s":"the-future","d":"2023-09-28","r":2.5},
+    {"s":"cube","d":"2023-09-27","r":4,"l":1},
+    {"s":"howls-moving-castle","d":"2023-09-26","r":4,"w":1},
+    {"s":"only-lovers-left-alive","d":"2023-09-25","r":3,"w":1},
+    {"s":"legally-blonde","d":"2023-09-22","r":3.5},
+    {"s":"sorcerer","d":"2023-09-22","r":3.5,"l":1},
+    {"s":"beau-is-afraid","d":"2023-09-11","r":2.5},
+    {"s":"anatomy-of-a-fall","d":"2023-09-01","r":4,"l":1},
+    {"s":"parasite-2019","d":"2023-08-26","r":5,"w":1,"l":1},
+    {"s":"lamb-2021","d":"2023-06-28","r":2},
+    {"s":"the-banshees-of-inisherin","d":"2023-02-28","r":4,"l":1},
+    {"s":"everything-everywhere-all-at-once","d":"2022-09-28","r":3.5},
+    {"s":"memoria-2021","d":"2022-09-24","r":3.5},
+    {"s":"the-bitter-tears-of-petra-von-kant","d":"2022-09-18","r":3.5},
+    {"s":"paris-texas","d":"2022-09-08","r":4,"l":1}
+  ]
+}
