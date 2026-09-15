@@ -26,6 +26,8 @@ astro dev status | logs | stop  # manage the background server
 - `npm run fetch-activity` — refresh each person's `lastWatched` in
   `src/data/people.json` from Letterboxd (see Activity data below). Never run
   by the build.
+- `npm run backfill-diaries` — fetch every page of each public Letterboxd diary;
+  resumes from pages cached in the system temporary directory.
 - `npm run fetch-followers` — refresh each person's `followers` in
   `src/data/people.json` (see Follower data below). Never run by the build.
 - `npm run fetch-posters` — fill in the missing posters in
@@ -59,7 +61,7 @@ index — the homepage already lists everyone.
 **Film pages** are `src/pages/films/[slug].astro` — `/films/<slug>/`, one per
 film that **`FILM_PAGE_MIN_WATCHERS` (10) or more** people logged; the other
 ~3,850 get no page, because a thin table restating a couple of diary lines is
-already on those people's pages. `src/functions/films.ts` inverts `activity.json` into the
+already on those people's pages. `src/functions/films.ts` inverts the per-person diaries into the
 slug→watchers index everything else reads (`films`, the build's one inversion;
 `filmPages` for the ones with a page; `filmPageUrl`). **Ask `hasFilmPage(slug)`
 before linking a film** — below the threshold the title renders as plain text,
@@ -144,41 +146,41 @@ reformats `people.json` with `JSON.stringify`). A daily GitHub Action
 (`.github/workflows/refresh-activity.yml`) reruns it and commits the diff. The
 script degrades gracefully: per-person failures keep the previous (stale)
 `lastWatched`, and it refuses to write only if every fetch fails.
-`astro.config.mjs` sets each sitemap URL's `<lastmod>` from `activity.json` —
+`astro.config.mjs` sets each sitemap URL's `<lastmod>` from the diary files —
 the newest watch on that page, ignoring dates after `generatedAt` — and asks
 the router's own helpers (`personPageUrl`, `filmPages`) which URLs exist, so
 the sitemap can't advertise a 404. Keep both off build time, which would mark
 every URL changed on every build. Once that Action commits, it runs
 `scripts/submit-indexnow.mjs` (IndexNow — Bing and friends, not Google), which
-submits only what that commit changed: it diffs `activity.json` against
+submits only what that commit changed: it diffs the diary files against
 `HEAD~1`, so it has to run **after** the commit, and falls back to the core
 pages when there is no previous revision or more than 200 URLs moved
 (`--dry-run` prints the list instead of posting). Ownership is proved by
 `public/<key>.txt`, whose filename must match `KEY` in the script.
 
-**The full diary** is `src/data/activity.json`, written by the same fetch
-script from the same requests and committed alongside `people.json` (the Action
-stages both). It is stored **normalized**: `{ generatedAt, people }`, where
-`people` holds entries of `{s,d,r,w?,l?}` written **one per line**; the film
-facts they point at live in `films.json` below. Never hand-edit or
-`JSON.stringify` it — `packActivity` in the fetch script owns the format, and
-both properties are load-bearing (a fraction of the flat form's size, and a new
-watch is a one-line commit diff). Import the hydrated **`activity`** from
-`src/functions/activity.ts`, never the JSON: `loadActivity` joins the two files
-into the flat `DiaryEntry` everything downstream reads, once per build. The
+**The full diary** lives in `src/data/people/<username>.json`, one file per
+person, including empty diaries. `scripts/backfill-diaries.mjs` fetches the
+public paginated diary with restart checkpoints in the system temporary
+directory; the daily `fetch-activity` script merges new RSS watches. Each file
+stores `{ generatedAt, entries }`, with entries of `{s,d,r,w?,l?}` written
+**one per line**. The film facts they point at live in `films.json` below.
+Never hand-edit or `JSON.stringify` these files — `packPerson` in
+`scripts/people-files.mjs` owns the format. Import the hydrated **`activity`**
+from `src/functions/activity.ts`, never the JSON: `loadActivity` joins the
+diaries with `films.json` into the flat `DiaryEntry` everything downstream
+reads, once per build. The
 Letterboxd film slug (`the-odyssey-2026`) is the join key between a person and
 a film, and `validateActivity` gates the file at build time. The feed only
 returns the ~50 most recently logged entries, so each run merges rather than
 overwrites: fresh entries replace everything inside the feed's watched-date
-range (so deletions propagate) and older entries are kept, capped at 200 per
-person. Keys stay alphabetical and entries newest-first, or the daily commit
-diff churns.
+range (so deletions propagate) and older entries are kept without a cap.
+Entries stay newest-first, or the daily commit diff churns.
 
 **Film data** is `src/data/films.json`: `slug -> [title, year, tmdb, poster]`,
 one film per line, alphabetical, owned by `scripts/films-file.mjs` (both fetch
 scripts import its packer — never write this file any other way). It is a
-separate file from `activity.json` on purpose: these are facts about a film,
-true whether or not anyone watched it lately, while `activity.json` is a log
+separate file from the per-person diaries on purpose: these are facts about a film,
+true whether or not anyone watched it lately, while each diary is a log
 that changes daily. **Every film carries all four slots**, `null` where
 unknown — presence of a field must never encode anything, which is exactly the
 bug the split fixed.
@@ -192,7 +194,8 @@ that entry is inside the feed's ~50-entry window, so
 JSON-LD `Movie` node carries the same URL. Film pages are served normally to a
 plain client, unlike member profiles, and robots.txt allows them for a named
 agent like ours. That script is incremental (it only fetches `null` posters,
-checkpointing as it goes) and **never overwrites**, so `fetch-activity` must
+checkpointing as it goes); the daily Action limits it to 100 rotating candidates
+while the backfilled catalogue fills. It **never overwrites**, so `fetch-activity` must
 keep gap-filling rather than rebuilding a film's row, or every daily run would
 undo the backfill.
 

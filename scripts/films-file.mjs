@@ -3,14 +3,14 @@
 //
 // It used to be the `films` map inside activity.json, which was a mistake: a
 // film's title, year, tmdb id and poster are facts about the film, true
-// whether or not anyone watched it lately, while activity.json is a log that
+// whether or not anyone watched it lately, while each diary is a log that
 // changes every day. Worse, the poster was stored only for recently-watched
 // films, so a field that looked like film metadata actually encoded "somebody
 // watched this lately". Splitting the two puts each fact where its meaning is
 // obvious, and every film now carries all four slots, poster included.
 //
 // Written one film per line and keyed alphabetically, for the same reason
-// activity.json is: a new film has to be a one-line commit diff.
+// per-person diaries are: a new film has to be a one-line commit diff.
 
 import { readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";

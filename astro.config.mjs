@@ -12,7 +12,7 @@ import { tagSlug } from "./src/functions/tags.ts";
 // sitemap previously gave Google none of. Deliberately not the build time — a
 // sitemap where every URL changes on every build teaches Google to ignore it.
 //
-// The dates come from activity.json rather than each person's `lastWatched`,
+// The dates come from per-person diaries rather than each person's `lastWatched`,
 // because that is what the pages themselves render, and the same helpers the
 // router uses decide which URLs exist: if this file's idea of the page set
 // drifted from theirs, the sitemap would advertise 404s.
@@ -24,6 +24,7 @@ import { tagSlug } from "./src/functions/tags.ts";
 // of the same commit identical.
 const dataDate = activity.generatedAt.slice(0, 10);
 
+/** @param {import("./src/functions/activity.ts").DiaryEntry[]} entries */
 const newestIn = (entries) =>
   entries.reduce(
     (latest, e) =>
@@ -38,6 +39,7 @@ const newestIn = (entries) =>
 const newestByPerson = new Map(
   people.map((p) => [p.username, newestIn(activity.people[p.username] ?? [])]),
 );
+/** @param {import("./src/functions/people.ts").Person[]} subset */
 const newestAmong = (subset) =>
   subset.reduce((latest, p) => {
     const d = newestByPerson.get(p.username) ?? "";

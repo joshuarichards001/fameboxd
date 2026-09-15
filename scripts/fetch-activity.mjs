@@ -1,35 +1,30 @@
-// Fetches each person's Letterboxd diary from the public RSS feed. Writes
-// three files: the full entry list (up to 200 per person) to
-// src/data/activity.json, the film facts behind those entries to
-// src/data/films.json, and the most recent watch to the `lastWatched` field of
-// src/data/people.json.
+// Fetches recent Letterboxd activity from public RSS feeds. Updates each
+// person's diary file in src/data/people/, shared film facts in films.json,
+// and the lastWatched field in people.json.
 // Run via `npm run fetch-activity`; the GitHub Action does this daily. The
 // build never fetches — it only reads the committed JSON, so a Letterboxd
 // outage can't break deploys.
 //
-// The feed returns the ~50 most recently logged entries, so activity.json is
+// The feed returns the ~50 most recently logged entries, so each diary is
 // merged rather than overwritten: entries older than the feed's window are
 // kept, entries inside it are replaced wholesale (so deletions propagate).
 //
-// activity.json is written normalized — film facts live once in films.json,
-// entries one per line — see ActivityFile in src/functions/activity.ts. Merging
+// Diary files are normalized — film facts live once in films.json, entries
+// one per line — see PersonDiaryFile in src/functions/activity.ts. Merging
 // happens on the flat entries, so this script hydrates on read and packs on
 // write; nothing in between needs to know the stored shape.
 
 import { readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { posterBase, readFilms, writeFilms } from "./films-file.mjs";
+import { readPeopleFiles, writePerson } from "./people-files.mjs";
 
 const PEOPLE_PATH = fileURLToPath(
 	new URL("../src/data/people.json", import.meta.url),
 );
-const ACTIVITY_PATH = fileURLToPath(
-	new URL("../src/data/activity.json", import.meta.url),
-);
 
 const UA = "fameboxd/1.0 (+https://fameboxd.com)";
 const CONCURRENCY = 4;
-const MAX_ENTRIES = 200;
 
 const decode = (s) =>
 	s
@@ -43,24 +38,14 @@ const decode = (s) =>
 const serialize = (data) => JSON.stringify(data, null, "  ") + "\n";
 
 // Flat entries -> the stored shape. Entries keep one line each, so a new watch
-// stays a one-line commit diff. The film facts they reference are packed
-// separately by mergeFilms, into films.json.
-function packActivity(generatedAt, byUsername) {
-	const people = {};
-	for (const username of Object.keys(byUsername).sort()) {
-		people[username] = byUsername[username].map((e) => {
-			const packed = { s: e.slug, d: e.watchedDate ?? null, r: e.rating ?? null };
-			if (e.rewatch) packed.w = 1;
-			if (e.liked) packed.l = 1;
-			return packed;
-		});
-	}
-	const j = JSON.stringify;
-	const peopleLines = Object.entries(people).map(
-		([username, entries]) =>
-			`    ${j(username)}: [\n${entries.map((e) => `      ${j(e)}`).join(",\n")}\n    ]`,
-	);
-	return `{\n  ${j("generatedAt")}: ${j(generatedAt)},\n  ${j("people")}: {\n${peopleLines.join(",\n")}\n  }\n}\n`;
+// stays a one-line commit diff. Film facts are packed separately in films.json.
+export function packEntries(entries) {
+	return entries.map((e) => {
+		const packed = { s: e.slug, d: e.watchedDate ?? null, r: e.rating ?? null };
+		if (e.rewatch) packed.w = 1;
+		if (e.liked) packed.l = 1;
+		return packed;
+	});
 }
 
 // The film facts behind the merged entries, keyed by slug. Built from the
@@ -95,9 +80,10 @@ function mergeFilms(previousFilms, byUsername) {
 }
 
 // The stored shape -> flat entries, mirroring loadActivity in activity.ts.
-function unpackActivity(file, films) {
+export function unpackActivity(file, films) {
 	const out = {};
-	for (const [username, entries] of Object.entries(file?.people ?? {})) {
+	for (const [username, person] of Object.entries(file ?? {})) {
+		const entries = person.entries;
 		out[username] = entries.map((e) => {
 			const [title, year, tmdb, poster] = films[e.s] ?? [e.s, null, null, null];
 			return {
@@ -124,7 +110,7 @@ async function get(url) {
 
 // Every diary entry in the feed, in feed order (most recently *logged* first).
 // The feed also carries list updates, which the guid guard filters out.
-function parseDiary(xml) {
+export function parseDiary(xml) {
 	const entries = [];
 	for (const [, item] of xml.matchAll(/<item>(.*?)<\/item>/gs)) {
 		if (!/letterboxd-(?:watch|review)-/.test(item)) continue;
@@ -166,17 +152,18 @@ function mergeEntries(fresh, previous) {
 	if (fresh.length === 0) return previous;
 	const sorted = [...fresh].sort(byWatchedDateDesc);
 	const oldest = sorted.findLast((e) => e.watchedDate)?.watchedDate;
-	const kept = oldest
-		? previous.filter((e) => e.watchedDate && e.watchedDate < oldest)
-		: [];
-	return [...sorted, ...kept].slice(0, MAX_ENTRIES);
+	const dated = oldest
+		? [...sorted.filter((e) => e.watchedDate), ...previous.filter((e) => e.watchedDate && e.watchedDate < oldest)]
+		: previous.filter((e) => e.watchedDate);
+	const undated = new Map(previous.filter((e) => !e.watchedDate).map((e) => [e.slug, e]));
+	for (const e of sorted.filter((e) => !e.watchedDate)) undated.set(e.slug, e);
+	return [...dated, ...undated.values()];
 }
 
 async function main() {
 	const before = await readFile(PEOPLE_PATH, "utf8");
 	const people = JSON.parse(before);
-	const beforeActivity = await readFile(ACTIVITY_PATH, "utf8").catch(() => null);
-	const prevActivity = beforeActivity ? JSON.parse(beforeActivity) : null;
+	const prevActivity = await readPeopleFiles();
 	const previousFilms = await readFilms();
 	const previous = unpackActivity(prevActivity, previousFilms);
 
@@ -217,28 +204,17 @@ async function main() {
 		process.exit(1);
 	}
 
-	// Keys alphabetical and entries newest-first, so the daily commit only
-	// touches the lines that actually changed. People with no diary are omitted.
+	// Entries newest-first; a changed diary touches only that person's file.
 	const merged = {};
+	let changed = 0;
 	for (const username of people.map((p) => p.username).sort()) {
 		const entries = fresh.has(username)
 			? mergeEntries(fresh.get(username), previous[username] ?? [])
 			: (previous[username] ?? []);
-		if (entries.length > 0) merged[username] = entries;
+		merged[username] = entries;
+		if (await writePerson(username, new Date().toISOString(), packEntries(entries))) changed++;
 	}
-
-	// Compare against the old timestamp, so an unchanged diary is a no-op
-	// rather than a daily one-line commit.
-	const candidate = packActivity(prevActivity?.generatedAt ?? "", merged);
-	if (candidate === beforeActivity) {
-		console.log("No diary changes; leaving activity.json untouched.");
-	} else {
-		await writeFile(ACTIVITY_PATH, packActivity(new Date().toISOString(), merged));
-		const total = Object.values(merged).reduce((n, e) => n + e.length, 0);
-		console.log(
-			`Wrote activity.json: ${Object.keys(merged).length} people, ${total} entries.`,
-		);
-	}
+	console.log(`Updated ${changed} individual diary files.`);
 
 	// Always rebuilt, even when no diary changed: a title corrected upstream or
 	// a poster the feed has newly started carrying lands here and nowhere else.
@@ -264,4 +240,4 @@ async function main() {
 	);
 }
 
-await main();
+if (process.argv[1] === fileURLToPath(import.meta.url)) await main();

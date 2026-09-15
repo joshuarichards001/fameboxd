@@ -7,8 +7,8 @@
 // It submits the URLs that actually changed, not the whole site: the refresh
 // typically moves a few dozen pages out of several hundred, and submitting all
 // of them daily is how a host gets its hints discounted. What changed comes
-// from diffing the committed activity.json against its previous revision —
-// the current one is read from disk, the previous from HEAD~1, which is the
+// from diffing committed per-person diaries against their previous revision —
+// current files are read from disk, previous files from HEAD~1, which is the
 // commit the Action checked out before the refresh committed on top of it.
 //
 // `--dry-run` prints the URL list and posts nothing.
@@ -16,6 +16,7 @@
 import { execFileSync } from "node:child_process";
 import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
+import { readPeopleFiles } from "./people-files.mjs";
 
 const HOST = "fameboxd.com";
 // Public by design — IndexNow verifies ownership by fetching keyLocation and
@@ -32,10 +33,9 @@ const DRY_RUN = process.argv.includes("--dry-run");
 
 const repoPath = (rel) => fileURLToPath(new URL(rel, import.meta.url));
 const PEOPLE_PATH = repoPath("../src/data/people.json");
-const ACTIVITY_PATH = repoPath("../src/data/activity.json");
 const FILMS_TS_PATH = repoPath("../src/functions/films.ts");
 // As git addresses it, which is not the same string as the paths above.
-const ACTIVITY_IN_GIT = "src/data/activity.json";
+const DIARIES_IN_GIT = "src/data/people";
 
 const warn = (msg) => console.warn(`::warning::IndexNow: ${msg}`);
 
@@ -59,18 +59,24 @@ function coreUrls(people) {
 	];
 }
 
-// activity.json as of the previous commit, or null when there isn't one — a
+// Per-person diaries as of the previous commit, or null when there aren't any — a
 // first run, a shallow clone with no parent, or a commit that predates the
 // file. Callers fall back to the core pages rather than guessing.
 function previousActivity() {
 	try {
-		return JSON.parse(
-			execFileSync("git", ["show", `HEAD~1:${ACTIVITY_IN_GIT}`], {
+		const paths = execFileSync("git", ["ls-tree", "-r", "--name-only", "HEAD~1", DIARIES_IN_GIT], {
+			encoding: "utf8", stdio: ["ignore", "pipe", "ignore"],
+		}).trim().split("\n").filter((path) => path.endsWith(".json"));
+		if (!paths.length) return null;
+		const people = {};
+		for (const path of paths) people[path.split("/").at(-1).slice(0, -5)] = JSON.parse(
+			execFileSync("git", ["show", `HEAD~1:${path}`], {
 				encoding: "utf8",
-				maxBuffer: 64 * 1024 * 1024,
+				maxBuffer: 16 * 1024 * 1024,
 				stdio: ["ignore", "pipe", "ignore"],
 			}),
-		);
+		).entries;
+		return { people };
 	} catch {
 		return null;
 	}
@@ -177,12 +183,13 @@ async function changedUrls(previous, current, people) {
 
 async function main() {
 	const people = JSON.parse(await readFile(PEOPLE_PATH, "utf8"));
-	const current = JSON.parse(await readFile(ACTIVITY_PATH, "utf8"));
+	const currentFiles = await readPeopleFiles();
+	const current = { people: Object.fromEntries(Object.entries(currentFiles).map(([username, file]) => [username, file.entries])) };
 	const previous = previousActivity();
 
 	let urlList;
 	if (!previous) {
-		warn("no previous activity.json; submitting the core pages only");
+		warn("no previous per-person diaries; submitting the core pages only");
 		urlList = coreUrls(people);
 	} else {
 		urlList = await changedUrls(previous, current, people);

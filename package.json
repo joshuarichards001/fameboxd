@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "fetch-activity": "node scripts/fetch-activity.mjs",
+    "backfill-diaries": "node scripts/backfill-diaries.mjs",
     "fetch-followers": "node scripts/fetch-followers.mjs",
     "fetch-posters": "node scripts/fetch-posters.mjs",
     "submit-indexnow": "node scripts/submit-indexnow.mjs",

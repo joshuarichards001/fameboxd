@@ -1,7 +1,8 @@
-// The full diary feed, one entry per logged watch. Lives in
-// src/data/activity.json, keyed by username; see Activity data in AGENTS.md.
+// Public diaries, one entry per logged watch, stored per username in
+// src/data/people/; see Activity data in AGENTS.md.
 
-import rawActivity from "../data/activity.json";
+import { readFileSync, readdirSync } from "node:fs";
+import { join } from "node:path";
 import rawFilms from "../data/films.json";
 
 export interface DiaryEntry {
@@ -24,15 +25,15 @@ export interface ActivityData {
 // The committed files store a normalized form, not the flat entry above.
 // Title, year, tmdb and poster belong to the *film*, so they live once in
 // src/data/films.json rather than repeated on each of that film's watchers:
-// with the entries also written one per line, activity.json is a fraction of
+// with the entries also written one per line, each diary is a fraction of
 // the flat form's size and a new watch is a one-line diff instead of a
 // ten-line one. It matters because the duplicated part grew with every logged
 // watch, while the film list only grows when somebody watches a film nobody
 // here had seen before.
 //
-// films.json is a separate file, not a key inside activity.json, because the
+// films.json is a separate file, not a key inside a diary, because the
 // two answer different questions: a film's title and poster are true whether
-// or not anyone watched it this week, while activity.json is a log that
+// or not anyone watched it this week, while each diary is a log that
 // changes daily. See scripts/films-file.mjs.
 export type StoredFilm = [
 	title: string,
@@ -53,27 +54,28 @@ export interface StoredEntry {
 	l?: 1; // liked, omitted when false
 }
 
-export interface ActivityFile {
+export interface PersonDiaryFile {
 	generatedAt: string;
-	people: Record<string, StoredEntry[]>;
+	entries: StoredEntry[];
 }
 
 // Rehydrate the stored form into the flat entries the rest of the site reads.
 // Everything downstream still sees a DiaryEntry, so the on-disk shape is this
 // module's business alone.
 export function loadActivity(
-	file: ActivityFile,
+	files: Record<string, PersonDiaryFile>,
 	films: FilmsFile,
 ): ActivityData {
 	const people: Record<string, DiaryEntry[]> = {};
-	for (const [username, entries] of Object.entries(file.people)) {
+	for (const [username, file] of Object.entries(files)) {
+		const entries = file.entries;
 		people[username] = entries.map((e) => {
 			const film = films[e.s];
 			// A dangling slug would render a titleless row rather than fail, so
 			// it is caught here instead of at the point of use.
 			if (!film) {
 				throw new Error(
-					`activity.json: entry for "${username}" references a slug that is not in films.json: ${e.s}`,
+					`people/${username}.json: entry references a slug that is not in films.json: ${e.s}`,
 				);
 			}
 			const [title, year, tmdb, poster] = film;
@@ -90,7 +92,7 @@ export function loadActivity(
 			};
 		});
 	}
-	return { generatedAt: file.generatedAt, people };
+	return { generatedAt: Object.values(files).map((file) => file.generatedAt).sort().at(-1) ?? "", people };
 }
 
 // Hydrated once for the whole build. Import this rather than the JSON: the
@@ -100,10 +102,14 @@ export function loadActivity(
 // build actually loads, rather than a copy of it.
 export const filmsFile = rawFilms as unknown as FilmsFile;
 
-export const activity: ActivityData = loadActivity(
-	rawActivity as unknown as ActivityFile,
-	filmsFile,
-);
+// Astro bundles this module into dist/.prerender; import.meta.url would then
+// point at dist rather than the source data. Builds run from the project root.
+const diaryDir = join(process.cwd(), "src/data/people");
+const diaryFiles: Record<string, PersonDiaryFile> = {};
+for (const name of readdirSync(diaryDir).filter((name) => name.endsWith(".json"))) {
+	diaryFiles[name.slice(0, -5)] = JSON.parse(readFileSync(join(diaryDir, name), "utf8")) as PersonDiaryFile;
+}
+export const activity: ActivityData = loadActivity(diaryFiles, filmsFile);
 
 // The diary entry's page on Letterboxd. Derived rather than stored — the feed
 // gives it, but ~6,400 copies of the same prefix is a lot of committed bytes.

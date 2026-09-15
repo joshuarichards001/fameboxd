@@ -28,6 +28,11 @@ const CONCURRENCY = 4;
 // minutes, so it checkpoints rather than writing once at the end: an
 // interrupted run keeps what it fetched, and the next one picks up the rest.
 const CHECKPOINT_EVERY = 250;
+const limitArg = process.argv.find((arg) => arg.startsWith("--limit="));
+const limit = limitArg ? Number(limitArg.slice(8)) : Infinity;
+if (!(limit > 0 && (Number.isInteger(limit) || limit === Infinity))) {
+	throw new Error("--limit must be a positive integer");
+}
 
 // The film page's JSON-LD Movie node. It sits in a CDATA wrapper, which JSON
 // won't parse, so that comes off first.
@@ -51,7 +56,15 @@ function posterFromPage(html) {
 
 async function main() {
 	const films = await readFilms();
-	const queue = Object.keys(films).filter((slug) => films[slug][3] == null);
+	const missingFilms = Object.keys(films).filter((slug) => films[slug][3] == null);
+	// Rotate limited daily batches so a permanently missing poster cannot
+	// prevent later slugs from ever being attempted.
+	const start = Number.isFinite(limit) && missingFilms.length
+		? (Math.floor(Date.now() / 86400000) * limit) % missingFilms.length
+		: 0;
+	const queue = Number.isFinite(limit)
+		? [...missingFilms.slice(start), ...missingFilms.slice(0, start)].slice(0, limit)
+		: missingFilms;
 	if (queue.length === 0) {
 		console.log("Every film already has a poster.");
 		return;

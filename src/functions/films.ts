@@ -1,5 +1,5 @@
 // The cross-section: which of the celebrities in the directory logged a given
-// film. Built by inverting activity.json on the film slug, which spec 01
+// film. Built by inverting the hydrated per-person diaries on the film slug, which spec 01
 // established as the join key between a person and a film; the film's own facts
 // (title, year, tmdb, poster) ride in on the hydrated entries, from films.json.
 // Pure over ActivityData — every username in it is a person in people.json

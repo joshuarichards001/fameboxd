@@ -80,7 +80,7 @@ const POSTER_PATH = /^[A-Za-z0-9][A-Za-z0-9._%'/-]*$/;
 
 // Build-time validation of src/data/films.json. Every film carries all four
 // slots — a missing poster is null, never an absent element — because the
-// whole point of the split from activity.json was that the presence of a
+// whole point of the split from the diary data was that the presence of a
 // field should not encode anything.
 export function validateFilms(films: FilmsFile): void {
 	for (const [slug, film] of Object.entries(films)) {
@@ -111,15 +111,19 @@ export function validateFilms(films: FilmsFile): void {
 	}
 }
 
-// Build-time validation of src/data/activity.json against people.json.
+// Build-time validation of the per-person diary files against people.json.
 export function validateActivity(activity: ActivityData, people: Person[]): void {
 	const known = new Set(people.map((p) => p.username));
+	for (const username of known) {
+		if (!(username in activity.people)) throw new Error(`Missing diary file: people/${username}.json`);
+	}
 	for (const [username, entries] of Object.entries(activity.people)) {
 		if (!known.has(username)) {
-			throw new Error(`activity.json has entries for an unknown username: ${username}`);
+			throw new Error(`Diary file has entries for an unknown username: ${username}`);
 		}
 		for (const e of entries) {
-			if (typeof e.slug !== "string" || !/^[a-z0-9-]+$/.test(e.slug)) {
+			// Removed films sometimes retain Letterboxd's internal film:<id> link.
+			if (typeof e.slug !== "string" || !/^(?:[a-z0-9_-]+|film:\d+)$/.test(e.slug)) {
 				throw new Error(`Entry for "${username}" has an invalid film slug: ${e.slug}`);
 			}
 			if (typeof e.title !== "string" || e.title.trim() === "") {

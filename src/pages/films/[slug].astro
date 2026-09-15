@@ -31,7 +31,7 @@ export function getStaticPaths() {
 				// validateActivity already rejects unknown usernames; failing here
 				// too keeps the headline count and the table rows the same number.
 				if (!person) {
-					throw new Error(`activity.json has a watcher with no person entry: ${w.username}`);
+					throw new Error(`Diary has a watcher with no person entry: ${w.username}`);
 				}
 				return { person, entry: w.entry, hasAvatar: avatars.has(w.username) };
 			}),
