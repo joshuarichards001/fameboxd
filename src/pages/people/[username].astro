@@ -1,22 +1,25 @@
 ---
 import Footer from "../../components/Footer.astro";
+import ProfileFilmGrid from "../../components/ProfileFilmGrid.astro";
 import people from "../../data/people.json";
 import {
-	activity,
-	diaryStats,
-	entriesFor,
-	filmNoun,
-	personDescription,
-	type DiaryEntry,
+    activity,
+    entriesFor,
+    type DiaryEntry,
 } from "../../functions/activity";
 import { hueFor, initials, loadAvatarSet } from "../../functions/avatars";
 import { filmPageUrl, hasFilmPage } from "../../functions/films";
 import {
-	profileUrl,
-	stars,
-	timeAgoShort,
-	type Person,
+    profileUrl,
+    stars,
+    timeAgoShort,
+    type Person,
 } from "../../functions/people";
+import {
+    profileCohort,
+    profileDescription,
+    profileFor,
+} from "../../functions/profiles";
 import { personPageSchema } from "../../functions/schema";
 import { tagSlug } from "../../functions/tags";
 import Base from "../../layouts/Base.astro";
@@ -25,258 +28,463 @@ import Base from "../../layouts/Base.astro";
 // one. The dozen people with an empty diary get the empty state below, which
 // still answers the question their name is searched with.
 export function getStaticPaths() {
-	return (people as Person[]).map((person) => ({
-		params: { username: person.username },
-		props: { person, entries: entriesFor(activity, person.username) },
-	}));
+    return (people as Person[]).map((person) => ({
+        params: { username: person.username },
+        props: { person, entries: entriesFor(activity, person.username) },
+    }));
 }
 
 interface Props {
-	person: Person;
-	entries: DiaryEntry[];
+    person: Person;
+    entries: DiaryEntry[];
 }
 
 const { person: p, entries } = Astro.props;
 const hasAvatar = loadAvatarSet().has(p.username);
 const followers = p.followers ?? null;
-const stats = diaryStats(entries);
-// The feed carries the 50 most recent entries; older ones are retained but
-// belong to the film pages, not to a wall of table rows here.
+const profile = profileFor(entries, profileCohort);
+// The profile uses the full history, while the detailed table stays bounded.
 const recent = entries.slice(0, 50);
 const diaryCaption =
-	recent.length === 1
-		? `The most recent film ${p.name} logged on Letterboxd, refreshed daily.`
-		: `The ${recent.length} most recent films ${p.name} logged on Letterboxd, refreshed daily.`;
+    recent.length === 1
+        ? `The most recent film ${p.name} logged on Letterboxd, refreshed daily.`
+        : `The ${recent.length} most recent films ${p.name} logged on Letterboxd, refreshed daily.`;
 
-const title = `${p.name} on Letterboxd (@${p.username}) — Fameboxd`;
-const description = personDescription(p.name, p.username, entries);
+const hasLovedProfile = profile.mostLovedCandidates >= 3;
+const title = hasLovedProfile
+    ? `${p.name}’s Favourite Movies and Letterboxd Diary | Fameboxd`
+    : `${p.name} on Letterboxd (@${p.username}) — Fameboxd`;
+const description = profileDescription(p.name, p.username, entries, profile);
+const ratingMax = Math.max(
+    0,
+    ...profile.ratingsGiven.map((bucket) => bucket.count),
+);
+const decadeMax = Math.max(
+    0,
+    ...profile.releaseDecades.map((bucket) => bucket.count),
+);
+const historyMax = Math.max(
+    0,
+    ...profile.viewingHistory.map((bucket) => bucket.count),
+);
+const percentage = (value: number) =>
+    value < 1 ? value.toFixed(1) : value.toFixed(0);
 const schema = personPageSchema({
-	site: new URL("/", Astro.site),
-	person: p,
-	hasAvatar,
+    site: new URL("/", Astro.site),
+    person: p,
+    hasAvatar,
+    pageName: title.replace(/(?: \| Fameboxd| — Fameboxd)$/, ""),
+    description,
 });
 ---
 
 <Base title={title} description={description} schema={schema}>
-	<main class="wrap py-8">
-		<header class="flex flex-wrap items-center gap-4">
-			{
-				hasAvatar ? (
-					<img
-						class="h-[72px] w-[72px] shrink-0 rounded-full border border-border bg-bg object-cover"
-						src={`/avatars/${p.username}.webp`}
-						width="72"
-						height="72"
-						alt=""
-					/>
-				) : (
-					<span
-						class="flex h-[72px] w-[72px] shrink-0 items-center justify-center rounded-full border text-[1.4rem] font-bold tracking-[0.02em] text-[hsl(var(--hue)_55%_80%)] bg-[hsl(var(--hue)_32%_24%)] border-[hsl(var(--hue)_28%_34%)]"
-						aria-hidden="true"
-						style={`--hue:${hueFor(p.name)}`}
-					>
-						{initials(p.name)}
-					</span>
-				)
-			}
-			<div class="min-w-0">
-				<h1
-					class="m-0 text-[clamp(1.5rem,4vw,2.1rem)] font-extrabold leading-[1.1] tracking-[-0.02em]"
-				>
-					{p.name}
-				</h1>
-				<p
-					class="m-0 mt-1 flex flex-wrap items-baseline gap-x-2 text-[0.9rem] text-text-dim"
-				>
-					<span class="font-semibold text-orange tabular-nums">
-						@{p.username}
-					</span>
-					{
-						followers != null && (
-							<span class="text-text-faint tabular-nums">
-								{followers.toLocaleString("en")} followers
-							</span>
-						)
-					}
-				</p>
-				<ul
-					class="mt-1.5 flex flex-wrap items-center gap-[0.35rem] p-0"
-					aria-label="Tags"
-				>
-					{
-						p.tags.map((t) => (
-							<li class="list-none">
-								<a
-									class="block rounded-full border border-blue/30 bg-blue/[0.14] px-2 py-[0.1rem] text-[0.68rem] font-bold uppercase tracking-[0.04em] text-blue no-underline transition-colors duration-[120ms] hover:bg-blue/25 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"
-									href={`/${tagSlug(t)}/`}
-								>
-									{t}
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</div>
-			<a
-				class="inline-flex items-center gap-2 rounded-full bg-orange px-5 py-2 sm:ml-auto text-[0.95rem] font-bold text-bg no-underline transition-colors duration-[120ms] hover:bg-[color-mix(in_srgb,var(--color-orange)_80%,white)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"
-				href={profileUrl(p.username)}
-				target="_blank"
-				rel="noopener"
-			>
-				View on Letterboxd &nearr;
-			</a>
-		</header>
+    <main class="wrap py-8">
+        <header class="flex flex-wrap items-center gap-4">
+            {hasAvatar ? (
+                <img
+                    class="h-[72px] w-[72px] shrink-0 rounded-full border border-border bg-bg object-cover"
+                    src={`/avatars/${p.username}.webp`}
+                    width="72"
+                    height="72"
+                    alt=""
+                />
+            ) : (
+                <span
+                    class="flex h-[72px] w-[72px] shrink-0 items-center justify-center rounded-full border text-[1.4rem] font-bold tracking-[0.02em] text-[hsl(var(--hue)_55%_80%)] bg-[hsl(var(--hue)_32%_24%)] border-[hsl(var(--hue)_28%_34%)]"
+                    aria-hidden="true"
+                    style={`--hue:${hueFor(p.name)}`}
+                >
+                    {initials(p.name)}
+                </span>
+            )}
+            <div class="min-w-0">
+                <h1 class="m-0 text-[clamp(1.5rem,4vw,2.1rem)] font-extrabold leading-[1.1] tracking-[-0.02em]">
+                    {p.name}
+                </h1>
+                <p class="m-0 mt-1 flex flex-wrap items-baseline gap-x-2 text-[0.9rem] text-text-dim">
+                    <span class="font-semibold text-orange tabular-nums">
+                        @{p.username}
+                    </span>
+                    {followers != null && (
+                        <span class="text-text-faint tabular-nums">
+                            {followers.toLocaleString("en")} followers
+                        </span>
+                    )}
+                </p>
+                <ul
+                    class="mt-1.5 flex flex-wrap items-center gap-[0.35rem] p-0"
+                    aria-label="Tags"
+                >
+                    {p.tags.map((t) => (
+                        <li class="list-none">
+                            <a
+                                class="block rounded-full border border-blue/30 bg-blue/[0.14] px-2 py-[0.1rem] text-[0.68rem] font-bold uppercase tracking-[0.04em] text-blue no-underline transition-colors duration-[120ms] hover:bg-blue/25 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"
+                                href={`/${tagSlug(t)}/`}
+                            >
+                                {t}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+            <a
+                class="inline-flex items-center gap-2 rounded-full bg-orange px-5 py-2 sm:ml-auto text-[0.95rem] font-bold text-bg no-underline transition-colors duration-[120ms] hover:bg-[color-mix(in_srgb,var(--color-orange)_80%,white)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"
+                href={profileUrl(p.username)}
+                target="_blank"
+                rel="noopener"
+            >
+                View on Letterboxd &nearr;
+            </a>
+        </header>
 
-		<p class="mt-4 max-w-[68ch] text-[0.95rem] leading-[1.6] text-text-dim">
-			{p.description}
-		</p>
+        <p class="mt-4 max-w-[68ch] text-[0.95rem] leading-[1.6] text-text-dim">
+            {p.description}
+        </p>
 
-		{
-			entries.length === 0 ? (
-				<p class="mt-4 rounded-card border border-border bg-bg-raised px-4 py-3 text-[0.95rem] text-text-dim">
-					<strong class="text-text">No films logged publicly yet.</strong>{" "}
-					@{p.username} is a real Letterboxd account, but its public diary is
-					empty. This page is rebuilt daily, so anything they log will show up
-					here.
-				</p>
-			) : (
-				<p class="mt-4 rounded-card border border-border bg-bg-raised px-4 py-3 text-[0.95rem] text-text">
-					<strong class="tabular-nums">{stats.logged}</strong>{" "}
-					{filmNoun(stats.logged)} logged,{" "}
-					<strong class="tabular-nums">{stats.rated}</strong> rated
-					{stats.average != null && (
-						<>
-							, average{" "}
-							<strong class="tabular-nums">{stats.average.toFixed(1)}</strong>
-							<span class="text-green">★</span>
-						</>
-					)}
-					.
-				</p>
-			)
-		}
+        {entries.length === 0 ? (
+            <p class="mt-4 rounded-card border border-border bg-bg-raised px-4 py-3 text-[0.95rem] text-text-dim">
+                <strong class="text-text">No films logged publicly yet.</strong>{" "}
+                @{p.username} is a real Letterboxd account, but its public diary
+                is empty. This page is rebuilt daily, so anything they log will
+                show up here.
+            </p>
+        ) : (
+            <dl class="mt-5 grid grid-cols-2 gap-px overflow-hidden rounded-card border border-border bg-border sm:grid-cols-4">
+                <div class="bg-bg-raised px-3 py-3 sm:px-4">
+                    <dt class="text-[0.68rem] font-bold uppercase tracking-[0.07em] text-text-faint">
+                        Diary entries
+                    </dt>
+                    <dd class="mt-1 text-[1.15rem] font-extrabold leading-tight tabular-nums">
+                        {profile.diaryEntries.toLocaleString("en")}
+                    </dd>
+                </div>
+                <div class="bg-bg-raised px-3 py-3 sm:px-4">
+                    <dt class="text-[0.68rem] font-bold uppercase tracking-[0.07em] text-text-faint">
+                        Unique films
+                    </dt>
+                    <dd class="mt-1 text-[1.15rem] font-extrabold leading-tight tabular-nums">
+                        {profile.uniqueFilms.toLocaleString("en")}
+                    </dd>
+                </div>
+                <div class="bg-bg-raised px-2 py-3 sm:px-4">
+                    <dt class="text-[0.68rem] font-bold uppercase tracking-[0.07em] text-text-faint">
+                        Rated films
+                    </dt>
+                    <dd class="mt-1 flex flex-nowrap items-baseline gap-x-0.5 whitespace-nowrap text-[1.05rem] font-extrabold leading-tight tabular-nums sm:gap-x-1 sm:text-[1.15rem]">
+                        {profile.ratedFilms.toLocaleString("en")}
+                        {profile.averageRating != null && (
+                            <span class="text-[0.58rem] font-normal tracking-tight text-text-faint sm:text-[0.7rem]">
+                                (average{" "}
+                                <strong class="font-bold text-green">
+                                    {profile.averageRating.toFixed(1)}★
+                                </strong>
+                                )
+                            </span>
+                        )}
+                    </dd>
+                </div>
+                <div class="bg-bg-raised px-3 py-3 sm:px-4">
+                    {profile.likedFilms > 0 || !profile.activeSince ? (
+                        <>
+                            <dt class="text-[0.68rem] font-bold uppercase tracking-[0.07em] text-text-faint">
+                                Liked films
+                            </dt>
+                            <dd class="mt-1 text-[1.15rem] font-extrabold leading-tight tabular-nums">
+                                {profile.likedFilms.toLocaleString("en")}
+                            </dd>
+                        </>
+                    ) : (
+                        <>
+                            <dt class="text-[0.68rem] font-bold uppercase tracking-[0.07em] text-text-faint">
+                                Active since
+                            </dt>
+                            <dd class="mt-1 text-[1.15rem] font-extrabold leading-tight tabular-nums">
+                                {profile.activeSince.slice(0, 4)}
+                            </dd>
+                        </>
+                    )}
+                </div>
+            </dl>
+        )}
 
-		{
-			entries.length > 0 && (
-			<section class="mt-8" aria-labelledby="diary-heading">
-				<h2
-					id="diary-heading"
-					class="m-0 text-[0.8rem] font-bold uppercase tracking-[0.08em] text-text-faint"
-				>
-					Recent diary
-				</h2>
-				<p class="mt-1 mb-0 text-[0.85rem] text-text-faint">
-					{diaryCaption}
-				</p>
+        {(profile.ratingsGiven.length > 0 ||
+            profile.releaseDecades.length > 0 ||
+            profile.mostLoved.length > 0 ||
+            profile.viewingHistory.length > 0) && (
+            <section class="mt-8" aria-labelledby="taste-heading">
+                <h2
+                    id="taste-heading"
+                    class="m-0 text-[1.05rem] font-bold tracking-[-0.01em]"
+                >
+                    Taste at a glance
+                </h2>
+                <div class="mt-4 grid gap-4 lg:grid-cols-2">
+                    {profile.ratingsGiven.length > 0 && (
+                        <figure class="m-0 rounded-card border border-border bg-bg-raised p-4 lg:flex lg:min-h-0 lg:flex-col">
+                            <h3 class="m-0 text-[0.9rem] font-bold">
+                                Ratings given
+                            </h3>
+                            <ul class="mt-4 grid h-40 grid-cols-10 items-end gap-1 p-0 lg:h-auto lg:min-h-[12rem] lg:flex-1">
+                                {profile.ratingsGiven.map((bucket) => (
+                                    <li
+                                        class="flex h-full min-w-0 list-none flex-col items-center justify-end text-center tabular-nums"
+                                        title={`${bucket.rating.toFixed(1)} stars: ${bucket.count.toLocaleString("en")} films (${percentage(bucket.percentage)}%)`}
+                                    >
+                                        <span
+                                            class="flex min-h-0 w-full flex-1 items-end"
+                                            aria-hidden="true"
+                                        >
+                                            <span
+                                                class="block w-full rounded-t-[3px] bg-green"
+                                                style={`height:${bucket.count === 0 ? "1px" : `${Math.max(4, (bucket.count / ratingMax) * 100)}%`}`}
+                                            />
+                                        </span>
+                                        <span
+                                            class="mt-1 text-[0.5rem] leading-none text-text-faint"
+                                            aria-hidden="true"
+                                        >
+                                            {percentage(bucket.percentage)}%
+                                        </span>
+                                        <span class="sr-only">
+                                            {bucket.rating.toFixed(1)} stars:{" "}
+                                            {bucket.count.toLocaleString("en")}{" "}
+                                            films,{" "}
+                                            {percentage(bucket.percentage)}{" "}
+                                            percent
+                                        </span>
+                                    </li>
+                                ))}
+                            </ul>
+                            <div
+                                class="mt-1 flex items-center justify-between text-[0.62rem] font-bold text-green tabular-nums"
+                                aria-hidden="true"
+                            >
+                                <span>0.5★</span>
+                                <span>5.0★</span>
+                            </div>
+                        </figure>
+                    )}
+                    {profile.releaseDecades.length > 0 && (
+                        <figure class="m-0 rounded-card border border-border bg-bg-raised p-4">
+                            <h3 class="m-0 text-[0.9rem] font-bold">
+                                Films watched by release decade
+                            </h3>
+                            <ul class="mt-3 grid gap-1.5 p-0">
+                                {profile.releaseDecades.map((bucket) => (
+                                    <li class="grid grid-cols-[3rem_1fr_auto] items-center gap-2 text-[0.72rem]">
+                                        <span class="font-semibold tabular-nums">
+                                            {bucket.decade}s
+                                        </span>
+                                        <span
+                                            class="h-2.5 overflow-hidden rounded-full bg-bg"
+                                            aria-hidden="true"
+                                        >
+                                            <span
+                                                class="block h-full rounded-full bg-blue"
+                                                style={`width:${(bucket.count / decadeMax) * 100}%`}
+                                            />
+                                        </span>
+                                        <span class="min-w-8 text-right text-text-dim tabular-nums">
+                                            {bucket.count.toLocaleString("en")}
+                                        </span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </figure>
+                    )}
+                    {profile.mostLoved.length > 0 && (
+                        <section
+                            class="rounded-card border border-border bg-bg-raised p-4"
+                            aria-labelledby="loved-heading"
+                        >
+                            <h3
+                                id="loved-heading"
+                                class="m-0 text-[0.9rem] font-bold"
+                            >
+                                Most loved
+                            </h3>
+                            <div class="mt-3">
+                                <ProfileFilmGrid
+                                    items={profile.mostLoved}
+                                    eagerCount={3}
+                                />
+                            </div>
+                        </section>
+                    )}
+                    {profile.viewingHistory.length > 0 && (
+                        <figure class="m-0 rounded-card border border-border bg-bg-raised p-4">
+                            <h3 class="m-0 text-[0.9rem] font-bold">
+                                Viewing history
+                            </h3>
+                            <ul class="mt-3 grid gap-1.5 p-0">
+                                {profile.viewingHistory.map((bucket) => (
+                                    <li class="grid grid-cols-[3rem_1fr_auto] items-center gap-2 text-[0.72rem]">
+                                        <time
+                                            class="font-semibold tabular-nums"
+                                            datetime={String(bucket.year)}
+                                        >
+                                            {bucket.year}
+                                        </time>
+                                        <span
+                                            class="h-2.5 overflow-hidden rounded-full bg-bg"
+                                            aria-hidden="true"
+                                        >
+                                            <span
+                                                class="block h-full rounded-full bg-blue"
+                                                style={`width:${(bucket.count / historyMax) * 100}%`}
+                                            />
+                                        </span>
+                                        <span class="min-w-8 text-right text-text-dim tabular-nums">
+                                            {bucket.count.toLocaleString("en")}
+                                        </span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </figure>
+                    )}
+                </div>
+            </section>
+        )}
 
-				<div class="mt-3 overflow-x-auto">
-					<table
-						class="w-full table-fixed border-collapse text-left text-[0.9rem]"
-					>
-						<thead>
-							<tr class="border-b border-border">
-								<th
-									class="py-2 pr-3 text-[0.72rem] font-bold uppercase tracking-[0.08em] text-text-faint"
-									scope="col">Film</th
-								>
-								<th
-									class="w-[5.25rem] py-2 pr-3 text-[0.72rem] font-bold uppercase tracking-[0.08em] text-text-faint"
-									scope="col">Rating</th
-								>
-								<th
-									class="w-[4.25rem] py-2 text-[0.72rem] font-bold uppercase tracking-[0.08em] text-text-faint"
-									scope="col">Watched</th
-								>
-							</tr>
-						</thead>
-						<tbody>
-							{
-								recent.map((e) => (
-									<tr class="border-b border-border/50">
-										<td class="py-2 pr-3">
-											{/* The title is the only part that may be cut: the year
+        {entries.length > 0 && (
+            <section class="mt-8" aria-labelledby="diary-heading">
+                <h2
+                    id="diary-heading"
+                    class="m-0 text-[0.8rem] font-bold uppercase tracking-[0.08em] text-text-faint"
+                >
+                    Recent diary entries
+                </h2>
+                <p class="mt-1 mb-0 text-[0.85rem] text-text-faint">
+                    {diaryCaption}
+                </p>
+
+                <div class="mt-3 overflow-x-auto">
+                    <table class="w-full table-fixed border-collapse text-left text-[0.9rem]">
+                        <thead>
+                            <tr class="border-b border-border">
+                                <th
+                                    class="py-2 pr-3 text-[0.72rem] font-bold uppercase tracking-[0.08em] text-text-faint"
+                                    scope="col"
+                                >
+                                    Film
+                                </th>
+                                <th
+                                    class="w-[5.25rem] py-2 pr-3 text-[0.72rem] font-bold uppercase tracking-[0.08em] text-text-faint"
+                                    scope="col"
+                                >
+                                    Rating
+                                </th>
+                                <th
+                                    class="w-[4.25rem] py-2 text-[0.72rem] font-bold uppercase tracking-[0.08em] text-text-faint"
+                                    scope="col"
+                                >
+                                    Watched
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {recent.map((e) => (
+                                <tr class="border-b border-border/50">
+                                    <td class="py-2 pr-3">
+                                        {/* The title is the only part that may be cut: the year
 											    and the two badges sit outside it and never shrink. */}
-											<span class="flex items-baseline gap-1.5">
-												{/* Only films over the page threshold have somewhere to
+                                        <span class="flex items-baseline gap-1.5">
+                                            {/* Only films over the page threshold have somewhere to
 												    go; the rest are the majority of any one diary, and
 												    render as plain titles. */}
-												{hasFilmPage(e.slug) ? (
-													<a
-														class="film-page-link truncate"
-														href={filmPageUrl(e.slug)}
-													>
-														{e.title}
-													</a>
-												) : (
-													<span class="truncate font-semibold text-text">
-														{e.title}
-													</span>
-												)}
-												{e.year != null && (
-													<span class="shrink-0 text-[0.75rem] text-text-faint tabular-nums">
-														{e.year}
-													</span>
-												)}
-												{e.rewatch && (
-													<span class="shrink-0 text-[0.8rem] text-text-faint">
-														<span aria-hidden="true">&#8635;</span>
-														<span class="sr-only">Rewatch</span>
-													</span>
-												)}
-												{e.liked && (
-													<span class="shrink-0 text-[0.8rem] text-orange">
-														<span aria-hidden="true">&#9829;</span>
-														<span class="sr-only">Liked</span>
-													</span>
-												)}
-											</span>
-										</td>
-										<td class="py-2 pr-3 whitespace-nowrap">
-											{e.rating != null ? (
-												<span
-													class="text-green"
-													role="img"
-													aria-label={`Rated ${e.rating} out of 5`}
-												>
-													{stars(e.rating)}
-												</span>
-											) : (
-												/* No rating and no date read as empty cells. */
-												<span class="text-text-faint" aria-hidden="true">
-													&mdash;
-												</span>
-											)}
-										</td>
-										<td class="py-2 whitespace-nowrap text-text-faint">
-											{e.watchedDate ? (
-												<time datetime={e.watchedDate} title={e.watchedDate}>
-													{timeAgoShort(e.watchedDate)}
-												</time>
-											) : (
-												<span aria-hidden="true">&mdash;</span>
-											)}
-										</td>
-									</tr>
-								))
-							}
-						</tbody>
-					</table>
-				</div>
+                                            {hasFilmPage(e.slug) ? (
+                                                <a
+                                                    class="film-page-link truncate"
+                                                    href={filmPageUrl(e.slug)}
+                                                >
+                                                    {e.title}
+                                                </a>
+                                            ) : (
+                                                <span class="truncate font-semibold text-text">
+                                                    {e.title}
+                                                </span>
+                                            )}
+                                            {e.year != null && (
+                                                <span class="shrink-0 text-[0.75rem] text-text-faint tabular-nums">
+                                                    {e.year}
+                                                </span>
+                                            )}
+                                            {e.rewatch && (
+                                                <span class="shrink-0 text-[0.8rem] text-text-faint">
+                                                    <span aria-hidden="true">
+                                                        &#8635;
+                                                    </span>
+                                                    <span class="sr-only">
+                                                        Rewatch
+                                                    </span>
+                                                </span>
+                                            )}
+                                            {e.liked && (
+                                                <span class="shrink-0 text-[0.8rem] text-orange">
+                                                    <span aria-hidden="true">
+                                                        &#9829;
+                                                    </span>
+                                                    <span class="sr-only">
+                                                        Liked
+                                                    </span>
+                                                </span>
+                                            )}
+                                        </span>
+                                    </td>
+                                    <td class="py-2 pr-3 whitespace-nowrap">
+                                        {e.rating != null ? (
+                                            <span
+                                                class="text-green"
+                                                role="img"
+                                                aria-label={`Rated ${e.rating} out of 5`}
+                                            >
+                                                {stars(e.rating)}
+                                            </span>
+                                        ) : (
+                                            /* No rating and no date read as empty cells. */
+                                            <span
+                                                class="text-text-faint"
+                                                aria-hidden="true"
+                                            >
+                                                &mdash;
+                                            </span>
+                                        )}
+                                    </td>
+                                    <td class="py-2 whitespace-nowrap text-text-faint">
+                                        {e.watchedDate ? (
+                                            <time
+                                                datetime={e.watchedDate}
+                                                title={e.watchedDate}
+                                            >
+                                                {timeAgoShort(e.watchedDate)}
+                                            </time>
+                                        ) : (
+                                            <span aria-hidden="true">
+                                                &mdash;
+                                            </span>
+                                        )}
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
 
-				<p class="mt-4 mb-0 text-[0.9rem] text-text-dim">
-					<a
-						class="font-semibold text-orange underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
-						href={profileUrl(p.username)}
-						target="_blank"
-						rel="noopener"
-					>
-						See everything @{p.username} has logged on Letterboxd &nearr;
-					</a>
-				</p>
-			</section>
-			)
-		}
-	</main>
+                <p class="mt-4 mb-0 text-[0.9rem] text-text-dim">
+                    <a
+                        class="font-semibold text-orange underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
+                        href={profileUrl(p.username)}
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        See everything @{p.username} has logged on Letterboxd
+                        &nearr;
+                    </a>
+                </p>
+            </section>
+        )}
+    </main>
 
-	<Footer />
+    <Footer />
 </Base>

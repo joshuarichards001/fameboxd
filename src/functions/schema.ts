@@ -96,15 +96,18 @@ export function personPageSchema(opts: {
 	site: URL;
 	person: Person;
 	hasAvatar: boolean;
+	pageName?: string;
+	description?: string;
 }): object[] {
-	const { site, person, hasAvatar } = opts;
+	const { site, person, hasAvatar, pageName, description } = opts;
 	const page = abs(site, personPageUrl(person.username));
 	return [
 		{
 			"@type": "ProfilePage",
 			"@id": `${page}#webpage`,
 			url: page,
-			name: `${person.name} on Letterboxd`,
+			name: pageName ?? `${person.name} on Letterboxd`,
+			...(description ? { description } : {}),
 			isPartOf: { "@id": websiteId(site) },
 			breadcrumb: { "@id": `${page}#breadcrumb` },
 			mainEntity: { "@id": personId(site, person.username) },
