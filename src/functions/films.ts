@@ -8,11 +8,10 @@
 //
 // A film earns a page once FILM_PAGE_MIN_WATCHERS of them logged it. The
 // cross-section is the whole point, and a handful of celebrities watching
-// something is not one: at a threshold of 1 the site was 3,499 film pages of
-// which 2,677 held a single row, drowning the few dozen that actually answer
-// the query in near duplicates of each other. Below the threshold no page is
-// built and nothing links to a film page, so no URL is ever published and
-// later withdrawn — ask hasFilmPage before linking.
+// something is not one; ten distinct people is enough evidence to make the
+// page useful without turning every one-person diary entry into a film page.
+// Below the threshold no page is built and nothing links to a film page — ask
+// hasFilmPage before linking.
 
 import { activity, type ActivityData, type DiaryEntry } from "./activity";
 
@@ -43,7 +42,16 @@ export interface Film {
 
 export const FILM_PAGE_MIN_WATCHERS = 10;
 
+// A complete number of rows at both grid extremes: 24 rows on a three-column
+// phone and eight rows on a nine-column desktop. Keeping the catalogue split
+// into real pages avoids one enormous DOM while leaving every qualifying film
+// reachable without JavaScript.
+export const FILMS_PER_LISTING_PAGE = 72;
+
 export const filmPageUrl = (slug: string) => `/films/${slug}/`;
+
+export const filmListingPageUrl = (page: number) =>
+	page <= 1 ? "/films/" : `/films/page/${page}/`;
 
 export const letterboxdFilmUrl = (slug: string) =>
 	`https://letterboxd.com/film/${slug}/`;
@@ -129,9 +137,8 @@ export function filmPages(index: Map<string, Film> = films): Film[] {
 	);
 }
 
-// "celebrity" / "celebrities". Plural everywhere a film page uses it now that
-// three watchers are the minimum, but the diary rows below the threshold still
-// reach it with one.
+// "celebrity" / "celebrities". Film detail pages are always plural at the
+// current threshold, while trending summaries can still reach this with one.
 export const celebrityNoun = (n: number) => (n === 1 ? "celebrity" : "celebrities");
 
 // "Anne Hathaway, Ayo Edebiri and Barry Jenkins".

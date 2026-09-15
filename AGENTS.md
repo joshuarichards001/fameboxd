@@ -59,8 +59,8 @@ searched with. Build the path with `personPageUrl(username)` from
 index — the homepage already lists everyone.
 
 **Film pages** are `src/pages/films/[slug].astro` — `/films/<slug>/`, one per
-film that **`FILM_PAGE_MIN_WATCHERS` (10) or more** people logged; the other
-~3,850 get no page, because a thin table restating a couple of diary lines is
+film that **`FILM_PAGE_MIN_WATCHERS` (10) or more** people logged; films below
+that threshold get no page, because a thin table restating a few diary lines is
 already on those people's pages. `src/functions/films.ts` inverts the per-person diaries into the
 slug→watchers index everything else reads (`films`, the build's one inversion;
 `filmPages` for the ones with a page; `filmPageUrl`). **Ask `hasFilmPage(slug)`
@@ -71,10 +71,12 @@ count in the `<h1>` must equal the rows in the table. The average is over the
 watchers on the page and must never be presented as Letterboxd's own. The page
 leads with the film's poster beside that header; it falls back to a titled tile
 rather than assuming `film.poster` is set, since a film added today has no
-poster until `fetch-posters` next runs. `/films/`
-lists every page, which is why its per-row styling is hoisted onto the
-`<table>` — repeating the classes on every row cost a megabyte of HTML back
-when every film had one.
+poster until `fetch-posters` next runs. `/films/` and `/films/page/<n>/` form
+the ranked film catalogue, rendered 72 films at a time; page one keeps the
+clean `/films/` URL and every later page has its own canonical URL. Pagination
+is ordinary crawlable links with a compact page window, and its URLs stay out
+of the sitemap because the detail pages are the search landing pages. The
+catalogue uses `FilmPosterGrid`, shared with the trending strip on `/recent/`.
 
 **`/recent/` and `/feed.xml`** (`src/pages/recent.astro`,
 `src/pages/feed.xml.ts`) both render `recentWatches(activity, people, limit)`

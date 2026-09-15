@@ -1,0 +1,60 @@
+---
+import Footer from "./Footer.astro";
+import FilmPagination from "./FilmPagination.astro";
+import FilmPosterGrid from "./FilmPosterGrid.astro";
+import Header from "./Header.astro";
+import people from "../data/people.json";
+import {
+	FILMS_PER_LISTING_PAGE,
+	FILM_PAGE_MIN_WATCHERS,
+	type Film,
+} from "../functions/films";
+import Base from "../layouts/Base.astro";
+
+interface Props {
+	films: Film[];
+	totalFilms: number;
+	page: number;
+	totalPages: number;
+}
+
+const { films, totalFilms, page, totalPages } = Astro.props;
+const format = new Intl.NumberFormat("en");
+const first = (page - 1) * FILMS_PER_LISTING_PAGE + 1;
+const last = first + films.length - 1;
+const count = format.format(totalFilms);
+
+const title = page === 1
+	? `${count} Films Celebrities Watch on Letterboxd | Fameboxd`
+	: `Films Celebrities Watch - Page ${page} of ${totalPages} | Fameboxd`;
+const intro = page === 1
+	? `Every film logged by at least ${FILM_PAGE_MIN_WATCHERS} of the ${people.length} celebrities on Fameboxd, ranked by watcher count. Led by ${films[0].title} with ${films[0].watchers.length}. Updated daily.`
+	: `Page ${page} of ${totalPages}, showing films ${format.format(first)}-${format.format(last)} of ${count}, ranked by celebrity watchers. Each was logged by at least ${FILM_PAGE_MIN_WATCHERS} of the ${people.length} people on Fameboxd.`;
+---
+
+<Base title={title} description={intro}>
+	<Header
+		headline={`${count} films celebrities watch`}
+		intro={intro}
+		showActions={false}
+	/>
+
+	<main class="wrap py-8">
+		<p class="mt-0 mb-3 text-[0.8rem] text-text-faint">
+			Showing {format.format(first)}-{format.format(last)} of {count}, sorted by popularity
+		</p>
+		<FilmPosterGrid
+			items={films.map((film) => ({
+				film,
+				watchers: film.watchers.length,
+				average: film.average,
+			}))}
+			className="sm:grid-cols-5 sm:gap-3 md:grid-cols-7 lg:grid-cols-9"
+			sizes="(min-width: 1024px) 11vw, (min-width: 768px) 14vw, (min-width: 640px) 19vw, 32vw"
+			eagerCount={9}
+		/>
+		<FilmPagination page={page} totalPages={totalPages} />
+	</main>
+
+	<Footer />
+</Base>

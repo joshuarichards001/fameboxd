@@ -1,43 +1,20 @@
 ---
-import Footer from "../../components/Footer.astro";
-import FilmPosterGrid from "../../components/FilmPosterGrid.astro";
-import Header from "../../components/Header.astro";
-import people from "../../data/people.json";
-import { FILM_PAGE_MIN_WATCHERS, filmPages } from "../../functions/films";
-import Base from "../../layouts/Base.astro";
+import FilmsIndexPage from "../../components/FilmsIndexPage.astro";
+import {
+    FILMS_PER_LISTING_PAGE,
+    filmPages,
+} from "../../functions/films";
 
-// The crawl hub: it is what makes every film page reachable in two hops from
-// the homepage, and "the films celebrities watch" is a page in its own right.
-const films = filmPages();
-const count = films.length;
-const top = films[0];
-
-const title = `${count} Films Celebrities Watch on Letterboxd | Fameboxd`;
-const intro = `Every film that ${FILM_PAGE_MIN_WATCHERS} or more of the ${people.length} celebrities in this directory have logged, ranked by how many of them watched it. Led by ${top.title}, with ${top.watchers.length}. Updated daily.`;
+// The crawl hub and first page of the paginated catalogue. Film detail pages
+// remain in one ranked collection without forcing thousands of poster cards
+// into a single response.
+const allFilms = filmPages();
+const totalPages = Math.ceil(allFilms.length / FILMS_PER_LISTING_PAGE);
 ---
 
-<Base title={title} description={intro}>
-    <Header
-        headline={`${count} films celebrities watch`}
-        intro={intro}
-        showActions={false}
-    />
-
-    <main class="wrap py-8">
-        <p class="mt-0 mb-3 text-[0.8rem] text-text-faint">
-            Sorted by popularity
-        </p>
-        <FilmPosterGrid
-            items={films.map((film) => ({
-                film,
-                watchers: film.watchers.length,
-                average: film.average,
-            }))}
-            className="sm:grid-cols-5 sm:gap-3 md:grid-cols-7 lg:grid-cols-9"
-            sizes="(min-width: 1024px) 11vw, (min-width: 768px) 14vw, (min-width: 640px) 19vw, 32vw"
-            eagerCount={9}
-        />
-    </main>
-
-    <Footer />
-</Base>
+<FilmsIndexPage
+    films={allFilms.slice(0, FILMS_PER_LISTING_PAGE)}
+    totalFilms={allFilms.length}
+    page={1}
+    totalPages={totalPages}
+/>

@@ -16,8 +16,8 @@ import { filmPageSchema } from "../../functions/schema";
 import Base from "../../layouts/Base.astro";
 
 // One page per film that FILM_PAGE_MIN_WATCHERS celebrities logged. Below that
-// the page is a single row restating one diary line, which the person's own
-// page already carries — see the threshold note in films.ts.
+// a small watcher table largely restates diary lines the people's own pages
+// already carry — see the threshold note in films.ts.
 export function getStaticPaths() {
 	const byUsername = new Map((people as Person[]).map((p) => [p.username, p]));
 	const avatars = loadAvatarSet();

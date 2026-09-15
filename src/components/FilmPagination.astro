@@ -1,0 +1,83 @@
+---
+import { filmListingPageUrl } from "../functions/films";
+
+interface Props {
+	page: number;
+	totalPages: number;
+}
+
+const { page, totalPages } = Astro.props;
+
+// Keep the control compact on phones while always exposing the ends and the
+// pages around the current one. Previous/next are unconditional crawl paths
+// through the entire collection; the numbered links make useful jumps cheap.
+const numbered = [...new Set([
+	1,
+	totalPages,
+	page - 2,
+	page - 1,
+	page,
+	page + 1,
+	page + 2,
+])]
+	.filter((candidate) => candidate >= 1 && candidate <= totalPages)
+	.sort((a, b) => a - b);
+
+const items: (number | "ellipsis")[] = [];
+for (const candidate of numbered) {
+	const previous = items.at(-1);
+	if (typeof previous === "number" && candidate - previous > 1) {
+		items.push("ellipsis");
+	}
+	items.push(candidate);
+}
+
+const linkClass =
+	"inline-flex min-h-9 min-w-9 items-center justify-center rounded-full border border-border px-2.5 text-[0.85rem] font-semibold text-text-dim no-underline transition-colors duration-[120ms] hover:border-text-faint hover:text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none";
+---
+
+<nav class="mt-8" aria-label="Film catalogue pages">
+	<ul class="m-0 flex list-none flex-wrap items-center justify-center gap-1.5 p-0">
+		{
+			page > 1 && (
+				<li>
+					<a class={linkClass} href={filmListingPageUrl(page - 1)} rel="prev">
+						<span aria-hidden="true">&larr;</span>
+						<span class="sr-only">Previous page</span>
+					</a>
+				</li>
+			)
+		}
+		{
+			items.map((item) =>
+				item === "ellipsis" ? (
+					<li class="px-1 text-text-faint" aria-hidden="true">&hellip;</li>
+				) : (
+					<li>
+						<a
+							class:list={[
+								linkClass,
+								item === page && "border-orange bg-orange text-bg hover:border-orange hover:text-bg",
+							]}
+							href={filmListingPageUrl(item)}
+							aria-label={`Page ${item}`}
+							aria-current={item === page ? "page" : undefined}
+						>
+							{item}
+						</a>
+					</li>
+				),
+			)
+		}
+		{
+			page < totalPages && (
+				<li>
+					<a class={linkClass} href={filmListingPageUrl(page + 1)} rel="next">
+						<span aria-hidden="true">&rarr;</span>
+						<span class="sr-only">Next page</span>
+					</a>
+				</li>
+			)
+		}
+	</ul>
+</nav>

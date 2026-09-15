@@ -45,7 +45,7 @@ const { items, className, sizes, eagerCount, watcherPeriod } = Astro.props;
 						height="450"
 						loading={index < eagerCount ? "eager" : "lazy"}
 						decoding="async"
-						alt=""
+						alt={filmTitle(film)}
 					/>
 				) : (
 					<span class="flex h-full w-full items-center justify-center p-2 text-center text-[0.7rem] font-bold text-text-faint sm:text-[0.8rem]" aria-hidden="true">

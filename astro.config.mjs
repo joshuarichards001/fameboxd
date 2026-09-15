@@ -72,6 +72,10 @@ export default defineConfig({
   site: "https://fameboxd.com",
   integrations: [
     sitemap({
+      // Paginated catalogue URLs are crawlable from /films/ but are navigation
+      // aids rather than search landing pages. Keep the sitemap focused on the
+      // film detail pages we actually want indexed.
+      filter: (page) => !new URL(page).pathname.startsWith("/films/page/"),
       serialize(item) {
         const date = LASTMOD.get(new URL(item.url).pathname);
         if (date) item.lastmod = new Date(`${date}T00:00:00Z`).toISOString();

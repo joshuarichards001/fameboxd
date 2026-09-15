@@ -1,0 +1,42 @@
+---
+import FilmsIndexPage from "../../../components/FilmsIndexPage.astro";
+import {
+	FILMS_PER_LISTING_PAGE,
+	filmPages,
+	type Film,
+} from "../../../functions/films";
+
+export function getStaticPaths() {
+	const allFilms = filmPages();
+	const totalPages = Math.ceil(allFilms.length / FILMS_PER_LISTING_PAGE);
+	return Array.from({ length: Math.max(0, totalPages - 1) }, (_, index) => {
+		const page = index + 2;
+		const start = (page - 1) * FILMS_PER_LISTING_PAGE;
+		return {
+			params: { page: String(page) },
+			props: {
+				films: allFilms.slice(start, start + FILMS_PER_LISTING_PAGE),
+				totalFilms: allFilms.length,
+				page,
+				totalPages,
+			},
+		};
+	});
+}
+
+interface Props {
+	films: Film[];
+	totalFilms: number;
+	page: number;
+	totalPages: number;
+}
+
+const { films, totalFilms, page, totalPages } = Astro.props;
+---
+
+<FilmsIndexPage
+	films={films}
+	totalFilms={totalFilms}
+	page={page}
+	totalPages={totalPages}
+/>
