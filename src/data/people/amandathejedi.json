@@ -1,6 +1,9 @@
 {
-  "generatedAt": "2026-09-15T00:08:39.516Z",
+  "generatedAt": "2026-09-16T14:11:29.428Z",
   "entries": [
+    {"s":"all-that-she-wants-2026","d":"2026-09-15","r":null},
+    {"s":"ink-2026","d":"2026-09-15","r":null},
+    {"s":"a-talent-for-murder-2026","d":"2026-09-15","r":null,"l":1},
     {"s":"wild-horse-nine","d":"2026-09-14","r":null,"l":1},
     {"s":"love-of-your-life","d":"2026-09-14","r":4,"l":1},
     {"s":"elsinore","d":"2026-09-14","r":4,"l":1},
@@ -46,10 +49,7 @@
     {"s":"1917","d":"2026-07-02","r":4.5,"w":1,"l":1},
     {"s":"saving-private-ryan","d":"2026-06-29","r":4.5,"w":1,"l":1},
     {"s":"bridge-of-spies","d":"2026-06-25","r":null,"w":1},
-    {"s":"supergirl-2026","d":"2026-06-25","r":null,"l":1},
     {"s":"minority-report","d":"2026-06-18","r":null,"w":1},
-    {"s":"leviticus-2026","d":"2026-06-18","r":4,"w":1,"l":1},
-    {"s":"war-of-the-worlds","d":"2026-06-16","r":null,"w":1,"l":1},
     {"s":"bottoms","d":"2026-03-12","r":5,"w":1,"l":1},
     {"s":"knives-out-2019","d":"2026-03-10","r":4.5,"w":1,"l":1},
     {"s":"the-dirties","d":"2026-03-10","r":null,"l":1},
