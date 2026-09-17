@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-09-16T14:11:29.453Z",
+  "generatedAt": "2026-09-17T14:17:13.416Z",
   "entries": [
+    {"s":"halloween-2018","d":"2026-09-17","r":null,"w":1},
+    {"s":"hope-2026","d":"2026-09-16","r":null,"l":1},
     {"s":"a-tale-of-two-sisters","d":"2026-09-15","r":null,"w":1,"l":1},
     {"s":"saw-iii","d":"2026-09-13","r":null,"w":1,"l":1},
     {"s":"shaun-the-sheep-the-beast-of-mossy-bottom","d":"2026-09-13","r":null,"l":1},
@@ -49,7 +51,6 @@
     {"s":"practical-magic","d":"2026-08-15","r":null,"w":1,"l":1},
     {"s":"the-end-of-oak-street","d":"2026-08-15","r":null,"l":1},
     {"s":"mooch-2025","d":"2026-08-15","r":null,"l":1},
-    {"s":"criminal-law","d":"2026-08-15","r":null},
     {"s":"the-x-files-i-want-to-believe","d":"2026-08-14","r":null,"l":1},
     {"s":"rugrats-go-wild","d":"2026-08-13","r":null,"w":1,"l":1},
     {"s":"muppet-treasure-island","d":"2026-08-12","r":null,"l":1},

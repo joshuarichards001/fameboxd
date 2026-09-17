@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-09-14T23:50:19.546Z",
+  "generatedAt": "2026-09-17T14:17:13.428Z",
   "entries": [
+    {"s":"primetime-2026","d":"2026-09-17","r":4},
+    {"s":"untitled-resident-evil-reboot","d":"2026-09-16","r":3.5},
     {"s":"the-surgeon-2026","d":"2026-09-14","r":2.5},
     {"s":"magazine-2026-2","d":"2026-09-13","r":2},
     {"s":"love-of-your-life","d":"2026-09-13","r":3.5},
@@ -49,7 +51,6 @@
     {"s":"the-odyssey-2026","d":"2026-07-15","r":4.5,"w":1},
     {"s":"evangelion-10-you-are-not-alone","d":"2026-07-13","r":3,"w":1},
     {"s":"the-seven-per-cent-solution","d":"2026-07-12","r":3},
-    {"s":"family-plot","d":"2026-07-12","r":2.5},
     {"s":"catvideofest-2026","d":"2026-07-11","r":null,"l":1},
     {"s":"hornblower-mutiny","d":"2026-07-10","r":null,"l":1},
     {"s":"night-nurse-2026","d":"2026-07-09","r":2.5},
