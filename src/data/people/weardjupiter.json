@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-09-17T14:17:13.560Z",
+  "generatedAt": "2026-09-18T13:35:16.625Z",
   "entries": [
+    {"s":"resident-evil-2026","d":"2026-09-17","r":null},
     {"s":"scanners-iii-the-takeover","d":"2026-09-16","r":null,"l":1},
     {"s":"bad-lieutenant","d":"2026-09-15","r":null,"w":1,"l":1},
     {"s":"burden-of-dreams","d":"2026-09-15","r":null,"w":1,"l":1},
@@ -50,7 +51,6 @@
     {"s":"westermarck-effect","d":"2026-07-11","r":null},
     {"s":"shock-video-1985","d":"2026-07-11","r":null},
     {"s":"crocodile-dose","d":"2026-07-10","r":null,"l":1},
-    {"s":"neon-genesis-evangelion-the-end-of-evangelion","d":"2026-07-10","r":null,"w":1,"l":1},
     {"s":"revolutionary-girl-utena-the-movie","d":"2026-07-09","r":null,"l":1},
     {"s":"the-story-of-film-a-new-generation","d":"2026-07-08","r":null},
     {"s":"the-story-of-film-an-odyssey-2011","d":"2026-07-07","r":null,"w":1,"l":1},

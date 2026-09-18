@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-09-17T14:17:13.394Z",
+  "generatedAt": "2026-09-18T13:35:16.456Z",
   "entries": [
+    {"s":"vintage-violence","d":"2026-09-17","r":null,"l":1},
+    {"s":"resident-evil-2026","d":"2026-09-17","r":4,"l":1},
     {"s":"bucking-fastard","d":"2026-09-16","r":null},
     {"s":"bad-lieutenant-tokyo","d":"2026-09-16","r":null},
     {"s":"all-that-she-wants-2026","d":"2026-09-15","r":null},
@@ -48,8 +50,6 @@
     {"s":"passenger-2026","d":"2026-07-05","r":null},
     {"s":"leviticus-2026","d":"2026-07-04","r":4,"w":1,"l":1},
     {"s":"project-hail-mary","d":"2026-07-04","r":4,"w":1,"l":1},
-    {"s":"1917","d":"2026-07-02","r":4.5,"w":1,"l":1},
-    {"s":"saving-private-ryan","d":"2026-06-29","r":4.5,"w":1,"l":1},
     {"s":"bottoms","d":"2026-03-12","r":5,"w":1,"l":1},
     {"s":"knives-out-2019","d":"2026-03-10","r":4.5,"w":1,"l":1},
     {"s":"the-dirties","d":"2026-03-10","r":null,"l":1},

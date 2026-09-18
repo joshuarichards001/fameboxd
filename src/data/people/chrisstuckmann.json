@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-09-17T14:17:13.416Z",
+  "generatedAt": "2026-09-18T13:35:16.481Z",
   "entries": [
+    {"s":"cherry-falls","d":"2026-09-18","r":null,"w":1,"l":1},
+    {"s":"resident-evil-2026","d":"2026-09-17","r":null,"l":1},
     {"s":"halloween-2018","d":"2026-09-17","r":null,"w":1},
     {"s":"hope-2026","d":"2026-09-16","r":null,"l":1},
     {"s":"a-tale-of-two-sisters","d":"2026-09-15","r":null,"w":1,"l":1},
@@ -49,8 +51,6 @@
     {"s":"faces-of-death-2026","d":"2026-08-17","r":null},
     {"s":"the-devils-mouth","d":"2026-08-15","r":null},
     {"s":"practical-magic","d":"2026-08-15","r":null,"w":1,"l":1},
-    {"s":"the-end-of-oak-street","d":"2026-08-15","r":null,"l":1},
-    {"s":"mooch-2025","d":"2026-08-15","r":null,"l":1},
     {"s":"the-x-files-i-want-to-believe","d":"2026-08-14","r":null,"l":1},
     {"s":"rugrats-go-wild","d":"2026-08-13","r":null,"w":1,"l":1},
     {"s":"muppet-treasure-island","d":"2026-08-12","r":null,"l":1},
