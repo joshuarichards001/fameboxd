@@ -1,6 +1,11 @@
 {
-  "generatedAt": "2026-09-18T13:35:16.526Z",
+  "generatedAt": "2026-09-19T13:08:43.375Z",
   "entries": [
+    {"s":"the-wild-palms","d":"2026-09-18","r":5},
+    {"s":"everything-else-is-noise","d":"2026-09-18","r":4},
+    {"s":"the-day-she-returns","d":"2026-09-18","r":4},
+    {"s":"nowhere-to-lay-my-eyes","d":"2026-09-18","r":3.5},
+    {"s":"at-night-2026","d":"2026-09-18","r":4},
     {"s":"arrested-memory","d":"2026-09-17","r":3},
     {"s":"resident-evil-2026","d":"2026-09-17","r":3.5},
     {"s":"la-gradiva","d":"2026-09-17","r":4.5},
@@ -46,7 +51,6 @@
     {"s":"batch-81","d":"2026-08-31","r":4},
     {"s":"the-weed-eaters","d":"2026-08-31","r":4},
     {"s":"idiots-2026","d":"2026-08-31","r":3},
-    {"s":"raining-in-the-mountain","d":"2026-08-31","r":4},
     {"s":"the-furious","d":"2026-08-30","r":4,"w":1},
     {"s":"the-whisper-man","d":"2026-08-30","r":2.5},
     {"s":"day-of-the-dead","d":"2026-08-30","r":5,"w":1},
