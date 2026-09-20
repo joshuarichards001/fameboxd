@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-09-19T13:08:43.480Z",
+  "generatedAt": "2026-09-20T13:34:38.696Z",
   "entries": [
+    {"s":"resident-evil-2026","d":"2026-09-19","r":null},
+    {"s":"x-2022","d":"2026-09-19","r":null,"w":1},
     {"s":"the-maltese-falcon-1941","d":"2026-09-19","r":null,"w":1},
     {"s":"nouvelle-vague-2025","d":"2026-09-16","r":null},
     {"s":"tenet","d":"2026-09-15","r":null,"w":1},
@@ -49,8 +51,6 @@
     {"s":"john-wick-chapter-3-parabellum","d":"2026-08-01","r":null,"w":1},
     {"s":"the-odyssey-2026","d":"2026-07-31","r":null},
     {"s":"miami-vice","d":"2026-07-30","r":null,"w":1},
-    {"s":"hacksaw-ridge","d":"2026-07-30","r":null},
-    {"s":"the-departed","d":"2026-07-30","r":null,"w":1},
     {"s":"catch-me-if-you-can-2002","d":"2026-07-28","r":null,"w":1},
     {"s":"good-will-hunting","d":"2026-07-27","r":null,"w":1},
     {"s":"christine-2016","d":"2026-07-26","r":null,"w":1},

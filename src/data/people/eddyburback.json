@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-09-14T23:51:20.073Z",
+  "generatedAt": "2026-09-20T13:34:38.599Z",
   "entries": [
+    {"s":"john-tucker-must-die","d":"2026-09-19","r":null,"l":1},
     {"s":"coyote-vs-acme","d":"2026-09-09","r":null,"w":1,"l":1},
     {"s":"hot-rod","d":"2026-09-07","r":null,"l":1},
     {"s":"tarzan","d":"2026-08-30","r":null,"l":1},
@@ -50,7 +51,6 @@
     {"s":"mind-game","d":"2026-05-11","r":null,"l":1},
     {"s":"hercules-1997","d":"2026-05-07","r":null,"w":1,"l":1},
     {"s":"mamma-mia-here-we-go-again","d":"2026-05-06","r":null,"w":1,"l":1},
-    {"s":"mamma-mia","d":"2026-05-06","r":null,"w":1,"l":1},
     {"s":"the-devil-wears-prada-2","d":"2026-05-03","r":null,"l":1},
     {"s":"anaconda-2025","d":"2026-05-01","r":null},
     {"s":"mother-mary-2026","d":"2026-04-29","r":null},
