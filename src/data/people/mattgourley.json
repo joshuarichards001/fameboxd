@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-09-20T13:34:38.657Z",
+  "generatedAt": "2026-09-21T15:53:05.018Z",
   "entries": [
+    {"s":"the-brink-2019","d":"2026-09-20","r":null},
+    {"s":"rambo-iii","d":"2026-09-20","r":null,"l":1},
     {"s":"the-island","d":"2026-09-19","r":null},
     {"s":"rambo-first-blood-part-ii","d":"2026-09-17","r":null,"l":1},
     {"s":"conan-the-barbarian","d":"2026-09-16","r":null},
@@ -49,8 +51,6 @@
     {"s":"the-dead-pool","d":"2026-04-19","r":null},
     {"s":"sudden-impact","d":"2026-04-18","r":null},
     {"s":"the-comedians","d":"2026-04-14","r":null,"w":1},
-    {"s":"the-naked-gun-from-the-files-of-police-squad","d":"2026-04-14","r":null,"w":1,"l":1},
-    {"s":"crime-101","d":"2026-04-14","r":null},
     {"s":"the-enforcer-1976","d":"2026-04-13","r":null},
     {"s":"dirty-harry","d":"2026-04-10","r":null},
     {"s":"magnum-force","d":"2026-04-09","r":null,"w":1},

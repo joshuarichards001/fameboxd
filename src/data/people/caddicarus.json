@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-09-14T23:46:46.523Z",
+  "generatedAt": "2026-09-21T15:53:04.914Z",
   "entries": [
+    {"s":"resident-evil-2026","d":"2026-09-20","r":3,"l":1},
     {"s":"the-sheep-detectives","d":"2026-09-06","r":3.5,"l":1},
     {"s":"coyote-vs-acme","d":"2026-09-03","r":4,"l":1},
     {"s":"the-end-of-oak-street","d":"2026-08-30","r":3},
@@ -50,7 +51,6 @@
     {"s":"grenfell-uncovered","d":"2025-07-09","r":4,"l":1},
     {"s":"trainwreck-poop-cruise","d":"2025-07-08","r":2.5,"l":1},
     {"s":"titan-the-oceangate-submersible-disaster","d":"2025-07-03","r":3,"l":1},
-    {"s":"black-mirror-plaything","d":"2025-07-03","r":2.5},
     {"s":"black-mirror-hotel-reverie","d":"2025-07-01","r":4,"l":1},
     {"s":"black-mirror-bete-noire","d":"2025-06-30","r":3.5,"l":1},
     {"s":"black-mirror-common-people","d":"2025-06-29","r":4.5,"l":1},
