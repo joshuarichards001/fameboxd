@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-09-21T15:53:04.957Z",
+  "generatedAt": "2026-09-22T14:01:26.443Z",
   "entries": [
+    {"s":"spaceballs","d":"2026-09-21","r":null,"w":1,"l":1},
+    {"s":"the-hidden-fortress","d":"2026-09-21","r":null,"w":1,"l":1},
     {"s":"defending-your-life","d":"2026-09-19","r":null,"w":1,"l":1},
     {"s":"resident-evil-2026","d":"2026-09-15","r":null,"l":1},
     {"s":"the-breadwinner-2026","d":"2026-09-15","r":null},
@@ -48,8 +50,6 @@
     {"s":"behind-the-candelabra","d":"2026-08-08","r":null,"w":1,"l":1},
     {"s":"resident-evil-apocalypse","d":"2026-08-05","r":null},
     {"s":"spider-man-brand-new-day","d":"2026-08-04","r":null,"w":1},
-    {"s":"the-late-shift","d":"2026-08-04","r":null,"w":1,"l":1},
-    {"s":"john-carter","d":"2026-08-03","r":null,"w":1,"l":1},
     {"s":"resident-evil","d":"2026-06-05","r":null,"w":1},
     {"s":"backrooms-2026","d":"2026-06-02","r":null,"l":1},
     {"s":"the-age-of-innocence","d":"2026-06-02","r":null,"l":1},

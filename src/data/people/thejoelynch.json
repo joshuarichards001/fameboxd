@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-09-21T15:53:05.054Z",
+  "generatedAt": "2026-09-22T14:01:26.521Z",
   "entries": [
+    {"s":"the-serpents-skin","d":"2026-09-20","r":4,"w":1,"l":1},
     {"s":"zeros-and-ones","d":"2026-09-20","r":3,"l":1},
     {"s":"the-nightmare-before-christmas","d":"2026-09-18","r":5,"w":1,"l":1},
     {"s":"sleepy-hollow","d":"2026-09-18","r":4,"w":1,"l":1},
@@ -50,7 +51,6 @@
     {"s":"colony-2026","d":"2026-08-29","r":3.5,"l":1},
     {"s":"session-9","d":"2026-08-28","r":3,"w":1,"l":1},
     {"s":"muriels-wedding","d":"2026-08-27","r":4,"w":1,"l":1},
-    {"s":"motor-city","d":"2026-08-27","r":null,"l":1},
     {"s":"a-nightmare-on-elm-street-3-dream-warriors","d":"2026-08-26","r":4,"w":1,"l":1},
     {"s":"all-the-colors-of-giallo","d":"2026-08-26","r":3,"l":1},
     {"s":"insidious-out-of-the-further","d":"2026-08-25","r":3,"l":1},

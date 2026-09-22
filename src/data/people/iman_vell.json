@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-09-21T15:53:04.962Z",
+  "generatedAt": "2026-09-22T14:01:26.447Z",
   "entries": [
+    {"s":"fist-of-fury","d":"2026-09-21","r":4,"l":1},
     {"s":"the-man-i-love-2026","d":"2026-09-20","r":null},
     {"s":"eklipse-2026","d":"2026-09-19","r":null,"l":1},
     {"s":"elsinore","d":"2026-09-19","r":null,"l":1},
@@ -50,7 +51,6 @@
     {"s":"a-history-of-violence","d":"2026-09-04","r":4.5,"l":1},
     {"s":"coyote-vs-acme","d":"2026-09-02","r":null,"l":1},
     {"s":"slacker","d":"2026-09-01","r":null,"l":1},
-    {"s":"the-big-city","d":"2026-09-01","r":5,"l":1},
     {"s":"blue-heron","d":"2026-08-24","r":5},
     {"s":"gentlemen-broncos","d":"2026-08-20","r":4.5,"l":1},
     {"s":"the-last-waltz","d":"2026-08-19","r":5,"w":1,"l":1},

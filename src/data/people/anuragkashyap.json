@@ -1,6 +1,9 @@
 {
-  "generatedAt": "2026-09-21T15:53:04.906Z",
+  "generatedAt": "2026-09-22T14:01:26.403Z",
   "entries": [
+    {"s":"we-were-here-2026","d":"2026-09-22","r":null,"l":1},
+    {"s":"the-witness-2026-2","d":"2026-09-22","r":null,"l":1},
+    {"s":"dirty-rotten-scoundrels","d":"2026-09-22","r":null,"l":1},
     {"s":"half-2026","d":"2026-09-21","r":null,"l":1},
     {"s":"angh-2026","d":"2026-09-21","r":null,"l":1},
     {"s":"american-sniper","d":"2026-09-20","r":null,"w":1,"l":1},
@@ -48,7 +51,6 @@
     {"s":"tony-2026","d":"2026-08-30","r":null,"l":1},
     {"s":"the-whisper-man","d":"2026-08-29","r":null},
     {"s":"blue-heron","d":"2026-08-23","r":null,"l":1},
-    {"s":"enemy-of-the-state","d":"2026-08-23","r":null,"w":1,"l":1},
     {"s":"dance-with-the-devil","d":"2026-08-22","r":null,"w":1,"l":1},
     {"s":"the-adventures-of-tintin","d":"2026-08-18","r":null,"w":1,"l":1},
     {"s":"pallaburusu","d":"2026-08-17","r":5,"l":1},
