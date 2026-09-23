@@ -1,6 +1,10 @@
 {
-  "generatedAt": "2026-09-22T14:01:26.457Z",
+  "generatedAt": "2026-09-23T14:13:41.648Z",
   "entries": [
+    {"s":"riki-oh-the-story-of-ricky","d":"2026-09-22","r":4,"w":1},
+    {"s":"a-nightmare-on-elm-street","d":"2026-09-22","r":5,"w":1,"l":1},
+    {"s":"iron-boy","d":"2026-09-22","r":3.5},
+    {"s":"possible-love","d":"2026-09-22","r":5},
     {"s":"the-weight-2026","d":"2026-09-21","r":4},
     {"s":"shock-video-1985","d":"2026-09-21","r":4},
     {"s":"the-secret-life-of-patty-hearst","d":"2026-09-21","r":3.5},
@@ -47,8 +51,6 @@
     {"s":"gandahar","d":"2026-09-05","r":4.5},
     {"s":"voodoo","d":"2026-09-04","r":2},
     {"s":"sex-lies-and-videotape","d":"2026-09-04","r":5,"w":1,"l":1},
-    {"s":"half-cocked","d":"2026-09-04","r":4},
-    {"s":"drinking-and-driving","d":"2026-09-04","r":4.5},
     {"s":"the-hunger","d":"2026-09-03","r":5,"w":1,"l":1},
     {"s":"chungking-express","d":"2026-09-03","r":5,"w":1},
     {"s":"fall-2-deadpoint","d":"2026-09-02","r":3},

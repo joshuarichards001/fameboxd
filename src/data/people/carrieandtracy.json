@@ -1,6 +1,9 @@
 {
-  "generatedAt": "2026-09-22T14:01:26.411Z",
+  "generatedAt": "2026-09-23T14:13:41.592Z",
   "entries": [
+    {"s":"the-drama","d":"2026-09-22","r":null},
+    {"s":"last-bullet","d":"2026-09-22","r":null},
+    {"s":"heist","d":"2026-09-22","r":null},
     {"s":"disclosure-day","d":"2026-09-21","r":null},
     {"s":"gail-daughtry-and-the-celebrity-sex-pass","d":"2026-09-20","r":null},
     {"s":"the-day-the-earth-stood-still","d":"2026-09-20","r":null,"w":1},
@@ -48,7 +51,6 @@
     {"s":"american-movie","d":"2026-08-18","r":null,"w":1},
     {"s":"postcards-from-the-edge","d":"2026-08-17","r":null,"w":1},
     {"s":"once-upon-a-time-in-hollywood","d":"2026-08-16","r":null,"w":1},
-    {"s":"indiana-jones-and-the-temple-of-doom","d":"2026-08-16","r":null,"w":1},
     {"s":"the-ghost-of-peter-sellers","d":"2026-08-15","r":null},
     {"s":"dark-waters-1993","d":"2026-08-14","r":null},
     {"s":"send-help","d":"2026-08-13","r":null},

@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-09-21T15:53:04.973Z",
+  "generatedAt": "2026-09-23T14:13:41.646Z",
   "entries": [
+    {"s":"death-of-a-yellow-bird","d":"2026-09-22","r":3.5},
     {"s":"return-of-the-jedi","d":"2026-09-20","r":4.5},
     {"s":"the-empire-strikes-back","d":"2026-09-18","r":5,"w":1},
     {"s":"the-fog","d":"2026-09-14","r":4},

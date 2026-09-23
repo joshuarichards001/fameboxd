@@ -1,6 +1,9 @@
 {
-  "generatedAt": "2026-09-22T14:01:26.511Z",
+  "generatedAt": "2026-09-23T14:13:41.716Z",
   "entries": [
+    {"s":"primetime-2026","d":"2026-09-22","r":null,"w":1,"l":1},
+    {"s":"perfect-blue","d":"2026-09-22","r":null,"w":1,"l":1},
+    {"s":"digger-2026","d":"2026-09-22","r":null},
     {"s":"whalefall","d":"2026-09-21","r":null},
     {"s":"resident-evil-2026","d":"2026-09-20","r":null,"w":1,"l":1},
     {"s":"who-is-martin-mull","d":"2026-09-19","r":null},
@@ -47,9 +50,6 @@
     {"s":"bucking-fastard","d":"2026-09-05","r":null},
     {"s":"the-debut-2026","d":"2026-09-05","r":null,"l":1},
     {"s":"everest-the-other-side","d":"2026-09-05","r":null},
-    {"s":"ink-2026","d":"2026-09-05","r":null},
-    {"s":"the-liberation-2026","d":"2026-09-04","r":null},
-    {"s":"tender-loving-care-2026","d":"2026-09-04","r":null,"l":1},
     {"s":"slanted","d":"2026-07-08","r":null},
     {"s":"the-odyssey-2026","d":"2026-07-06","r":null,"l":1},
     {"s":"in-search-of-darkness-1990-1994","d":"2026-07-05","r":null},
