@@ -1,0 +1,21 @@
+---
+import type { ActivityBucket } from "../functions/rankings";
+
+interface Props {
+	buckets: ActivityBucket[];
+	minWidth?: string;
+	label: string;
+}
+
+const { buckets, minWidth = "min-w-max", label } = Astro.props;
+const format = new Intl.NumberFormat("en");
+const compact = new Intl.NumberFormat("en", { notation: "compact", maximumFractionDigits: 1 });
+const activityMax = Math.max(1, ...buckets.map((bucket) => bucket.entries));
+const peopleMax = Math.max(1, ...buckets.map((bucket) => bucket.activePeople));
+---
+
+<div class="mt-4 overflow-x-auto pb-2">
+	<ul class:list={["m-0 flex h-56 list-none items-end gap-1 p-0", minWidth]} aria-label={label}>
+		{buckets.map((bucket) => <li class="flex h-full w-10 shrink-0 flex-col justify-end text-center tabular-nums" aria-label={`${bucket.label}: ${format.format(bucket.entries)} diary entries from ${bucket.activePeople} active people`}><span class="mb-1 text-[0.52rem] leading-none text-text-faint" aria-hidden="true">{compact.format(bucket.entries)}</span><span class="flex h-[10.5rem] items-end justify-center gap-0.5" aria-hidden="true"><span class="block w-3 rounded-t-[2px] bg-blue" style={`height:${(bucket.entries / activityMax) * 100}%`}></span><span class="block w-3 rounded-t-[2px] bg-green" style={`height:${(bucket.activePeople / peopleMax) * 100}%`}></span></span><span class="mt-1 text-[0.58rem] font-semibold text-text-dim" aria-hidden="true">{bucket.label}</span></li>)}
+	</ul>
+</div>

@@ -1,0 +1,149 @@
+---
+import Footer from "./Footer.astro";
+import ActivityBars from "./ActivityBars.astro";
+import RankingList from "./RankingList.astro";
+import {
+	filmDashboardUrl,
+	type FilmDashboard,
+	type FilmDashboardPeriod,
+} from "../functions/rankings";
+import { filmRankingsSchema } from "../functions/schema";
+import Base from "../layouts/Base.astro";
+
+interface Props {
+	dashboard: FilmDashboard;
+	periods: FilmDashboardPeriod[];
+}
+
+const { dashboard, periods } = Astro.props;
+const { period } = dashboard;
+const format = new Intl.NumberFormat("en");
+const longDate = (date: string) =>
+	new Intl.DateTimeFormat("en-GB", {
+		day: "numeric",
+		month: "long",
+		year: "numeric",
+		timeZone: "UTC",
+	}).format(new Date(`${date}T00:00:00Z`));
+const currentYear = Number(dashboard.cutoff.slice(0, 4));
+const isCurrentYear = period.kind === "year" && period.year === currentYear;
+const pageName = period.kind === "all"
+	? "Fameboxd film rankings"
+	: `The films celebrities watched in ${period.year}`;
+const title = period.kind === "all"
+	? "Celebrity Film Rankings and Letterboxd Trends | Fameboxd"
+	: `Best and Most-Watched Films of ${period.year} by Celebrities | Fameboxd`;
+const description = period.kind === "all"
+	? `${format.format(dashboard.entries)} public Letterboxd diary entries from ${dashboard.activePeople} Fameboxd people across ${format.format(dashboard.distinctFilms)} films, ranked by viewing and ratings.`
+	: `${period.year}: ${format.format(dashboard.entries)} public Letterboxd diary entries from ${dashboard.activePeople} Fameboxd people across ${format.format(dashboard.distinctFilms)} films, ranked transparently.`;
+const intro = `A transparent view of ${format.format(dashboard.entries)} diary entries, including rewatches, from ${dashboard.activePeople} active people across ${format.format(dashboard.distinctFilms)} films. The data comes from public Letterboxd diaries.`;
+const mostWatched = dashboard.mostWatched[0];
+const highestRated = dashboard.highestRated[0];
+const yearLeaders = period.kind !== "year" || !mostWatched
+	? ""
+	: mostWatched.slug === highestRated?.slug
+		? ` ${mostWatched.title} led both the viewing and sample-adjusted rating rankings.`
+		: ` ${mostWatched.title} was most watched${highestRated ? `, while ${highestRated.title} led the sample-adjusted rating ranking` : ""}.`;
+const pathname = filmDashboardUrl(period);
+const schemaLists = [
+	{ id: "most-watched-list", name: `Most watched${period.kind === "year" ? ` in ${period.year}` : " all time"} within Fameboxd`, films: dashboard.mostWatched },
+	{ id: "highest-rated-list", name: `Highest rated${period.kind === "year" ? ` in ${period.year}` : " all time"} within Fameboxd`, films: dashboard.highestRated },
+	{ id: "most-rewatched-list", name: "Most rewatched within Fameboxd", films: dashboard.mostRewatched },
+	{ id: "most-divisive-list", name: "Most divisive within Fameboxd", films: dashboard.mostDivisive },
+].filter((list) => list.films.length > 0);
+const schema = filmRankingsSchema({ site: new URL("/", Astro.site), pathname, name: pageName, description, lists: schemaLists });
+const ACTIVITY_START_YEAR = 2011;
+const chartActivity = period.kind === "all"
+	? dashboard.activity.filter((bucket) => Number(bucket.key) >= ACTIVITY_START_YEAR).reverse()
+	: dashboard.activity;
+const ratingMax = Math.max(1, ...dashboard.ratings.map((bucket) => bucket.count));
+const decadeMax = Math.max(1, ...dashboard.releaseDecades.map((bucket) => bucket.films));
+const pct = (value: number) => value < 1 ? value.toFixed(1) : value.toFixed(0);
+const periodPhrase = period.kind === "all" ? "all time" : `during ${period.year}`;
+---
+
+<Base title={title} description={description} schema={schema}>
+	<header class="header-glow border-b border-border py-[clamp(1.5rem,4vw,2.4rem)]">
+		<div class="wrap">
+			<h1 class="m-0 text-[clamp(1.7rem,4.5vw,2.5rem)] font-extrabold leading-[1.05] tracking-[-0.02em]">
+				{pageName}
+			</h1>
+			<p class="mt-3 mb-0 max-w-[74ch] text-[clamp(0.95rem,2vw,1.05rem)] text-text-dim">
+				{intro}{yearLeaders}
+			</p>
+			{isCurrentYear && <p class="mt-2 mb-0 text-[0.85rem] font-semibold text-orange">Year to date through {longDate(dashboard.cutoff)}.</p>}
+			{period.kind === "year" && !isCurrentYear && <p class="mt-2 mb-0 text-[0.85rem] text-text-faint">Calendar year {period.year}.</p>}
+			<nav class="mt-5" aria-label="Film ranking period">
+				<ul class="m-0 flex list-none flex-wrap gap-2 p-0">
+					{periods.map((candidate) => {
+						const active = candidate.kind === period.kind && (candidate.kind === "all" || (period.kind === "year" && candidate.year === period.year));
+						return <li><a class:list={["block rounded-full border px-3 py-1.5 text-[0.82rem] font-bold no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue", active ? "border-orange bg-orange text-bg" : "border-border bg-bg-raised text-text-dim hover:bg-bg-raised-hover hover:text-text"]} href={filmDashboardUrl(candidate)} aria-current={active ? "page" : undefined}>{candidate.kind === "all" ? "All time" : candidate.year}</a></li>;
+					})}
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<main class="wrap py-8">
+		<section aria-labelledby="summary-heading">
+			<h2 id="summary-heading" class="sr-only">Summary</h2>
+			<dl class="grid grid-cols-2 gap-px overflow-hidden rounded-card border border-border bg-border lg:grid-cols-4">
+				{[
+					["Diary entries", dashboard.entries, "Rewatches are separate entries"],
+					["Active people", dashboard.activePeople, "With an entry in this period"],
+					["Distinct films", dashboard.distinctFilms, "Each title counted once"],
+					["Rated combinations", dashboard.ratedCombinations, "One representative rating per person-film"],
+				].map(([label, value, note]) => <div class="bg-bg-raised p-3 sm:p-4"><dt class="text-[0.68rem] font-bold uppercase tracking-[0.07em] text-text-faint">{label}</dt><dd class="mt-1 text-[clamp(1.25rem,4vw,1.8rem)] font-extrabold leading-none tabular-nums">{format.format(value as number)}</dd><dd class="mt-2 text-[0.68rem] leading-snug text-text-faint">{note}</dd></div>)}
+			</dl>
+			{period.kind === "all" && dashboard.undatedEntries > 0 && <p class="mt-2 text-[0.78rem] text-text-faint">All-time totals and rankings include {format.format(dashboard.undatedEntries)} undated diary entries; time-based charts cannot place them and exclude them.</p>}
+		</section>
+
+		<section class="mt-9" aria-labelledby="activity-heading">
+			<h2 id="activity-heading" class="m-0 text-[1.2rem] font-extrabold tracking-[-0.01em]">Viewing activity</h2>
+			<p class="mt-1 mb-0 max-w-[72ch] text-[0.82rem] text-text-faint">Diary entries and active people {period.kind === "all" ? `by calendar year since ${ACTIVITY_START_YEAR}, newest first` : "by calendar month"}. This describes use of public Letterboxd diaries, not cinema attendance.</p>
+			<figure class="m-0 mt-4 rounded-card border border-border bg-bg-raised p-3 sm:p-4">
+				<figcaption class="flex flex-wrap gap-x-5 gap-y-1 text-[0.72rem] font-semibold text-text-dim"><span><span class="mr-1 inline-block h-2.5 w-2.5 rounded-sm bg-blue"></span>Diary entries</span><span><span class="mr-1 inline-block h-2.5 w-2.5 rounded-sm bg-green"></span>Active people</span></figcaption>
+				<ActivityBars buckets={chartActivity} minWidth={period.kind === "all" ? "min-w-max" : "min-w-[34rem]"} label={period.kind === "all" ? `Viewing activity from ${currentYear} back to ${ACTIVITY_START_YEAR}` : `Viewing activity in ${period.year}`} />
+			</figure>
+		</section>
+
+		<section class="mt-10" aria-labelledby="most-watched-heading">
+			<h2 id="most-watched-heading" class="m-0 text-[1.3rem] font-extrabold tracking-[-0.01em]">Most watched</h2>
+			<p class="mt-1 mb-0 max-w-[74ch] text-[0.82rem] text-text-faint">Ranked by distinct people, then diary entries and recency. {dashboard.mostWatched.length} films shown; each has at least 10 watchers {periodPhrase} and an existing film page.</p>
+			<RankingList films={dashboard.mostWatched} kind="watched" />
+			{period.kind === "all" && <p class="mt-4 mb-0"><a class="font-semibold text-orange underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue" href="/films/">Browse the complete most-watched film catalogue →</a></p>}
+		</section>
+
+		<section class="mt-10" aria-labelledby="highest-rated-heading">
+			<h2 id="highest-rated-heading" class="m-0 text-[1.3rem] font-extrabold tracking-[-0.01em]">Highest rated within Fameboxd</h2>
+			<p class="mt-1 mb-0 max-w-[74ch] text-[0.82rem] text-text-faint">Top {dashboard.highestRated.length} eligible films, ordered by a <a class="text-orange underline" href="#methodology">weighted ranking</a> but displaying their ordinary Fameboxd average. Minimum {period.kind === "all" ? 10 : 5} representative raters.</p>
+			<RankingList films={dashboard.highestRated} kind="rated" />
+		</section>
+
+		<section class="mt-10" aria-labelledby="most-rewatched-heading"><h2 id="most-rewatched-heading" class="m-0 text-[1.2rem] font-extrabold">Most rewatched</h2><p class="mt-1 mb-0 text-[0.82rem] text-text-faint">{dashboard.mostRewatched.length} films ranked by people who rewatched, then entries explicitly marked as rewatches. Minimum 3 rewatchers.</p><RankingList films={dashboard.mostRewatched} kind="rewatched" /></section>
+
+		<section class="mt-10" aria-labelledby="divisive-heading"><h2 id="divisive-heading" class="m-0 text-[1.2rem] font-extrabold">Most divisive within Fameboxd</h2><p class="mt-1 mb-0 max-w-[74ch] text-[0.82rem] text-text-faint">{dashboard.mostDivisive.length} films ranked by population standard deviation across representative ratings. Minimum {period.kind === "all" ? 20 : 10} raters.</p><RankingList films={dashboard.mostDivisive} kind="divisive" /></section>
+
+		<section class="mt-10" aria-labelledby="behavior-heading">
+			<h2 id="behavior-heading" class="m-0 text-[1.3rem] font-extrabold">Rating behavior and release decades</h2>
+			<p class="mt-1 mb-0 text-[0.82rem] text-text-faint">Aggregate patterns in the selected period. Release decades describe when unique films were released, not when diary entries were logged.</p>
+			<div class="mt-4 grid gap-4 lg:grid-cols-2">
+				<figure class="m-0 rounded-card border border-border bg-bg-raised p-4"><h3 class="m-0 text-[0.9rem] font-bold">Representative rating distribution</h3><p class="mt-1 mb-0 text-[0.72rem] text-text-faint">{format.format(dashboard.ratedCombinations)} unique person-film ratings.</p><ul class="mt-4 grid h-44 grid-cols-10 items-end gap-1 p-0">{dashboard.ratings.map((bucket) => <li class="flex h-full min-w-0 list-none flex-col items-center justify-end text-center tabular-nums" aria-label={`${bucket.rating.toFixed(1)} stars: ${format.format(bucket.count)} ratings, ${pct(bucket.percentage)} percent`}><span class="text-[0.5rem] text-text-faint" aria-hidden="true">{pct(bucket.percentage)}%</span><span class="mt-1 flex min-h-0 w-full flex-1 items-end" aria-hidden="true"><span class="block w-full rounded-t-[3px] bg-green" style={`height:${Math.max(1, (bucket.count / ratingMax) * 100)}%`}></span></span></li>)}</ul><div class="mt-1 flex justify-between text-[0.62rem] font-bold text-green" aria-hidden="true"><span>0.5★</span><span>5.0★</span></div><details class="mt-3 border-t border-border pt-3 text-[0.75rem]"><summary class="cursor-pointer font-semibold text-orange">View rating data</summary><ul class="mt-2 grid grid-cols-2 gap-x-4 p-0">{dashboard.ratings.map((bucket) => <li class="flex list-none justify-between"><span>{bucket.rating.toFixed(1)}★</span><span class="tabular-nums">{format.format(bucket.count)}</span></li>)}</ul></details></figure>
+				<figure class="m-0 rounded-card border border-border bg-bg-raised p-4"><h3 class="m-0 text-[0.9rem] font-bold">Unique films by release decade</h3><p class="mt-1 mb-0 text-[0.72rem] text-text-faint">Excludes {format.format(dashboard.unknownReleaseYears)} films with an unknown release year.</p><ul class="mt-4 grid gap-1.5 p-0">{dashboard.releaseDecades.map((bucket) => <li class="grid grid-cols-[3.2rem_1fr_auto] items-center gap-2 text-[0.72rem]"><span class="font-semibold tabular-nums">{bucket.decade}s</span><span class="h-2.5 overflow-hidden rounded-full bg-bg" aria-hidden="true"><span class="block h-full rounded-full bg-blue" style={`width:${(bucket.films / decadeMax) * 100}%`}></span></span><span class="min-w-8 text-right text-text-dim tabular-nums">{format.format(bucket.films)}</span></li>)}</ul></figure>
+			</div>
+		</section>
+
+		<section id="methodology" class="mt-10 scroll-mt-6 rounded-card border border-border bg-bg-raised p-4 sm:p-6" aria-labelledby="methodology-heading">
+			<h2 id="methodology-heading" class="m-0 text-[1.2rem] font-extrabold">Methodology</h2>
+			<div class="mt-3 grid gap-3 text-[0.85rem] leading-[1.6] text-text-dim md:grid-cols-2">
+				<p class="m-0"><strong class="text-text">Scope.</strong> These figures cover public Letterboxd diaries belonging to people listed in Fameboxd. They are not a Letterboxd-wide chart, a representative celebrity poll or a measure of cinema attendance.</p>
+				<p class="m-0"><strong class="text-text">Watches.</strong> A watcher is one person per film. Every diary log is an entry, so rewatches increase entry totals but never the watcher count.</p>
+				<p class="m-0"><strong class="text-text">Ratings and rewatches.</strong> Each person contributes their most recent non-null rating for a film in the period. A rewatcher has either a marked rewatch or multiple entries; marked rewatch entries are counted separately.</p>
+					<p class="m-0"><strong class="text-text">Dates.</strong> Year views use dated entries only. All-time totals retain {format.format(dashboard.undatedEntries)} undated entries, while time charts exclude them. The all-time activity chart starts in 2011; older entries remain in all-time totals and rankings. Dates after the committed cutoff of {longDate(dashboard.cutoff)} are excluded everywhere.</p>
+				<p class="m-0"><strong class="text-text">Weighted ratings.</strong> Ranking score = (v ÷ (v + m)) × R + (m ÷ (v + m)) × C, where R is the film average, v its raters, C the period-wide representative-rating mean and m is {dashboard.weightedPrior}. The displayed rating is still the ordinary Fameboxd average.</p>
+				<p class="m-0"><strong class="text-text">Refresh.</strong> Fameboxd refreshes committed public-diary data daily. All calculations happen when the site builds; the browser downloads no diary dataset.</p>
+			</div>
+		</section>
+	</main>
+	<Footer />
+</Base>

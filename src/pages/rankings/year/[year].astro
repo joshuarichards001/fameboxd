@@ -1,0 +1,32 @@
+---
+import FilmRankingsPage from "../../../components/FilmRankingsPage.astro";
+import { activity } from "../../../functions/activity";
+import {
+	availableFilmPeriods,
+	filmDashboard,
+	type FilmDashboard,
+	type FilmDashboardPeriod,
+} from "../../../functions/rankings";
+
+export function getStaticPaths() {
+	const periods = availableFilmPeriods(activity);
+	return periods
+		.filter((period): period is Extract<FilmDashboardPeriod, { kind: "year" }> => period.kind === "year")
+		.map((period) => ({
+			params: { year: String(period.year) },
+			props: {
+				dashboard: filmDashboard(activity, period),
+				periods,
+			},
+		}));
+}
+
+interface Props {
+	dashboard: FilmDashboard;
+	periods: FilmDashboardPeriod[];
+}
+
+const { dashboard, periods } = Astro.props;
+---
+
+<FilmRankingsPage dashboard={dashboard} periods={periods} />

@@ -50,9 +50,9 @@ const diaryCaption =
         ? `The most recent film ${p.name} logged on Letterboxd, refreshed daily.`
         : `The ${recent.length} most recent films ${p.name} logged on Letterboxd, refreshed daily.`;
 
-const hasLovedProfile = profile.mostLovedCandidates >= 3;
-const title = hasLovedProfile
-    ? `${p.name}’s Favourite Movies and Letterboxd Diary | Fameboxd`
+const hasStandoutFilms = profile.standoutFilms.length > 0;
+const title = hasStandoutFilms
+    ? `${p.name}’s 5-Star Films and Rewatches | Fameboxd`
     : `${p.name} on Letterboxd (@${p.username}) — Fameboxd`;
 const description = profileDescription(p.name, p.username, entries, profile);
 const ratingMax = Math.max(
@@ -210,7 +210,7 @@ const schema = personPageSchema({
 
         {(profile.ratingsGiven.length > 0 ||
             profile.releaseDecades.length > 0 ||
-            profile.mostLoved.length > 0 ||
+            profile.standoutFilms.length > 0 ||
             profile.viewingHistory.length > 0) && (
             <section class="mt-8" aria-labelledby="taste-heading">
                 <h2
@@ -265,20 +265,23 @@ const schema = personPageSchema({
                             </div>
                         </figure>
                     )}
-                    {profile.mostLoved.length > 0 && (
+                    {profile.standoutFilms.length > 0 && (
                         <section
                             class="rounded-card border border-border bg-bg-raised p-4"
-                            aria-labelledby="loved-heading"
+                            aria-labelledby="standout-heading"
                         >
                             <h3
-                                id="loved-heading"
+                                id="standout-heading"
                                 class="m-0 text-[0.9rem] font-bold"
                             >
-                                Most loved
+                                5-star films &amp; frequent rewatches
                             </h3>
+                            <p class="mt-1 text-[0.72rem] text-text-faint">
+                                Rated 5 stars or logged at least three times.
+                            </p>
                             <div class="mt-3">
                                 <ProfileFilmGrid
-                                    items={profile.mostLoved}
+                                    items={profile.standoutFilms}
                                     eagerCount={3}
                                 />
                             </div>

@@ -1,0 +1,13 @@
+---
+import FilmRankingsPage from "../../components/FilmRankingsPage.astro";
+import { activity } from "../../functions/activity";
+import {
+	availableFilmPeriods,
+	filmDashboard,
+} from "../../functions/rankings";
+
+const periods = availableFilmPeriods(activity);
+const dashboard = filmDashboard(activity);
+---
+
+<FilmRankingsPage dashboard={dashboard} periods={periods} />

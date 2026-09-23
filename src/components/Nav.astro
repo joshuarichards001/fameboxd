@@ -2,12 +2,12 @@
 import { hasTagIntro } from "../functions/tags";
 
 // Site-wide nav, rendered by Base.astro so every page carries the same one.
-// Three links is the whole site: the directory, the daily feed of watches, and
-// the film index. They fit on a 320px screen at this size, so there is no
-// burger menu and no client-side JS behind it.
+// Four real links cover the directory, catalogue, rankings and daily feed.
+// Compact phone spacing keeps them visible at 320px without a burger or JS.
 const LINKS = [
 	{ href: "/", label: "People" },
 	{ href: "/films/", label: "Films" },
+	{ href: "/rankings/", label: "Rankings" },
 	{ href: "/recent/", label: "Recent" },
 ];
 
@@ -20,6 +20,8 @@ const segment = path.replace(/^\/|\/$/g, "");
 const current =
 	path === "/recent/"
 		? "/recent/"
+		: path.startsWith("/rankings")
+			? "/rankings/"
 		: path.startsWith("/films")
 			? "/films/"
 			: path === "/" ||
@@ -30,17 +32,17 @@ const current =
 ---
 
 <nav class="border-b border-border" aria-label="Main">
-	<div class="wrap flex items-center justify-between gap-3 py-3">
+	<div class="wrap flex items-center justify-between gap-1 py-3 sm:gap-3">
 		<a
 			class="text-[0.85rem] font-extrabold uppercase tracking-[0.14em] text-text no-underline transition-colors duration-[120ms] hover:text-orange focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue motion-reduce:transition-none"
 			href="/">Fameboxd</a
 		>
-		<ul class="m-0 flex list-none items-center gap-0.5 p-0 sm:gap-1">
+		<ul class="m-0 flex list-none items-center gap-0 p-0 sm:gap-1">
 			{
 				LINKS.map((link) => (
 					<li>
 						<a
-							class="block rounded-full px-2.5 py-1.5 text-[0.85rem] font-semibold text-text-dim no-underline transition-colors duration-[120ms] hover:bg-bg-raised hover:text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue aria-[current=page]:bg-bg-raised aria-[current=page]:text-orange motion-reduce:transition-none sm:px-3"
+							class="block rounded-full px-1 py-1.5 text-[0.72rem] font-semibold text-text-dim no-underline transition-colors duration-[120ms] hover:bg-bg-raised hover:text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue aria-[current=page]:bg-bg-raised aria-[current=page]:text-orange motion-reduce:transition-none sm:px-3 sm:text-[0.85rem]"
 							href={link.href}
 							aria-current={link.href === current ? "page" : undefined}
 						>

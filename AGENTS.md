@@ -78,6 +78,13 @@ is ordinary crawlable links with a compact page window, and its URLs stay out
 of the sitemap because the detail pages are the search landing pages. The
 catalogue uses `FilmPosterGrid`, shared with the trending strip on `/recent/`.
 
+**Film rankings** live at `/rankings/` (all time) and
+`/rankings/year/<yyyy>/`, separate from the `/films/` catalogue. The pure
+aggregation in `src/functions/rankings.ts` owns period eligibility, unique
+watcher/rater counting, weighted ratings and chart buckets. Year routes exist
+only after 50 active people and 1,000 valid dated entries; keep the real-link
+period switcher, server-rendered charts and visible methodology intact.
+
 **`/recent/` and `/feed.xml`** (`src/pages/recent.astro`,
 `src/pages/feed.xml.ts`) both render `recentWatches(activity, people, limit)`
 from `src/functions/recent.ts` — the newest watches across everyone, which
@@ -106,7 +113,7 @@ expected, and not a reason to add one.
 every page gets it without opting in — don't add a per-page back link that
 duplicates one of its three destinations. It marks the current section from
 `Astro.url.pathname`, asking `hasTagIntro` whether a one-segment path is a tag
-page, and it has no JS: three short links fit a 320px screen, which is why
+page, and it has no JS: four short links fit a 320px screen, which is why
 there is no burger menu.
 
 A card is a **stretched link to the Letterboxd profile** — pressing a card

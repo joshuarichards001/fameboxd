@@ -16,6 +16,7 @@
 import { personPageUrl } from "./activity";
 import { filmPageUrl, filmTitle, letterboxdFilmUrl, type Film } from "./films";
 import { profileUrl, type Person } from "./people";
+import type { RankedFilm } from "./rankings";
 
 const abs = (site: URL, path: string) => new URL(path, site).href;
 
@@ -175,5 +176,56 @@ export function filmPageSchema(opts: {
 			{ name: "Films", url: abs(site, "/films/") },
 			{ name: heading, url: page },
 		]),
+	];
+}
+
+// A dashboard is a collection of distinct rankings, not one claim that a film
+// is universally "best". Each visible list gets its own ItemList node and
+// points at the existing film entity without emitting aggregateRating.
+export function filmRankingsSchema(opts: {
+	site: URL;
+	pathname: string;
+	name: string;
+	description: string;
+	lists: { id: string; name: string; films: RankedFilm[] }[];
+}): object[] {
+	const { site, pathname, name, description, lists } = opts;
+	const page = abs(site, pathname);
+	const refs = lists.map((list) => ({ "@id": `${page}#${list.id}` }));
+	return [
+		{
+			"@type": "CollectionPage",
+			"@id": `${page}#webpage`,
+			url: page,
+			name,
+			description,
+			isPartOf: { "@id": websiteId(site) },
+			mainEntity: refs,
+			breadcrumb: { "@id": `${page}#breadcrumb` },
+		},
+		...lists.map((list) => ({
+			"@type": "ItemList",
+			"@id": `${page}#${list.id}`,
+			name: list.name,
+			numberOfItems: list.films.length,
+			itemListElement: list.films.map((film, index) => ({
+				"@type": "ListItem",
+				position: index + 1,
+				item: { "@id": `${abs(site, filmPageUrl(film.slug))}#film` },
+			})),
+		})),
+		breadcrumbs(
+			page,
+			pathname === "/rankings/"
+				? [
+						{ name: "Fameboxd", url: abs(site, "/") },
+						{ name: "Film rankings", url: page },
+					]
+				: [
+						{ name: "Fameboxd", url: abs(site, "/") },
+						{ name: "Film rankings", url: abs(site, "/rankings/") },
+						{ name, url: page },
+					],
+		),
 	];
 }

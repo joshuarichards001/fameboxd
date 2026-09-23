@@ -33,7 +33,8 @@ const DRY_RUN = process.argv.includes("--dry-run");
 
 const repoPath = (rel) => fileURLToPath(new URL(rel, import.meta.url));
 const PEOPLE_PATH = repoPath("../src/data/people.json");
-const FILMS_TS_PATH = repoPath("../src/functions/films.ts");
+const FILMS_TS_PATH = repoPath("../src/functions/film-constants.ts");
+const RANKINGS_TS_PATH = repoPath("../src/functions/rankings.ts");
 // As git addresses it, which is not the same string as the paths above.
 const DIARIES_IN_GIT = "src/data/people";
 
@@ -44,17 +45,21 @@ const url = (path) => `https://${HOST}${path}`;
 // runs outside the build and can't import the .ts modules.
 const personUrl = (username) => url(`/people/${username}/`);
 const filmUrl = (slug) => url(`/films/${slug}/`);
+const rankingsUrl = (year) =>
+	year == null ? url("/rankings/") : url(`/rankings/year/${year}/`);
 
 // The pages that list everybody: the directory, plus one page per tag in use
-// (`${tag}s` is tagSlug in src/functions/tags.ts), plus the two indexes that
+// (`${tag}s` is tagSlug in src/functions/tags.ts), plus the indexes that
 // move whenever any watch does. Used as the fallback whenever the diff can't
 // be trusted to say what changed.
-function coreUrls(people) {
+function coreUrls(people, years = []) {
 	const tags = [...new Set(people.flatMap((p) => p.tags))].sort();
 	return [
 		url("/"),
 		url("/recent/"),
 		url("/films/"),
+		rankingsUrl(),
+		...years.map((year) => rankingsUrl(year)),
 		...tags.map((tag) => url(`/${tag}s/`)),
 	];
 }
@@ -69,20 +74,56 @@ function previousActivity() {
 		}).trim().split("\n").filter((path) => path.endsWith(".json"));
 		if (!paths.length) return null;
 		const people = {};
-		for (const path of paths) people[path.split("/").at(-1).slice(0, -5)] = JSON.parse(
-			execFileSync("git", ["show", `HEAD~1:${path}`], {
+		const generatedAt = [];
+		for (const path of paths) {
+			const file = JSON.parse(execFileSync("git", ["show", `HEAD~1:${path}`], {
 				encoding: "utf8",
 				maxBuffer: 16 * 1024 * 1024,
 				stdio: ["ignore", "pipe", "ignore"],
-			}),
-		).entries;
-		return { people };
+			}));
+			people[path.split("/").at(-1).slice(0, -5)] = file.entries;
+			generatedAt.push(file.generatedAt);
+		}
+		return { generatedAt: generatedAt.sort().at(-1) ?? "", people };
 	} catch {
 		return null;
 	}
 }
 
-// The film-page threshold lives in src/functions/films.ts, and the router
+async function rankingThresholds() {
+	const source = await readFile(RANKINGS_TS_PATH, "utf8");
+	const people = source.match(/YEAR_MIN_ACTIVE_PEOPLE\s*=\s*([\d_]+)/);
+	const entries = source.match(/YEAR_MIN_ENTRIES\s*=\s*([\d_]+)/);
+	if (!people || !entries) {
+		warn("couldn't read ranking year thresholds; skipping ranking year pages");
+		return null;
+	}
+	return {
+		people: Number(people[1].replaceAll("_", "")),
+		entries: Number(entries[1].replaceAll("_", "")),
+	};
+}
+
+function qualifyingYears(file, thresholds) {
+	if (!thresholds) return new Set();
+	const cutoff = file.generatedAt.slice(0, 10);
+	const years = new Map();
+	for (const [username, entries] of Object.entries(file.people)) {
+		for (const entry of entries) {
+			if (!entry.d || entry.d > cutoff) continue;
+			const year = entry.d.slice(0, 4);
+			const bucket = years.get(year) ?? { entries: 0, people: new Set() };
+			bucket.entries++;
+			bucket.people.add(username);
+			years.set(year, bucket);
+		}
+	}
+	return new Set([...years].filter(([, bucket]) =>
+		bucket.entries >= thresholds.entries && bucket.people.size >= thresholds.people
+	).map(([year]) => year));
+}
+
+// The film-page threshold lives in src/functions/film-constants.ts, and the router
 // obeys it. Read it from there rather than duplicating the number here, where
 // a stale copy would mean submitting URLs that 404. Null (with a warning) if
 // it can't be read: skipping the film pages costs a hint, guessing costs
@@ -91,7 +132,7 @@ async function filmPageMinWatchers() {
 	const source = await readFile(FILMS_TS_PATH, "utf8");
 	const match = source.match(/FILM_PAGE_MIN_WATCHERS\s*=\s*(\d+)/);
 	if (!match) {
-		warn("couldn't read FILM_PAGE_MIN_WATCHERS from films.ts; skipping films");
+		warn("couldn't read FILM_PAGE_MIN_WATCHERS from film-constants.ts; skipping films");
 		return null;
 	}
 	return Number(match[1]);
@@ -125,7 +166,7 @@ function watcherCounts(file) {
 }
 
 // The URLs whose content moved between the two revisions.
-async function changedUrls(previous, current, people) {
+async function changedUrls(previous, current, people, rankingThreshold) {
 	const usernames = new Set([
 		...Object.keys(previous.people),
 		...Object.keys(current.people),
@@ -135,6 +176,24 @@ async function changedUrls(previous, current, people) {
 			personKey(entriesFor(previous, username)) !==
 			personKey(entriesFor(current, username)),
 	);
+	const qualifying = new Set([
+		...qualifyingYears(previous, rankingThreshold),
+		...qualifyingYears(current, rankingThreshold),
+	]);
+	const changedYears = new Set();
+	for (const username of changed) {
+		const before = entriesFor(previous, username);
+		const after = entriesFor(current, username);
+		const years = new Set([
+			...before.map((entry) => entry.d?.slice(0, 4)).filter(Boolean),
+			...after.map((entry) => entry.d?.slice(0, 4)).filter(Boolean),
+		]);
+		for (const year of years) {
+			const beforeYear = before.filter((entry) => entry.d?.startsWith(`${year}-`));
+			const afterYear = after.filter((entry) => entry.d?.startsWith(`${year}-`));
+			if (JSON.stringify(beforeYear) !== JSON.stringify(afterYear)) changedYears.add(year);
+		}
+	}
 
 	// Which films those people's changes touched — added, removed or edited.
 	const slugs = new Set();
@@ -161,9 +220,12 @@ async function changedUrls(previous, current, people) {
 		}
 	}
 
-	// The directory and the recency feed list everyone's newest watch, so they
-	// move whenever anything does.
+	// The directory, recent page and all-time rankings change with the diaries.
 	const urls = new Set([url("/"), url("/recent/")]);
+	if (changed.length > 0) urls.add(rankingsUrl());
+	for (const year of [...changedYears].filter((year) => qualifying.has(year)).sort()) {
+		urls.add(rankingsUrl(year));
+	}
 	const byUsername = new Map(people.map((p) => [p.username, p]));
 	for (const username of changed) {
 		urls.add(personUrl(username));
@@ -184,20 +246,25 @@ async function changedUrls(previous, current, people) {
 async function main() {
 	const people = JSON.parse(await readFile(PEOPLE_PATH, "utf8"));
 	const currentFiles = await readPeopleFiles();
-	const current = { people: Object.fromEntries(Object.entries(currentFiles).map(([username, file]) => [username, file.entries])) };
+	const current = {
+		generatedAt: Object.values(currentFiles).map((file) => file.generatedAt).sort().at(-1) ?? "",
+		people: Object.fromEntries(Object.entries(currentFiles).map(([username, file]) => [username, file.entries])),
+	};
 	const previous = previousActivity();
+	const thresholds = await rankingThresholds();
+	const currentYears = [...qualifyingYears(current, thresholds)].sort().reverse();
 
 	let urlList;
 	if (!previous) {
 		warn("no previous per-person diaries; submitting the core pages only");
-		urlList = coreUrls(people);
+		urlList = coreUrls(people, currentYears);
 	} else {
-		urlList = await changedUrls(previous, current, people);
+		urlList = await changedUrls(previous, current, people, thresholds);
 		if (urlList.length > MAX_URLS) {
 			warn(
 				`${urlList.length} URLs changed (cap ${MAX_URLS}); submitting the core pages only`,
 			);
-			urlList = coreUrls(people);
+			urlList = coreUrls(people, currentYears);
 		}
 	}
 

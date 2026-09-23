@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # specs
 specs/
+
+# seo data downloaded from Google Search Engine for analysis
+seo_data/

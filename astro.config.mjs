@@ -5,6 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 import people from "./src/data/people.json" with { type: "json" };
 import { activity, personPageUrl } from "./src/functions/activity.ts";
 import { filmPages, filmPageUrl } from "./src/functions/films.ts";
+import { availableFilmPeriods, filmDashboardUrl } from "./src/functions/rankings.ts";
 import { tagSlug } from "./src/functions/tags.ts";
 
 // <lastmod> per page, taken from the newest watch logged by the people on it.
@@ -52,7 +53,20 @@ const LASTMOD = new Map([
   // Both list every person's newest watch, so they move whenever anything does.
   ["/recent/", sitewide],
   ["/films/", sitewide],
+  ["/rankings/", sitewide],
 ]);
+const newestByYear = new Map();
+for (const diary of Object.values(activity.people)) {
+  for (const entry of diary) {
+    const date = entry.watchedDate;
+    if (!date || date > dataDate) continue;
+    const year = Number(date.slice(0, 4));
+    if (date > (newestByYear.get(year) ?? "")) newestByYear.set(year, date);
+  }
+}
+for (const period of availableFilmPeriods(activity)) {
+  if (period.kind === "year") LASTMOD.set(filmDashboardUrl(period), newestByYear.get(period.year) ?? "");
+}
 for (const tag of new Set(people.flatMap((p) => p.tags))) {
   LASTMOD.set(
     `/${tagSlug(tag)}/`,

@@ -1,0 +1,80 @@
+---
+import { posterUrl } from "../functions/activity";
+import { filmPageUrl, filmTitle, hasFilmPage } from "../functions/films";
+import type { RankedFilm } from "../functions/rankings";
+
+type Kind = "watched" | "rated" | "rewatched" | "divisive";
+
+interface Props {
+	films: RankedFilm[];
+	kind: Kind;
+}
+
+const { films, kind } = Astro.props;
+const format = new Intl.NumberFormat("en");
+const labels = (film: RankedFilm): [string, string] => {
+	switch (kind) {
+		case "watched":
+			return [
+				`${format.format(film.watchers)} people`,
+				`${format.format(film.entries)} diary entries · ${format.format(film.raters)} raters${film.average == null ? "" : ` · ${film.average.toFixed(2)}★ Fameboxd average`}`,
+			];
+		case "rated":
+			return [`${film.average?.toFixed(2)}★`, `${format.format(film.raters)} representative raters`];
+		case "rewatched":
+			return [
+				`${format.format(film.rewatchers)} people rewatched`,
+				`${format.format(film.rewatchEntries)} marked rewatch entries · ${format.format(film.entries)} diary entries total`,
+			];
+		case "divisive":
+			return [
+				`${film.standardDeviation?.toFixed(2)} σ`,
+				`${film.average?.toFixed(2)}★ average · ${format.format(film.raters)} representative ratings`,
+			];
+	}
+};
+---
+
+<ol class="m-0 mt-4 grid list-none gap-2 p-0 lg:grid-cols-2">
+	{films.map((film, index) => {
+		const [primary, secondary] = labels(film);
+		return (
+			<li class="grid min-w-0 grid-cols-[2rem_3rem_minmax(0,1fr)] items-center gap-2 rounded-card border border-border bg-bg-raised p-2 sm:grid-cols-[2.5rem_3.5rem_minmax(0,1fr)_auto] sm:gap-3 sm:p-3">
+				<span class="text-center text-[0.85rem] font-extrabold text-text-faint tabular-nums">
+					{index + 1}
+				</span>
+				{film.poster ? (
+					<img
+						class="aspect-[2/3] w-12 rounded-[5px] border border-border bg-bg object-cover sm:w-14"
+						src={posterUrl(film.poster, 300)}
+						width="300"
+						height="450"
+						loading={index < 4 ? "eager" : "lazy"}
+						decoding="async"
+						alt=""
+					/>
+				) : (
+					<span class="flex aspect-[2/3] w-12 items-center justify-center rounded-[5px] border border-border bg-bg p-1 text-center text-[0.45rem] font-bold text-text-faint sm:w-14" aria-hidden="true">
+						{film.title}
+					</span>
+				)}
+				<div class="min-w-0">
+					{hasFilmPage(film.slug) ? (
+						<a class="film-page-link line-clamp-2" href={filmPageUrl(film.slug)}>
+							{filmTitle(film)}
+						</a>
+					) : (
+						<span class="line-clamp-2 font-semibold">{filmTitle(film)}</span>
+					)}
+					<p class="m-0 mt-1 text-[0.72rem] leading-snug text-text-faint sm:hidden">
+						<strong class="font-bold text-text">{primary}</strong>{" · "}{secondary}
+					</p>
+				</div>
+				<p class="m-0 hidden max-w-[24rem] text-right text-[0.75rem] leading-snug text-text-faint sm:block">
+					<strong class="block text-[0.9rem] font-extrabold text-text tabular-nums">{primary}</strong>
+					{secondary}
+				</p>
+			</li>
+		);
+	})}
+</ol>

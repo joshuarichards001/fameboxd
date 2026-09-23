@@ -14,6 +14,14 @@
 // hasFilmPage before linking.
 
 import { activity, type ActivityData, type DiaryEntry } from "./activity";
+export {
+	FILMS_PER_LISTING_PAGE,
+	FILM_PAGE_MIN_WATCHERS,
+} from "./film-constants";
+import {
+	FILMS_PER_LISTING_PAGE,
+	FILM_PAGE_MIN_WATCHERS,
+} from "./film-constants";
 
 export interface FilmWatcher {
 	username: string;
@@ -39,14 +47,6 @@ export interface Film {
 	rated: number;
 	average: number | null;
 }
-
-export const FILM_PAGE_MIN_WATCHERS = 10;
-
-// A complete number of rows at both grid extremes: 24 rows on a three-column
-// phone and eight rows on a nine-column desktop. Keeping the catalogue split
-// into real pages avoids one enormous DOM while leaving every qualifying film
-// reachable without JavaScript.
-export const FILMS_PER_LISTING_PAGE = 72;
 
 export const filmPageUrl = (slug: string) => `/films/${slug}/`;
 

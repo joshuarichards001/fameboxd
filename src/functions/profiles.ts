@@ -54,9 +54,7 @@ export interface PersonProfile {
 	ratingsGiven: RatingBucket[];
 	releaseDecades: DecadeBucket[];
 	unknownReleaseYears: number;
-	mostLovedCandidates: number;
-	lovedHighlights: ProfileFilm[];
-	mostLoved: ProfileFilm[];
+	standoutFilms: ProfileFilm[];
 	viewingHistory: YearBucket[];
 }
 
@@ -70,9 +68,6 @@ interface MutableFilm extends ProfileFilm {
 
 const newest = (film: ProfileFilm) => film.newestWatch ?? "";
 const rating = (film: ProfileFilm) => film.representativeRating ?? -1;
-
-const completeSection = (films: ProfileFilm[], limit: number) =>
-	films.length >= 3 ? films.slice(0, limit) : [];
 
 export function profileFor(
 	entries: DiaryEntry[],
@@ -173,22 +168,22 @@ export function profileFor(
 		}
 	}
 
-	const lovedCandidates = films
+	const standoutCandidates = films
 		.filter(
 			(film) =>
-				film.liked ||
-				(film.representativeRating ?? 0) >= 4.5 ||
-				film.rewatched,
+				// Three logged watches establish at least two rewatches. A lone
+				// marked rewatch has no reliable public count.
+				film.entries >= 3 || (film.representativeRating ?? 0) > 4.5,
 		)
 		.sort(
 			(a, b) =>
-				Number(b.liked) - Number(a.liked) ||
 				rating(b) - rating(a) ||
 				b.entries - a.entries ||
+				Number(b.liked) - Number(a.liked) ||
 				newest(b).localeCompare(newest(a)) ||
 				a.slug.localeCompare(b.slug),
 		);
-	const mostLoved = sparse ? [] : completeSection(lovedCandidates, 6);
+	const standoutFilms = sparse ? [] : standoutCandidates.slice(0, 6);
 
 	const viewingHistory: YearBucket[] = [];
 	if (!sparse && datedEntries.length > 0) {
@@ -215,9 +210,7 @@ export function profileFor(
 		ratingsGiven,
 		releaseDecades,
 		unknownReleaseYears: films.length - knownYears.length,
-		mostLovedCandidates: lovedCandidates.length,
-		lovedHighlights: lovedCandidates.slice(0, 2),
-		mostLoved,
+		standoutFilms,
 		viewingHistory,
 	};
 }
@@ -233,10 +226,10 @@ export function profileDescription(
 	const tail = " Updated daily.";
 	const line = (titles: string[]) =>
 		titles.length > 0
-			? `${lead} Most loved: ${titles.join(", ")}.${tail}`
+			? `${lead} 5★ ratings or 2+ rewatches: ${titles.join(", ")}.${tail}`
 			: `${lead}${tail}`;
 	const titles: string[] = [];
-	for (const film of profile.lovedHighlights) {
+	for (const film of profile.standoutFilms.slice(0, 2)) {
 		if (line([...titles, film.title]).length <= 158) titles.push(film.title);
 	}
 	return line(titles);
