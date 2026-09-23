@@ -1,6 +1,9 @@
 {
-  "generatedAt": "2026-09-15T00:04:39.722Z",
+  "generatedAt": "2026-09-21T15:53:04.951Z",
   "entries": [
+    {"s":"supergirl-2026","d":"2026-09-21","r":null},
+    {"s":"star-wars-the-force-awakens","d":"2026-09-19","r":null,"w":1},
+    {"s":"resident-evil-2026","d":"2026-09-18","r":null},
     {"s":"star-wars-episode-iii-revenge-of-the-sith","d":"2026-09-13","r":null,"w":1},
     {"s":"masters-of-the-universe-2026","d":"2026-09-11","r":null},
     {"s":"best-of-the-best-2026","d":"2026-09-09","r":null},
@@ -50,7 +53,6 @@
     {"s":"scream-7","d":"2026-06-15","r":null},
     {"s":"the-game","d":"2026-06-14","r":null,"w":1},
     {"s":"obsession-2025","d":"2026-06-13","r":null,"w":1},
-    {"s":"where-have-all-the-people-gone","d":"2026-06-13","r":null},
     {"s":"oculus","d":"2026-06-12","r":null},
     {"s":"disclosure-day","d":"2026-06-10","r":null},
     {"s":"milk-serial","d":"2026-06-10","r":null},

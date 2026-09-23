@@ -1,6 +1,11 @@
 {
-  "generatedAt": "2026-09-15T00:04:05.822Z",
+  "generatedAt": "2026-09-23T14:13:41.705Z",
   "entries": [
+    {"s":"happy-birthday-to-me","d":"2026-09-21","r":null,"l":1},
+    {"s":"casual-fridays","d":"2026-09-19","r":4,"l":1},
+    {"s":"batman-1989","d":"2026-09-19","r":null,"l":1},
+    {"s":"resident-evil-2026","d":"2026-09-19","r":null,"l":1},
+    {"s":"deadpool-wolverine","d":"2026-09-18","r":null,"w":1},
     {"s":"practical-magic-2","d":"2026-09-12","r":null},
     {"s":"the-lair-of-the-white-worm","d":"2026-09-11","r":null},
     {"s":"jack-1996","d":"2026-09-06","r":null},
@@ -47,7 +52,6 @@
     {"s":"scream-7","d":"2026-06-03","r":null},
     {"s":"now-you-see-me-now-you-dont-2025","d":"2026-06-02","r":null},
     {"s":"now-you-see-me-2","d":"2026-06-01","r":null},
-    {"s":"close-encounters-of-the-third-kind","d":"2026-06-01","r":4,"l":1},
     {"s":"now-you-see-me","d":"2026-05-31","r":3,"l":1},
     {"s":"the-manitou","d":"2026-05-29","r":null,"l":1},
     {"s":"the-mandalorian-and-grogu","d":"2026-05-24","r":null},

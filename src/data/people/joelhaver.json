@@ -1,6 +1,12 @@
 {
-  "generatedAt": "2026-09-15T00:08:39.572Z",
+  "generatedAt": "2026-09-22T14:01:26.470Z",
   "entries": [
+    {"s":"art-school-confidential","d":"2026-09-21","r":4,"l":1},
+    {"s":"resident-evil-2026","d":"2026-09-19","r":3.5,"l":1},
+    {"s":"practical-magic","d":"2026-09-19","r":2.5},
+    {"s":"the-craft","d":"2026-09-17","r":3,"l":1},
+    {"s":"crash","d":"2026-09-15","r":3},
+    {"s":"written-on-the-wind","d":"2026-09-14","r":3.5,"l":1},
     {"s":"the-witches-of-eastwick","d":"2026-09-11","r":3.5,"l":1},
     {"s":"they-shoot-horses-dont-they","d":"2026-09-09","r":4.5,"l":1},
     {"s":"phantom-of-the-paradise","d":"2026-09-08","r":4,"l":1},

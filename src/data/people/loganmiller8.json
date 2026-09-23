@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-09-15T00:00:47.315Z",
+  "generatedAt": "2026-09-20T13:34:38.655Z",
   "entries": [
+    {"s":"resident-evil-2026","d":"2026-09-19","r":null,"l":1},
     {"s":"maddies-secret","d":"2026-09-14","r":null,"l":1},
     {"s":"birdman-or-the-unexpected-virtue-of-ignorance","d":"2026-09-12","r":null,"w":1,"l":1},
     {"s":"one-battle-after-another","d":"2026-09-10","r":5,"w":1},
@@ -50,7 +51,6 @@
     {"s":"michael-2026","d":"2026-05-12","r":null,"l":1},
     {"s":"cat-people-1982","d":"2026-05-04","r":3},
     {"s":"the-piano-teacher","d":"2026-05-03","r":null,"l":1},
-    {"s":"blue-film-2025","d":"2026-05-03","r":5,"w":1,"l":1},
     {"s":"brian-2026","d":"2026-04-27","r":5},
     {"s":"fight-club","d":"2026-04-25","r":5,"w":1},
     {"s":"dodgeball-a-true-underdog-story","d":"2026-04-23","r":null,"w":1,"l":1},
