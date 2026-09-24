@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-09-23T14:13:41.728Z",
+  "generatedAt": "2026-09-24T14:11:48.419Z",
   "entries": [
+    {"s":"breeder-2026-1","d":"2026-09-23","r":4,"l":1},
     {"s":"tommaso-2019","d":"2026-09-21","r":3.5,"l":1},
     {"s":"resident-evil-2026","d":"2026-09-21","r":4,"l":1},
     {"s":"the-serpents-skin","d":"2026-09-20","r":4,"w":1,"l":1},
@@ -50,7 +51,6 @@
     {"s":"42nd-street-memories-the-rise-and-fall-of-americas-most-notorious-street","d":"2026-08-30","r":3.5,"l":1},
     {"s":"yellow-fever-the-rise-and-fall-of-the-giallo","d":"2026-08-30","r":3.5,"l":1},
     {"s":"the-assassination-of-jesse-james-by-the-coward-robert-ford","d":"2026-08-29","r":3.5,"w":1,"l":1},
-    {"s":"colony-2026","d":"2026-08-29","r":3.5,"l":1},
     {"s":"session-9","d":"2026-08-28","r":3,"w":1,"l":1},
     {"s":"muriels-wedding","d":"2026-08-27","r":4,"w":1,"l":1},
     {"s":"a-nightmare-on-elm-street-3-dream-warriors","d":"2026-08-26","r":4,"w":1,"l":1},

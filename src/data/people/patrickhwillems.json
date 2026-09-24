@@ -1,6 +1,9 @@
 {
-  "generatedAt": "2026-09-23T14:13:41.701Z",
+  "generatedAt": "2026-09-24T14:11:48.392Z",
   "entries": [
+    {"s":"the-uprising-2026","d":"2026-09-22","r":null},
+    {"s":"supersonic","d":"2026-09-21","r":null,"w":1},
+    {"s":"west-side-story","d":"2026-09-20","r":5,"w":1,"l":1},
     {"s":"resident-evil-2026","d":"2026-09-19","r":null,"l":1},
     {"s":"lawrence-of-arabia","d":"2026-09-18","r":5,"w":1,"l":1},
     {"s":"akira","d":"2026-09-17","r":null,"w":1,"l":1},
@@ -48,7 +51,6 @@
     {"s":"masters-of-the-universe-2026","d":"2026-06-23","r":null},
     {"s":"supergirl-2026","d":"2026-06-22","r":null},
     {"s":"toy-story-5","d":"2026-06-20","r":null,"l":1},
-    {"s":"disclosure-day","d":"2026-06-20","r":null,"w":1,"l":1},
     {"s":"hardcore-henry","d":"2026-06-18","r":null},
     {"s":"the-furious","d":"2026-06-17","r":null,"l":1},
     {"s":"the-terminal","d":"2026-06-16","r":null,"w":1},
