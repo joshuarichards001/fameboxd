@@ -1,6 +1,9 @@
 {
-  "generatedAt": "2026-09-23T14:13:41.625Z",
+  "generatedAt": "2026-09-25T14:35:44.643Z",
   "entries": [
+    {"s":"a-big-bold-beautiful-journey","d":"2026-09-24","r":null},
+    {"s":"phantom-thread","d":"2026-09-24","r":null,"l":1},
+    {"s":"paris-is-burning","d":"2026-09-24","r":null,"l":1},
     {"s":"the-long-goodbye","d":"2026-09-22","r":null},
     {"s":"kpop-demon-hunters","d":"2026-09-22","r":null,"l":1},
     {"s":"how-stella-got-her-groove-back","d":"2026-09-20","r":null},
@@ -48,8 +51,6 @@
     {"s":"cinderella","d":"2026-06-28","r":null,"l":1},
     {"s":"the-hunchback-of-notre-dame-1996","d":"2026-06-28","r":null},
     {"s":"sleeping-beauty","d":"2026-06-23","r":null,"l":1},
-    {"s":"pocahontas","d":"2026-06-23","r":null,"l":1},
-    {"s":"singin-in-the-rain","d":"2026-06-23","r":5,"w":1,"l":1},
     {"s":"free-solo","d":"2026-06-20","r":null,"l":1},
     {"s":"the-proposal-2009","d":"2026-06-17","r":null},
     {"s":"i-love-boosters","d":"2026-06-16","r":null,"l":1},
