@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-09-25T14:35:44.698Z",
+  "generatedAt": "2026-09-26T13:44:24.777Z",
   "entries": [
+    {"s":"sender-2026","d":"2026-09-25","r":null,"w":1,"l":1},
     {"s":"heart-of-the-beast-2026","d":"2026-09-24","r":null},
     {"s":"your-mother-your-mother-your-mother","d":"2026-09-23","r":null},
     {"s":"tenzing","d":"2026-09-22","r":null},
@@ -8,6 +9,7 @@
     {"s":"the-love-hypothesis","d":"2026-09-20","r":null},
     {"s":"digger-2026","d":"2026-09-19","r":null},
     {"s":"being-heumann","d":"2026-09-19","r":null,"l":1},
+    {"s":"primetime-2026","d":"2026-09-17","r":null},
     {"s":"the-oldest-person-in-the-world","d":"2026-09-17","r":null},
     {"s":"the-debut-2026","d":"2026-09-17","r":null,"l":1},
     {"s":"the-musical-2026","d":"2026-09-16","r":null},
@@ -48,8 +50,6 @@
     {"s":"tony-2026","d":"2026-08-17","r":null,"w":1,"l":1},
     {"s":"the-predator-of-seville","d":"2026-08-17","r":null},
     {"s":"bitter-christmas","d":"2026-08-17","r":null},
-    {"s":"finding-emily","d":"2026-08-16","r":null,"l":1},
-    {"s":"union-county-2026","d":"2026-08-16","r":null},
     {"s":"coyote-vs-acme","d":"2026-08-10","r":null},
     {"s":"the-rivals-of-amziah-king","d":"2026-08-06","r":null},
     {"s":"one-night-only-2026","d":"2026-08-03","r":null},
