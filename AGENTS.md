@@ -145,6 +145,14 @@ live in `src/functions/`:
   **the filenames are the manifest** (no separate list). People with a matching
   `public/avatars/<username>.webp` get a photo; everyone else gets a
   deterministic initials monogram (`initials` + `hueFor`). No external requests.
+  Avatars are curated: use a clear headshot, or the recognizable logo of a
+  creator whose project is their public identity. Keep existing suitable
+  images. A Letterboxd avatar is only a candidate — reject unrelated characters,
+  childhood photos and images with tiny or obscured faces. Check the source
+  identifies the right person, inspect the square and circular crop, and record
+  replacement sources and available photographer/license credits in
+  `public/avatars/credits.html`. New images are 160×160 WebP; older suitable
+  images may be 96×96. Never overwrite curated images during activity refreshes.
 
 **Activity data** is the `lastWatched` field on each entry in
 `src/data/people.json` — the person's most recent diary entry (film title,
@@ -261,8 +269,10 @@ its own. Do the steps below by hand when not using it:
    `https://letterboxd.com/<username>/`, confirm HTTP 200 and that the display
    name matches. Usernames get recycled, so a handle from a listicle may now
    belong to someone else.
-3. Optionally drop a `public/avatars/<username>.webp` (square, matching the
-   username exactly). Skip it to fall back to the generated monogram.
+3. Add a curated `public/avatars/<username>.webp` (square, matching the username
+   exactly), following the portrait/logo policy above. Inspect the `add-person`
+   helper's downloaded image before keeping it; source a replacement if needed.
+   When no suitable image is available, fall back to the generated monogram.
 4. Run `npm run build` — validation will reject bad usernames, duplicates,
    missing descriptions, or out-of-vocab/miscounted tags.
 
