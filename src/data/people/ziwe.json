@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-09-24T14:11:48.445Z",
+  "generatedAt": "2026-09-27T14:41:06.810Z",
   "entries": [
+    {"s":"the-firm-1993","d":"2026-09-26","r":5},
     {"s":"anniversary-2025","d":"2026-09-23","r":5},
     {"s":"to-die-for","d":"2026-09-20","r":5},
     {"s":"empire-of-the-sun","d":"2026-09-20","r":5},
@@ -50,7 +51,6 @@
     {"s":"the-incredibles","d":"2025-12-31","r":5,"w":1,"l":1},
     {"s":"the-princess-bride","d":"2025-12-31","r":5,"w":1,"l":1},
     {"s":"wicked-for-good","d":"2025-12-31","r":5},
-    {"s":"hamnet","d":"2025-12-31","r":5,"l":1},
     {"s":"frankenstein-2025","d":"2025-12-30","r":5},
     {"s":"war-dogs-2016","d":"2025-12-30","r":null},
     {"s":"how-the-grinch-stole-christmas-2000","d":"2025-12-28","r":5,"l":1},
