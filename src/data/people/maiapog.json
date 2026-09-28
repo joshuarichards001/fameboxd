@@ -1,6 +1,9 @@
 {
-  "generatedAt": "2026-09-27T14:41:06.738Z",
+  "generatedAt": "2026-09-28T17:38:33.878Z",
   "entries": [
+    {"s":"predators-2025","d":"2026-09-27","r":null},
+    {"s":"primetime-2026","d":"2026-09-27","r":null},
+    {"s":"2001-a-space-odyssey","d":"2026-09-27","r":null,"w":1},
     {"s":"the-love-hypothesis","d":"2026-09-26","r":null},
     {"s":"the-thing","d":"2026-09-21","r":5,"w":1,"l":1},
     {"s":"fargo","d":"2026-09-21","r":5,"w":1,"l":1},

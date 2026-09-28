@@ -1,7 +1,9 @@
 {
-  "generatedAt": "2026-09-27T14:41:06.809Z",
+  "generatedAt": "2026-09-28T17:38:33.944Z",
   "entries": [
-    {"s":"the-empire-strikes-back","d":"2026-09-27","r":null},
+    {"s":"return-of-the-jedi","d":"2026-09-28","r":null,"w":1},
+    {"s":"after-2019","d":"2026-09-28","r":null},
+    {"s":"the-empire-strikes-back","d":"2026-09-27","r":null,"w":1},
     {"s":"star-wars","d":"2026-09-24","r":null,"w":1,"l":1},
     {"s":"johnny-mnemonic","d":"2026-09-21","r":null},
     {"s":"species","d":"2026-09-17","r":null},
@@ -24,7 +26,7 @@
     {"s":"rocky-ii","d":"2026-07-27","r":null},
     {"s":"rocky","d":"2026-07-27","r":null},
     {"s":"the-invite-2026","d":"2026-07-13","r":null},
-    {"s":"the-fifth-element","d":"2026-07-01","r":null,"l":1},
+    {"s":"the-fifth-element","d":"2026-07-01","r":null,"w":1,"l":1},
     {"s":"summer-stock","d":"2026-06-29","r":null,"l":1},
     {"s":"funny-face","d":"2026-06-28","r":null},
     {"s":"an-american-in-paris","d":"2026-06-26","r":null,"l":1},

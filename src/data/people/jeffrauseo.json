@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-09-25T14:35:44.666Z",
+  "generatedAt": "2026-09-28T17:38:33.835Z",
   "entries": [
+    {"s":"tuner","d":"2026-09-27","r":4.5},
     {"s":"the-mandalorian-and-grogu","d":"2026-09-24","r":3.5},
     {"s":"death-of-a-yellow-bird","d":"2026-09-22","r":3.5},
     {"s":"return-of-the-jedi","d":"2026-09-20","r":4.5},
@@ -50,7 +51,6 @@
     {"s":"noah-kahan-out-of-body","d":"2026-04-14","r":5},
     {"s":"faces-of-death-2026","d":"2026-04-13","r":3.5},
     {"s":"a-grand-day-out","d":"2026-04-10","r":4},
-    {"s":"the-wrong-trousers","d":"2026-04-10","r":4.5},
     {"s":"pizza-movie-2026","d":"2026-04-07","r":3},
     {"s":"the-super-mario-galaxy-movie","d":"2026-04-03","r":3.5},
     {"s":"blow-out","d":"2026-04-02","r":4.5},

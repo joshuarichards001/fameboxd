@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-09-15T00:08:39.549Z",
+  "generatedAt": "2026-09-28T17:38:33.803Z",
   "entries": [
+    {"s":"coyote-vs-acme","d":"2026-09-26","r":4,"l":1},
     {"s":"the-end-of-oak-street","d":"2026-08-15","r":3.5,"l":1},
     {"s":"the-fast-and-the-furious-2001","d":"2026-08-08","r":3},
     {"s":"the-odyssey-2026","d":"2026-07-24","r":4.5,"l":1},
@@ -50,7 +51,6 @@
     {"s":"lee-cronins-the-mummy","d":"2026-04-01","r":3},
     {"s":"project-hail-mary","d":"2026-03-29","r":4},
     {"s":"louis-theroux-inside-the-manosphere","d":"2026-03-27","r":4.5},
-    {"s":"death-of-a-unicorn","d":"2026-03-27","r":2.5},
     {"s":"the-taking-of-deborah-logan","d":"2026-03-26","r":null},
     {"s":"sweetness-2025","d":"2026-03-24","r":4,"l":1},
     {"s":"ick","d":"2026-03-20","r":null},

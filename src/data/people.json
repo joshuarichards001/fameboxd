@@ -12,7 +12,7 @@
       "date": "2026-01-02",
       "rating": null
     },
-    "followers": 37398
+    "followers": 37407
   },
   {
     "name": "Aidan Zamiri",
@@ -26,7 +26,7 @@
       "date": null,
       "rating": null
     },
-    "followers": 6538
+    "followers": 6548
   },
   {
     "name": "Alan Resnick",
@@ -41,7 +41,7 @@
       "date": "2026-09-24",
       "rating": 5
     },
-    "followers": 1812
+    "followers": 1818
   },
   {
     "name": "Albert Birney",
@@ -56,7 +56,7 @@
       "date": "2026-09-25",
       "rating": null
     },
-    "followers": 3255
+    "followers": 3256
   },
   {
     "name": "Alex Winter",
@@ -67,7 +67,7 @@
       "director"
     ],
     "lastWatched": null,
-    "followers": 10890
+    "followers": 10889
   },
   {
     "name": "Alexei Toliopoulos",
@@ -78,11 +78,11 @@
       "podcaster"
     ],
     "lastWatched": {
-      "title": "The Last of the Finest",
-      "date": "2026-09-27",
-      "rating": 3
+      "title": "Mystic Pizza",
+      "date": "2026-09-28",
+      "rating": 4
     },
-    "followers": 9631
+    "followers": 9638
   },
   {
     "name": "Alfie Whiteman",
@@ -96,7 +96,7 @@
       "date": "2026-07-18",
       "rating": 3
     },
-    "followers": 8521
+    "followers": 8522
   },
   {
     "name": "Allan Arkush",
@@ -106,11 +106,11 @@
       "director"
     ],
     "lastWatched": {
-      "title": "Wild Horse Nine",
-      "date": "2026-09-24",
+      "title": "Digger",
+      "date": "2026-09-27",
       "rating": 4.5
     },
-    "followers": 7228
+    "followers": 7227
   },
   {
     "name": "Amanda the Jedi",
@@ -125,7 +125,7 @@
       "date": "2026-09-25",
       "rating": null
     },
-    "followers": 47032
+    "followers": 47050
   },
   {
     "name": "Aneesh Chaganty",
@@ -139,7 +139,7 @@
       "date": "2026-09-24",
       "rating": null
     },
-    "followers": 6534
+    "followers": 6535
   },
   {
     "name": "Anne Hathaway",
@@ -153,7 +153,7 @@
       "date": "2026-07-14",
       "rating": null
     },
-    "followers": 96852
+    "followers": 96950
   },
   {
     "name": "Anthony Fantano",
@@ -175,11 +175,11 @@
       "writer"
     ],
     "lastWatched": {
-      "title": "Heart of the Beast",
-      "date": "2026-09-25",
+      "title": "Primetime",
+      "date": "2026-09-27",
       "rating": null
     },
-    "followers": 53787
+    "followers": 53873
   },
   {
     "name": "Ben York Jones",
@@ -208,7 +208,7 @@
       "date": "2025-02-21",
       "rating": null
     },
-    "followers": 1441
+    "followers": 1442
   },
   {
     "name": "Brian Duffield",
@@ -223,7 +223,7 @@
       "date": "2026-09-26",
       "rating": null
     },
-    "followers": 3589
+    "followers": 3591
   },
   {
     "name": "Caddicarus",
@@ -237,7 +237,7 @@
       "date": "2026-09-25",
       "rating": 3.5
     },
-    "followers": 13253
+    "followers": 13268
   },
   {
     "name": "Caitlin Durante",
@@ -264,11 +264,11 @@
       "writer"
     ],
     "lastWatched": {
-      "title": "Girls of the White Orchid",
-      "date": "2026-09-26",
+      "title": "Red Sonja",
+      "date": "2026-09-27",
       "rating": null
     },
-    "followers": 43452
+    "followers": 43477
   },
   {
     "name": "Chad Hartigan",
@@ -279,11 +279,11 @@
       "writer"
     ],
     "lastWatched": {
-      "title": "Primetime",
-      "date": "2026-09-26",
-      "rating": null
+      "title": "Beverly Hills Cop",
+      "date": "2026-09-27",
+      "rating": 4
     },
-    "followers": 8472
+    "followers": 8474
   },
   {
     "name": "Chandler Levack",
@@ -294,11 +294,11 @@
       "critic"
     ],
     "lastWatched": {
-      "title": "Homicidal",
-      "date": "2026-09-26",
+      "title": "Beverly Hills Cop",
+      "date": "2026-09-27",
       "rating": 5
     },
-    "followers": 7331
+    "followers": 7337
   },
   {
     "name": "Charli XCX",
@@ -312,7 +312,7 @@
       "date": "2026-09-23",
       "rating": null
     },
-    "followers": 420804
+    "followers": 420966
   },
   {
     "name": "Charlie Wright",
@@ -326,7 +326,7 @@
       "date": "2026-08-23",
       "rating": 4
     },
-    "followers": 1928
+    "followers": 1930
   },
   {
     "name": "Charlotte Le Bon",
@@ -341,7 +341,7 @@
       "date": "2026-09-06",
       "rating": null
     },
-    "followers": 1288
+    "followers": 1289
   },
   {
     "name": "Chris Ryan",
@@ -356,7 +356,7 @@
       "date": "2026-09-19",
       "rating": null
     },
-    "followers": 43854
+    "followers": 43878
   },
   {
     "name": "Chris Stuckmann",
@@ -367,11 +367,11 @@
       "critic"
     ],
     "lastWatched": {
-      "title": "Poltergeist III",
-      "date": "2026-09-27",
+      "title": "Reincarnation",
+      "date": "2026-09-28",
       "rating": null
     },
-    "followers": 35434
+    "followers": 35462
   },
   {
     "name": "Christopher McQuarrie",
@@ -386,7 +386,7 @@
       "date": "2026-08-18",
       "rating": null
     },
-    "followers": 34844
+    "followers": 34852
   },
   {
     "name": "CinemaStix",
@@ -430,7 +430,7 @@
       "date": "2026-09-24",
       "rating": 3.5
     },
-    "followers": 71379
+    "followers": 71446
   },
   {
     "name": "Courtney Miller",
@@ -445,7 +445,7 @@
       "date": "2026-08-17",
       "rating": 5
     },
-    "followers": 4527
+    "followers": 4531
   },
   {
     "name": "Dacre Montgomery",
@@ -459,7 +459,7 @@
       "date": "2026-09-27",
       "rating": null
     },
-    "followers": 23047
+    "followers": 23054
   },
   {
     "name": "Dafne Keen",
@@ -473,7 +473,7 @@
       "date": "2026-09-25",
       "rating": null
     },
-    "followers": 17982
+    "followers": 17990
   },
   {
     "name": "Daniel Goldhaber",
@@ -483,11 +483,11 @@
       "director"
     ],
     "lastWatched": {
-      "title": "Tender Loving Care",
-      "date": "2026-09-25",
+      "title": "The Hitcher",
+      "date": "2026-09-27",
       "rating": null
     },
-    "followers": 9725
+    "followers": 9733
   },
   {
     "name": "David Ehrlich",
@@ -501,7 +501,7 @@
       "date": "2026-09-26",
       "rating": 3.5
     },
-    "followers": 217850
+    "followers": 217898
   },
   {
     "name": "David F. Sandberg",
@@ -515,7 +515,7 @@
       "date": "2025-05-24",
       "rating": 0.5
     },
-    "followers": 8817
+    "followers": 8819
   },
   {
     "name": "David Farrier",
@@ -530,7 +530,7 @@
       "date": "2026-01-29",
       "rating": 0.5
     },
-    "followers": 3973
+    "followers": 3974
   },
   {
     "name": "Dax Flame",
@@ -545,7 +545,7 @@
       "date": "2026-07-30",
       "rating": 5
     },
-    "followers": 5273
+    "followers": 5280
   },
   {
     "name": "Demi Adejuyigbe",
@@ -556,11 +556,11 @@
       "podcaster"
     ],
     "lastWatched": {
-      "title": "The History of Concrete",
+      "title": "Frances Ha",
       "date": "2026-09-26",
       "rating": 4.5
     },
-    "followers": 167482
+    "followers": 167581
   },
   {
     "name": "Diamondbolt",
@@ -570,11 +570,11 @@
       "youtuber"
     ],
     "lastWatched": {
-      "title": "One Night Only",
-      "date": "2026-09-26",
-      "rating": 2.5
+      "title": "La Haine",
+      "date": "2026-09-28",
+      "rating": 4
     },
-    "followers": 15910
+    "followers": 15915
   },
   {
     "name": "Drew Gooden",
@@ -589,7 +589,7 @@
       "date": "2026-09-17",
       "rating": 4.5
     },
-    "followers": 59167
+    "followers": 59210
   },
   {
     "name": "Dylan Gelula",
@@ -603,7 +603,7 @@
       "date": "2026-02-22",
       "rating": 5
     },
-    "followers": 11768
+    "followers": 11769
   },
   {
     "name": "Ed Sheeran",
@@ -632,7 +632,7 @@
       "date": "2026-09-25",
       "rating": null
     },
-    "followers": 84908
+    "followers": 84947
   },
   {
     "name": "Edgar Wright",
@@ -642,7 +642,7 @@
       "director"
     ],
     "lastWatched": null,
-    "followers": 7294
+    "followers": 7302
   },
   {
     "name": "Elsie Fisher",
@@ -652,11 +652,11 @@
       "actor"
     ],
     "lastWatched": {
-      "title": "May December",
-      "date": "2026-09-26",
+      "title": "Day Night Day Night",
+      "date": "2026-09-27",
       "rating": null
     },
-    "followers": 8757
+    "followers": 8759
   },
   {
     "name": "Erik Griffin",
@@ -671,7 +671,7 @@
       "date": "2026-09-07",
       "rating": 4
     },
-    "followers": 625
+    "followers": 626
   },
   {
     "name": "Evan Puschak",
@@ -701,7 +701,7 @@
       "date": "2026-09-25",
       "rating": 4
     },
-    "followers": 5145
+    "followers": 5144
   },
   {
     "name": "Frames of Nick",
@@ -715,7 +715,7 @@
       "date": "2026-09-25",
       "rating": 3.5
     },
-    "followers": 87854
+    "followers": 87875
   },
   {
     "name": "Francis Ford Coppola",
@@ -725,7 +725,7 @@
       "director"
     ],
     "lastWatched": null,
-    "followers": 58852
+    "followers": 58885
   },
   {
     "name": "Garance Marillier",
@@ -739,7 +739,7 @@
       "date": "2026-09-14",
       "rating": 0.5
     },
-    "followers": 1457
+    "followers": 1456
   },
   {
     "name": "Grace Kuhlenschmidt",
@@ -753,7 +753,7 @@
       "date": "2024-06-08",
       "rating": 5
     },
-    "followers": 2153
+    "followers": 2155
   },
   {
     "name": "Grace Van Dien",
@@ -767,7 +767,7 @@
       "date": "2025-05-23",
       "rating": 1
     },
-    "followers": 1032
+    "followers": 1031
   },
   {
     "name": "Graydon Weaver",
@@ -782,7 +782,7 @@
       "date": "2026-09-24",
       "rating": 3
     },
-    "followers": 18531
+    "followers": 18534
   },
   {
     "name": "Greg Sestero",
@@ -797,7 +797,7 @@
       "date": "2024-10-14",
       "rating": 5
     },
-    "followers": 1931
+    "followers": 1934
   },
   {
     "name": "Griffin Newman",
@@ -808,11 +808,11 @@
       "podcaster"
     ],
     "lastWatched": {
-      "title": "Spaceballs",
-      "date": "2026-09-21",
+      "title": "Gail Daughtry and the Celebrity Sex Pass",
+      "date": "2026-09-28",
       "rating": null
     },
-    "followers": 50249
+    "followers": 50273
   },
   {
     "name": "HamzahTheFantastic",
@@ -827,7 +827,7 @@
       "date": "2026-09-13",
       "rating": 5
     },
-    "followers": 22516
+    "followers": 22534
   },
   {
     "name": "Hari Nef",
@@ -841,7 +841,7 @@
       "date": "2026-09-05",
       "rating": null
     },
-    "followers": 47519
+    "followers": 47520
   },
   {
     "name": "hbomberguy",
@@ -856,7 +856,7 @@
       "date": "2026-06-30",
       "rating": 3.5
     },
-    "followers": 13168
+    "followers": 13175
   },
   {
     "name": "Ian Hecox",
@@ -867,11 +867,11 @@
       "comedian"
     ],
     "lastWatched": {
-      "title": "Jesus Christ Vampire Hunter",
-      "date": "2026-09-25",
-      "rating": 3
+      "title": "Loqueesha",
+      "date": "2026-09-27",
+      "rating": 0.5
     },
-    "followers": 18897
+    "followers": 18907
   },
   {
     "name": "Iman Vellani",
@@ -881,11 +881,11 @@
       "actor"
     ],
     "lastWatched": {
-      "title": "Kung Fu Hustle",
-      "date": "2026-09-23",
-      "rating": 4.5
+      "title": "Trust",
+      "date": "2026-09-27",
+      "rating": 5
     },
-    "followers": 64543
+    "followers": 64572
   },
   {
     "name": "Isabel Sandoval",
@@ -896,11 +896,11 @@
       "actor"
     ],
     "lastWatched": {
-      "title": "Fruit Gathering",
+      "title": "Mother Bhumi",
       "date": "2026-09-27",
-      "rating": null
+      "rating": 0.5
     },
-    "followers": 9870
+    "followers": 9874
   },
   {
     "name": "Ivy Wolk",
@@ -914,7 +914,7 @@
       "date": "2026-08-14",
       "rating": null
     },
-    "followers": 42205
+    "followers": 42249
   },
   {
     "name": "J.A. Bayona",
@@ -924,11 +924,11 @@
       "director"
     ],
     "lastWatched": {
-      "title": "Coyote vs. Acme",
-      "date": "2026-09-25",
-      "rating": null
+      "title": "The Sicilian",
+      "date": "2026-09-24",
+      "rating": 4
     },
-    "followers": 4238
+    "followers": 4256
   },
   {
     "name": "Jack Dylan Grazer",
@@ -942,7 +942,7 @@
       "date": "2025-08-27",
       "rating": 3.5
     },
-    "followers": 1641
+    "followers": 1643
   },
   {
     "name": "Jack Harlow",
@@ -956,7 +956,7 @@
       "date": "2026-09-24",
       "rating": null
     },
-    "followers": 45871
+    "followers": 45896
   },
   {
     "name": "Jade Thirlwall",
@@ -970,7 +970,7 @@
       "date": "2025-05-13",
       "rating": null
     },
-    "followers": 1556
+    "followers": 1555
   },
   {
     "name": "Jaeden Martell",
@@ -984,7 +984,7 @@
       "date": "2026-04-25",
       "rating": null
     },
-    "followers": 14878
+    "followers": 14880
   },
   {
     "name": "Jamelle Bouie",
@@ -999,7 +999,7 @@
       "date": "2026-09-25",
       "rating": 4
     },
-    "followers": 35709
+    "followers": 35719
   },
   {
     "name": "James A. Janisse",
@@ -1009,11 +1009,11 @@
       "youtuber"
     ],
     "lastWatched": {
-      "title": "The End of Oak Street",
-      "date": "2026-08-15",
-      "rating": 3.5
+      "title": "Coyote vs. Acme",
+      "date": "2026-09-26",
+      "rating": 4
     },
-    "followers": 29177
+    "followers": 29207
   },
   {
     "name": "James Acaster",
@@ -1041,7 +1041,7 @@
       "date": "2026-09-25",
       "rating": null
     },
-    "followers": 2265
+    "followers": 2268
   },
   {
     "name": "Jamie Loftus",
@@ -1057,7 +1057,7 @@
       "date": "2026-09-26",
       "rating": null
     },
-    "followers": 8176
+    "followers": 8181
   },
   {
     "name": "Jane Remover",
@@ -1071,7 +1071,7 @@
       "date": "2026-09-24",
       "rating": 3.5
     },
-    "followers": 858
+    "followers": 871
   },
   {
     "name": "Jared Gilman",
@@ -1096,11 +1096,11 @@
       "writer"
     ],
     "lastWatched": {
-      "title": "The Mandalorian and Grogu",
-      "date": "2026-09-24",
-      "rating": 3.5
+      "title": "Tuner",
+      "date": "2026-09-27",
+      "rating": 4.5
     },
-    "followers": 6872
+    "followers": 6873
   },
   {
     "name": "Jim Beaver",
@@ -1115,7 +1115,7 @@
       "date": "2026-09-27",
       "rating": 3.5
     },
-    "followers": 6373
+    "followers": 6371
   },
   {
     "name": "Jim Cummings",
@@ -1130,7 +1130,7 @@
       "date": "2026-06-27",
       "rating": 5
     },
-    "followers": 33622
+    "followers": 33626
   },
   {
     "name": "Joe Lynch",
@@ -1140,11 +1140,11 @@
       "director"
     ],
     "lastWatched": {
-      "title": "Interior. Leather Bar.",
+      "title": "Heart of the Beast",
       "date": "2026-09-26",
-      "rating": null
+      "rating": 3.5
     },
-    "followers": 21796
+    "followers": 21798
   },
   {
     "name": "Joel Haver",
@@ -1159,7 +1159,7 @@
       "date": "2026-09-26",
       "rating": 3.5
     },
-    "followers": 26359
+    "followers": 26376
   },
   {
     "name": "Jonni Pepper-GoLions",
@@ -1184,11 +1184,11 @@
       "comedian"
     ],
     "lastWatched": {
-      "title": "Monsters of God",
-      "date": "2026-09-25",
+      "title": "They Live",
+      "date": "2026-09-27",
       "rating": null
     },
-    "followers": 1188
+    "followers": 1190
   },
   {
     "name": "Josh Richards",
@@ -1198,8 +1198,8 @@
       "developer"
     ],
     "lastWatched": {
-      "title": "Midnight in Paris",
-      "date": "2026-09-24",
+      "title": "Palm Springs",
+      "date": "2026-09-27",
       "rating": 4
     },
     "followers": 28
@@ -1217,7 +1217,7 @@
       "date": "2026-09-16",
       "rating": 4
     },
-    "followers": 10926
+    "followers": 10934
   },
   {
     "name": "Joshua Rush",
@@ -1231,7 +1231,7 @@
       "date": "2026-09-25",
       "rating": 4
     },
-    "followers": 659
+    "followers": 660
   },
   {
     "name": "JT",
@@ -1245,7 +1245,7 @@
       "date": "2026-08-14",
       "rating": 4
     },
-    "followers": 7603
+    "followers": 7607
   },
   {
     "name": "Justin LaLiberty",
@@ -1256,11 +1256,11 @@
       "writer"
     ],
     "lastWatched": {
-      "title": "Shutter",
-      "date": "2026-09-26",
-      "rating": 3
+      "title": "Rose",
+      "date": "2026-09-28",
+      "rating": 4
     },
-    "followers": 19985
+    "followers": 20010
   },
   {
     "name": "Kantemir Balagov",
@@ -1274,7 +1274,7 @@
       "date": "2026-05-07",
       "rating": null
     },
-    "followers": 3661
+    "followers": 3662
   },
   {
     "name": "Karsten Runquist",
@@ -1285,11 +1285,11 @@
       "critic"
     ],
     "lastWatched": {
-      "title": "The History of Concrete",
-      "date": "2026-09-25",
-      "rating": 4.5
+      "title": "Life During Wartime",
+      "date": "2026-09-27",
+      "rating": 3.5
     },
-    "followers": 254764
+    "followers": 254820
   },
   {
     "name": "Katie Walsh",
@@ -1303,7 +1303,7 @@
       "date": "2026-09-24",
       "rating": null
     },
-    "followers": 13203
+    "followers": 13207
   },
   {
     "name": "Katya Zamolodchikova",
@@ -1318,7 +1318,7 @@
       "date": "2025-04-17",
       "rating": 1
     },
-    "followers": 51052
+    "followers": 51060
   },
   {
     "name": "Kid Cudi",
@@ -1333,7 +1333,7 @@
       "date": "2026-05-28",
       "rating": 5
     },
-    "followers": 20094
+    "followers": 20100
   },
   {
     "name": "Kleber Mendonça Filho",
@@ -1348,7 +1348,7 @@
       "date": "2026-09-20",
       "rating": null
     },
-    "followers": 47028
+    "followers": 47049
   },
   {
     "name": "Kurtis Conner",
@@ -1363,7 +1363,7 @@
       "date": "2026-09-25",
       "rating": 5
     },
-    "followers": 41893
+    "followers": 41917
   },
   {
     "name": "Kyle Kallgren",
@@ -1378,7 +1378,7 @@
       "date": "2026-09-23",
       "rating": null
     },
-    "followers": 586
+    "followers": 587
   },
   {
     "name": "Kyle MacLachlan",
@@ -1392,7 +1392,7 @@
       "date": "2025-09-03",
       "rating": null
     },
-    "followers": 112091
+    "followers": 112143
   },
   {
     "name": "Lance Oppenheim",
@@ -1406,7 +1406,7 @@
       "date": "2026-09-15",
       "rating": null
     },
-    "followers": 4074
+    "followers": 4127
   },
   {
     "name": "Lee Unkrich",
@@ -1420,7 +1420,7 @@
       "date": "2019-03-30",
       "rating": null
     },
-    "followers": 1912
+    "followers": 1914
   },
   {
     "name": "Lewis Pullman",
@@ -1434,7 +1434,7 @@
       "date": "2025-04-20",
       "rating": 3
     },
-    "followers": 34521
+    "followers": 34532
   },
   {
     "name": "Lily Collias",
@@ -1458,7 +1458,7 @@
       "actor"
     ],
     "lastWatched": null,
-    "followers": 858
+    "followers": 859
   },
   {
     "name": "Logan Miller",
@@ -1472,7 +1472,7 @@
       "date": "2026-09-19",
       "rating": null
     },
-    "followers": 1676
+    "followers": 1675
   },
   {
     "name": "Louise Weard",
@@ -1487,7 +1487,7 @@
       "date": "2026-09-26",
       "rating": null
     },
-    "followers": 9180
+    "followers": 9187
   },
   {
     "name": "Lukas Gage",
@@ -1501,7 +1501,7 @@
       "date": "2026-09-27",
       "rating": 5
     },
-    "followers": 1412
+    "followers": 1413
   },
   {
     "name": "Luke Gilford",
@@ -1530,7 +1530,7 @@
       "date": "2021-08-06",
       "rating": 2
     },
-    "followers": 1652
+    "followers": 1653
   },
   {
     "name": "Maitreyi Ramakrishnan",
@@ -1544,7 +1544,7 @@
       "date": "2026-08-31",
       "rating": null
     },
-    "followers": 12596
+    "followers": 12618
   },
   {
     "name": "Martin Scorsese",
@@ -1554,7 +1554,7 @@
       "director"
     ],
     "lastWatched": null,
-    "followers": 499640
+    "followers": 499737
   },
   {
     "name": "Matt Christman",
@@ -1569,7 +1569,7 @@
       "date": "2021-11-23",
       "rating": 2
     },
-    "followers": 19446
+    "followers": 19449
   },
   {
     "name": "Matt Gourley",
@@ -1584,7 +1584,7 @@
       "date": "2026-09-26",
       "rating": null
     },
-    "followers": 14271
+    "followers": 14272
   },
   {
     "name": "Max Minghella",
@@ -1599,7 +1599,7 @@
       "date": "2026-09-26",
       "rating": null
     },
-    "followers": 5066
+    "followers": 5068
   },
   {
     "name": "Maxwell Jenkins",
@@ -1613,7 +1613,7 @@
       "date": "2026-07-30",
       "rating": 4
     },
-    "followers": 423
+    "followers": 424
   },
   {
     "name": "Mckenna Grace",
@@ -1623,11 +1623,11 @@
       "actor"
     ],
     "lastWatched": {
-      "title": "The Hunger Games: Sunrise on the Reaping",
-      "date": "2026-09-08",
-      "rating": 5
+      "title": "What Women Want",
+      "date": "2026-09-27",
+      "rating": null
     },
-    "followers": 83221
+    "followers": 83336
   },
   {
     "name": "Mia Khalifa",
@@ -1641,7 +1641,7 @@
       "date": "2026-01-09",
       "rating": 3
     },
-    "followers": 34429
+    "followers": 34432
   },
   {
     "name": "Michael Mann",
@@ -1651,7 +1651,7 @@
       "director"
     ],
     "lastWatched": null,
-    "followers": 45831
+    "followers": 45854
   },
   {
     "name": "Michael Mohan",
@@ -1680,7 +1680,7 @@
       "date": "2026-09-16",
       "rating": null
     },
-    "followers": 152798
+    "followers": 152841
   },
   {
     "name": "Mike Mitchell",
@@ -1710,7 +1710,7 @@
       "date": "2026-09-24",
       "rating": 3
     },
-    "followers": 58036
+    "followers": 58060
   },
   {
     "name": "Miles Bonsignore",
@@ -1725,7 +1725,7 @@
       "date": "2026-09-16",
       "rating": null
     },
-    "followers": 3261
+    "followers": 3268
   },
   {
     "name": "Millie Gibson",
@@ -1739,7 +1739,7 @@
       "date": "2026-07-25",
       "rating": 4
     },
-    "followers": 7169
+    "followers": 7167
   },
   {
     "name": "Mina Le",
@@ -1754,7 +1754,7 @@
       "date": "2026-07-12",
       "rating": null
     },
-    "followers": 25584
+    "followers": 25588
   },
   {
     "name": "Mitra Jouhari",
@@ -1770,7 +1770,7 @@
       "date": "2026-09-26",
       "rating": null
     },
-    "followers": 7139
+    "followers": 7140
   },
   {
     "name": "mxmtoon",
@@ -1780,11 +1780,11 @@
       "musician"
     ],
     "lastWatched": {
-      "title": "The Love Hypothesis",
-      "date": "2026-09-26",
+      "title": "Predators",
+      "date": "2026-09-27",
       "rating": null
     },
-    "followers": 11690
+    "followers": 11691
   },
   {
     "name": "Nando v Movies",
@@ -1799,7 +1799,7 @@
       "date": "2026-09-22",
       "rating": 4.5
     },
-    "followers": 6619
+    "followers": 6620
   },
   {
     "name": "Nick Jonas",
@@ -1810,7 +1810,7 @@
       "actor"
     ],
     "lastWatched": null,
-    "followers": 502
+    "followers": 501
   },
   {
     "name": "Nick Mullen",
@@ -1825,7 +1825,7 @@
       "date": "2025-08-21",
       "rating": 4
     },
-    "followers": 20612
+    "followers": 20641
   },
   {
     "name": "Noah Schnapp",
@@ -1839,7 +1839,7 @@
       "date": "2026-03-20",
       "rating": 5
     },
-    "followers": 11914
+    "followers": 11916
   },
   {
     "name": "Northernlion",
@@ -1854,7 +1854,7 @@
       "date": "2026-08-01",
       "rating": 1.5
     },
-    "followers": 65596
+    "followers": 65649
   },
   {
     "name": "Oklou",
@@ -1868,7 +1868,7 @@
       "date": "2022-09-28",
       "rating": 3.5
     },
-    "followers": 274
+    "followers": 275
   },
   {
     "name": "Osgood Perkins",
@@ -1883,7 +1883,7 @@
       "date": "2024-12-18",
       "rating": 5
     },
-    "followers": 1954
+    "followers": 1955
   },
   {
     "name": "Paco Plaza",
@@ -1893,11 +1893,11 @@
       "director"
     ],
     "lastWatched": {
-      "title": "A Prophet",
-      "date": "2026-09-23",
-      "rating": 5
+      "title": "The Grandmother",
+      "date": "2026-09-25",
+      "rating": 4
     },
-    "followers": 1398
+    "followers": 1403
   },
   {
     "name": "Paddington Bear",
@@ -1911,7 +1911,7 @@
       "date": "2026-09-18",
       "rating": null
     },
-    "followers": 70307
+    "followers": 70378
   },
   {
     "name": "Patrick H. Willems",
@@ -1926,7 +1926,7 @@
       "date": "2026-09-21",
       "rating": null
     },
-    "followers": 88570
+    "followers": 88590
   },
   {
     "name": "Paul McCartney",
@@ -1940,7 +1940,7 @@
       "date": null,
       "rating": null
     },
-    "followers": 37860
+    "followers": 37879
   },
   {
     "name": "Paul Scheer",
@@ -1951,11 +1951,11 @@
       "podcaster"
     ],
     "lastWatched": {
-      "title": "Happy Birthday to Me",
-      "date": "2026-09-21",
+      "title": "The Simpsons Movie",
+      "date": "2026-09-26",
       "rating": null
     },
-    "followers": 34953
+    "followers": 34961
   },
   {
     "name": "Paul Walter Hauser",
@@ -1965,11 +1965,11 @@
       "actor"
     ],
     "lastWatched": {
-      "title": "Resident Evil",
-      "date": "2026-09-23",
-      "rating": 4
+      "title": "Toy Story",
+      "date": "2026-09-27",
+      "rating": 5
     },
-    "followers": 27775
+    "followers": 27797
   },
   {
     "name": "Pete Ohs",
@@ -1983,7 +1983,7 @@
       "date": "2026-09-20",
       "rating": null
     },
-    "followers": 127
+    "followers": 128
   },
   {
     "name": "Petra Collins",
@@ -2012,7 +2012,7 @@
       "date": "2026-09-04",
       "rating": null
     },
-    "followers": 2523
+    "followers": 2522
   },
   {
     "name": "R.L. Stine",
@@ -2022,7 +2022,7 @@
       "writer"
     ],
     "lastWatched": null,
-    "followers": 1371
+    "followers": 1375
   },
   {
     "name": "Rachel Sennott",
@@ -2037,7 +2037,7 @@
       "date": "2025-10-05",
       "rating": null
     },
-    "followers": 142931
+    "followers": 142947
   },
   {
     "name": "Ranboo",
@@ -2051,7 +2051,7 @@
       "date": "2026-05-22",
       "rating": 4
     },
-    "followers": 1921
+    "followers": 1922
   },
   {
     "name": "Rian Johnson",
@@ -2081,7 +2081,7 @@
       "date": "2026-09-24",
       "rating": 4
     },
-    "followers": 15630
+    "followers": 15634
   },
   {
     "name": "Rowan Blanchard",
@@ -2095,7 +2095,7 @@
       "date": "2026-09-26",
       "rating": null
     },
-    "followers": 12575
+    "followers": 12590
   },
   {
     "name": "Ryan Hollinger",
@@ -2110,7 +2110,7 @@
       "date": "2019-10-01",
       "rating": 1
     },
-    "followers": 3425
+    "followers": 3426
   },
   {
     "name": "Sam Esmail",
@@ -2121,11 +2121,11 @@
       "writer"
     ],
     "lastWatched": {
-      "title": "Primetime",
-      "date": "2026-09-25",
+      "title": "A Killer Story",
+      "date": "2026-09-27",
       "rating": null
     },
-    "followers": 6178
+    "followers": 6181
   },
   {
     "name": "Sam Lerner",
@@ -2139,7 +2139,7 @@
       "date": "2026-09-24",
       "rating": null
     },
-    "followers": 835
+    "followers": 837
   },
   {
     "name": "Sarah Sherman",
@@ -2154,7 +2154,7 @@
       "date": "2026-09-26",
       "rating": 5
     },
-    "followers": 53177
+    "followers": 53226
   },
   {
     "name": "Sasha Spielberg",
@@ -2184,7 +2184,7 @@
       "date": "2026-09-26",
       "rating": 2
     },
-    "followers": 208566
+    "followers": 208692
   },
   {
     "name": "Scott Derrickson",
@@ -2205,11 +2205,11 @@
       "writer"
     ],
     "lastWatched": {
-      "title": "Rumpelstiltskin",
-      "date": "2026-09-26",
+      "title": "Erupcja",
+      "date": "2026-09-27",
       "rating": null
     },
-    "followers": 239919
+    "followers": 239981
   },
   {
     "name": "Sean Fennessey",
@@ -2220,11 +2220,11 @@
       "critic"
     ],
     "lastWatched": {
-      "title": "Unabomber",
-      "date": "2026-09-26",
+      "title": "Dead Lover",
+      "date": "2026-09-27",
       "rating": null
     },
-    "followers": 118823
+    "followers": 118883
   },
   {
     "name": "Shawn Hatosy",
@@ -2234,7 +2234,7 @@
       "actor"
     ],
     "lastWatched": null,
-    "followers": 21326
+    "followers": 21342
   },
   {
     "name": "Shayne Topp",
@@ -2250,7 +2250,7 @@
       "date": "2024-03-10",
       "rating": 4.5
     },
-    "followers": 5020
+    "followers": 5022
   },
   {
     "name": "Sophy Romvari",
@@ -2264,7 +2264,7 @@
       "date": "2026-08-27",
       "rating": null
     },
-    "followers": 3394
+    "followers": 3397
   },
   {
     "name": "soupytime",
@@ -2279,7 +2279,7 @@
       "date": "2026-08-10",
       "rating": 3.5
     },
-    "followers": 6884
+    "followers": 6889
   },
   {
     "name": "Spencer Agnew",
@@ -2294,7 +2294,7 @@
       "date": "2026-09-20",
       "rating": 4
     },
-    "followers": 12952
+    "followers": 12963
   },
   {
     "name": "Stavros Halkias",
@@ -2310,7 +2310,7 @@
       "date": "2026-09-19",
       "rating": 4
     },
-    "followers": 42358
+    "followers": 42485
   },
   {
     "name": "Suzanna Son",
@@ -2334,7 +2334,7 @@
       "date": "2026-08-05",
       "rating": 5
     },
-    "followers": 1132
+    "followers": 1135
   },
   {
     "name": "Ted Nivison",
@@ -2349,7 +2349,7 @@
       "date": "2026-08-29",
       "rating": null
     },
-    "followers": 5948
+    "followers": 5949
   },
   {
     "name": "thatmartinkid",
@@ -2364,7 +2364,7 @@
       "date": "2026-09-06",
       "rating": 4
     },
-    "followers": 31908
+    "followers": 31936
   },
   {
     "name": "The Cosmonaut Variety Hour",
@@ -2379,7 +2379,7 @@
       "date": "2026-06-02",
       "rating": 3
     },
-    "followers": 43606
+    "followers": 43613
   },
   {
     "name": "Thomas Flight",
@@ -2394,7 +2394,7 @@
       "date": "2026-09-06",
       "rating": null
     },
-    "followers": 53154
+    "followers": 53173
   },
   {
     "name": "Timothy Simons",
@@ -2404,11 +2404,11 @@
       "actor"
     ],
     "lastWatched": {
-      "title": "Primetime",
-      "date": "2026-09-26",
+      "title": "The History of Concrete",
+      "date": "2026-09-27",
       "rating": null
     },
-    "followers": 10303
+    "followers": 10306
   },
   {
     "name": "Todd in the Shadows",
@@ -2420,11 +2420,11 @@
       "musician"
     ],
     "lastWatched": {
-      "title": "Hard to Hold",
-      "date": "2026-09-26",
-      "rating": 1.5
+      "title": "Primetime",
+      "date": "2026-09-27",
+      "rating": 4.5
     },
-    "followers": 3327
+    "followers": 3392
   },
   {
     "name": "TommyInnit",
@@ -2438,7 +2438,7 @@
       "date": "2024-06-02",
       "rating": null
     },
-    "followers": 5710
+    "followers": 5715
   },
   {
     "name": "Vanillamace",
@@ -2452,7 +2452,7 @@
       "date": "2026-08-29",
       "rating": 2
     },
-    "followers": 9193
+    "followers": 9207
   },
   {
     "name": "Vera Drew",
@@ -2467,7 +2467,7 @@
       "date": "2026-09-24",
       "rating": 4
     },
-    "followers": 17962
+    "followers": 17978
   },
   {
     "name": "Will Menaker",
@@ -2482,7 +2482,7 @@
       "date": "2026-08-17",
       "rating": 5
     },
-    "followers": 40052
+    "followers": 40065
   },
   {
     "name": "Wim Wenders",
@@ -2496,7 +2496,7 @@
       "date": null,
       "rating": null
     },
-    "followers": 29763
+    "followers": 29778
   },
   {
     "name": "Wyatt Oleff",
@@ -2510,7 +2510,7 @@
       "date": "2024-04-19",
       "rating": null
     },
-    "followers": 16256
+    "followers": 16258
   },
   {
     "name": "Yasmeen Fletcher",
@@ -2520,9 +2520,9 @@
       "actor"
     ],
     "lastWatched": {
-      "title": "Resident Evil",
-      "date": "2026-09-26",
-      "rating": 4
+      "title": "Primetime",
+      "date": "2026-09-27",
+      "rating": 3.5
     },
     "followers": 508
   },
@@ -2538,7 +2538,7 @@
       "date": "2026-08-09",
       "rating": null
     },
-    "followers": 1558
+    "followers": 1560
   },
   {
     "name": "Zachary Ruane",
@@ -2548,11 +2548,11 @@
       "comedian"
     ],
     "lastWatched": {
-      "title": "The Empire Strikes Back",
-      "date": "2026-09-27",
+      "title": "Return of the Jedi",
+      "date": "2026-09-28",
       "rating": null
     },
-    "followers": 9289
+    "followers": 9293
   },
   {
     "name": "Ziwe",
@@ -2563,10 +2563,10 @@
       "writer"
     ],
     "lastWatched": {
-      "title": "The Firm",
-      "date": "2026-09-26",
+      "title": "Mission: Impossible",
+      "date": "2026-09-27",
       "rating": 5
     },
-    "followers": 47114
+    "followers": 47158
   }
 ]
