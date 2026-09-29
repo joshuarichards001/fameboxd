@@ -1,6 +1,9 @@
 {
-  "generatedAt": "2026-09-28T17:38:33.836Z",
+  "generatedAt": "2026-09-29T15:49:29.371Z",
   "entries": [
+    {"s":"hellraiser-hellseeker","d":"2026-09-28","r":1},
+    {"s":"goosebumps-stay-out-of-the-basement-1996","d":"2026-09-28","r":3,"w":1},
+    {"s":"the-dreamed-adventure","d":"2026-09-28","r":4},
     {"s":"rose-2026","d":"2026-09-28","r":4},
     {"s":"the-butterfly-murders","d":"2026-09-27","r":4},
     {"s":"hellraiser-inferno","d":"2026-09-27","r":1},
@@ -48,7 +51,6 @@
     {"s":"teenage-wasteland-2025","d":"2026-09-14","r":4},
     {"s":"batman-1989","d":"2026-09-11","r":4,"w":1,"l":1},
     {"s":"marie-antoinette-2006","d":"2026-09-10","r":4.5,"w":1},
-    {"s":"chronovisor","d":"2026-09-10","r":4.5},
     {"s":"onslaught-2026","d":"2026-09-09","r":2},
     {"s":"ogroff","d":"2026-09-09","r":4.5},
     {"s":"ju-on-the-grudge","d":"2026-09-08","r":4,"w":1},
