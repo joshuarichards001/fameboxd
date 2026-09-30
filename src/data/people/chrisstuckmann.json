@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-09-29T15:49:29.333Z",
+  "generatedAt": "2026-09-30T15:54:19.644Z",
   "entries": [
+    {"s":"forgotten-island-2026","d":"2026-09-29","r":null,"l":1},
+    {"s":"goosebumps-stay-out-of-the-basement-1996","d":"2026-09-29","r":null,"w":1,"l":1},
     {"s":"the-crow","d":"2026-09-28","r":null,"w":1,"l":1},
     {"s":"primetime-2026","d":"2026-09-28","r":null,"l":1},
     {"s":"reincarnation","d":"2026-09-28","r":null,"l":1},
@@ -49,8 +51,6 @@
     {"s":"it-ends","d":"2026-08-29","r":null,"l":1},
     {"s":"the-whisper-man","d":"2026-08-29","r":null},
     {"s":"sonic-the-hedgehog-2","d":"2026-08-28","r":null,"w":1,"l":1},
-    {"s":"buddy-2026","d":"2026-08-28","r":null,"l":1},
-    {"s":"dead-of-winter","d":"2026-08-28","r":null},
     {"s":"batman-knightfall-part-1-knightfall","d":"2026-08-27","r":null,"l":1},
     {"s":"the-invasion","d":"2026-08-24","r":null,"w":1},
     {"s":"mirrors","d":"2026-08-23","r":null},
