@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-09-29T15:49:29.437Z",
+  "generatedAt": "2026-10-01T16:25:44.564Z",
   "entries": [
+    {"s":"house-party","d":"2026-09-30","r":4,"l":1},
     {"s":"say-anything","d":"2026-09-29","r":5,"w":1,"l":1},
     {"s":"little-man-tate","d":"2026-09-29","r":3},
     {"s":"personal-velocity","d":"2026-09-29","r":3.5},
@@ -50,7 +51,6 @@
     {"s":"harley-katya","d":"2026-08-01","r":null,"l":1},
     {"s":"pee-wees-big-adventure","d":"2026-07-31","r":5,"l":1},
     {"s":"ulysses-gaze","d":"2026-07-30","r":5,"w":1,"l":1},
-    {"s":"teenage-sex-and-death-at-camp-miasma","d":"2026-07-30","r":4.5,"w":1,"l":1},
     {"s":"presumed-innocent","d":"2026-07-29","r":3.5},
     {"s":"poster-boy-becoming-zyzz","d":"2026-07-28","r":null,"l":1},
     {"s":"diamonds-are-forever","d":"2026-07-27","r":1.5,"l":1},

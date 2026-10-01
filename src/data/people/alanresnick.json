@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-09-25T14:35:44.596Z",
+  "generatedAt": "2026-10-01T16:25:44.414Z",
   "entries": [
+    {"s":"minnie-and-moskowitz","d":"2026-10-01","r":3.5,"l":1},
     {"s":"primetime-2026","d":"2026-09-24","r":5,"l":1},
     {"s":"one-night-only-2026","d":"2026-08-29","r":0.5},
     {"s":"the-end-of-oak-street","d":"2026-08-28","r":null},
@@ -50,7 +51,6 @@
     {"s":"heaven","d":"2025-11-14","r":5,"l":1},
     {"s":"et-the-extra-terrestrial","d":"2025-10-26","r":null,"w":1,"l":1},
     {"s":"cemetery-man","d":"2025-10-24","r":null,"l":1},
-    {"s":"tron-ares","d":"2025-10-24","r":null,"w":1},
     {"s":"tron-ares","d":"2025-10-15","r":3},
     {"s":"dance-freak","d":"2025-10-07","r":null,"l":1},
     {"s":"the-fly-ii","d":"2025-10-06","r":2,"w":1},
