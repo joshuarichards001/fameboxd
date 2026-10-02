@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-10-01T16:25:44.419Z",
+  "generatedAt": "2026-10-02T15:47:04.087Z",
   "entries": [
+    {"s":"verity-2026","d":"2026-10-01","r":null},
+    {"s":"digger-2026","d":"2026-10-01","r":5,"l":1},
     {"s":"godzilla-minus-one","d":"2026-10-01","r":null,"w":1,"l":1},
     {"s":"the-stranger-2025-1","d":"2026-09-30","r":null,"l":1},
     {"s":"black-hawk-down","d":"2026-09-30","r":5,"w":1,"l":1},
@@ -49,7 +51,6 @@
     {"s":"yesterday-girl","d":"2026-09-04","r":null,"l":1},
     {"s":"everest-the-other-side","d":"2026-09-03","r":5,"l":1},
     {"s":"no-pain","d":"2026-09-03","r":null},
-    {"s":"wild-horse-nine","d":"2026-09-03","r":null,"l":1},
     {"s":"falling-house","d":"2026-09-02","r":null,"l":1},
     {"s":"tony-2026","d":"2026-08-30","r":null,"l":1},
     {"s":"the-whisper-man","d":"2026-08-29","r":null},
