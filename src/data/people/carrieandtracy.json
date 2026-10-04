@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-10-03T14:18:12.690Z",
+  "generatedAt": "2026-10-04T14:47:03.185Z",
   "entries": [
+    {"s":"scobie-malone","d":"2026-10-03","r":null},
+    {"s":"the-wiz","d":"2026-10-03","r":null,"w":1},
     {"s":"jug-face","d":"2026-10-02","r":null},
     {"s":"the-inugami-family","d":"2026-09-29","r":null},
     {"s":"mother-mary-2026","d":"2026-09-28","r":null},
@@ -49,7 +51,6 @@
     {"s":"wyatt-earp","d":"2026-08-23","r":null},
     {"s":"the-mexican","d":"2026-08-23","r":null},
     {"s":"the-ghost-and-mr-chicken","d":"2026-08-22","r":null,"w":1},
-    {"s":"first-to-fight","d":"2026-08-22","r":null},
     {"s":"kill-list","d":"2026-08-21","r":null,"w":1},
     {"s":"the-split","d":"2026-08-20","r":null},
     {"s":"crimson-tide","d":"2026-08-19","r":null,"w":1},

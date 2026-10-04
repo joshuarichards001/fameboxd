@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-10-02T15:47:04.135Z",
+  "generatedAt": "2026-10-04T14:47:03.222Z",
   "entries": [
+    {"s":"digger-2026","d":"2026-10-03","r":null},
     {"s":"shutter-island","d":"2026-10-01","r":null,"w":1},
     {"s":"your-mother-your-mother-your-mother","d":"2026-10-01","r":null},
     {"s":"rocky","d":"2026-09-30","r":null,"w":1},
@@ -50,7 +51,6 @@
     {"s":"new-york-new-york","d":"2026-08-12","r":null,"w":1},
     {"s":"manhunter","d":"2026-08-11","r":5,"l":1},
     {"s":"resident-evil-afterlife","d":"2026-08-10","r":null},
-    {"s":"one-night-only-2026","d":"2026-08-10","r":null},
     {"s":"resident-evil-apocalypse","d":"2026-08-05","r":null},
     {"s":"resident-evil","d":"2026-06-05","r":null,"w":1},
     {"s":"backrooms-2026","d":"2026-06-02","r":null,"l":1},

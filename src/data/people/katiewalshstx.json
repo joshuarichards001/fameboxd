@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-10-03T14:18:12.773Z",
+  "generatedAt": "2026-10-04T14:47:03.262Z",
   "entries": [
+    {"s":"miami-vice","d":"2026-10-03","r":null,"w":1},
+    {"s":"sins-of-our-mother","d":"2026-10-03","r":null},
     {"s":"everybody-to-kenmure-street","d":"2026-10-02","r":null,"l":1},
     {"s":"wicker","d":"2026-10-02","r":null},
     {"s":"take-me-home-2026","d":"2026-10-01","r":null},
@@ -47,8 +49,6 @@
     {"s":"practical-magic","d":"2026-08-29","r":null,"w":1},
     {"s":"death-of-the-pastors-wife-2026","d":"2026-08-27","r":null},
     {"s":"wild-horse-nine","d":"2026-08-27","r":null},
-    {"s":"how-to-divorce-during-the-war","d":"2026-08-26","r":null},
-    {"s":"minotaur-2026","d":"2026-08-25","r":null,"l":1},
     {"s":"the-dog-stars","d":"2026-08-24","r":null},
     {"s":"coyote-vs-acme","d":"2026-08-10","r":null},
     {"s":"the-rivals-of-amziah-king","d":"2026-08-06","r":null},
