@@ -1,6 +1,9 @@
 {
-  "generatedAt": "2026-10-04T14:47:03.185Z",
+  "generatedAt": "2026-10-05T18:25:49.600Z",
   "entries": [
+    {"s":"reptile-2023","d":"2026-10-05","r":null},
+    {"s":"contract-on-cherry-street","d":"2026-10-05","r":null},
+    {"s":"coyote-vs-acme","d":"2026-10-04","r":null},
     {"s":"scobie-malone","d":"2026-10-03","r":null},
     {"s":"the-wiz","d":"2026-10-03","r":null,"w":1},
     {"s":"jug-face","d":"2026-10-02","r":null},

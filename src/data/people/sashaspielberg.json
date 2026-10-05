@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-10-04T14:47:03.298Z",
+  "generatedAt": "2026-10-05T18:25:49.763Z",
   "entries": [
+    {"s":"duel","d":"2026-10-04","r":5},
     {"s":"chances-are","d":"2026-10-03","r":null},
     {"s":"mona-lisa-smile","d":"2026-10-03","r":null},
     {"s":"funny-games","d":"2026-10-02","r":null},
@@ -50,7 +51,6 @@
     {"s":"maddies-secret","d":"2026-07-14","r":null,"l":1},
     {"s":"beastie-boys-story","d":"2026-07-11","r":null},
     {"s":"i-love-you-alice-b-toklas","d":"2026-07-09","r":1.5},
-    {"s":"my-old-ass","d":"2026-07-09","r":null},
     {"s":"bigger-than-life","d":"2026-07-01","r":4},
     {"s":"cape-fear","d":"2026-06-29","r":3.5},
     {"s":"the-andromeda-strain","d":"2026-06-27","r":4},

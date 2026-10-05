@@ -1,6 +1,10 @@
 {
-  "generatedAt": "2026-10-03T14:18:12.701Z",
+  "generatedAt": "2026-10-05T18:25:49.613Z",
   "entries": [
+    {"s":"exorcist-the-beginning","d":"2026-10-05","r":null},
+    {"s":"the-celebration","d":"2026-10-05","r":5,"l":1},
+    {"s":"lets-scare-jessica-to-death","d":"2026-10-04","r":null},
+    {"s":"monster-house","d":"2026-10-04","r":null,"w":1,"l":1},
     {"s":"soulm8te","d":"2026-10-02","r":null},
     {"s":"goosebumps-welcome-to-dead-house","d":"2026-10-02","r":null,"w":1,"l":1},
     {"s":"the-nightmare-before-christmas","d":"2026-10-02","r":5,"w":1,"l":1},
@@ -47,7 +51,6 @@
     {"s":"the-glass-house","d":"2026-09-05","r":null,"w":1,"l":1},
     {"s":"bedazzled-2000","d":"2026-09-04","r":null,"l":1},
     {"s":"akira","d":"2026-09-03","r":null,"w":1,"l":1},
-    {"s":"cars","d":"2026-09-03","r":null,"w":1,"l":1},
     {"s":"cursed","d":"2026-09-02","r":null,"w":1,"l":1},
     {"s":"valentine","d":"2026-09-02","r":null,"w":1,"l":1},
     {"s":"jeepers-creepers-2","d":"2026-09-01","r":null,"w":1,"l":1},

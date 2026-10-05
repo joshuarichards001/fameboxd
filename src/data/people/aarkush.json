@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-10-02T15:47:04.069Z",
+  "generatedAt": "2026-10-05T18:25:49.571Z",
   "entries": [
+    {"s":"east-of-eden-2026","d":"2026-10-04","r":4.5,"l":1},
+    {"s":"a-talent-for-murder-2026","d":"2026-10-03","r":4,"l":1},
     {"s":"zero-dark-thirty","d":"2026-10-01","r":4,"w":1},
     {"s":"his-kind-of-woman","d":"2026-10-01","r":3.5},
     {"s":"minnie-and-moskowitz","d":"2026-10-01","r":1},
@@ -48,7 +50,6 @@
     {"s":"four-nights-of-a-dreamer","d":"2026-07-17","r":2},
     {"s":"cruel-story-of-youth","d":"2026-07-16","r":3},
     {"s":"inception","d":"2026-07-14","r":2,"w":1},
-    {"s":"all-her-fault","d":"2026-07-13","r":3.5},
     {"s":"are-we-good-2025","d":"2026-07-12","r":4.5,"l":1},
     {"s":"billy-preston-thats-the-way-god-planned-it","d":"2026-07-11","r":4},
     {"s":"moonrise","d":"2026-07-10","r":5,"w":1},
