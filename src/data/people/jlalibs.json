@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-10-05T18:25:49.668Z",
+  "generatedAt": "2026-10-06T15:55:34.684Z",
   "entries": [
+    {"s":"hellraiser-hellworld","d":"2026-10-05","r":2,"w":1},
+    {"s":"emotion","d":"2026-10-05","r":4},
     {"s":"the-projectionist-2026","d":"2026-10-04","r":2},
     {"s":"landscapes-of-memory-2026","d":"2026-10-04","r":null},
     {"s":"the-grandfather-puzzle","d":"2026-10-04","r":4.5},
@@ -49,8 +51,6 @@
     {"s":"highway-hypnosis-1984","d":"2026-09-21","r":5},
     {"s":"my-moms-a-werewolf","d":"2026-09-20","r":3},
     {"s":"practical-magic","d":"2026-09-20","r":4,"w":1,"l":1},
-    {"s":"hold-that-ghost","d":"2026-09-20","r":3.5},
-    {"s":"the-uprising-2026","d":"2026-09-20","r":3},
     {"s":"dollman-vs-demonic-toys","d":"2026-09-19","r":2.5},
     {"s":"the-wild-palms","d":"2026-09-18","r":5},
     {"s":"arrested-memory","d":"2026-09-17","r":3},

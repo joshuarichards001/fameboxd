@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-10-05T18:25:49.635Z",
+  "generatedAt": "2026-10-06T15:55:34.654Z",
   "entries": [
+    {"s":"shaolin-soccer","d":"2026-10-05","r":null,"l":1},
     {"s":"all-that-jazz","d":"2026-10-04","r":5,"w":1,"l":1},
     {"s":"weapons-2025","d":"2026-10-03","r":5,"w":1,"l":1},
     {"s":"sinners-2025","d":"2026-10-03","r":5,"w":1,"l":1},
@@ -50,7 +51,6 @@
     {"s":"pain-gain","d":"2026-07-05","r":4.5,"w":1,"l":1},
     {"s":"the-sheep-detectives","d":"2026-07-04","r":null,"l":1},
     {"s":"minions-monsters-2026","d":"2026-07-03","r":4.5,"l":1},
-    {"s":"toy-story-5","d":"2026-07-03","r":null,"l":1},
     {"s":"good-luck-have-fun-dont-die","d":"2026-07-02","r":null,"l":1},
     {"s":"jackass-best-and-last","d":"2026-07-01","r":null,"l":1},
     {"s":"the-killers-live-from-the-royal-albert-hall","d":"2026-07-01","r":5,"w":1,"l":1},

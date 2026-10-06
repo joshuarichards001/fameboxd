@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-10-05T18:25:49.600Z",
+  "generatedAt": "2026-10-06T15:55:34.623Z",
   "entries": [
+    {"s":"crimson-gold","d":"2026-10-05","r":null},
     {"s":"reptile-2023","d":"2026-10-05","r":null},
     {"s":"contract-on-cherry-street","d":"2026-10-05","r":null},
     {"s":"coyote-vs-acme","d":"2026-10-04","r":null},
@@ -50,7 +51,6 @@
     {"s":"full-moon-in-blue-water","d":"2026-08-26","r":null},
     {"s":"heartbreakers","d":"2026-08-26","r":null},
     {"s":"the-package","d":"2026-08-24","r":null,"w":1},
-    {"s":"marooned","d":"2026-08-24","r":null},
     {"s":"wyatt-earp","d":"2026-08-23","r":null},
     {"s":"the-mexican","d":"2026-08-23","r":null},
     {"s":"the-ghost-and-mr-chicken","d":"2026-08-22","r":null,"w":1},

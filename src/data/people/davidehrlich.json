@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-10-05T18:25:49.628Z",
+  "generatedAt": "2026-10-06T15:55:34.648Z",
   "entries": [
+    {"s":"artificial-2026","d":"2026-10-06","r":3},
     {"s":"a-day-in-the-life-of-jo-chapter-phaedra","d":"2026-10-04","r":4},
     {"s":"the-liberation-2026","d":"2026-10-03","r":null},
     {"s":"behemoth-2026","d":"2026-10-02","r":3.5},
@@ -50,7 +51,6 @@
     {"s":"police-story-3-super-cop","d":"2026-08-05","r":4,"w":1},
     {"s":"evangelion-3010-thrice-upon-a-time","d":"2026-08-02","r":3.5},
     {"s":"evangelion-30-you-can-not-redo","d":"2026-08-01","r":2.5,"w":1},
-    {"s":"maddies-secret","d":"2026-08-01","r":3.5},
     {"s":"nightborn","d":"2026-07-31","r":2.5},
     {"s":"tony-2026","d":"2026-07-29","r":3.5},
     {"s":"spider-man-brand-new-day","d":"2026-07-28","r":2},

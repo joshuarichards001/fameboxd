@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-10-05T18:25:49.765Z",
+  "generatedAt": "2026-10-06T15:55:34.750Z",
   "entries": [
+    {"s":"artificial-2026","d":"2026-10-05","r":null,"l":1},
     {"s":"portrait-of-an-artist-stephen-curry","d":"2026-10-04","r":null},
     {"s":"the-scout-2025","d":"2026-10-03","r":null},
     {"s":"a-statement-2026","d":"2026-10-03","r":null,"l":1},
@@ -48,7 +49,6 @@
     {"s":"uncommon-valor","d":"2026-09-14","r":null},
     {"s":"cisco-pike","d":"2026-09-13","r":null,"w":1},
     {"s":"a-covenant-with-death","d":"2026-09-13","r":null},
-    {"s":"split-decisions","d":"2026-09-12","r":null},
     {"s":"behemoth-2026","d":"2026-08-10","r":null,"l":1},
     {"s":"slanted","d":"2026-07-08","r":null},
     {"s":"the-odyssey-2026","d":"2026-07-06","r":null,"l":1},
