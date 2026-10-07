@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-10-06T15:55:34.631Z",
+  "generatedAt": "2026-10-07T16:26:41.373Z",
   "entries": [
+    {"s":"digger-2026","d":"2026-10-06","r":null},
     {"s":"chronovisor","d":"2026-10-05","r":null,"l":1},
     {"s":"friday-the-13th-part-2","d":"2026-10-04","r":null,"w":1,"l":1},
     {"s":"friday-the-13th","d":"2026-10-04","r":null,"w":1,"l":1},
@@ -50,7 +51,6 @@
     {"s":"black-mountain-side","d":"2026-06-11","r":null},
     {"s":"the-dyatlov-pass-incident","d":"2026-06-10","r":null},
     {"s":"the-alpinist","d":"2026-06-05","r":null},
-    {"s":"backrooms-2026","d":"2026-06-05","r":null,"w":1,"l":1},
     {"s":"the-hand-that-rocks-the-cradle","d":"2026-06-01","r":null,"w":1},
     {"s":"backrooms-2026","d":"2026-05-26","r":null,"l":1},
     {"s":"ready-or-not-2-here-i-come","d":"2026-05-23","r":null},
