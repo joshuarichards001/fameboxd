@@ -1,6 +1,10 @@
 {
-  "generatedAt": "2026-10-07T16:26:41.486Z",
+  "generatedAt": "2026-10-08T16:27:04.064Z",
   "entries": [
+    {"s":"us-2019","d":"2026-10-07","r":4,"w":1,"l":1},
+    {"s":"the-devil-in-miss-jones","d":"2026-10-07","r":5,"l":1},
+    {"s":"a-nightmare-on-elm-street-4-the-dream-master","d":"2026-10-07","r":4,"w":1,"l":1},
+    {"s":"friday-the-13th-the-final-chapter","d":"2026-10-07","r":5,"w":1,"l":1},
     {"s":"hobgoblins","d":"2026-10-06","r":5,"l":1},
     {"s":"trog","d":"2026-10-05","r":3.5,"w":1,"l":1},
     {"s":"lady-in-white","d":"2026-10-04","r":4,"l":1},
@@ -47,7 +51,6 @@
     {"s":"shogun-assassin","d":"2026-08-30","r":5,"w":1,"l":1},
     {"s":"coyote-vs-acme","d":"2026-08-29","r":5,"l":1},
     {"s":"breakfast-of-champions","d":"2026-08-28","r":5,"l":1},
-    {"s":"in-the-mouth-of-madness","d":"2026-08-28","r":3.5,"w":1,"l":1},
     {"s":"nine-to-five","d":"2026-08-25","r":5,"l":1},
     {"s":"fucktoys","d":"2026-08-23","r":5,"l":1},
     {"s":"pathetic-fallacy","d":"2026-08-21","r":null},

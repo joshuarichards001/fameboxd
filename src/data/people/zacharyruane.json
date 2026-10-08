@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-10-07T16:26:41.495Z",
+  "generatedAt": "2026-10-08T16:27:04.074Z",
   "entries": [
+    {"s":"after-ever-happy","d":"2026-10-08","r":null},
+    {"s":"the-odyssey-2026","d":"2026-10-08","r":null,"l":1},
     {"s":"resident-evil-2026","d":"2026-10-07","r":null},
     {"s":"after-we-fell","d":"2026-10-04","r":null},
     {"s":"star-wars-episode-ii-attack-of-the-clones","d":"2026-10-04","r":null,"w":1},
@@ -49,8 +51,6 @@
     {"s":"with-hasan-in-gaza","d":"2026-05-17","r":null,"l":1},
     {"s":"divine-hammer","d":"2026-05-17","r":null,"l":1},
     {"s":"the-shadowmans-nightmare","d":"2026-05-16","r":null,"l":1},
-    {"s":"boys-in-the-sand","d":"2026-05-16","r":null},
-    {"s":"not-a-pretty-picture","d":"2026-05-16","r":null,"l":1},
     {"s":"ishtar","d":"2026-05-15","r":null,"w":1,"l":1},
     {"s":"the-devils","d":"2026-05-14","r":null,"l":1},
     {"s":"i-swear","d":"2026-05-04","r":null},

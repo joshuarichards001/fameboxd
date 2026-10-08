@@ -1,8 +1,10 @@
 {
-  "generatedAt": "2026-10-07T16:26:41.432Z",
+  "generatedAt": "2026-10-08T16:27:03.994Z",
   "entries": [
+    {"s":"fatherland-2026","d":"2026-10-07","r":null},
     {"s":"you-can-see-everything","d":"2026-10-06","r":null,"l":1},
     {"s":"artificial-2026","d":"2026-10-05","r":null},
+    {"s":"the-beast-2026","d":"2026-10-04","r":null},
     {"s":"miami-vice","d":"2026-10-04","r":null,"w":1,"l":1},
     {"s":"miami-vice","d":"2026-10-03","r":null,"w":1},
     {"s":"sins-of-our-mother","d":"2026-10-03","r":null},
@@ -49,7 +51,6 @@
     {"s":"the-sun-never-sets-2026","d":"2026-08-31","r":null,"w":1,"l":1},
     {"s":"the-murder-of-rachel-nickell","d":"2026-08-31","r":null},
     {"s":"practical-magic-2","d":"2026-08-29","r":null},
-    {"s":"practical-magic","d":"2026-08-29","r":null,"w":1},
     {"s":"death-of-the-pastors-wife-2026","d":"2026-08-27","r":null},
     {"s":"the-dog-stars","d":"2026-08-24","r":null},
     {"s":"coyote-vs-acme","d":"2026-08-10","r":null},
