@@ -1,6 +1,9 @@
 {
-  "generatedAt": "2026-10-04T14:47:03.290Z",
+  "generatedAt": "2026-10-10T15:21:31.155Z",
   "entries": [
+    {"s":"mary-poppins","d":"2026-10-09","r":null,"l":1},
+    {"s":"point-break","d":"2026-10-03","r":5,"w":1,"l":1},
+    {"s":"deep-cover","d":"2026-10-03","r":3.5,"l":1},
     {"s":"juice-wrld-into-the-abyss","d":"2026-10-03","r":3,"l":1},
     {"s":"the-simpsons-movie","d":"2026-09-26","r":null},
     {"s":"stop-that-train","d":"2026-09-25","r":null,"l":1},

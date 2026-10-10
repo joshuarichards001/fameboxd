@@ -1,9 +1,11 @@
 {
-  "generatedAt": "2026-10-09T16:10:34.983Z",
+  "generatedAt": "2026-10-10T15:21:31.124Z",
   "entries": [
+    {"s":"the-social-reckoning","d":"2026-10-09","r":null},
     {"s":"naza","d":"2026-10-08","r":null,"l":1},
     {"s":"the-dreamed-adventure","d":"2026-10-08","r":null,"l":1},
     {"s":"fatherland-2026","d":"2026-10-07","r":null},
+    {"s":"fjord-2026","d":"2026-10-06","r":null,"w":1},
     {"s":"you-can-see-everything","d":"2026-10-06","r":null,"l":1},
     {"s":"artificial-2026","d":"2026-10-05","r":null},
     {"s":"the-beast-2026","d":"2026-10-04","r":null},
@@ -45,9 +47,7 @@
     {"s":"onslaught-2026","d":"2026-09-04","r":null},
     {"s":"unfaithful","d":"2026-09-03","r":null},
     {"s":"rose-2026","d":"2026-09-03","r":null,"l":1},
-    {"s":"teenage-wasteland-2025","d":"2026-09-03","r":null,"w":1,"l":1},
     {"s":"the-uprising-2026","d":"2026-09-02","r":null},
-    {"s":"boorman-and-the-devil","d":"2026-09-02","r":null},
     {"s":"the-weight-2026","d":"2026-08-31","r":null},
     {"s":"the-sun-never-sets-2026","d":"2026-08-31","r":null,"w":1,"l":1},
     {"s":"practical-magic-2","d":"2026-08-29","r":null},
