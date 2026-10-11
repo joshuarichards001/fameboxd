@@ -1,6 +1,9 @@
 {
-  "generatedAt": "2026-10-09T16:10:34.923Z",
+  "generatedAt": "2026-10-11T15:38:28.222Z",
   "entries": [
+    {"s":"slumdog-millionaire","d":"2026-10-11","r":5,"w":1,"l":1},
+    {"s":"primetime-2026","d":"2026-10-11","r":null},
+    {"s":"fear-nothing","d":"2026-10-11","r":null},
     {"s":"animals-2026","d":"2026-10-09","r":null},
     {"s":"the-shining","d":"2026-10-06","r":5,"w":1,"l":1},
     {"s":"fantastic-mr-fox","d":"2026-10-02","r":null,"w":1,"l":1},

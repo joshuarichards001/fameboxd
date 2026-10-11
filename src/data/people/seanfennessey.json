@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-10-10T15:21:31.166Z",
+  "generatedAt": "2026-10-11T15:38:28.305Z",
   "entries": [
+    {"s":"special-effects","d":"2026-10-10","r":null,"l":1},
     {"s":"trick-or-treat-1986","d":"2026-10-09","r":null},
     {"s":"poltergeist-ii-the-other-side","d":"2026-10-09","r":null},
     {"s":"other-mommy","d":"2026-10-09","r":null},
@@ -47,7 +48,6 @@
     {"s":"sorority-row","d":"2026-09-17","r":null},
     {"s":"my-bloody-valentine","d":"2026-09-17","r":null,"w":1,"l":1},
     {"s":"penny-lane-is-dead","d":"2026-09-17","r":null},
-    {"s":"black-zombie","d":"2026-09-17","r":null},
     {"s":"animals-2026","d":"2026-08-22","r":null},
     {"s":"behemoth-2026","d":"2026-08-10","r":null,"l":1},
     {"s":"slanted","d":"2026-07-08","r":null},
