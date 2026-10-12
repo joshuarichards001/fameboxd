@@ -1,6 +1,10 @@
 {
-  "generatedAt": "2026-10-11T15:38:28.250Z",
+  "generatedAt": "2026-10-12T19:00:55.716Z",
   "entries": [
+    {"s":"other-mommy","d":"2026-10-12","r":1},
+    {"s":"alice-sweet-alice","d":"2026-10-11","r":4,"w":1,"l":1},
+    {"s":"sitting-ducks","d":"2026-10-11","r":4,"w":1},
+    {"s":"the-devils-nightmare","d":"2026-10-11","r":3},
     {"s":"the-beast-2026","d":"2026-10-10","r":3},
     {"s":"an-autumns-tale","d":"2026-10-09","r":4},
     {"s":"the-man-i-love-2026","d":"2026-10-08","r":4},
@@ -47,10 +51,6 @@
     {"s":"godzilla-minus-zero","d":"2026-09-26","r":4.5},
     {"s":"paper-tiger-2026","d":"2026-09-25","r":4.5,"w":1},
     {"s":"the-unknown-2026","d":"2026-09-24","r":4},
-    {"s":"the-loneliest-man-in-town-2026","d":"2026-09-24","r":4},
-    {"s":"i-rarely-wake-up-dreaming","d":"2026-09-24","r":3},
-    {"s":"red-rocks-2026","d":"2026-09-24","r":3.5},
-    {"s":"bucking-fastard","d":"2026-09-24","r":4},
     {"s":"com-for-murder","d":"2026-09-23","r":3.5},
     {"s":"riki-oh-the-story-of-ricky","d":"2026-09-22","r":4,"w":1},
     {"s":"a-nightmare-on-elm-street","d":"2026-09-22","r":5,"w":1,"l":1},
