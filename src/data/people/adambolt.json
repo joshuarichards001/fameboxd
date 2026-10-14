@@ -1,6 +1,9 @@
 {
-  "generatedAt": "2026-10-11T15:38:28.185Z",
+  "generatedAt": "2026-10-14T14:29:45.032Z",
   "entries": [
+    {"s":"news-of-the-world","d":"2026-10-14","r":2.5},
+    {"s":"cloud-atlas","d":"2026-10-14","r":4,"l":1},
+    {"s":"valerian-and-the-city-of-a-thousand-planets","d":"2026-10-14","r":2.5,"l":1},
     {"s":"the-social-reckoning","d":"2026-10-11","r":4,"l":1},
     {"s":"50-50","d":"2026-10-09","r":4.5,"l":1},
     {"s":"digger-2026","d":"2026-10-08","r":4,"l":1},
