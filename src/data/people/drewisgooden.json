@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-10-12T19:00:55.683Z",
+  "generatedAt": "2026-10-15T14:09:06.716Z",
   "entries": [
+    {"s":"mock-trial","d":"2026-10-14","r":null,"l":1},
     {"s":"dallas-buyers-club","d":"2026-10-10","r":3.5},
     {"s":"the-history-of-concrete","d":"2026-10-08","r":4,"l":1},
     {"s":"little-miss-sunshine","d":"2026-09-17","r":4.5,"w":1},

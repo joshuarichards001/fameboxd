@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-10-14T14:29:45.096Z",
+  "generatedAt": "2026-10-15T14:09:06.708Z",
   "entries": [
+    {"s":"the-night-that-binds-us","d":"2026-10-14","r":null},
     {"s":"i-play-rocky","d":"2026-10-14","r":2.5},
     {"s":"two-cigarettes-three-nights","d":"2026-10-13","r":null},
     {"s":"a-day-in-the-life-of-jo-chapter-phaedra","d":"2026-10-12","r":4,"w":1},
@@ -50,7 +51,6 @@
     {"s":"american-doctor","d":"2026-08-14","r":4,"w":1},
     {"s":"dont-say-good-luck","d":"2026-08-14","r":3.5,"w":1,"l":1},
     {"s":"coyote-vs-acme","d":"2026-08-12","r":3.5},
-    {"s":"the-end-of-oak-street","d":"2026-08-12","r":4},
     {"s":"girl-with-a-suitcase","d":"2026-08-11","r":null,"l":1},
     {"s":"teenage-sex-and-death-at-camp-miasma","d":"2026-08-10","r":4.5,"w":1},
     {"s":"the-last-house-2026","d":"2026-08-07","r":2},

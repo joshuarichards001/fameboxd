@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-10-12T19:00:55.814Z",
+  "generatedAt": "2026-10-15T14:09:06.831Z",
   "entries": [
+    {"s":"tenebre","d":"2026-10-13","r":3.5,"w":1,"l":1},
+    {"s":"fresh-meat-2026","d":"2026-10-12","r":4,"l":1},
     {"s":"the-princess-bride","d":"2026-10-09","r":5,"w":1,"l":1},
     {"s":"trick-r-treat","d":"2026-10-09","r":4,"w":1,"l":1},
     {"s":"labyrinth","d":"2026-10-09","r":4,"w":1,"l":1},
@@ -47,8 +49,6 @@
     {"s":"valerie-and-her-week-of-wonders","d":"2026-09-11","r":3.5,"l":1},
     {"s":"the-loved-one","d":"2026-09-11","r":3},
     {"s":"untold-mr-t-i-pity-the-fool","d":"2026-09-10","r":null},
-    {"s":"star-trek-iv-the-voyage-home","d":"2026-09-10","r":3,"l":1},
-    {"s":"akira","d":"2026-09-08","r":5,"w":1,"l":1},
     {"s":"ghost-in-the-cell","d":"2026-09-05","r":4,"l":1},
     {"s":"whalefall","d":"2026-09-03","r":4,"l":1},
     {"s":"coyote-vs-acme","d":"2026-09-01","r":4,"l":1},

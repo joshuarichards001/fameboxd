@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-10-14T14:29:45.084Z",
+  "generatedAt": "2026-10-15T14:09:06.695Z",
   "entries": [
+    {"s":"animals-2026","d":"2026-10-14","r":null},
     {"s":"someones-watching-me","d":"2026-10-13","r":null,"l":1},
     {"s":"the-howling","d":"2026-10-12","r":null,"w":1,"l":1},
     {"s":"once-bitten-1985","d":"2026-10-11","r":null},
@@ -50,7 +51,6 @@
     {"s":"a-tale-of-two-sisters","d":"2026-09-15","r":null,"w":1,"l":1},
     {"s":"saw-iii","d":"2026-09-13","r":null,"w":1,"l":1},
     {"s":"shaun-the-sheep-the-beast-of-mossy-bottom","d":"2026-09-13","r":null,"l":1},
-    {"s":"hannibal-rising","d":"2026-09-13","r":null},
     {"s":"friday-the-13th-part-2","d":"2026-09-12","r":null,"w":1},
     {"s":"practical-magic-2","d":"2026-09-11","r":null,"l":1},
     {"s":"big-shark","d":"2026-09-09","r":null},
