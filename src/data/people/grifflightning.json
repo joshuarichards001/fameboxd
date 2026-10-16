@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-10-15T14:09:06.725Z",
+  "generatedAt": "2026-10-16T13:56:22.558Z",
   "entries": [
+    {"s":"whalefall","d":"2026-10-15","r":null,"l":1},
     {"s":"spy","d":"2026-10-14","r":null,"w":1},
     {"s":"the-social-reckoning","d":"2026-10-10","r":null},
     {"s":"mockbuster","d":"2026-10-10","r":null},
@@ -50,7 +51,6 @@
     {"s":"the-zen-diaries-of-garry-shandling","d":"2026-08-22","r":null,"w":1,"l":1},
     {"s":"fargo","d":"2026-08-22","r":5,"w":1,"l":1},
     {"s":"hannibal","d":"2026-08-21","r":null},
-    {"s":"red-dragon","d":"2026-08-21","r":null},
     {"s":"trees-lounge","d":"2026-08-19","r":null,"w":1,"l":1},
     {"s":"the-end-of-oak-street","d":"2026-08-18","r":null,"l":1},
     {"s":"coyote-vs-acme","d":"2026-08-17","r":null,"l":1},

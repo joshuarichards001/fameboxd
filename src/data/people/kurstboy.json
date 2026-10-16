@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-10-15T14:09:06.779Z",
+  "generatedAt": "2026-10-16T13:56:22.613Z",
   "entries": [
+    {"s":"you-can-see-everything","d":"2026-10-15","r":null,"l":1},
     {"s":"the-tenant","d":"2026-10-14","r":4,"l":1},
     {"s":"bride-of-frankenstein","d":"2026-10-13","r":4,"l":1},
     {"s":"its-the-great-pumpkin-charlie-brown","d":"2026-10-12","r":null,"l":1},
@@ -50,7 +51,6 @@
     {"s":"1941","d":"2026-08-21","r":2},
     {"s":"bleeder-1","d":"2026-08-21","r":null,"l":1},
     {"s":"sauna-sickness","d":"2026-08-21","r":null,"l":1},
-    {"s":"dark-skin-bruises-differently","d":"2026-08-21","r":null,"l":1},
     {"s":"the-adventures-of-tintin","d":"2026-08-20","r":4,"l":1},
     {"s":"bicycle-thieves","d":"2026-08-19","r":4.5,"l":1},
     {"s":"the-odyssey-2026","d":"2026-08-18","r":4.5,"w":1,"l":1},

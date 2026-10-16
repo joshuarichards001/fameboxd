@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-10-15T14:09:06.762Z",
+  "generatedAt": "2026-10-16T13:56:22.597Z",
   "entries": [
+    {"s":"alice-sweet-alice","d":"2026-10-15","r":null,"l":1},
     {"s":"digger-2026","d":"2026-10-14","r":null},
     {"s":"vampires-kiss","d":"2026-10-13","r":null},
     {"s":"niu-lai","d":"2026-10-11","r":null},
@@ -48,7 +49,6 @@
     {"s":"fear-street-1994","d":"2026-08-03","r":null,"w":1,"l":1},
     {"s":"evil-dead-burn","d":"2026-07-31","r":null},
     {"s":"spider-man-brand-new-day","d":"2026-07-30","r":null,"l":1},
-    {"s":"minions-monsters-2026","d":"2026-07-29","r":null},
     {"s":"witchy-ways","d":"2026-07-28","r":null},
     {"s":"undertone-2025","d":"2026-07-08","r":null},
     {"s":"breaking-the-ice-2022","d":"2026-07-07","r":null},
