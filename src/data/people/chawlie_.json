@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-09-14T23:48:17.723Z",
+  "generatedAt": "2026-10-18T13:15:14.099Z",
   "entries": [
+    {"s":"young-adult","d":"2026-10-17","r":3.5},
     {"s":"american-fiction","d":"2026-08-23","r":4},
     {"s":"avatar-fire-and-ash","d":"2026-08-23","r":2.5},
     {"s":"spider-man-brand-new-day","d":"2026-08-18","r":3.5},
@@ -50,7 +51,6 @@
     {"s":"my-first-film-2024","d":"2025-10-13","r":3.5},
     {"s":"lurker-2025","d":"2025-10-11","r":3},
     {"s":"dead-mans-bluff","d":"2025-10-09","r":2.5},
-    {"s":"audition","d":"2025-10-09","r":4},
     {"s":"to-kill-a-mockingbird","d":"2025-09-26","r":3.5},
     {"s":"weapons-2025","d":"2025-09-25","r":2},
     {"s":"war-of-the-worlds-2025","d":"2025-09-23","r":0.5},

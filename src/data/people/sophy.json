@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-10-13T16:56:05.993Z",
+  "generatedAt": "2026-10-18T13:15:14.211Z",
   "entries": [
+    {"s":"high-art","d":"2026-10-17","r":null},
     {"s":"portrait-of-a-lady-on-fire","d":"2026-10-12","r":null},
     {"s":"shermans-march","d":"2026-10-09","r":4,"w":1},
     {"s":"close-up","d":"2026-10-04","r":5,"w":1},
@@ -49,7 +50,6 @@
     {"s":"emergency-exit-2025-2","d":"2025-11-15","r":null},
     {"s":"blue-moon-2025","d":"2025-11-14","r":null},
     {"s":"walking-and-talking","d":"2025-11-07","r":null,"l":1},
-    {"s":"die-my-love","d":"2025-10-18","r":null},
     {"s":"nouvelle-vague-2025","d":"2025-10-03","r":null},
     {"s":"the-hand-that-rocks-the-cradle","d":"2025-10-01","r":3},
     {"s":"brewster-mccloud","d":"2025-09-30","r":4.5,"l":1},

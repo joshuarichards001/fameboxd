@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-10-07T16:26:41.390Z",
+  "generatedAt": "2026-10-18T13:15:14.119Z",
   "entries": [
+    {"s":"coco-2017","d":"2026-10-16","r":null,"l":1},
     {"s":"digger-2026","d":"2026-10-06","r":null,"l":1},
     {"s":"tampopo","d":"2026-10-06","r":null,"l":1},
     {"s":"the-history-of-concrete","d":"2026-09-25","r":null,"l":1},
@@ -50,7 +51,6 @@
     {"s":"the-boy-and-the-heron","d":"2026-05-30","r":4,"w":1},
     {"s":"the-shape-of-water","d":"2026-05-26","r":null,"l":1},
     {"s":"harry-potter-and-the-goblet-of-fire","d":"2026-05-25","r":null,"w":1,"l":1},
-    {"s":"harry-potter-and-the-prisoner-of-azkaban","d":"2026-05-25","r":null,"w":1,"l":1},
     {"s":"kikis-delivery-service","d":"2026-05-23","r":null,"w":1,"l":1},
     {"s":"best-in-show","d":"2026-05-18","r":null,"w":1,"l":1},
     {"s":"sky-high-2005","d":"2026-05-14","r":null,"w":1,"l":1},
