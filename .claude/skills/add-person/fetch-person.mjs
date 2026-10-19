@@ -6,7 +6,10 @@
 //     description, which lists film counts, favorites, and bio) and the avatar
 //     URL, and
 //   • downloads an avatar and converts it to a 96×96 .webp (the site's
-//     avatar convention).
+//     avatar convention), and
+//   • with --seed-diary, writes src/data/people/<username>.json from the RSS
+//     feed and gap-fills src/data/films.json, since the build fails for a
+//     person with no diary file.
 //
 // It writes NOTHING to people.json — the skill instructions handle that.
 //
@@ -14,6 +17,7 @@
 //   node fetch-person.mjs <username>                       # read-only report
 //   node fetch-person.mjs <username> --avatar-out <path>   # also save avatar
 //   node fetch-person.mjs <username> --avatar-out <path> --avatar-url <url>
+//   node fetch-person.mjs <username> --seed-diary          # also seed diary
 //
 // **The profile page is Cloudflare-blocked (403) to plain HTTP clients** — no
 // user-agent or header combination gets through, and in a real browser it now
@@ -22,14 +26,23 @@
 // avatarFromFollowersPage), so this runs unattended. Only the bio still lives
 // solely on the profile. RSS and the followers page are unaffected.
 //
-// Prints a single JSON object on stdout. The lastWatched parsing mirrors
-// scripts/fetch-activity.mjs, and the followers parsing scripts/
-// fetch-followers.mjs (tiny parsers kept in sync by hand).
+// Prints a single JSON object on stdout. The diary and lastWatched come from
+// scripts/fetch-activity.mjs's own parser; the followers parsing mirrors
+// scripts/fetch-followers.mjs (a tiny parser kept in sync by hand).
 
 import { execFileSync } from "node:child_process";
 import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { readFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import {
+	mergeEntries,
+	packEntries,
+	parseDiary,
+	unpackActivity,
+} from "../../../scripts/fetch-activity.mjs";
+import { readFilms, writeFilms } from "../../../scripts/films-file.mjs";
+import { PEOPLE_DIR, writePerson } from "../../../scripts/people-files.mjs";
 
 const UA = "fameboxd/1.0 (+https://fameboxd.com)";
 
@@ -49,22 +62,57 @@ async function get(url, asBuffer = false) {
 	return asBuffer ? Buffer.from(await res.arrayBuffer()) : res.text();
 }
 
-// First diary entry in the feed — mirrors scripts/fetch-activity.mjs.
-function parseLastWatched(xml) {
-	for (const [, item] of xml.matchAll(/<item>(.*?)<\/item>/gs)) {
-		if (!/letterboxd-(?:watch|review)-/.test(item)) continue;
-		const tag = (name) =>
-			item.match(new RegExp(`<${name}>([^<]*)</${name}>`))?.[1];
-		const title = tag("letterboxd:filmTitle");
-		if (!title) continue;
-		const rating = tag("letterboxd:memberRating");
-		return {
-			title: decode(title),
-			date: tag("letterboxd:watchedDate") ?? null,
-			rating: rating ? Number(rating) : null,
-		};
+// Seeds the person's diary file from their RSS feed, the way the daily
+// fetch-activity run would, but touching only this one person. The feed holds
+// only the ~50 most recently logged entries, and the paginated diary that
+// backfill-diaries reads currently answers 403, so that window is all a new
+// person starts with. Rerunning merges into an existing file rather than
+// replacing it, exactly as the daily run does.
+//
+// films.json is only gap-filled: a missing slug is added, and a null slot on a
+// known film takes the feed's value, but nothing set is ever overwritten — a
+// poster that fetch-posters backfilled must survive.
+async function seedDiary(username, fresh) {
+	const existing = await readFile(join(PEOPLE_DIR, `${username}.json`), "utf8")
+		.then(JSON.parse)
+		.catch((err) => {
+			if (err.code === "ENOENT") return null;
+			throw err;
+		});
+	const films = await readFilms();
+	const previous = existing
+		? unpackActivity({ [username]: existing }, films)[username]
+		: [];
+	const entries = mergeEntries(fresh, previous);
+	await writePerson(username, new Date().toISOString(), packEntries(entries));
+
+	let filmsAdded = 0;
+	let filmsFilled = 0;
+	for (const e of fresh) {
+		const film = films[e.slug];
+		if (!film) {
+			films[e.slug] = [e.title, e.year, e.tmdb, e.poster];
+			filmsAdded++;
+			continue;
+		}
+		let filled = false;
+		[e.year, e.tmdb, e.poster].forEach((value, i) => {
+			if (film[i + 1] == null && value != null) {
+				film[i + 1] = value;
+				filled = true;
+			}
+		});
+		if (filled) filmsFilled++;
 	}
-	return null;
+	await writeFilms(films);
+
+	return {
+		path: `src/data/people/${username}.json`,
+		created: !existing,
+		entries: entries.length,
+		filmsAdded,
+		filmsFilled,
+	};
 }
 
 // Follower count from the followers page's sub-nav tooltip
@@ -140,29 +188,42 @@ function resolveAvatarUrl(html) {
 	return decode(url);
 }
 
+// The card renders these at 42px, so 96 covers a 2x screen with a little to
+// spare. They were 160 until 2026-09-10, which was 51% more bytes for pixels
+// no display could use.
+const AVATAR_SIZE = 96;
+const AVATAR_QUALITY = 85;
+
+// sharp arrives with Astro, so it is in node_modules on any machine that can
+// build the site; cwebp is the fallback for a checkout where it somehow isn't.
 async function saveAvatar(url, outPath) {
 	const buf = await get(url, true);
+	const sharp = await import("sharp").then((m) => m.default, () => null);
+	if (sharp) {
+		await sharp(buf)
+			.resize(AVATAR_SIZE, AVATAR_SIZE)
+			.webp({ quality: AVATAR_QUALITY })
+			.toFile(outPath);
+		return outPath;
+	}
 	const dir = mkdtempSync(join(tmpdir(), "lb-avatar-"));
 	const src = join(dir, url.includes(".png") ? "src.png" : "src.jpg");
 	writeFileSync(src, buf);
 	try {
 		execFileSync("cwebp", [
 			"-quiet",
-			// The card renders these at 42px, so 96 covers a 2x screen with a
-			// little to spare. They were 160 until 2026-09-10, which was 51%
-			// more bytes for pixels no display could use.
 			"-resize",
-			"96",
-			"96",
+			String(AVATAR_SIZE),
+			String(AVATAR_SIZE),
 			"-q",
-			"85",
+			String(AVATAR_QUALITY),
 			src,
 			"-o",
 			outPath,
 		]);
 	} catch (err) {
 		throw new Error(
-			`cwebp failed (install with \`brew install webp\`): ${err.message}`,
+			`sharp is unavailable and cwebp failed (run \`npm install\`, or \`brew install webp\`): ${err.message}`,
 		);
 	} finally {
 		rmSync(dir, { recursive: true, force: true });
@@ -173,7 +234,9 @@ async function saveAvatar(url, outPath) {
 async function main() {
 	const [, , username, ...rest] = process.argv;
 	if (!username || username.startsWith("--")) {
-		console.error("Usage: node fetch-person.mjs <username> [--avatar-out <path>]");
+		console.error(
+			"Usage: node fetch-person.mjs <username> [--avatar-out <path>] [--seed-diary]",
+		);
 		process.exit(2);
 	}
 	const flag = (name) => {
@@ -183,6 +246,7 @@ async function main() {
 	const avatarOut = flag("--avatar-out");
 	// Explicit override; the followers page finds the avatar on its own now.
 	const avatarUrlOverride = flag("--avatar-url");
+	const seed = rest.includes("--seed-diary");
 
 	const report = { username };
 	let avatarUrl = avatarUrlOverride;
@@ -232,12 +296,34 @@ async function main() {
 		}
 	}
 
-	// RSS: most recent diary entry.
+	// RSS: the diary. Feed order, not watched-date order, for lastWatched —
+	// the same "most recently logged" meaning fetch-activity gives it.
+	let diary = null;
 	try {
 		const rss = await get(`https://letterboxd.com/${username}/rss/`);
-		report.lastWatched = parseLastWatched(rss);
+		diary = parseDiary(rss);
+		const latest = diary[0];
+		report.lastWatched = latest
+			? {
+					title: latest.title,
+					date: latest.watchedDate,
+					rating: latest.rating,
+				}
+			: null;
 	} catch (err) {
 		report.lastWatchedError = err.message;
+	}
+
+	// Only for a live handle whose feed answered: a dead handle never becomes
+	// a person, and a failed fetch is not an empty diary.
+	if (seed) {
+		if (!report.accountLive) {
+			report.diaryError = "Account is not live; diary not seeded.";
+		} else if (!diary) {
+			report.diaryError = "RSS fetch failed; diary not seeded. Rerun with --seed-diary.";
+		} else {
+			report.diary = await seedDiary(username, diary);
+		}
 	}
 
 	console.log(JSON.stringify(report, null, 2));

@@ -148,7 +148,7 @@ const byWatchedDateDesc = (a, b) =>
 
 // The feed is authoritative for the date range it covers; anything older is
 // history we'd otherwise lose, since it has rolled off the 50-entry window.
-function mergeEntries(fresh, previous) {
+export function mergeEntries(fresh, previous) {
 	if (fresh.length === 0) return previous;
 	const sorted = [...fresh].sort(byWatchedDateDesc);
 	const oldest = sorted.findLast((e) => e.watchedDate)?.watchedDate;

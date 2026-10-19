@@ -7,25 +7,38 @@ description: Add a famous person to the Letterboxd directory from their name and
 
 Given a **name** and a **Letterboxd username** (accept a full
 `letterboxd.com/<username>/` URL too — the username is the last path segment),
-add a complete, validated entry to `src/data/people.json` and drop their avatar
-into `public/avatars/`. If either the name or username is missing, ask for it
-before starting.
+add a complete, validated entry to `src/data/people.json`, seed their diary
+file in `src/data/people/`, and drop their avatar into `public/avatars/`. If
+either the name or username is missing, ask for it before starting.
 
 The helper script `.claude/skills/add-person/fetch-person.mjs` does all the
-mechanical fetching — activity, follower count, and the avatar. You compose the
-description and pick the tags.
+mechanical fetching and file-writing — activity and the diary file, follower
+count, and the avatar. You compose the description and pick the tags.
 
 ## Steps
 
 ### 1. Fetch everything
 
 ```
-node .claude/skills/add-person/fetch-person.mjs <username> --avatar-out public/avatars/<username>.webp
+node .claude/skills/add-person/fetch-person.mjs <username> --avatar-out public/avatars/<username>.webp --seed-diary
 ```
 
-This prints a JSON report — `accountLive`, `followers`, `lastWatched`, and
-`hasCustomAvatar` / `avatarSaved`. It needs no browser and no network access
-beyond Letterboxd.
+This prints a JSON report — `accountLive`, `followers`, `lastWatched`,
+`hasCustomAvatar` / `avatarSaved`, and `diary`. It needs no browser and no
+network access beyond Letterboxd.
+
+`--seed-diary` writes `src/data/people/<username>.json` from the RSS feed (the
+build fails with `Missing diary file` without it) and adds any film it hasn't
+seen to `src/data/films.json`, filling only empty slots. Both go through the
+same parser and packers as the daily `fetch-activity` run, but touch only this
+person.
+The report's `diary` says how many entries landed and how many films were added
+or gap-filled; a `diaryError` means nothing was written (rerun once the feed
+answers). The feed holds only the ~50 most recently logged entries, and the
+paginated diary pages that `backfill-diaries` reads currently answer 403, so
+that window is the whole diary for now. If you abandon the person after this
+step, delete their diary file too, or the build rejects it as an unknown
+username.
 
 Trust the user's word that the name and username belong to the same person —
 that's the whole point of them giving you both. Don't cross-check the display
@@ -43,8 +56,13 @@ activity and the avatar all come from unblocked pages.
 
 The avatar is taken from the followers page, which carries the owner's own
 photo in its header; the script upsizes it and converts it to the site's
-96×96 `.webp`. Conversion needs `cwebp` (`brew install webp`). After it saves,
-view the file to confirm it's a real photo of the right person.
+96×96 `.webp`, using `sharp` (in `node_modules` via Astro) and falling back to
+`cwebp` if it's missing. After it saves, view the file to confirm it's a real
+photo of the right person, and check it against the avatar policy in
+`AGENTS.md` (a clear headshot or a creator's recognizable logo — no unrelated
+characters, childhood photos, or tiny/obscured faces). If it fails, replace it
+with a suitable Wikimedia Commons image cropped to 96×96 WebP, or delete it to
+fall back to the monogram.
 
 `hasCustomAvatar: false` means they've set no photo (`avatarSourceUrl` absent,
 or a Gravatar that 404s) — skip the avatar and the site renders a generated
@@ -92,7 +110,21 @@ rejects duplicate usernames). Shape:
 }
 ```
 
-### 4. Validate with a build
+### 4. Record the avatar in credits.html
+
+Every kept avatar is credited in `public/avatars/credits.html`, keeping each
+list alphabetical by name:
+
+- **A replacement image** (e.g. from Wikimedia Commons) gets its own
+  `<article id="<username>">` in the grid — copy a neighbor's shape: name,
+  Wikipedia link, original image and file-details links, the photographer, and
+  the license.
+- **A kept Letterboxd avatar** gets a line in the "Retained profile images"
+  list: `<li><a href="https://letterboxd.com/<username>/"><Name></a></li>`.
+
+No avatar (monogram) means no entry.
+
+### 5. Validate with a build
 
 ```
 npm run build
@@ -105,11 +137,14 @@ Fix any error it reports.
 
 ## Notes
 
-- The script mirrors `scripts/fetch-activity.mjs` for `lastWatched` and
-  `scripts/fetch-followers.mjs` for `followers`; the daily refresh Action keeps
+- The script reuses `scripts/fetch-activity.mjs`'s parser for `lastWatched` and
+  mirrors `scripts/fetch-followers.mjs` for `followers`; the daily refresh Action keeps
   both current after you add the person, so it's fine if the values are a
   little stale.
-- It does not touch `src/data/activity.json`, so until the daily Action runs,
-  the new person's `/people/<username>/` page shows the empty-diary state even
-  though they have one. Run `npm run fetch-activity` if the site is being
-  deployed before then — it refreshes everyone, so expect a wide diff.
+- The seeded diary is the feed's window, newest-first with undated entries
+  last — the order `fetch-activity` keeps — and the daily Action merges new
+  watches into it from then on. Don't run `npm run fetch-activity` or
+  `npm run backfill-diaries` just to add one person: both touch everyone.
+- New films arrive without a poster unless the feed carried one; the daily
+  Action's `fetch-posters` step fills those in, and film pages fall back to a
+  titled tile until then.
