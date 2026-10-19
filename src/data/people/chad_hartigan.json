@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-10-18T13:15:14.091Z",
+  "generatedAt": "2026-10-19T16:26:42.564Z",
   "entries": [
+    {"s":"whalefall","d":"2026-10-18","r":null},
     {"s":"poohs-heffalump-movie","d":"2026-10-17","r":null},
     {"s":"the-devils","d":"2026-10-16","r":null},
     {"s":"timid-tabby","d":"2026-10-16","r":null},
@@ -50,7 +51,6 @@
     {"s":"blackberry-2023","d":"2026-08-29","r":4,"w":1},
     {"s":"the-peanuts-movie","d":"2026-08-29","r":null},
     {"s":"x-men","d":"2026-08-28","r":2.5,"w":1},
-    {"s":"finding-emily","d":"2026-08-28","r":null},
     {"s":"harry-potter-and-the-philosophers-stone","d":"2026-08-27","r":3,"w":1},
     {"s":"the-plague-2025","d":"2026-08-25","r":null},
     {"s":"the-making-of-jurassic-park","d":"2026-08-24","r":4,"w":1},

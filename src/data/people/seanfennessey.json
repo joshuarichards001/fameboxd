@@ -1,6 +1,9 @@
 {
-  "generatedAt": "2026-10-18T13:15:14.205Z",
+  "generatedAt": "2026-10-19T16:26:42.725Z",
   "entries": [
+    {"s":"the-beast-must-die","d":"2026-10-18","r":null},
+    {"s":"alice-sweet-alice","d":"2026-10-18","r":null,"w":1},
+    {"s":"sense-and-sensibility-2026","d":"2026-10-18","r":null},
     {"s":"cohen-and-tate","d":"2026-10-17","r":null},
     {"s":"mad-monster-party","d":"2026-10-17","r":null,"w":1},
     {"s":"breeder-2026-1","d":"2026-10-17","r":null},
@@ -46,9 +49,6 @@
     {"s":"unabomber-2026","d":"2026-09-26","r":null},
     {"s":"forbidden-planet","d":"2026-09-26","r":4,"w":1,"l":1},
     {"s":"yeah-yeah-yeahs-hidden-in-pieces","d":"2026-09-26","r":null},
-    {"s":"romeria","d":"2026-09-26","r":null},
-    {"s":"heart-of-the-beast-2026","d":"2026-09-25","r":null},
-    {"s":"godzilla-minus-zero","d":"2026-09-24","r":null,"l":1},
     {"s":"animals-2026","d":"2026-08-22","r":null},
     {"s":"behemoth-2026","d":"2026-08-10","r":null,"l":1},
     {"s":"slanted","d":"2026-07-08","r":null},

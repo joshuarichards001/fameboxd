@@ -1,6 +1,9 @@
 {
-  "generatedAt": "2026-10-18T13:15:14.080Z",
+  "generatedAt": "2026-10-19T16:26:42.551Z",
   "entries": [
+    {"s":"goat-2026","d":"2026-10-19","r":null,"l":1},
+    {"s":"citizen-osama","d":"2026-10-18","r":4,"l":1},
+    {"s":"love-of-your-life","d":"2026-10-18","r":null,"l":1},
     {"s":"tenzing","d":"2026-10-18","r":null,"l":1},
     {"s":"the-social-reckoning","d":"2026-10-17","r":null,"l":1},
     {"s":"whalefall","d":"2026-10-17","r":null,"l":1},
@@ -48,8 +51,6 @@
     {"s":"heart-of-the-beast-2026","d":"2026-09-25","r":null,"l":1},
     {"s":"braveheart","d":"2026-09-25","r":null,"w":1,"l":1},
     {"s":"we-were-here-2026","d":"2026-09-22","r":null,"l":1},
-    {"s":"the-witness-2026-2","d":"2026-09-22","r":null,"l":1},
-    {"s":"dirty-rotten-scoundrels","d":"2026-09-22","r":null,"l":1},
     {"s":"half-2026","d":"2026-09-21","r":null,"l":1},
     {"s":"american-sniper","d":"2026-09-20","r":null,"w":1,"l":1},
     {"s":"carrie-1976","d":"2026-09-19","r":null,"w":1,"l":1},

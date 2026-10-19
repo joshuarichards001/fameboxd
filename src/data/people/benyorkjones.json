@@ -1,6 +1,9 @@
 {
-  "generatedAt": "2026-10-03T14:18:12.683Z",
+  "generatedAt": "2026-10-19T16:26:42.554Z",
   "entries": [
+    {"s":"little-shop-of-horrors","d":"2026-10-18","r":5,"w":1,"l":1},
+    {"s":"kate-berlant-parmesan","d":"2026-10-18","r":null,"l":1},
+    {"s":"mad-monster-party","d":"2026-10-18","r":null,"l":1},
     {"s":"return-to-oz","d":"2026-10-02","r":null,"w":1,"l":1},
     {"s":"maddies-secret","d":"2026-09-26","r":null},
     {"s":"good-luck-have-fun-dont-die","d":"2026-09-04","r":null},
@@ -48,7 +51,6 @@
     {"s":"the-friends-house-is-here","d":"2026-02-01","r":null,"l":1},
     {"s":"lady-2026","d":"2026-02-01","r":null,"l":1},
     {"s":"take-me-home-2026","d":"2026-01-31","r":null,"l":1},
-    {"s":"ha-chan-shake-your-booty","d":"2026-01-31","r":null,"l":1},
     {"s":"josephine-2026","d":"2026-01-30","r":null},
     {"s":"night-nurse-2026","d":"2026-01-30","r":null,"l":1},
     {"s":"union-county-2026","d":"2026-01-29","r":null},
