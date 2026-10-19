@@ -742,6 +742,21 @@
     "followers": 1473
   },
   {
+    "name": "Gawx",
+    "username": "gawx",
+    "description": "YouTube filmmaker known for his short films and videos about the craft of filmmaking.",
+    "tags": [
+      "youtuber",
+      "director"
+    ],
+    "lastWatched": {
+      "title": "Reportage",
+      "date": "2026-10-18",
+      "rating": 5
+    },
+    "followers": 1815
+  },
+  {
     "name": "Grace Kuhlenschmidt",
     "username": "gkuhlenschmidt",
     "description": "Comedian and correspondent on The Daily Show.",
@@ -1321,6 +1336,20 @@
     "followers": 51261
   },
   {
+    "name": "Kevin Abstract",
+    "username": "ian_simpson",
+    "description": "Rapper and Brockhampton founder known for American Boyfriend and Arizona Baby, who uses his legal name as his handle.",
+    "tags": [
+      "musician"
+    ],
+    "lastWatched": {
+      "title": "BlackBerry",
+      "date": "2026-10-05",
+      "rating": 4
+    },
+    "followers": 6135
+  },
+  {
     "name": "Kid Cudi",
     "username": "scottmescudi84",
     "description": "Rapper and actor known for Man on the Moon and Entergalactic.",
@@ -1545,6 +1574,36 @@
       "rating": null
     },
     "followers": 12831
+  },
+  {
+    "name": "Man Carrying Thing",
+    "username": "mancarrying",
+    "description": "Comedy YouTuber known for absurdist sketches and book videos.",
+    "tags": [
+      "youtuber",
+      "comedian"
+    ],
+    "lastWatched": {
+      "title": "Whalefall",
+      "date": "2026-10-18",
+      "rating": 1.5
+    },
+    "followers": 55411
+  },
+  {
+    "name": "Mariah Rose Faith Casillas",
+    "username": "mariahrosefaith",
+    "description": "Actor and singer known for StarKid Productions musicals.",
+    "tags": [
+      "actor",
+      "musician"
+    ],
+    "lastWatched": {
+      "title": "The Idea of You",
+      "date": "2026-10-18",
+      "rating": 4
+    },
+    "followers": 2325
   },
   {
     "name": "Martin Scorsese",
@@ -1869,6 +1928,22 @@
       "rating": 3.5
     },
     "followers": 293
+  },
+  {
+    "name": "Olivia Sui",
+    "username": "olivliv",
+    "description": "Smosh cast member, actor and filmmaker.",
+    "tags": [
+      "youtuber",
+      "actor",
+      "comedian"
+    ],
+    "lastWatched": {
+      "title": "You Can See Everything",
+      "date": "2026-10-18",
+      "rating": null
+    },
+    "followers": 7616
   },
   {
     "name": "Osgood Perkins",
@@ -2439,6 +2514,34 @@
       "rating": null
     },
     "followers": 5799
+  },
+  {
+    "name": "Trin Lovell",
+    "username": "lovelltrin",
+    "description": "YouTuber known for movie and TV reaction and commentary videos.",
+    "tags": [
+      "youtuber"
+    ],
+    "lastWatched": {
+      "title": "Game Night",
+      "date": "2026-10-03",
+      "rating": 5
+    },
+    "followers": 57089
+  },
+  {
+    "name": "ur internet mom ash",
+    "username": "urinternetmom",
+    "description": "Ashley Ippolito, a YouTuber known for commentary videos on movies and TV.",
+    "tags": [
+      "youtuber"
+    ],
+    "lastWatched": {
+      "title": "Black Widow",
+      "date": "2026-10-17",
+      "rating": 4
+    },
+    "followers": 24737
   },
   {
     "name": "Vanillamace",
