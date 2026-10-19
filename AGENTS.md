@@ -151,8 +151,8 @@ live in `src/functions/`:
   childhood photos and images with tiny or obscured faces. Check the source
   identifies the right person, inspect the square and circular crop, and record
   replacement sources and available photographer/license credits in
-  `public/avatars/credits.html`. New images are 160×160 WebP; older suitable
-  images may be 96×96. Never overwrite curated images during activity refreshes.
+  `public/avatars/credits.html`. New images are 96×96 WebP; older suitable
+  images may be 160×160. Never overwrite curated images during activity refreshes.
 
 **Activity data** is the `lastWatched` field on each entry in
 `src/data/people.json` — the person's most recent diary entry (film title,
@@ -275,6 +275,15 @@ its own. Do the steps below by hand when not using it:
    When no suitable image is available, fall back to the generated monogram.
 4. Run `npm run build` — validation will reject bad usernames, duplicates,
    missing descriptions, or out-of-vocab/miscounted tags.
+
+## Suggestions
+
+Visitors suggest people through the "Fameboxd Suggestion" Tally form. Tally
+has no per-submission "done" status, so `.claude/suggestions-reviewed.json`
+records how far I've read: `reviewedThrough` is the `submittedAt` of the newest
+submission already reviewed. When asked for new suggestions, fetch only
+submissions after that timestamp; once I've been through them, move
+`reviewedThrough` and `lastSubmissionId` up to the newest one shown.
 
 ## Notes
 
