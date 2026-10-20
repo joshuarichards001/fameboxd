@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-10-19T16:26:42.617Z",
+  "generatedAt": "2026-10-20T14:17:27.192Z",
   "entries": [
+    {"s":"awake","d":"2026-10-19","r":null,"w":1,"l":1},
+    {"s":"whalefall","d":"2026-10-19","r":null,"l":1},
     {"s":"spirited-away","d":"2026-10-18","r":5,"w":1,"l":1},
     {"s":"the-irrefutable-truth-about-demons","d":"2026-10-18","r":null},
     {"s":"is-god-is","d":"2026-10-18","r":null,"l":1},
@@ -49,7 +51,6 @@
     {"s":"thinner","d":"2026-09-19","r":null},
     {"s":"dracula-2000","d":"2026-09-18","r":null,"w":1,"l":1},
     {"s":"zodiac","d":"2026-09-18","r":5,"w":1,"l":1},
-    {"s":"cherry-falls","d":"2026-09-18","r":null,"w":1,"l":1},
     {"s":"resident-evil-2026","d":"2026-09-17","r":null,"l":1},
     {"s":"hope-2026","d":"2026-09-16","r":null,"l":1},
     {"s":"a-tale-of-two-sisters","d":"2026-09-15","r":null,"w":1,"l":1},

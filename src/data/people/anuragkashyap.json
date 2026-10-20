@@ -1,6 +1,10 @@
 {
-  "generatedAt": "2026-10-19T16:26:42.551Z",
+  "generatedAt": "2026-10-20T14:17:27.167Z",
   "entries": [
+    {"s":"hungry-2026-1","d":"2026-10-20","r":null},
+    {"s":"supergirl-2026","d":"2026-10-20","r":null,"l":1},
+    {"s":"cleaner-2025","d":"2026-10-20","r":null},
+    {"s":"the-nonsense","d":"2026-10-20","r":null,"l":1},
     {"s":"goat-2026","d":"2026-10-19","r":null,"l":1},
     {"s":"citizen-osama","d":"2026-10-18","r":4,"l":1},
     {"s":"love-of-your-life","d":"2026-10-18","r":null,"l":1},
