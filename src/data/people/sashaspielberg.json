@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-10-20T14:17:27.300Z",
+  "generatedAt": "2026-10-21T14:28:27.497Z",
   "entries": [
+    {"s":"you-can-see-everything","d":"2026-10-20","r":5},
     {"s":"my-dinner-with-andre","d":"2026-10-19","r":5},
     {"s":"primer","d":"2026-10-19","r":null},
     {"s":"the-gift-2015-1","d":"2026-10-19","r":null},
@@ -50,7 +51,6 @@
     {"s":"the-apartment","d":"2026-08-10","r":5,"w":1},
     {"s":"birdman-of-alcatraz","d":"2026-08-08","r":4.5},
     {"s":"midnight-in-paris","d":"2026-08-05","r":5,"w":1},
-    {"s":"backrooms-2026","d":"2026-08-05","r":null,"w":1},
     {"s":"one-from-the-heart","d":"2026-08-03","r":2.5},
     {"s":"two-seconds","d":"2026-08-02","r":null},
     {"s":"paris-texas","d":"2026-07-31","r":5,"w":1},

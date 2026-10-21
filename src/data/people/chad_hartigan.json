@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-10-20T14:17:27.183Z",
+  "generatedAt": "2026-10-21T14:28:27.433Z",
   "entries": [
+    {"s":"13-going-on-30","d":"2026-10-20","r":null},
     {"s":"star-trek-the-motion-picture","d":"2026-10-19","r":null},
     {"s":"whalefall","d":"2026-10-18","r":null},
     {"s":"poohs-heffalump-movie","d":"2026-10-17","r":null},
@@ -50,7 +51,6 @@
     {"s":"the-new-world","d":"2026-09-01","r":4,"w":1},
     {"s":"the-brinks-job","d":"2026-08-31","r":null},
     {"s":"blackberry-2023","d":"2026-08-29","r":4,"w":1},
-    {"s":"the-peanuts-movie","d":"2026-08-29","r":null},
     {"s":"x-men","d":"2026-08-28","r":2.5,"w":1},
     {"s":"harry-potter-and-the-philosophers-stone","d":"2026-08-27","r":3,"w":1},
     {"s":"the-plague-2025","d":"2026-08-25","r":null},
