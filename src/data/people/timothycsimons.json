@@ -1,6 +1,9 @@
 {
-  "generatedAt": "2026-10-21T14:28:27.514Z",
+  "generatedAt": "2026-10-22T14:30:10.714Z",
   "entries": [
+    {"s":"rashomon","d":"2026-10-21","r":null},
+    {"s":"you-can-see-everything","d":"2026-10-21","r":null},
+    {"s":"the-game","d":"2026-10-21","r":null,"w":1},
     {"s":"goodfellas","d":"2026-10-20","r":null,"w":1},
     {"s":"the-devils","d":"2026-10-19","r":null,"w":1},
     {"s":"the-counselor","d":"2026-10-18","r":null,"w":1},
@@ -48,7 +51,6 @@
     {"s":"warrior","d":"2026-08-30","r":null,"w":1},
     {"s":"the-fast-and-the-furious-2001","d":"2026-08-27","r":null,"w":1},
     {"s":"desperado","d":"2026-08-26","r":null,"w":1},
-    {"s":"longlegs","d":"2026-08-26","r":null,"w":1},
     {"s":"the-girl-with-the-dragon-tattoo-2011","d":"2026-08-24","r":null,"w":1},
     {"s":"blackhat","d":"2026-08-23","r":5,"w":1,"l":1},
     {"s":"lone-star-1996","d":"2026-08-19","r":null,"w":1},

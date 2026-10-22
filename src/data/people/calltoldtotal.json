@@ -1,8 +1,9 @@
 {
-  "generatedAt": "2026-10-19T16:26:42.561Z",
+  "generatedAt": "2026-10-22T14:30:10.633Z",
   "entries": [
+    {"s":"rise-of-the-planet-of-the-apes","d":"2026-10-22","r":2.5,"l":1},
     {"s":"you-can-see-everything","d":"2026-10-18","r":5,"l":1},
-    {"s":"digger-2026","d":"2026-10-11","r":3,"l":1},
+    {"s":"digger-2026","d":"2026-10-11","r":3.5,"l":1},
     {"s":"bucking-fastard","d":"2026-10-10","r":4.5,"l":1},
     {"s":"clambake","d":"2025-08-27","r":3.5,"l":1},
     {"s":"california-suite","d":"2025-08-26","r":5,"l":1},
@@ -50,7 +51,6 @@
     {"s":"notice-to-quit","d":"2025-06-15","r":0.5},
     {"s":"the-phoenician-scheme","d":"2025-06-15","r":3,"l":1},
     {"s":"decalogue-iv","d":"2025-06-10","r":5,"l":1},
-    {"s":"the-treasure-of-the-sierra-madre","d":"2025-06-10","r":5,"l":1},
     {"s":"the-apartment","d":"2025-06-09","r":5,"w":1,"l":1},
     {"s":"another-round","d":"2025-06-08","r":4,"l":1},
     {"s":"decalogue-ix","d":"2025-06-07","r":5,"l":1},

@@ -1,6 +1,9 @@
 {
-  "generatedAt": "2026-10-21T14:28:27.460Z",
+  "generatedAt": "2026-10-22T14:30:10.658Z",
   "entries": [
+    {"s":"adolfo-dominguez-el-eco-de-otras-voces","d":"2026-10-21","r":null},
+    {"s":"six-months-in-a-pink-and-blue-building","d":"2026-10-21","r":null},
+    {"s":"the-days-of-poncho","d":"2026-10-21","r":null},
     {"s":"the-newcomers-2026","d":"2026-10-20","r":null},
     {"s":"nosotros-2026","d":"2026-10-20","r":null},
     {"s":"red-rocks-2026","d":"2026-10-19","r":null},
@@ -47,9 +50,6 @@
     {"s":"forgotten-island-2026","d":"2026-09-30","r":null},
     {"s":"simon-of-the-desert","d":"2026-09-29","r":null},
     {"s":"state-of-grace","d":"2026-09-28","r":null,"w":1},
-    {"s":"the-verdict","d":"2026-09-27","r":null},
-    {"s":"indiana-jones-and-the-last-crusade","d":"2026-09-27","r":null,"w":1},
-    {"s":"coyote-vs-acme","d":"2026-09-25","r":null},
     {"s":"the-sicilian","d":"2026-09-24","r":4,"w":1},
     {"s":"beyond-society","d":"2026-09-23","r":null,"w":1},
     {"s":"wild-horse-nine","d":"2026-09-22","r":null},

@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-10-21T14:28:27.420Z",
+  "generatedAt": "2026-10-22T14:30:10.622Z",
   "entries": [
+    {"s":"district-b13","d":"2026-10-22","r":4,"l":1},
     {"s":"vertigo","d":"2026-10-21","r":2.5},
     {"s":"the-last-voyage-of-the-demeter","d":"2026-10-20","r":2.5,"l":1},
     {"s":"anohana-the-flower-we-saw-that-day-the-movie","d":"2026-10-19","r":3,"l":1},
@@ -50,7 +51,6 @@
     {"s":"terminator-2-judgment-day","d":"2026-09-06","r":4.5,"w":1,"l":1},
     {"s":"krisha-2015","d":"2026-09-04","r":3,"l":1},
     {"s":"i-saw-the-tv-glow","d":"2026-09-03","r":4,"w":1,"l":1},
-    {"s":"leviticus-2026","d":"2026-09-03","r":2.5},
     {"s":"demolition-man","d":"2026-09-02","r":3,"l":1},
     {"s":"ice-age-dawn-of-the-dinosaurs","d":"2026-09-01","r":2.5},
     {"s":"ice-age-the-meltdown","d":"2026-08-30","r":1.5},

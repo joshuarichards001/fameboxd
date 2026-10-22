@@ -1,6 +1,9 @@
 {
-  "generatedAt": "2026-10-18T13:15:14.157Z",
+  "generatedAt": "2026-10-22T14:30:10.673Z",
   "entries": [
+    {"s":"killer-klowns-from-outer-space","d":"2026-10-21","r":null,"l":1},
+    {"s":"edward-scissorhands","d":"2026-10-21","r":null,"w":1,"l":1},
+    {"s":"ghostbusters-afterlife","d":"2026-10-21","r":null,"w":1,"l":1},
     {"s":"resident-evil-apocalypse","d":"2026-10-17","r":null,"w":1},
     {"s":"the-haunted-mansion","d":"2026-10-17","r":null,"w":1,"l":1},
     {"s":"resident-evil","d":"2026-10-17","r":null,"w":1},
@@ -46,9 +49,6 @@
     {"s":"the-last-house-2026","d":"2026-08-26","r":null},
     {"s":"one-night-only-2026","d":"2026-08-25","r":null,"l":1},
     {"s":"the-wrong-girls","d":"2026-08-18","r":null},
-    {"s":"a-toxic-love-story","d":"2026-08-16","r":null},
-    {"s":"scooby-doo","d":"2026-08-15","r":null,"w":1,"l":1},
-    {"s":"teenage-sex-and-death-at-camp-miasma","d":"2026-08-15","r":null},
     {"s":"spider-man-brand-new-day","d":"2026-07-30","r":null,"l":1},
     {"s":"undertone-2025","d":"2026-07-08","r":null},
     {"s":"breaking-the-ice-2022","d":"2026-07-07","r":null},
