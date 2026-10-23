@@ -1,6 +1,10 @@
 {
-  "generatedAt": "2026-10-22T14:30:10.663Z",
+  "generatedAt": "2026-10-23T14:13:13.643Z",
   "entries": [
+    {"s":"grandmas-boy-2006","d":"2026-10-22","r":4,"w":1},
+    {"s":"vampires-kiss","d":"2026-10-22","r":4.5,"w":1,"l":1},
+    {"s":"the-blood-rose","d":"2026-10-22","r":3},
+    {"s":"the-curse-of-frankenstein","d":"2026-10-22","r":4,"w":1},
     {"s":"over-your-dead-body-2026","d":"2026-10-22","r":3},
     {"s":"the-devils","d":"2026-10-18","r":5,"w":1,"l":1},
     {"s":"the-hitcher","d":"2026-10-18","r":4.5,"w":1},
@@ -47,8 +51,6 @@
     {"s":"castration-movie-chapter-iiiii-junior-ghosts","d":"2026-10-03","r":4.5},
     {"s":"after-dreaming","d":"2026-10-03","r":4},
     {"s":"little-doors","d":"2026-10-02","r":3},
-    {"s":"roterfluss","d":"2026-10-02","r":4.5},
-    {"s":"riptides","d":"2026-10-02","r":4},
     {"s":"the-dark-backward","d":"2026-10-01","r":4,"w":1},
     {"s":"digger-2026","d":"2026-10-01","r":3},
     {"s":"you-can-see-everything","d":"2026-09-30","r":4.5},

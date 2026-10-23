@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-10-22T14:30:10.639Z",
+  "generatedAt": "2026-10-23T14:13:13.594Z",
   "entries": [
+    {"s":"wildwood-2026","d":"2026-10-22","r":5,"l":1},
+    {"s":"clayface","d":"2026-10-22","r":null,"l":1},
     {"s":"the-incredible-hulk-1977","d":"2026-10-22","r":null,"w":1,"l":1},
     {"s":"underworld-2003","d":"2026-10-21","r":null,"w":1},
     {"s":"the-jacket","d":"2026-10-21","r":null,"w":1,"l":1},
@@ -49,7 +51,6 @@
     {"s":"norikos-dinner-table","d":"2026-09-22","r":null,"l":1},
     {"s":"exhuma","d":"2026-09-21","r":null,"l":1},
     {"s":"house-of-wax-2005","d":"2026-09-20","r":null,"w":1,"l":1},
-    {"s":"haunter","d":"2026-09-20","r":null},
     {"s":"the-lego-batman-movie","d":"2026-09-19","r":null,"w":1,"l":1},
     {"s":"dracula-2000","d":"2026-09-18","r":null,"w":1,"l":1},
     {"s":"resident-evil-2026","d":"2026-09-17","r":null,"l":1},
