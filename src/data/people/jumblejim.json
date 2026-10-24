@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-10-23T14:13:13.664Z",
+  "generatedAt": "2026-10-24T13:18:52.260Z",
   "entries": [
+    {"s":"the-taming-of-the-shrew-1923","d":"2026-10-23","r":3},
+    {"s":"the-jew-of-mestri","d":"2026-10-23","r":4},
     {"s":"joe-kidd","d":"2026-10-23","r":3.5,"w":1},
     {"s":"hamlet-1921","d":"2026-10-20","r":4},
     {"s":"norm-the-tale-of-norm-macdonald","d":"2026-10-19","r":null},
@@ -49,8 +51,6 @@
     {"s":"ghetto-blaster","d":"2026-09-18","r":2.5},
     {"s":"baywatch-panic-at-malibu-pier","d":"2026-09-18","r":2.5},
     {"s":"black-moon-rising","d":"2026-09-17","r":3},
-    {"s":"the-dirty-dozen-next-mission","d":"2026-09-17","r":1.5},
-    {"s":"starman","d":"2026-09-17","r":4.5},
     {"s":"the-awakening-of-candra","d":"2026-09-16","r":3.5},
     {"s":"blood-song","d":"2026-09-16","r":1.5},
     {"s":"fantasmagorie","d":"2026-09-11","r":4},

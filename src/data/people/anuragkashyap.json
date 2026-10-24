@@ -1,6 +1,9 @@
 {
-  "generatedAt": "2026-10-23T14:13:13.570Z",
+  "generatedAt": "2026-10-24T13:18:52.185Z",
   "entries": [
+    {"s":"the-wailing","d":"2026-10-24","r":5,"w":1,"l":1},
+    {"s":"the-rivals-of-amziah-king","d":"2026-10-24","r":null,"l":1},
+    {"s":"de-gaulle-liberte","d":"2026-10-24","r":null,"l":1},
     {"s":"de-gaulle-resistance","d":"2026-10-23","r":null,"l":1},
     {"s":"wildwood-2026","d":"2026-10-22","r":5},
     {"s":"clayface","d":"2026-10-22","r":null,"l":1},
@@ -48,8 +51,6 @@
     {"s":"uma-maheswara-ugra-roopasya","d":"2026-10-08","r":null,"l":1},
     {"s":"bethlehem-kudumba-unit","d":"2026-10-07","r":null,"l":1},
     {"s":"elize-shadows-of-a-woman","d":"2026-10-06","r":null},
-    {"s":"lake-placid","d":"2026-10-06","r":null},
-    {"s":"two-graves-2025","d":"2026-10-06","r":null},
     {"s":"unabomber-2026","d":"2026-10-03","r":null},
     {"s":"verity-2026","d":"2026-10-01","r":null},
     {"s":"the-stranger-2025-1","d":"2026-09-30","r":null,"l":1},

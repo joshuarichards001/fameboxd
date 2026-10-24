@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-10-23T14:13:13.689Z",
+  "generatedAt": "2026-10-24T13:18:52.280Z",
   "entries": [
+    {"s":"whalefall","d":"2026-10-23","r":null},
     {"s":"coraline","d":"2026-10-21","r":4.5,"w":1,"l":1},
     {"s":"sense-and-sensibility-2026","d":"2026-10-21","r":5,"l":1},
     {"s":"you-can-see-everything","d":"2026-10-18","r":5,"l":1},
@@ -50,7 +51,6 @@
     {"s":"rrr","d":"2026-07-20","r":5,"w":1,"l":1},
     {"s":"the-odyssey-2026","d":"2026-07-19","r":4.5,"l":1},
     {"s":"vertigo","d":"2026-07-17","r":null,"w":1,"l":1},
-    {"s":"ponyo","d":"2026-07-17","r":5,"w":1,"l":1},
     {"s":"millennium-actress","d":"2026-07-16","r":null,"l":1},
     {"s":"nirvanna-the-band-the-show-the-movie","d":"2026-07-15","r":5,"w":1,"l":1},
     {"s":"sunset-boulevard","d":"2026-07-13","r":4.5,"l":1},

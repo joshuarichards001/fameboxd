@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-10-17T12:57:34.691Z",
+  "generatedAt": "2026-10-24T13:18:52.180Z",
   "entries": [
+    {"s":"baxter-vera-baxter","d":"2026-10-23","r":null,"l":1},
     {"s":"coyote-vs-acme","d":"2026-10-17","r":null,"l":1},
     {"s":"you-can-see-everything","d":"2026-10-15","r":null,"l":1},
     {"s":"paper-trail-2026","d":"2026-10-14","r":null,"w":1,"l":1},
@@ -49,7 +50,6 @@
     {"s":"robocop","d":"2026-07-29","r":null,"w":1,"l":1},
     {"s":"miracle-mile","d":"2026-07-28","r":null,"l":1},
     {"s":"cartoon-physics","d":"2026-07-28","r":5,"l":1},
-    {"s":"pin","d":"2026-07-26","r":null,"l":1},
     {"s":"buddy-2026","d":"2026-01-30","r":null,"l":1},
     {"s":"blue-heron","d":"2026-01-26","r":null,"l":1},
     {"s":"predator-badlands","d":"2026-01-25","r":null,"l":1},
