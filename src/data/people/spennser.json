@@ -1,6 +1,9 @@
 {
-  "generatedAt": "2026-10-22T14:30:10.705Z",
+  "generatedAt": "2026-10-25T13:41:54.508Z",
   "entries": [
+    {"s":"when-harry-met-sally","d":"2026-10-24","r":4.5,"l":1},
+    {"s":"youve-got-mail","d":"2026-10-24","r":4.5,"l":1},
+    {"s":"sleepless-in-seattle","d":"2026-10-24","r":3.5,"l":1},
     {"s":"hatchet","d":"2026-10-22","r":3,"l":1},
     {"s":"halloween-iii-season-of-the-witch","d":"2026-10-18","r":2.5},
     {"s":"the-mist","d":"2026-10-18","r":2.5,"w":1},

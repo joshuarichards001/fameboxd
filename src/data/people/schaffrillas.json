@@ -1,9 +1,14 @@
 {
-  "generatedAt": "2026-10-24T13:18:52.298Z",
+  "generatedAt": "2026-10-25T13:41:54.497Z",
   "entries": [
+    {"s":"dolls","d":"2026-10-24","r":3.5},
+    {"s":"the-bear-and-the-beavers","d":"2026-10-24","r":null},
+    {"s":"the-uninvited-pest","d":"2026-10-24","r":null},
+    {"s":"extra-geography","d":"2026-10-24","r":3.5},
+    {"s":"iron-boy","d":"2026-10-24","r":4},
     {"s":"wild-horse-nine","d":"2026-10-23","r":4},
     {"s":"ray-gunn","d":"2026-10-23","r":3},
-    {"s":"wildwood-2026","d":"2026-10-22","r":null},
+    {"s":"wildwood-2026","d":"2026-10-22","r":4.5},
     {"s":"buffet-infinity","d":"2026-10-21","r":3},
     {"s":"buddy-2026","d":"2026-10-21","r":3},
     {"s":"mouse-2026","d":"2026-10-20","r":4.5},
