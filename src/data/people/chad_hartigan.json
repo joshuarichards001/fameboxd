@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-10-24T13:18:52.197Z",
+  "generatedAt": "2026-10-26T16:06:10.124Z",
   "entries": [
+    {"s":"the-magnificent-seven-2016","d":"2026-10-25","r":null},
+    {"s":"babar-the-movie","d":"2026-10-25","r":null},
     {"s":"star-trek-iv-the-voyage-home","d":"2026-10-23","r":3.5,"w":1},
     {"s":"star-trek-iii-the-search-for-spock","d":"2026-10-22","r":null},
     {"s":"star-trek-ii-the-wrath-of-khan","d":"2026-10-21","r":null},
@@ -49,7 +51,6 @@
     {"s":"moana-2016","d":"2026-09-05","r":null},
     {"s":"inner-workings","d":"2026-09-05","r":null},
     {"s":"spider-man-across-the-spider-verse","d":"2026-09-04","r":null},
-    {"s":"the-sun-never-sets-2026","d":"2026-09-04","r":null},
     {"s":"wild-canaries","d":"2026-09-03","r":4,"w":1},
     {"s":"the-new-world","d":"2026-09-01","r":4,"w":1},
     {"s":"the-brinks-job","d":"2026-08-31","r":null},
