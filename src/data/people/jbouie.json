@@ -1,6 +1,10 @@
 {
-  "generatedAt": "2026-10-20T14:17:27.235Z",
+  "generatedAt": "2026-10-28T15:59:30.824Z",
   "entries": [
+    {"s":"mutiny-2026","d":"2026-10-26","r":2.5},
+    {"s":"rolling-thunder","d":"2026-10-25","r":3},
+    {"s":"collateral-damage","d":"2026-10-23","r":2.5,"w":1,"l":1},
+    {"s":"ronin","d":"2026-10-22","r":4.5,"w":1,"l":1},
     {"s":"picnic-at-hanging-rock","d":"2026-10-19","r":3.5},
     {"s":"talladega-nights-the-ballad-of-ricky-bobby","d":"2026-10-18","r":3,"l":1},
     {"s":"first-man","d":"2026-10-18","r":4,"l":1},

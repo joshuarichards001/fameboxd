@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-10-25T13:41:54.393Z",
+  "generatedAt": "2026-10-28T15:59:30.783Z",
   "entries": [
+    {"s":"turning-red","d":"2026-10-27","r":5,"w":1,"l":1},
+    {"s":"once-upon-a-time-in-hollywood","d":"2026-10-27","r":5,"w":1,"l":1},
     {"s":"the-snake-2026","d":"2026-10-25","r":null,"l":1},
     {"s":"nope","d":"2026-10-21","r":5,"w":1,"l":1},
     {"s":"schindlers-list","d":"2026-10-18","r":5,"l":1},
@@ -49,8 +51,6 @@
     {"s":"repo-man","d":"2026-08-13","r":4,"l":1},
     {"s":"teenage-sex-and-death-at-camp-miasma","d":"2026-08-11","r":5,"w":1,"l":1},
     {"s":"office-romance-2026","d":"2026-08-06","r":null,"l":1},
-    {"s":"i-want-your-sex","d":"2026-08-06","r":5},
-    {"s":"teenage-sex-and-death-at-camp-miasma","d":"2026-08-06","r":5,"l":1},
     {"s":"the-odyssey-2026","d":"2026-08-04","r":null,"l":1},
     {"s":"the-host","d":"2026-08-03","r":5,"l":1},
     {"s":"q-the-winged-serpent","d":"2026-08-02","r":null},

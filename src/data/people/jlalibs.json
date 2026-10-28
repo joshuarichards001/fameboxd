@@ -1,6 +1,9 @@
 {
-  "generatedAt": "2026-10-27T15:19:59.615Z",
+  "generatedAt": "2026-10-28T15:59:30.828Z",
   "entries": [
+    {"s":"ghost-in-the-cell","d":"2026-10-27","r":4},
+    {"s":"dogra-magra","d":"2026-10-27","r":3.5},
+    {"s":"possession","d":"2026-10-27","r":5,"w":1,"l":1},
     {"s":"the-cable-guy","d":"2026-10-26","r":3.5,"w":1},
     {"s":"the-cycle-2026-2","d":"2026-10-26","r":3.5},
     {"s":"interview-with-the-vampire","d":"2026-10-26","r":4,"w":1,"l":1},
