@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-10-26T16:06:10.218Z",
+  "generatedAt": "2026-10-29T16:06:03.132Z",
   "entries": [
+    {"s":"behemoth-2026","d":"2026-10-28","r":null},
     {"s":"ida","d":"2026-10-25","r":null},
     {"s":"i-play-rocky","d":"2026-10-24","r":null},
     {"s":"once-upon-a-time-in-hollywood","d":"2026-10-23","r":null,"w":1,"l":1},
@@ -48,7 +49,6 @@
     {"s":"being-heumann","d":"2026-09-19","r":null,"l":1},
     {"s":"primetime-2026","d":"2026-09-17","r":null},
     {"s":"the-oldest-person-in-the-world","d":"2026-09-17","r":null},
-    {"s":"the-debut-2026","d":"2026-09-17","r":null,"l":1},
     {"s":"resident-evil-2026","d":"2026-09-15","r":null},
     {"s":"the-weight-2026","d":"2026-08-31","r":null},
     {"s":"practical-magic-2","d":"2026-08-29","r":null},

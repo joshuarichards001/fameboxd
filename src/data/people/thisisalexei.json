@@ -1,6 +1,9 @@
 {
-  "generatedAt": "2026-10-28T15:59:30.912Z",
+  "generatedAt": "2026-10-29T16:06:03.166Z",
   "entries": [
+    {"s":"you-can-see-everything","d":"2026-10-29","r":null,"l":1},
+    {"s":"saccharine-2026","d":"2026-10-28","r":3.5},
+    {"s":"the-fox-2025","d":"2026-10-28","r":null,"l":1},
     {"s":"little-shop-of-horrors","d":"2026-10-28","r":5,"w":1,"l":1},
     {"s":"el-televisor","d":"2026-10-27","r":4,"l":1},
     {"s":"the-vampire-lovers","d":"2026-10-26","r":4,"l":1},
@@ -48,8 +51,6 @@
     {"s":"little-man-tate","d":"2026-09-29","r":3},
     {"s":"personal-velocity","d":"2026-09-29","r":3.5},
     {"s":"hidden-agenda","d":"2026-09-28","r":4},
-    {"s":"mystic-pizza","d":"2026-09-28","r":4},
-    {"s":"stanley-iris","d":"2026-09-28","r":3.5},
     {"s":"the-last-of-the-finest","d":"2026-09-27","r":3},
     {"s":"adam-and-eve-1983","d":"2026-09-26","r":3,"l":1},
     {"s":"hope-2026","d":"2026-09-25","r":2},

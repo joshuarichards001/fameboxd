@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-10-27T15:19:59.714Z",
+  "generatedAt": "2026-10-29T16:06:03.174Z",
   "entries": [
+    {"s":"event-horizon","d":"2026-10-28","r":2},
+    {"s":"halloweentown","d":"2026-10-28","r":4,"w":1,"l":1},
     {"s":"the-color-of-money","d":"2026-10-26","r":null},
     {"s":"jennifers-body","d":"2026-10-25","r":4,"w":1,"l":1},
     {"s":"hellraiser-iii-hell-on-earth","d":"2026-10-25","r":3.5,"w":1,"l":1},
