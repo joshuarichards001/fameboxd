@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-10-28T15:59:30.808Z",
+  "generatedAt": "2026-10-30T15:55:12.046Z",
   "entries": [
+    {"s":"wildwood-2026","d":"2026-10-29","r":null,"l":1},
+    {"s":"the-one-about-matthew-perry","d":"2026-10-28","r":null},
     {"s":"the-aviator","d":"2026-10-28","r":null,"w":1},
     {"s":"rocky-iv","d":"2026-10-27","r":null,"w":1},
     {"s":"the-garbage-pail-kids-movie","d":"2026-10-25","r":null,"w":1,"l":1},
@@ -49,7 +51,6 @@
     {"s":"kung-fu-hustle","d":"2026-09-13","r":null,"w":1,"l":1},
     {"s":"jade","d":"2026-09-12","r":null},
     {"s":"stavros-halkias-uncle-stav","d":"2026-09-11","r":null,"l":1},
-    {"s":"atlas-the-animated-movie","d":"2026-09-11","r":null},
     {"s":"casino","d":"2026-09-10","r":null,"w":1,"l":1},
     {"s":"cars","d":"2026-09-09","r":null},
     {"s":"from-beijing-with-love","d":"2026-09-09","r":null,"l":1},

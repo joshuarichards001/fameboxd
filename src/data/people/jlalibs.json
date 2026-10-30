@@ -1,6 +1,10 @@
 {
-  "generatedAt": "2026-10-29T16:06:03.111Z",
+  "generatedAt": "2026-10-30T15:55:12.057Z",
   "entries": [
+    {"s":"her-will-be-done","d":"2026-10-30","r":3},
+    {"s":"the-lost-boys","d":"2026-10-29","r":4.5,"w":1,"l":1},
+    {"s":"the-telephone-box","d":"2026-10-29","r":4},
+    {"s":"the-flesh-eaters","d":"2026-10-29","r":3.5},
     {"s":"habit","d":"2026-10-28","r":5,"w":1},
     {"s":"frederick-douglass-an-american-life","d":"2026-10-28","r":null},
     {"s":"ghost-in-the-cell","d":"2026-10-27","r":4},

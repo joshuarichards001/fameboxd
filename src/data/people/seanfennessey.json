@@ -1,6 +1,9 @@
 {
-  "generatedAt": "2026-10-29T16:06:03.156Z",
+  "generatedAt": "2026-10-30T15:55:12.101Z",
   "entries": [
+    {"s":"quatermass-and-the-pit","d":"2026-10-29","r":null},
+    {"s":"focker-in-law","d":"2026-10-29","r":null},
+    {"s":"the-box-2009","d":"2026-10-29","r":null,"w":1},
     {"s":"river-2026-1","d":"2026-10-28","r":null,"l":1},
     {"s":"finding-emily","d":"2026-10-27","r":null},
     {"s":"kill-bill-the-whole-bloody-affair","d":"2026-10-27","r":5,"w":1,"l":1},
@@ -46,9 +49,6 @@
     {"s":"the-social-reckoning","d":"2026-10-08","r":null},
     {"s":"the-drama","d":"2026-10-08","r":3.5,"w":1,"l":1},
     {"s":"stolen-kingdom","d":"2026-10-08","r":null},
-    {"s":"blue-sunshine","d":"2026-10-07","r":null,"l":1},
-    {"s":"naza","d":"2026-10-07","r":null},
-    {"s":"musk-2026","d":"2026-10-07","r":null},
     {"s":"love-of-your-life","d":"2026-08-31","r":null},
     {"s":"animals-2026","d":"2026-08-22","r":null},
     {"s":"behemoth-2026","d":"2026-08-10","r":null,"l":1},

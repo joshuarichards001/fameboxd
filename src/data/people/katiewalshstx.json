@@ -1,7 +1,11 @@
 {
-  "generatedAt": "2026-10-29T16:06:03.132Z",
+  "generatedAt": "2026-10-30T15:55:12.076Z",
   "entries": [
+    {"s":"adult-supervision","d":"2026-10-29","r":null},
+    {"s":"klara-and-the-sun","d":"2026-10-29","r":null},
+    {"s":"christmas-at-the-kringles","d":"2026-10-28","r":null},
     {"s":"behemoth-2026","d":"2026-10-28","r":null},
+    {"s":"the-only-living-pickpocket-in-new-york","d":"2026-10-26","r":null},
     {"s":"ida","d":"2026-10-25","r":null},
     {"s":"i-play-rocky","d":"2026-10-24","r":null},
     {"s":"once-upon-a-time-in-hollywood","d":"2026-10-23","r":null,"w":1,"l":1},
@@ -46,9 +50,7 @@
     {"s":"fjord-2026","d":"2026-09-21","r":null},
     {"s":"the-love-hypothesis","d":"2026-09-20","r":null},
     {"s":"digger-2026","d":"2026-09-19","r":null},
-    {"s":"being-heumann","d":"2026-09-19","r":null,"l":1},
     {"s":"primetime-2026","d":"2026-09-17","r":null},
-    {"s":"the-oldest-person-in-the-world","d":"2026-09-17","r":null},
     {"s":"resident-evil-2026","d":"2026-09-15","r":null},
     {"s":"the-weight-2026","d":"2026-08-31","r":null},
     {"s":"practical-magic-2","d":"2026-08-29","r":null},

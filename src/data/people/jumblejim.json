@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-10-29T16:06:03.125Z",
+  "generatedAt": "2026-10-30T15:55:12.071Z",
   "entries": [
+    {"s":"the-boys-from-syracuse","d":"2026-10-30","r":3.5},
+    {"s":"bo-burnham-inside","d":"2026-10-30","r":5,"w":1},
     {"s":"the-one-about-matthew-perry","d":"2026-10-29","r":4},
     {"s":"badge-373","d":"2026-10-27","r":3},
     {"s":"a-midsummer-nights-dream","d":"2026-10-27","r":3.5,"w":1},
@@ -49,7 +51,6 @@
     {"s":"hamlet-1908-1","d":"2026-09-21","r":3},
     {"s":"duel-scene-from-macbeth","d":"2026-09-21","r":1},
     {"s":"le-duel-dhamlet","d":"2026-09-21","r":2},
-    {"s":"romeo-and-juliet-1900","d":"2026-09-21","r":1},
     {"s":"captain-newman-md","d":"2026-09-20","r":4,"w":1},
     {"s":"the-king-of-the-kickboxers","d":"2026-09-19","r":0.5},
     {"s":"delta-force-2-the-colombian-connection","d":"2026-09-18","r":1.5},
