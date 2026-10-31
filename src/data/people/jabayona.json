@@ -1,6 +1,9 @@
 {
-  "generatedAt": "2026-10-28T15:59:30.819Z",
+  "generatedAt": "2026-10-31T15:18:19.344Z",
   "entries": [
+    {"s":"clayface","d":"2026-10-31","r":null},
+    {"s":"tenzing","d":"2026-10-30","r":null},
+    {"s":"the-meltdown","d":"2026-10-30","r":null},
     {"s":"a-month-in-the-country","d":"2026-10-27","r":null},
     {"s":"wildwood-2026","d":"2026-10-26","r":null},
     {"s":"the-green-room","d":"2026-10-25","r":null,"w":1},
@@ -48,8 +51,6 @@
     {"s":"kill-me-2026","d":"2026-10-09","r":null},
     {"s":"chapter-51","d":"2026-10-09","r":null},
     {"s":"found-alive-2026","d":"2026-10-08","r":null},
-    {"s":"homing-1","d":"2026-10-08","r":null,"w":1},
-    {"s":"river-2026-1","d":"2026-10-08","r":null},
     {"s":"heart-of-the-beast-2026","d":"2026-10-07","r":null},
     {"s":"final-cut-the-making-and-unmaking-of-heavens-gate","d":"2026-10-06","r":null},
     {"s":"digger-2026","d":"2026-10-05","r":null},

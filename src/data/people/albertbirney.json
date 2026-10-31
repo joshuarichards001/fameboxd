@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-10-30T15:55:12.010Z",
+  "generatedAt": "2026-10-31T15:18:19.275Z",
   "entries": [
+    {"s":"possession","d":"2026-10-30","r":null,"l":1},
     {"s":"rose-2026","d":"2026-10-29","r":null,"l":1},
     {"s":"hellraiser-iii-hell-on-earth","d":"2026-10-28","r":null,"l":1},
     {"s":"snooze-quest","d":"2026-10-26","r":null,"l":1},
@@ -49,7 +50,6 @@
     {"s":"no-2-message-from-the-sun","d":"2026-08-16","r":null,"l":1},
     {"s":"primal-2019-1","d":"2026-08-15","r":null,"l":1},
     {"s":"klaabu","d":"2026-08-14","r":null,"l":1},
-    {"s":"strawberry-mansion","d":"2026-08-12","r":null,"w":1,"l":1},
     {"s":"buddy-2026","d":"2026-01-30","r":null,"l":1},
     {"s":"blue-heron","d":"2026-01-26","r":null,"l":1},
     {"s":"predator-badlands","d":"2026-01-25","r":null,"l":1},

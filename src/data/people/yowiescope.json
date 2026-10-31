@@ -1,6 +1,9 @@
 {
-  "generatedAt": "2026-10-26T16:06:10.303Z",
+  "generatedAt": "2026-10-31T15:18:19.455Z",
   "entries": [
+    {"s":"ghostbusters","d":"2026-10-30","r":null,"w":1,"l":1},
+    {"s":"american-pop","d":"2026-10-30","r":null,"l":1},
+    {"s":"the-sorcerers","d":"2026-10-30","r":null,"l":1},
     {"s":"secrets-lies","d":"2026-10-25","r":5,"l":1},
     {"s":"down-and-dirty-duck","d":"2026-10-24","r":null,"w":1,"l":1},
     {"s":"all-that-heaven-allows","d":"2026-10-24","r":5,"l":1},
@@ -48,9 +51,6 @@
     {"s":"tough-guys-dont-dance","d":"2026-08-07","r":5,"w":1,"l":1},
     {"s":"give-it-up-2025-1","d":"2026-08-06","r":null,"w":1,"l":1},
     {"s":"spooks-1931","d":"2026-08-05","r":null,"l":1},
-    {"s":"the-skeleton-dance","d":"2026-08-05","r":null,"w":1,"l":1},
-    {"s":"tickled","d":"2026-08-05","r":null},
-    {"s":"heaven","d":"2026-08-05","r":null},
     {"s":"spirited-away","d":"2026-08-04","r":null,"w":1,"l":1},
     {"s":"seconds","d":"2026-08-03","r":5,"w":1,"l":1},
     {"s":"crocodile-dose","d":"2026-08-01","r":null,"w":1,"l":1},
