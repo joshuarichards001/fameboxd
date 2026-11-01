@@ -1,6 +1,9 @@
 {
-  "generatedAt": "2026-10-31T15:18:19.312Z",
+  "generatedAt": "2026-11-01T16:00:07.576Z",
   "entries": [
+    {"s":"the-shining","d":"2026-11-01","r":5,"w":1},
+    {"s":"the-shout","d":"2026-11-01","r":3.5},
+    {"s":"jennifers-body","d":"2026-10-31","r":3},
     {"s":"the-hitcher","d":"2026-10-31","r":4},
     {"s":"creepy","d":"2026-10-30","r":4},
     {"s":"serpents-path","d":"2026-10-30","r":5},
@@ -48,8 +51,6 @@
     {"s":"casino-royale-2006","d":"2025-11-27","r":4.5,"w":1},
     {"s":"goldfinger","d":"2025-11-27","r":4},
     {"s":"scarface","d":"2025-11-24","r":4},
-    {"s":"only-angels-have-wings","d":"2025-11-24","r":4.5},
-    {"s":"the-spy-who-came-in-from-the-cold","d":"2025-11-24","r":4.5},
     {"s":"marty-supreme","d":"2025-11-21","r":5},
     {"s":"frankenstein-2025","d":"2025-11-12","r":3},
     {"s":"night-of-the-creeps","d":"2025-10-27","r":4},

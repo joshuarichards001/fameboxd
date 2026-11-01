@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-10-31T15:18:19.315Z",
+  "generatedAt": "2026-11-01T16:00:07.578Z",
   "entries": [
+    {"s":"daniel-2023","d":"2026-11-01","r":null},
     {"s":"leviticus-2026","d":"2026-10-31","r":null},
     {"s":"the-gift-2015-1","d":"2026-10-25","r":4,"w":1,"l":1},
     {"s":"the-alpinist","d":"2026-10-18","r":null,"w":1},
@@ -9,7 +10,7 @@
     {"s":"slumdog-millionaire","d":"2026-10-11","r":5,"w":1,"l":1},
     {"s":"primetime-2026","d":"2026-10-11","r":null},
     {"s":"fear-nothing","d":"2026-10-11","r":null},
-    {"s":"animals-2026","d":"2026-10-09","r":null},
+    {"s":"animals-2026","d":"2026-10-09","r":2},
     {"s":"the-shining","d":"2026-10-06","r":5,"w":1,"l":1},
     {"s":"fantastic-mr-fox","d":"2026-10-02","r":null,"w":1,"l":1},
     {"s":"verity-2026","d":"2026-10-01","r":null},
@@ -50,7 +51,6 @@
     {"s":"river-2026-1","d":"2026-06-26","r":null},
     {"s":"mr-adidos","d":"2026-06-24","r":null},
     {"s":"in-sound-we-live-forever","d":"2026-06-24","r":null},
-    {"s":"tiny-thing","d":"2026-06-24","r":null},
     {"s":"the-ritual-2017","d":"2026-06-18","r":null,"w":1},
     {"s":"open-door-2023","d":"2026-06-14","r":null},
     {"s":"enter-the-dragon","d":"2026-06-13","r":null,"l":1},

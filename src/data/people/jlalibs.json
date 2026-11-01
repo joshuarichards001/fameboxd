@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-10-31T15:18:19.352Z",
+  "generatedAt": "2026-11-01T16:00:07.599Z",
   "entries": [
+    {"s":"house-on-haunted-hill-1999","d":"2026-10-31","r":4,"w":1},
+    {"s":"house-of-wax-2005","d":"2026-10-31","r":4,"w":1,"l":1},
     {"s":"hubie-halloween","d":"2026-10-30","r":4,"w":1},
     {"s":"what-josiah-saw","d":"2026-10-30","r":3},
     {"s":"the-devils-doorway","d":"2026-10-30","r":3},
@@ -49,8 +51,6 @@
     {"s":"unzipped","d":"2026-10-13","r":4},
     {"s":"speed","d":"2026-10-12","r":5,"w":1,"l":1},
     {"s":"huntress-spirit-of-the-night","d":"2026-10-12","r":2},
-    {"s":"blood-reincarnation","d":"2026-10-12","r":3,"w":1},
-    {"s":"bangkok-dangerous","d":"2026-10-12","r":3.5,"w":1},
     {"s":"alice-sweet-alice","d":"2026-10-11","r":4,"w":1,"l":1},
     {"s":"sitting-ducks","d":"2026-10-11","r":4,"w":1},
     {"s":"the-devils-nightmare","d":"2026-10-11","r":3},
