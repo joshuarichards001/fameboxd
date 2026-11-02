@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-11-01T16:00:07.653Z",
+  "generatedAt": "2026-11-02T19:28:23.210Z",
   "entries": [
+    {"s":"monsieur-hulots-holiday","d":"2026-11-01","r":null},
+    {"s":"friday-the-13th-a-new-beginning","d":"2026-11-01","r":null,"w":1},
     {"s":"midsommar","d":"2026-10-31","r":null,"w":1},
     {"s":"hud","d":"2026-10-30","r":null},
     {"s":"chinatown","d":"2026-10-29","r":null,"w":1},

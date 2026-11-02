@@ -1,6 +1,9 @@
 {
-  "generatedAt": "2026-11-01T16:00:07.599Z",
+  "generatedAt": "2026-11-02T19:28:23.106Z",
   "entries": [
+    {"s":"la-cage-aux-zombies","d":"2026-11-02","r":3},
+    {"s":"terror-firmer","d":"2026-11-01","r":4,"w":1},
+    {"s":"american-dream","d":"2026-11-01","r":4.5},
     {"s":"house-on-haunted-hill-1999","d":"2026-10-31","r":4,"w":1},
     {"s":"house-of-wax-2005","d":"2026-10-31","r":4,"w":1,"l":1},
     {"s":"hubie-halloween","d":"2026-10-30","r":4,"w":1},
@@ -48,7 +51,6 @@
     {"s":"here-im-alive","d":"2026-10-14","r":4},
     {"s":"crescendo","d":"2026-10-14","r":3},
     {"s":"galicia-2026","d":"2026-10-13","r":null,"l":1},
-    {"s":"unzipped","d":"2026-10-13","r":4},
     {"s":"speed","d":"2026-10-12","r":5,"w":1,"l":1},
     {"s":"huntress-spirit-of-the-night","d":"2026-10-12","r":2},
     {"s":"alice-sweet-alice","d":"2026-10-11","r":4,"w":1,"l":1},
