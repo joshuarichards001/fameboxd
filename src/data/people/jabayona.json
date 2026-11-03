@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-11-02T19:28:23.097Z",
+  "generatedAt": "2026-11-03T17:00:19.528Z",
   "entries": [
+    {"s":"trinidad-2026","d":"2026-11-02","r":null},
     {"s":"whalefall","d":"2026-11-02","r":null},
     {"s":"little-shop-of-horrors","d":"2026-10-31","r":null,"w":1},
     {"s":"clayface","d":"2026-10-31","r":null},
@@ -12,7 +13,7 @@
     {"s":"sangre-del-toro","d":"2026-10-24","r":null},
     {"s":"manual-wind","d":"2026-10-24","r":null},
     {"s":"little-genes","d":"2026-10-22","r":null},
-    {"s":"garden-chest","d":"2026-10-22","r":null},
+    {"s":"a-lifetime","d":"2026-10-22","r":null},
     {"s":"everything-else-is-noise","d":"2026-10-22","r":null},
     {"s":"adolfo-dominguez-el-eco-de-otras-voces","d":"2026-10-21","r":null},
     {"s":"six-months-in-a-pink-and-blue-building","d":"2026-10-21","r":null},
@@ -50,7 +51,6 @@
     {"s":"split-rock","d":"2026-10-09","r":null},
     {"s":"karma-2026","d":"2026-10-09","r":null},
     {"s":"leviticus-2026","d":"2026-10-09","r":null},
-    {"s":"kill-me-2026","d":"2026-10-09","r":null},
     {"s":"found-alive-2026","d":"2026-10-08","r":null},
     {"s":"heart-of-the-beast-2026","d":"2026-10-07","r":null},
     {"s":"final-cut-the-making-and-unmaking-of-heavens-gate","d":"2026-10-06","r":null},

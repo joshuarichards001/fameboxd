@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-11-02T19:28:23.056Z",
+  "generatedAt": "2026-11-03T17:00:19.508Z",
   "entries": [
+    {"s":"the-french-connection","d":"2026-11-02","r":null,"l":1},
+    {"s":"timid-tabby","d":"2026-11-01","r":null},
     {"s":"kate-berlant-parmesan","d":"2026-11-01","r":null,"l":1},
     {"s":"buddy-2026","d":"2026-11-01","r":null,"l":1},
     {"s":"facetape","d":"2026-11-01","r":null},
@@ -48,8 +50,6 @@
     {"s":"disclosure-day","d":"2026-06-24","r":null},
     {"s":"to-live-and-die-in-la","d":"2026-06-19","r":null,"w":1,"l":1},
     {"s":"backrooms-2026","d":"2026-06-15","r":null,"l":1},
-    {"s":"chris-fleming-live-at-the-palace","d":"2026-06-13","r":null,"l":1},
-    {"s":"obsession-2025","d":"2026-06-07","r":null},
     {"s":"primetime-2026","d":"2026-05-01","r":null,"w":1,"l":1},
     {"s":"a-pickle-and-a-coke","d":"2026-04-30","r":null},
     {"s":"the-black-tower","d":"2026-04-25","r":null},
