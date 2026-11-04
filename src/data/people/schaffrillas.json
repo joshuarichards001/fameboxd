@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-10-31T15:18:19.418Z",
+  "generatedAt": "2026-11-04T17:12:30.434Z",
   "entries": [
+    {"s":"godzilla-minus-zero","d":"2026-11-03","r":4},
     {"s":"you-can-see-everything","d":"2026-10-30","r":5,"w":1},
     {"s":"your-mother-your-mother-your-mother","d":"2026-10-29","r":4.5},
     {"s":"the-debut-2026","d":"2026-10-25","r":4},
@@ -50,7 +51,6 @@
     {"s":"crimson-peak","d":"2026-09-07","r":4},
     {"s":"hellboy-ii-the-golden-army","d":"2026-09-06","r":4},
     {"s":"twilight-2008","d":"2026-09-05","r":2,"w":1},
-    {"s":"hellboy","d":"2026-09-05","r":3},
     {"s":"blade-ii","d":"2026-09-02","r":3.5},
     {"s":"coyote-vs-acme","d":"2026-08-31","r":4},
     {"s":"the-devils-backbone","d":"2026-08-30","r":4},

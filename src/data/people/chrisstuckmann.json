@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-11-03T17:00:19.507Z",
+  "generatedAt": "2026-11-04T17:12:30.368Z",
   "entries": [
+    {"s":"the-incredible-hulk-returns","d":"2026-11-04","r":null,"w":1},
+    {"s":"godzilla-mothra-and-king-ghidorah-giant-monsters-all-out-attack","d":"2026-11-03","r":null,"l":1},
     {"s":"the-blair-witch-project","d":"2026-11-02","r":null,"w":1,"l":1},
     {"s":"goosebumps-piano-lessons-can-be-murder","d":"2026-11-02","r":null,"w":1,"l":1},
     {"s":"birth-2004","d":"2026-11-02","r":null,"w":1,"l":1},
@@ -49,7 +51,6 @@
     {"s":"exorcist-the-beginning","d":"2026-10-05","r":null},
     {"s":"the-celebration","d":"2026-10-05","r":5,"l":1},
     {"s":"lets-scare-jessica-to-death","d":"2026-10-04","r":null},
-    {"s":"monster-house","d":"2026-10-04","r":null,"w":1,"l":1},
     {"s":"soulm8te","d":"2026-10-02","r":null},
     {"s":"beware-boiuna","d":"2026-10-01","r":null,"l":1},
     {"s":"the-nun-ii","d":"2026-09-30","r":null,"w":1,"l":1},

@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-11-02T19:28:23.179Z",
+  "generatedAt": "2026-11-04T17:12:30.434Z",
   "entries": [
+    {"s":"eye-of-the-devil","d":"2026-11-03","r":3.5},
     {"s":"what-ever-happened-to-baby-jane","d":"2026-11-01","r":3.5},
     {"s":"happiness","d":"2026-10-30","r":4},
     {"s":"the-seventh-victim","d":"2026-10-29","r":4.5},
@@ -50,7 +51,6 @@
     {"s":"little-feat-the-documentary","d":"2026-08-20","r":null},
     {"s":"some-like-it-hot","d":"2026-08-16","r":5,"w":1},
     {"s":"the-devil-wears-prada-2","d":"2026-08-16","r":null},
-    {"s":"wuthering-heights-2026","d":"2026-08-16","r":null},
     {"s":"la-strada","d":"2026-08-15","r":4},
     {"s":"the-great-escape","d":"2026-08-14","r":null},
     {"s":"le-trou","d":"2026-08-13","r":5,"w":1},
