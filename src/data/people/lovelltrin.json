@@ -1,7 +1,9 @@
 {
-  "generatedAt": "2026-10-28T15:59:30.869Z",
+  "generatedAt": "2026-11-05T17:22:32.607Z",
   "entries": [
+    {"s":"verity-2026","d":"2026-11-04","r":1},
     {"s":"you-can-see-everything","d":"2026-10-27","r":5},
+    {"s":"primetime-2026","d":"2026-10-07","r":3},
     {"s":"game-night","d":"2026-10-03","r":5,"w":1,"l":1},
     {"s":"its-whats-inside","d":"2026-10-03","r":4,"w":1},
     {"s":"the-love-hypothesis","d":"2026-10-01","r":2.5},
@@ -49,7 +51,6 @@
     {"s":"the-ugly-stepsister","d":"2026-01-24","r":5,"l":1},
     {"s":"together-2025","d":"2026-01-24","r":4},
     {"s":"the-last-showgirl","d":"2026-01-24","r":3},
-    {"s":"mothers-instinct-2024","d":"2026-01-24","r":3},
     {"s":"people-we-meet-on-vacation","d":"2026-01-23","r":4,"l":1},
     {"s":"the-switch","d":"2026-01-22","r":2.5}
   ]
