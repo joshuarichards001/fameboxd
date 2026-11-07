@@ -1,6 +1,9 @@
 {
-  "generatedAt": "2026-11-06T16:44:10.900Z",
+  "generatedAt": "2026-11-07T15:38:57.247Z",
   "entries": [
+    {"s":"godzilla-vs-spacegodzilla","d":"2026-11-06","r":null},
+    {"s":"shin-godzilla","d":"2026-11-06","r":null,"w":1,"l":1},
+    {"s":"tangles","d":"2026-11-06","r":null},
     {"s":"rose-2026","d":"2026-11-05","r":null},
     {"s":"mr-irrelevant","d":"2026-11-04","r":null},
     {"s":"club-kid","d":"2026-11-04","r":null,"w":1,"l":1},
@@ -47,9 +50,6 @@
     {"s":"making-the-shining","d":"2026-10-16","r":null,"w":1,"l":1},
     {"s":"street-fighter-2026","d":"2026-10-16","r":null},
     {"s":"hallowarrior","d":"2026-10-16","r":null},
-    {"s":"behemoth-2026","d":"2026-10-15","r":null,"w":1,"l":1},
-    {"s":"the-shining","d":"2026-10-15","r":5,"w":1,"l":1},
-    {"s":"blue-velvet","d":"2026-10-14","r":5,"w":1,"l":1},
     {"s":"love-of-your-life","d":"2026-08-31","r":null},
     {"s":"animals-2026","d":"2026-08-22","r":null},
     {"s":"behemoth-2026","d":"2026-08-10","r":null,"l":1},
