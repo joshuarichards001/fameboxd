@@ -1,6 +1,10 @@
 {
-  "generatedAt": "2026-11-07T15:38:57.247Z",
+  "generatedAt": "2026-11-08T15:57:11.710Z",
   "entries": [
+    {"s":"bunker-2026-1","d":"2026-11-07","r":null},
+    {"s":"the-cat-in-the-hat-2026","d":"2026-11-07","r":null},
+    {"s":"the-return-of-godzilla","d":"2026-11-07","r":null},
+    {"s":"godzilla-1998","d":"2026-11-07","r":null,"w":1},
     {"s":"godzilla-vs-spacegodzilla","d":"2026-11-06","r":null},
     {"s":"shin-godzilla","d":"2026-11-06","r":null,"w":1,"l":1},
     {"s":"tangles","d":"2026-11-06","r":null},
@@ -46,10 +50,6 @@
     {"s":"cohen-and-tate","d":"2026-10-17","r":null},
     {"s":"mad-monster-party","d":"2026-10-17","r":null,"w":1},
     {"s":"breeder-2026-1","d":"2026-10-17","r":null},
-    {"s":"day-of-the-fight","d":"2026-10-16","r":null},
-    {"s":"making-the-shining","d":"2026-10-16","r":null,"w":1,"l":1},
-    {"s":"street-fighter-2026","d":"2026-10-16","r":null},
-    {"s":"hallowarrior","d":"2026-10-16","r":null},
     {"s":"love-of-your-life","d":"2026-08-31","r":null},
     {"s":"animals-2026","d":"2026-08-22","r":null},
     {"s":"behemoth-2026","d":"2026-08-10","r":null,"l":1},
