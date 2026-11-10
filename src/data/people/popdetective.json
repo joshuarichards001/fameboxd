@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-09-15T00:08:39.592Z",
+  "generatedAt": "2026-11-10T17:00:16.575Z",
   "entries": [
+    {"s":"alpha-house","d":"2026-11-10","r":null},
     {"s":"minions-monsters-2026","d":"2026-09-04","r":null},
     {"s":"coyote-vs-acme","d":"2026-09-01","r":null},
     {"s":"the-truman-show","d":"2026-08-12","r":null,"w":1,"l":1},
@@ -49,7 +50,6 @@
     {"s":"cool-world","d":"2025-10-13","r":null},
     {"s":"poor-things-2023","d":"2025-10-12","r":null},
     {"s":"ruby-sparks","d":"2025-10-10","r":null},
-    {"s":"weird-science","d":"2025-10-10","r":null,"w":1},
     {"s":"the-residence-2025","d":"2025-03-31","r":null},
     {"s":"school-spirit-2019","d":"2025-03-29","r":null},
     {"s":"battling-butler","d":"2025-03-26","r":null},
