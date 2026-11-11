@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-11-07T15:38:57.138Z",
+  "generatedAt": "2026-11-11T17:05:33.110Z",
   "entries": [
+    {"s":"i-play-rocky","d":"2026-11-11","r":null},
+    {"s":"wild-horse-nine","d":"2026-11-10","r":null,"l":1},
     {"s":"replay-1","d":"2026-11-06","r":null,"l":1},
     {"s":"the-french-connection","d":"2026-11-02","r":null,"l":1},
     {"s":"timid-tabby","d":"2026-11-01","r":null},
@@ -48,8 +50,6 @@
     {"s":"the-odyssey-2026","d":"2026-07-17","r":null,"l":1},
     {"s":"system-of-colors","d":"2026-07-09","r":null},
     {"s":"i-love-boosters","d":"2026-07-06","r":null},
-    {"s":"disclosure-day","d":"2026-06-24","r":null},
-    {"s":"to-live-and-die-in-la","d":"2026-06-19","r":null,"w":1,"l":1},
     {"s":"primetime-2026","d":"2026-05-01","r":null,"w":1,"l":1},
     {"s":"a-pickle-and-a-coke","d":"2026-04-30","r":null},
     {"s":"the-black-tower","d":"2026-04-25","r":null},

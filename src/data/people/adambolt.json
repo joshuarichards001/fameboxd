@@ -1,6 +1,9 @@
 {
-  "generatedAt": "2026-11-10T17:00:16.435Z",
+  "generatedAt": "2026-11-11T17:05:33.074Z",
   "entries": [
+    {"s":"charlie-and-the-chocolate-factory","d":"2026-11-11","r":3,"l":1},
+    {"s":"willy-wonka-the-chocolate-factory","d":"2026-11-11","r":3.5,"w":1,"l":1},
+    {"s":"dont-look-under-the-bed","d":"2026-11-11","r":2.5},
     {"s":"scooby-doo","d":"2026-11-10","r":4,"l":1},
     {"s":"zathura-a-space-adventure","d":"2026-11-10","r":3.5,"w":1,"l":1},
     {"s":"watership-down","d":"2026-11-10","r":1.5,"w":1},
