@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-11-11T17:05:33.174Z",
+  "generatedAt": "2026-11-12T17:33:58.753Z",
   "entries": [
+    {"s":"tracks-1976","d":"2026-11-11","r":4,"w":1},
+    {"s":"brief-encounter","d":"2026-11-11","r":5,"w":1},
     {"s":"victims-of-sin","d":"2026-11-11","r":4},
     {"s":"above-the-law","d":"2026-11-10","r":3.5,"w":1,"l":1},
     {"s":"sexy-beast","d":"2026-11-10","r":4,"w":1,"l":1},
@@ -49,8 +51,6 @@
     {"s":"habit","d":"2026-10-28","r":5,"w":1},
     {"s":"frederick-douglass-an-american-life","d":"2026-10-28","r":null},
     {"s":"ghost-in-the-cell","d":"2026-10-27","r":4},
-    {"s":"dogra-magra","d":"2026-10-27","r":3.5},
-    {"s":"possession","d":"2026-10-27","r":5,"w":1,"l":1},
     {"s":"the-cable-guy","d":"2026-10-26","r":3.5,"w":1},
     {"s":"the-cycle-2026-2","d":"2026-10-26","r":3.5},
     {"s":"interview-with-the-vampire","d":"2026-10-26","r":4,"w":1,"l":1},
