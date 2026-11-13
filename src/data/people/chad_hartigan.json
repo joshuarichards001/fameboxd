@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-11-12T17:33:58.712Z",
+  "generatedAt": "2026-11-13T17:10:56.582Z",
   "entries": [
+    {"s":"letter-never-sent","d":"2026-11-12","r":null},
     {"s":"targets","d":"2026-11-11","r":3.5,"w":1},
     {"s":"the-truman-show","d":"2026-11-10","r":5,"w":1},
     {"s":"they-were-expendable","d":"2026-11-09","r":null},

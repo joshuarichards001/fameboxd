@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-11-11T17:05:33.271Z",
+  "generatedAt": "2026-11-13T17:10:56.730Z",
   "entries": [
+    {"s":"tar-2022","d":"2026-11-12","r":5,"w":1},
     {"s":"crimes-of-passion","d":"2026-11-10","r":null},
     {"s":"body-of-lies","d":"2026-11-08","r":null,"w":1},
     {"s":"the-cell","d":"2026-11-07","r":null,"w":1},
@@ -50,7 +51,6 @@
     {"s":"raging-bull","d":"2026-09-12","r":null,"w":1},
     {"s":"hope-2026","d":"2026-09-11","r":null},
     {"s":"the-wolf-of-wall-street","d":"2026-09-11","r":null,"w":1},
-    {"s":"smile-2-2024","d":"2026-09-11","r":null,"w":1},
     {"s":"lost-bullet","d":"2026-09-07","r":null},
     {"s":"fast-five","d":"2026-09-06","r":null,"w":1},
     {"s":"spider-man-brand-new-day","d":"2026-09-05","r":null},
