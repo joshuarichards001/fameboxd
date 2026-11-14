@@ -1,6 +1,11 @@
 {
-  "generatedAt": "2026-11-13T17:10:56.634Z",
+  "generatedAt": "2026-11-14T15:47:23.574Z",
   "entries": [
+    {"s":"one-last-shot-2026-1","d":"2026-11-13","r":3.5},
+    {"s":"popeye","d":"2026-11-13","r":5,"w":1},
+    {"s":"evil-under-the-sun","d":"2026-11-13","r":3},
+    {"s":"solo-1970","d":"2026-11-13","r":4},
+    {"s":"how-to-rob-a-bank-2026","d":"2026-11-13","r":1},
     {"s":"making-marie-antoinette","d":"2026-11-12","r":4},
     {"s":"death-on-the-nile","d":"2026-11-12","r":3.5},
     {"s":"tracks-1976","d":"2026-11-11","r":4,"w":1},
@@ -46,7 +51,6 @@
     {"s":"what-josiah-saw","d":"2026-10-30","r":3},
     {"s":"the-devils-doorway","d":"2026-10-30","r":3},
     {"s":"the-mongoose-2026","d":"2026-10-30","r":2.5},
-    {"s":"her-will-be-done","d":"2026-10-30","r":3},
     {"s":"the-lost-boys","d":"2026-10-29","r":4.5,"w":1,"l":1},
     {"s":"the-telephone-box","d":"2026-10-29","r":4},
     {"s":"the-flesh-eaters","d":"2026-10-29","r":3.5},

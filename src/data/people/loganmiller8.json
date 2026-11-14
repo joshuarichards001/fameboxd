@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-11-12T17:33:58.781Z",
+  "generatedAt": "2026-11-14T15:47:23.606Z",
   "entries": [
+    {"s":"all-of-a-sudden-2026","d":"2026-11-13","r":null,"l":1},
     {"s":"mr-mrs-murder","d":"2026-11-11","r":null,"l":1},
     {"s":"wild-horse-nine","d":"2026-11-09","r":4},
     {"s":"fallen-angels","d":"2026-11-05","r":4},
@@ -50,7 +51,6 @@
     {"s":"masters-of-the-universe-2026","d":"2026-06-21","r":3},
     {"s":"jerry-springer-fights-camera-action-2025","d":"2026-06-19","r":null,"l":1},
     {"s":"the-fugitive-1993","d":"2026-06-15","r":null,"w":1,"l":1},
-    {"s":"team-america-world-police","d":"2026-06-15","r":5,"w":1},
     {"s":"disclosure-day","d":"2026-06-13","r":null},
     {"s":"windy-city-heat","d":"2026-06-08","r":null,"w":1,"l":1},
     {"s":"scary-movie-2026","d":"2026-06-07","r":0.5},
