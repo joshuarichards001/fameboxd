@@ -1,10 +1,11 @@
 {
-  "generatedAt": "2026-11-14T15:47:23.628Z",
+  "generatedAt": "2026-11-15T16:19:26.691Z",
   "entries": [
+    {"s":"scrooge-1951","d":"2026-11-15","r":null,"w":1},
+    {"s":"space-jam","d":"2026-11-14","r":null,"w":1},
     {"s":"woman-unknown","d":"2026-11-13","r":null},
     {"s":"ink-2026","d":"2026-11-13","r":null,"w":1},
     {"s":"black-caesar","d":"2026-11-12","r":null,"w":1},
-    {"s":"the-further-mis-adventures-of-cliff-booth","d":"2026-11-12","r":null,"l":1},
     {"s":"ebenezer-2026","d":"2026-11-12","r":null},
     {"s":"once-upon-a-time-in-hollywood","d":"2026-11-11","r":5,"w":1,"l":1},
     {"s":"i-play-rocky","d":"2026-11-11","r":null,"w":1},
@@ -49,7 +50,6 @@
     {"s":"matchbox-the-movie","d":"2026-10-26","r":null},
     {"s":"the-last-first-winter-k2","d":"2026-10-25","r":null},
     {"s":"a-talent-for-murder-2026","d":"2026-10-24","r":null},
-    {"s":"jason-lives-friday-the-13th-part-vi","d":"2026-10-24","r":null,"w":1},
     {"s":"love-of-your-life","d":"2026-08-31","r":null},
     {"s":"animals-2026","d":"2026-08-22","r":null},
     {"s":"behemoth-2026","d":"2026-08-10","r":null,"l":1},

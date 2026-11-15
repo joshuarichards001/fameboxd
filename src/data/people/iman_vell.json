@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-11-14T15:47:23.565Z",
+  "generatedAt": "2026-11-15T16:19:26.609Z",
   "entries": [
+    {"s":"diner","d":"2026-11-14","r":4.5,"l":1},
     {"s":"man-bites-dog","d":"2026-11-13","r":null},
     {"s":"american-graffiti","d":"2026-11-12","r":4.5,"w":1,"l":1},
     {"s":"thunderbolt-and-lightfoot","d":"2026-11-12","r":4.5,"l":1},
@@ -50,7 +51,6 @@
     {"s":"toy-gun-bandit","d":"2026-09-17","r":4.5,"l":1},
     {"s":"the-final-act","d":"2026-09-17","r":5,"l":1},
     {"s":"look-back-2026","d":"2026-09-16","r":null,"l":1},
-    {"s":"phoolan-2026","d":"2026-09-16","r":null},
     {"s":"wild-horse-nine","d":"2026-09-15","r":5,"l":1},
     {"s":"strangers-on-a-train","d":"2026-09-14","r":4.5,"l":1},
     {"s":"babies-2026-1","d":"2026-09-13","r":null,"l":1},
