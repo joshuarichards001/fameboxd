@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-11-15T16:19:26.597Z",
+  "generatedAt": "2026-11-16T19:33:39.744Z",
   "entries": [
+    {"s":"bad-apples-2025","d":"2026-11-15","r":null,"l":1},
     {"s":"tinsman-road","d":"2026-11-14","r":null,"l":1},
     {"s":"the-history-of-concrete","d":"2026-11-12","r":null,"l":1},
     {"s":"you-can-see-everything","d":"2026-11-11","r":null,"l":1},
@@ -50,7 +51,6 @@
     {"s":"madame-web","d":"2025-12-05","r":null,"w":1,"l":1},
     {"s":"bugonia","d":"2025-12-04","r":null,"l":1},
     {"s":"say-anything","d":"2025-11-25","r":null,"w":1,"l":1},
-    {"s":"twelve-monkeys","d":"2025-11-25","r":null,"w":1,"l":1},
     {"s":"stand-and-deliver","d":"2025-11-23","r":null,"w":1,"l":1},
     {"s":"brazil","d":"2025-11-23","r":null,"w":1,"l":1},
     {"s":"train-dreams","d":"2025-11-22","r":null,"l":1},

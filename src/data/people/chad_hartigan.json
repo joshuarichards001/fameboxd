@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-11-15T16:19:26.563Z",
+  "generatedAt": "2026-11-16T19:33:39.716Z",
   "entries": [
+    {"s":"the-care-bears-movie","d":"2026-11-15","r":1.5,"w":1},
+    {"s":"ink-2026","d":"2026-11-15","r":null},
     {"s":"the-fast-and-the-furious-2001","d":"2026-11-14","r":null},
     {"s":"the-santa-clause","d":"2026-11-13","r":3,"w":1},
     {"s":"on-ice","d":"2026-11-13","r":null},
@@ -49,8 +51,6 @@
     {"s":"schindlers-list","d":"2026-09-30","r":4,"w":1},
     {"s":"a-slightly-pregnant-man","d":"2026-09-29","r":null},
     {"s":"beverly-hills-cop","d":"2026-09-27","r":4,"w":1},
-    {"s":"hot-dogs-for-gauguin","d":"2026-09-27","r":null},
-    {"s":"puffin-rock-and-the-new-friends","d":"2026-09-27","r":null},
     {"s":"primetime-2026","d":"2026-09-26","r":null},
     {"s":"filipinana-2026","d":"2026-09-23","r":null},
     {"s":"man-of-steel","d":"2026-09-22","r":null},

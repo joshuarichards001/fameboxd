@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-11-15T16:19:26.691Z",
+  "generatedAt": "2026-11-16T19:33:39.822Z",
   "entries": [
+    {"s":"a-christmas-carol-1984","d":"2026-11-16","r":null},
+    {"s":"fjord-2026","d":"2026-11-15","r":4,"w":1,"l":1},
     {"s":"scrooge-1951","d":"2026-11-15","r":null,"w":1},
     {"s":"space-jam","d":"2026-11-14","r":null,"w":1},
     {"s":"woman-unknown","d":"2026-11-13","r":null},
@@ -48,8 +50,6 @@
     {"s":"klara-and-the-sun","d":"2026-10-26","r":null},
     {"s":"wicker","d":"2026-10-26","r":null},
     {"s":"matchbox-the-movie","d":"2026-10-26","r":null},
-    {"s":"the-last-first-winter-k2","d":"2026-10-25","r":null},
-    {"s":"a-talent-for-murder-2026","d":"2026-10-24","r":null},
     {"s":"love-of-your-life","d":"2026-08-31","r":null},
     {"s":"animals-2026","d":"2026-08-22","r":null},
     {"s":"behemoth-2026","d":"2026-08-10","r":null,"l":1},
