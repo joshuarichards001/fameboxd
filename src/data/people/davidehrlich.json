@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-11-16T19:33:39.734Z",
+  "generatedAt": "2026-11-17T18:31:58.675Z",
   "entries": [
+    {"s":"american-theater-2025","d":"2026-11-17","r":3.5},
+    {"s":"hershey","d":"2026-11-16","r":1},
     {"s":"the-rivals-of-amziah-king","d":"2026-11-15","r":3.5},
     {"s":"the-cat-in-the-hat-2026","d":"2026-11-15","r":1.5},
     {"s":"mouse-2026","d":"2026-11-14","r":4},
@@ -49,8 +51,6 @@
     {"s":"the-life-and-deaths-of-wilson-shedd","d":"2026-09-13","r":3},
     {"s":"the-debut-2026","d":"2026-09-13","r":4},
     {"s":"your-mother-your-mother-your-mother","d":"2026-09-12","r":4},
-    {"s":"misty-green","d":"2026-09-12","r":2.5},
-    {"s":"everybody-wants-to-fck-me","d":"2026-09-12","r":2.5},
     {"s":"the-julia-set","d":"2026-09-11","r":null},
     {"s":"bucking-fastard","d":"2026-09-11","r":4},
     {"s":"rogue-trooper","d":"2026-09-10","r":null},

@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-11-11T17:05:33.117Z",
+  "generatedAt": "2026-11-17T18:31:58.673Z",
   "entries": [
+    {"s":"you-can-see-everything","d":"2026-11-17","r":null,"l":1},
     {"s":"clayface","d":"2026-11-11","r":null},
     {"s":"the-silence-of-the-lambs","d":"2026-11-10","r":null,"w":1},
     {"s":"calibre","d":"2026-11-08","r":null},
@@ -50,7 +51,6 @@
     {"s":"badlands","d":"2026-07-03","r":null},
     {"s":"megadoc","d":"2026-07-02","r":null,"l":1},
     {"s":"300","d":"2026-07-02","r":4,"w":1,"l":1},
-    {"s":"the-turbo-charged-prelude-for-2-fast-2-furious","d":"2026-07-02","r":null},
     {"s":"tenet","d":"2026-06-27","r":4.5,"w":1,"l":1},
     {"s":"river-2026-1","d":"2026-06-26","r":null},
     {"s":"mr-adidos","d":"2026-06-24","r":null},
