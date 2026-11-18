@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-11-14T15:47:23.536Z",
+  "generatedAt": "2026-11-18T18:01:28.571Z",
   "entries": [
+    {"s":"maddies-secret","d":"2026-11-18","r":null},
+    {"s":"death-to-the-tinman","d":"2026-11-17","r":null,"l":1},
     {"s":"the-sixth-sense","d":"2026-11-14","r":null,"l":1},
     {"s":"i-play-rocky","d":"2026-11-11","r":null},
     {"s":"wild-horse-nine","d":"2026-11-10","r":null,"l":1},
@@ -48,8 +50,6 @@
     {"s":"meander-2021","d":"2026-07-25","r":null},
     {"s":"a-summers-tale","d":"2026-07-20","r":null,"l":1},
     {"s":"manhunter","d":"2026-07-19","r":null,"w":1,"l":1},
-    {"s":"the-odyssey-2026","d":"2026-07-17","r":null,"l":1},
-    {"s":"system-of-colors","d":"2026-07-09","r":null},
     {"s":"primetime-2026","d":"2026-05-01","r":null,"w":1,"l":1},
     {"s":"a-pickle-and-a-coke","d":"2026-04-30","r":null},
     {"s":"the-black-tower","d":"2026-04-25","r":null},
