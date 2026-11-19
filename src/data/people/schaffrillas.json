@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-11-16T19:33:39.821Z",
+  "generatedAt": "2026-11-19T18:14:44.065Z",
   "entries": [
+    {"s":"madden-2026","d":"2026-11-18","r":1},
     {"s":"marriage-story-2019","d":"2026-11-15","r":4.5,"w":1},
     {"s":"star-wars-episode-i-the-phantom-menace","d":"2026-11-14","r":2.5,"w":1},
     {"s":"hot-rod","d":"2026-11-11","r":1.5},
@@ -50,7 +51,6 @@
     {"s":"resident-evil-2026","d":"2026-09-17","r":4.5},
     {"s":"guillermo-del-toros-pinocchio","d":"2026-09-15","r":3.5,"w":1},
     {"s":"the-shape-of-water","d":"2026-09-14","r":4,"w":1},
-    {"s":"the-twilight-saga-new-moon","d":"2026-09-14","r":2},
     {"s":"downbeat-2026","d":"2026-09-11","r":4},
     {"s":"pans-labyrinth","d":"2026-09-10","r":4.5},
     {"s":"pacific-rim","d":"2026-09-09","r":4},
