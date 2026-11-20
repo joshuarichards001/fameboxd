@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-11-16T19:33:39.760Z",
+  "generatedAt": "2026-11-20T17:46:14.943Z",
   "entries": [
+    {"s":"marama","d":"2026-11-19","r":4,"l":1},
+    {"s":"mary-poppins","d":"2026-11-19","r":5,"w":1,"l":1},
     {"s":"office-killer","d":"2026-11-15","r":null,"l":1},
     {"s":"the-ugly-stepsister","d":"2026-11-09","r":4,"l":1},
     {"s":"wildwood-2026","d":"2026-11-02","r":3.5},
@@ -49,7 +51,6 @@
     {"s":"lone-rider-2026","d":"2026-06-28","r":null,"l":1},
     {"s":"captain-america-the-first-avenger","d":"2026-06-25","r":null},
     {"s":"the-invite-2026","d":"2026-06-24","r":4,"l":1},
-    {"s":"four-weddings-and-a-funeral","d":"2026-06-24","r":null},
     {"s":"hercules-1997","d":"2026-06-22","r":null,"w":1},
     {"s":"desert-hearts","d":"2026-06-21","r":5,"w":1,"l":1},
     {"s":"kramer-vs-kramer","d":"2026-06-19","r":3},

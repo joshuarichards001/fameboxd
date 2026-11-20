@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-12T17:33:58.805Z",
+  "generatedAt": "2026-11-20T17:46:15.000Z",
   "entries": [
     {"s":"godzilla-minus-zero","d":"2026-11-11","r":4},
     {"s":"wild-horse-nine","d":"2026-11-10","r":4},
@@ -35,7 +35,7 @@
     {"s":"resident-evil-welcome-to-raccoon-city","d":"2026-09-12","r":2},
     {"s":"coach-carter","d":"2026-09-06","r":3},
     {"s":"death-of-a-unicorn","d":"2026-09-04","r":2},
-    {"s":"the-end-of-oak-street","d":"2026-09-04","r":3},
+    {"s":"the-end-of-oak-street","d":"2026-09-04","r":2.5},
     {"s":"coyote-vs-acme","d":"2026-09-03","r":4,"w":1},
     {"s":"coyote-vs-acme","d":"2026-09-01","r":4},
     {"s":"teenage-sex-and-death-at-camp-miasma","d":"2026-08-26","r":4},
