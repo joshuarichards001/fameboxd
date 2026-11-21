@@ -1,6 +1,9 @@
 {
-  "generatedAt": "2026-11-18T18:01:28.641Z",
+  "generatedAt": "2026-11-21T16:45:44.730Z",
   "entries": [
+    {"s":"wicker","d":"2026-11-20","r":null},
+    {"s":"the-only-living-pickpocket-in-new-york","d":"2026-11-20","r":null},
+    {"s":"the-debut-2026","d":"2026-11-20","r":null,"l":1},
     {"s":"naza","d":"2026-11-17","r":5,"l":1},
     {"s":"mission-impossible","d":"2026-11-17","r":null},
     {"s":"romeo-juliet-1996","d":"2026-11-15","r":5,"w":1,"l":1},
@@ -48,7 +51,6 @@
     {"s":"ingrid-goes-west","d":"2026-08-17","r":null,"w":1,"l":1},
     {"s":"mondo-new-york","d":"2026-08-13","r":null},
     {"s":"forbidden-zone","d":"2026-08-12","r":null},
-    {"s":"the-hand-that-rocks-the-cradle","d":"2026-08-12","r":5,"l":1},
     {"s":"amadeus","d":"2026-08-11","r":null},
     {"s":"closer","d":"2026-08-10","r":null,"l":1},
     {"s":"the-last-house-2026","d":"2026-08-09","r":null},

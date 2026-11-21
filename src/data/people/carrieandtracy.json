@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-11-20T17:46:14.906Z",
+  "generatedAt": "2026-11-21T16:45:44.692Z",
   "entries": [
+    {"s":"paper-tiger-2026","d":"2026-11-20","r":null},
+    {"s":"dracula-1958","d":"2026-11-20","r":null,"w":1},
     {"s":"solo-1970","d":"2026-11-19","r":null},
     {"s":"the-bourne-identity-2002","d":"2026-11-19","r":null,"w":1},
     {"s":"vertices-2025","d":"2026-11-18","r":null},
