@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-11-19T18:14:43.965Z",
+  "generatedAt": "2026-11-22T17:07:43.566Z",
   "entries": [
+    {"s":"behemoth-2026","d":"2026-11-21","r":null},
     {"s":"madden-2026","d":"2026-11-18","r":null},
     {"s":"paper-tiger-2026","d":"2026-11-14","r":null},
     {"s":"misty-green","d":"2026-11-12","r":null},
@@ -50,7 +51,6 @@
     {"s":"the-social-network","d":"2026-08-29","r":null,"w":1},
     {"s":"mockbuster","d":"2026-08-25","r":null},
     {"s":"blackberry-2023","d":"2026-08-24","r":null,"w":1},
-    {"s":"the-proposal-2009","d":"2026-08-24","r":null,"w":1},
     {"s":"the-wizard-of-the-kremlin","d":"2026-08-22","r":null},
     {"s":"pep-guardiola-chasing-perfection","d":"2026-08-21","r":null},
     {"s":"a-beautiful-obsession","d":"2026-08-20","r":null},
