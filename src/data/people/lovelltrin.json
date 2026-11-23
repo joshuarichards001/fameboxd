@@ -1,6 +1,12 @@
 {
-  "generatedAt": "2026-11-05T17:22:32.607Z",
+  "generatedAt": "2026-11-23T21:17:52.945Z",
   "entries": [
+    {"s":"the-hunger-games-mockingjay-part-2","d":"2026-11-22","r":5,"w":1,"l":1},
+    {"s":"the-hunger-games-catching-fire","d":"2026-11-22","r":5,"w":1,"l":1},
+    {"s":"the-hunger-games-the-ballad-of-songbirds-snakes","d":"2026-11-21","r":5,"w":1,"l":1},
+    {"s":"the-hunger-games-mockingjay-part-1","d":"2026-11-21","r":3,"w":1},
+    {"s":"the-hunger-games","d":"2026-11-20","r":5,"w":1,"l":1},
+    {"s":"the-hunger-games-sunrise-on-the-reaping","d":"2026-11-19","r":3.5},
     {"s":"verity-2026","d":"2026-11-04","r":1},
     {"s":"you-can-see-everything","d":"2026-10-27","r":5},
     {"s":"primetime-2026","d":"2026-10-07","r":3},
@@ -44,7 +50,6 @@
     {"s":"hamnet","d":"2026-03-04","r":3.5},
     {"s":"train-dreams","d":"2026-03-03","r":2.5},
     {"s":"sentimental-value-2025","d":"2026-02-25","r":4},
-    {"s":"wuthering-heights-2026","d":"2026-02-12","r":3},
     {"s":"send-help","d":"2026-01-31","r":4},
     {"s":"if-i-had-legs-id-kick-you","d":"2026-01-26","r":3.5},
     {"s":"the-hunger-games-the-ballad-of-songbirds-snakes","d":"2026-01-25","r":5,"w":1,"l":1},

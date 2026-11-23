@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-11-22T17:07:43.638Z",
+  "generatedAt": "2026-11-23T21:17:52.933Z",
   "entries": [
+    {"s":"madden-2026","d":"2026-11-23","r":1.5},
+    {"s":"that-day-on-the-beach","d":"2026-11-22","r":4,"l":1},
     {"s":"the-christophers","d":"2026-11-21","r":3.5,"l":1},
     {"s":"fantastic-mr-fox","d":"2026-11-21","r":5,"w":1,"l":1},
     {"s":"cameron-winter-at-carnegie-hall","d":"2026-11-20","r":null,"l":1},
@@ -49,7 +51,6 @@
     {"s":"cape-fear","d":"2026-09-20","r":3.5,"l":1},
     {"s":"resident-evil-2026","d":"2026-09-17","r":3.5,"l":1},
     {"s":"possible-love","d":"2026-09-15","r":4.5,"l":1},
-    {"s":"everytime","d":"2026-09-15","r":4.5,"l":1},
     {"s":"the-debut-2026","d":"2026-09-14","r":4,"l":1},
     {"s":"everest-the-other-side","d":"2026-09-13","r":3.5,"l":1},
     {"s":"vintage-violence","d":"2026-09-12","r":4,"l":1},

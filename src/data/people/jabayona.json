@@ -1,10 +1,12 @@
 {
-  "generatedAt": "2026-11-22T17:07:43.610Z",
+  "generatedAt": "2026-11-23T21:17:52.892Z",
   "entries": [
+    {"s":"hook","d":"2026-11-22","r":null,"w":1},
+    {"s":"rocky","d":"2026-11-22","r":null},
     {"s":"el-director-2026","d":"2026-11-21","r":null},
     {"s":"hook-never-never-ending","d":"2026-11-21","r":null},
     {"s":"i-play-rocky","d":"2026-11-20","r":null},
-    {"s":"the-dragon-letter","d":"2026-11-19","r":null},
+    {"s":"the-dragon-letter","d":"2026-11-19","r":null,"w":1},
     {"s":"clue","d":"2026-11-19","r":null,"w":1},
     {"s":"primetime-2026","d":"2026-11-17","r":null},
     {"s":"stories-we-tell","d":"2026-11-17","r":null,"w":1},
