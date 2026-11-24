@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-11-09T19:46:37.898Z",
+  "generatedAt": "2026-11-24T20:07:58.893Z",
   "entries": [
+    {"s":"love-basketball","d":"2026-11-23","r":5,"w":1,"l":1},
+    {"s":"diego-maradona","d":"2026-11-23","r":null,"l":1},
     {"s":"ticket-to-paradise-2022","d":"2026-11-05","r":null},
     {"s":"ready-or-not-2-here-i-come","d":"2026-11-05","r":null},
     {"s":"die-my-love","d":"2026-11-05","r":null},
@@ -49,8 +51,6 @@
     {"s":"john-tucker-must-die","d":"2026-09-14","r":null},
     {"s":"rye-lane","d":"2026-09-14","r":null,"l":1},
     {"s":"12-angry-men","d":"2026-09-13","r":5,"l":1},
-    {"s":"the-devil-wears-prada-2","d":"2026-09-13","r":null,"l":1},
-    {"s":"erupcja","d":"2026-09-13","r":null},
     {"s":"stop-that-train","d":"2026-09-10","r":null,"l":1},
     {"s":"is-god-is","d":"2026-09-09","r":null},
     {"s":"death-of-the-pastors-wife-2026","d":"2026-09-08","r":null},
