@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-11-21T16:45:44.752Z",
+  "generatedAt": "2026-11-25T19:13:33.416Z",
   "entries": [
+    {"s":"the-florida-project","d":"2026-11-25","r":4},
     {"s":"you-can-see-everything","d":"2026-11-20","r":4.5},
     {"s":"phantom-thread","d":"2026-11-18","r":5},
     {"s":"jennifers-body","d":"2026-11-14","r":2},
@@ -9,7 +10,7 @@
     {"s":"how-to-make-a-killing-2026","d":"2026-11-06","r":3.5},
     {"s":"primetime-2026","d":"2026-10-29","r":3.5},
     {"s":"hypernormalisation","d":"2026-10-20","r":null,"l":1},
-    {"s":"mulholland-drive","d":"2026-10-17","r":null,"l":1},
+    {"s":"mulholland-drive","d":"2026-10-17","r":5,"l":1},
     {"s":"petite-maman","d":"2026-10-14","r":4.5},
     {"s":"bottoms","d":"2026-10-12","r":2.5},
     {"s":"nick-and-norahs-infinite-playlist","d":"2026-10-11","r":2},
