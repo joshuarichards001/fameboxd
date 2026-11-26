@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-11-24T20:07:59.001Z",
+  "generatedAt": "2026-11-26T18:58:43.520Z",
   "entries": [
+    {"s":"you-can-see-everything","d":"2026-11-26","r":null,"l":1},
     {"s":"godzilla-minus-zero","d":"2026-11-24","r":null},
     {"s":"muriels-wedding","d":"2026-11-20","r":null,"l":1},
     {"s":"samurai-cop","d":"2026-11-19","r":null,"w":1,"l":1},
@@ -50,7 +51,6 @@
     {"s":"rocky-iv","d":"2026-07-28","r":null},
     {"s":"rocky-iii","d":"2026-07-27","r":null},
     {"s":"rocky-ii","d":"2026-07-27","r":null},
-    {"s":"rocky","d":"2026-07-27","r":null},
     {"s":"the-invite-2026","d":"2026-07-13","r":null},
     {"s":"the-fifth-element","d":"2026-07-01","r":null,"w":1,"l":1},
     {"s":"summer-stock","d":"2026-06-29","r":null,"l":1},

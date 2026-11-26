@@ -1,10 +1,11 @@
 {
-  "generatedAt": "2026-11-24T20:07:58.956Z",
+  "generatedAt": "2026-11-26T18:58:43.489Z",
   "entries": [
+    {"s":"megamind","d":"2026-11-26","r":null,"w":1,"l":1},
     {"s":"guardians-of-the-galaxy","d":"2026-11-24","r":3.5,"w":1},
     {"s":"megamind","d":"2026-11-23","r":null,"l":1},
-    {"s":"avengers-age-of-ultron","d":"2026-11-19","r":4,"w":1,"l":1},
-    {"s":"the-hunger-games-sunrise-on-the-reaping","d":"2026-11-18","r":3.5,"l":1},
+    {"s":"avengers-age-of-ultron","d":"2026-11-19","r":3.5,"w":1,"l":1},
+    {"s":"the-hunger-games-sunrise-on-the-reaping","d":"2026-11-18","r":3,"l":1},
     {"s":"captain-america-the-winter-soldier","d":"2026-11-18","r":3.5,"w":1,"l":1},
     {"s":"iron-man-3","d":"2026-11-16","r":3,"l":1},
     {"s":"you-can-see-everything","d":"2026-11-11","r":5,"l":1},

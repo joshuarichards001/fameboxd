@@ -1,6 +1,9 @@
 {
-  "generatedAt": "2026-11-25T19:13:33.478Z",
+  "generatedAt": "2026-11-26T18:58:43.518Z",
   "entries": [
+    {"s":"porky-pigs-feat","d":"2026-11-25","r":null,"w":1,"l":1},
+    {"s":"balloon-land","d":"2026-11-25","r":5,"w":1,"l":1},
+    {"s":"page-miss-glory-1936","d":"2026-11-25","r":5,"w":1,"l":1},
     {"s":"silvia-prieto","d":"2026-11-23","r":null},
     {"s":"the-hunger-games-catching-fire","d":"2026-11-22","r":null,"w":1,"l":1},
     {"s":"knights-of-night","d":"2026-11-22","r":5,"l":1},
@@ -9,6 +12,7 @@
     {"s":"the-hunger-games-sunrise-on-the-reaping","d":"2026-11-19","r":null},
     {"s":"the-devils","d":"2026-11-18","r":5,"l":1},
     {"s":"learning-studying-always-perfecting-the-making","d":"2026-11-12","r":null,"l":1},
+    {"s":"cape-fear","d":"2026-11-11","r":null,"l":1},
     {"s":"big-trouble-in-little-china","d":"2026-11-09","r":null,"l":1},
     {"s":"the-nightmare-before-christmas","d":"2026-11-03","r":5,"w":1,"l":1},
     {"s":"wild-river","d":"2026-11-03","r":null,"l":1},
@@ -47,7 +51,6 @@
     {"s":"naked-lunch","d":"2026-09-09","r":null,"l":1},
     {"s":"hachi-a-dogs-tale","d":"2026-09-08","r":null,"w":1,"l":1},
     {"s":"the-wizard-of-oz-1939","d":"2026-09-03","r":null,"w":1,"l":1},
-    {"s":"wizards","d":"2026-09-03","r":5,"w":1,"l":1},
     {"s":"stardust-2007","d":"2026-09-02","r":null,"w":1,"l":1},
     {"s":"logans-run","d":"2026-09-01","r":null,"l":1},
     {"s":"benny-joon","d":"2026-09-01","r":null},

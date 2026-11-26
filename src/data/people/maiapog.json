@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-11-23T21:17:52.946Z",
+  "generatedAt": "2026-11-26T18:58:43.487Z",
   "entries": [
+    {"s":"wildwood-2026","d":"2026-11-25","r":4.5,"l":1},
     {"s":"bring-it-on","d":"2026-11-23","r":null,"w":1},
     {"s":"cunk-on-cinema","d":"2026-11-16","r":null},
     {"s":"little-shop-of-horrors","d":"2026-11-15","r":5,"w":1,"l":1},
@@ -50,7 +51,6 @@
     {"s":"teenage-sex-and-death-at-camp-miasma","d":"2026-08-15","r":4,"l":1},
     {"s":"the-worlds-end","d":"2026-08-14","r":null},
     {"s":"griffin-in-summer","d":"2026-08-08","r":null,"l":1},
-    {"s":"charade","d":"2026-08-08","r":4,"l":1},
     {"s":"fast-times-at-ridgemont-high","d":"2026-08-06","r":null,"l":1},
     {"s":"avatar-aang-the-last-airbender","d":"2026-08-05","r":null,"l":1},
     {"s":"spider-man-brand-new-day","d":"2026-08-04","r":null},
