@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-11-25T19:13:33.472Z",
+  "generatedAt": "2026-11-27T18:56:14.737Z",
   "entries": [
+    {"s":"american-movie","d":"2026-11-26","r":5,"w":1,"l":1},
     {"s":"hollywood-boulevard","d":"2026-11-24","r":2},
     {"s":"the-misandrists","d":"2026-11-22","r":5,"w":1,"l":1},
     {"s":"matinee","d":"2026-11-18","r":4,"l":1},
@@ -50,7 +51,6 @@
     {"s":"us-2019","d":"2026-10-07","r":4,"w":1,"l":1},
     {"s":"the-devil-in-miss-jones","d":"2026-10-07","r":5,"l":1},
     {"s":"a-nightmare-on-elm-street-4-the-dream-master","d":"2026-10-07","r":4,"w":1,"l":1},
-    {"s":"friday-the-13th-the-final-chapter","d":"2026-10-07","r":5,"w":1,"l":1},
     {"s":"hobgoblins","d":"2026-10-06","r":5,"l":1},
     {"s":"trog","d":"2026-10-05","r":3.5,"w":1,"l":1},
     {"s":"lady-in-white","d":"2026-10-04","r":4,"l":1},
